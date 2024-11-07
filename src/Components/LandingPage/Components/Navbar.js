@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import { IoHome } from "react-icons/io5";
 import "./landing.css";
-
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -30,8 +30,8 @@ const Navbar = () => {
          </a></a>
         </div>
       <div className="navbar-links-container2">
-        <button className="primary-button">Log in</button>
-        <button className="primary-button">Sign Up</button>
+      <Link to="/login"><button className="primary-button">Log in</button></Link>
+      <Link to="/signup"><button className="primary-button">Sign Up</button></Link>
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />

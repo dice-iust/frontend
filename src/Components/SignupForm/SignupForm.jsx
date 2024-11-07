@@ -3,7 +3,7 @@ import './SignupForm.css';
 import { FaUser,FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useState } from 'react'; 
-
+import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
 
@@ -86,7 +86,7 @@ const SignupForm = () => {
             <button type="submit">Sign Up</button>
 
             <div className="register-link">
-                <p>Already have an account? <a href=".">Log in</a></p>
+                <p>Already have an account? <Link to="/login">Log in</Link></p>
             </div>
 
         </form> 

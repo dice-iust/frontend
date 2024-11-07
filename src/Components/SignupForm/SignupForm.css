@@ -63,6 +63,9 @@
     color:#f7f1f1;
     font-weight: 700;
 }
+.wrapper button:hover {  
+    transform: scale(1.05); 
+}  
 
 .wrapper .register-link{
     font-size: 14.5px;
