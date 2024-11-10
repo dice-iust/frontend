@@ -1,5 +1,5 @@
 import React from 'react'
-import './LoginForm.css'
+import './LoginForm.scss'
 import { FaUser,FaLock } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const LoginForm = () => {
