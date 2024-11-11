@@ -1,0 +1,173 @@
+* {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+ 
+}  
+
+img {
+  max-width:20%;
+  height: auto;
+}
+
+
+body {
+  background-color: #f6f6f6;
+  background-image: linear-gradient(rgb(187, 220, 233), rgb(253, 253, 252),rgb(187, 220, 233));
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+nav {  
+  display: flex;  
+  align-items: center;  
+  justify-content: space-between;  
+  width: 100%; /* Ensure navbar takes full width */  
+  margin-bottom: 2rem; /* Add space below navbar */   
+  padding: 0 2rem; /* Add some padding for better look */  
+}  
+
+.navbar-links-container {  
+  display: flex;  
+  align-items: center;  
+  justify-content: flex-start; /* Align items to the left */  
+}  
+
+.navbar-links-container a::before {
+  content: "";
+  position: absolute;
+  bottom: -1px; 
+  left: 0;
+  width: 0%; 
+  height: 2px;
+  background-color: #22487a; 
+  transition: width 0.3s ease; 
+}
+
+.navbar-links-container a:hover::before {
+  width: 64%;
+}
+
+//login sign up
+
+.home-link {  
+  margin-right: 2rem; /* Space between home link and buttons */  
+  text-decoration: none;  
+  color: #22487a;  
+  font-size: 1.5rem;  
+  font-weight: 400;  
+  display: flex; /* Align icon and text */  
+  align-items: center; /* Center vertically */  
+}  
+
+.navbar-buttons {  
+  display: flex; /* Arrange buttons in a row */  
+  gap: 1rem; /* Space between buttons */  
+}  
+
+.primary-button {  
+  padding: 0.9rem 1.75rem;  
+  background-color: #22487a;  
+  color: white;  
+  border: none;  
+  border-radius: 5rem;  
+  font-size: 1.1rem;  
+  cursor: pointer;  
+  font-weight: 600;  
+  transition: background-color 0.2s, transform 0.2s;  
+}  
+
+/* Add other button styles (hover, etc.) as necessary */  
+.primary-button:hover {  
+  background-color: rgb(208, 235, 245);  
+  color: #22487a;  
+  transform: translateY(-2px);  
+}  
+
+.primary-button::after {
+  position: absolute;
+  right: 10px; 
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s; 
+}
+.primary-button:hover::after {
+  opacity: 1; 
+  transform: translateX(5px); 
+}
+
+.home-container {  
+  max-width: 100%;  /* Set to full width */  
+  padding: 0rem;  
+  margin-left: 0; /* Remove margin-left to align correctly */   
+}  
+
+.home-banner-container {  
+  display: flex; /* Use flexbox to align children side by side */  
+  align-items: center; /* Center items vertically */  
+  justify-content: space-between; /* Distribute space evenly */  
+  background-color: white;   
+  border-radius: 20px;  /* Adjusted for a more subtle rounded effect */  
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);   
+  padding: 3rem; /* Increased padding inside the banner to make it larger */  
+  margin: 0 auto; /* Center the banner on the page if needed */  
+  width: 90%; /* Set a width to ensure it doesn't take a full screen if not desired */  
+  max-width: 10000px; /* If you want a max width for large screens */  
+}
+
+.home-text-section {  
+  flex: 0;  
+  display: flex;  
+  flex-direction: column;  
+  justify-content: left;  
+  align-items: flex-start;  
+ // margin-left: 5rem;
+}  
+
+.home-image-section {  
+  flex: 0 0 50%;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;  
+}  
+
+.home-image-section img {  
+  max-width: 100%; /* Make the image responsive */  
+  height: auto; /* Maintain aspect ratio */  
+}  
+
+.primary-heading {  
+  font-size: clamp(2rem, 5vw, 4rem);  
+  color: #22487a;  
+}  
+
+.primary-text {  
+  font-size: clamp(1rem, 3vw, 3rem);  
+  color: #0a0a0a;  
+   
+  margin-left: 5rem;
+}  
+
+.secondary-button {  
+  padding: 1rem 2.5rem;  
+  background-color: #22487a;  
+  outline: none;  
+  border: none;  
+  border-radius: 5rem;  
+  font-size: 1.1rem;  
+  cursor: pointer;  
+  font-weight: 600;  
+  color: white;  
+  transition: background-color 0.2s, transform 0.2s;   
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  margin-top: 1rem; /* Add margin on top */  
+  margin-left:10rem;
+}  
+
+.secondary-button:hover {  
+  background-color: #f1f4f7;  
+  color: #22487a;  
+  transform: translateX(-5px);   
+}  
+

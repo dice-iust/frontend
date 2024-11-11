@@ -6,6 +6,7 @@ import LoginForm from "./Components/LoginForm/loginform.jsx";
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
 import Home from "./Components/LandingPage/Components/Home.js";
 import TourList from "./Components/tourspage/alltours.jsx";
+import Home from "./Components/LandingPage/Components/Home.jsx";
 function App() {  
   return (  
     <Router>  
