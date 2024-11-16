@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from './AuthProvider';
 import axios from '../../api/axios';
 import './SignupForm.scss';
+import { RiFontSize } from 'react-icons/ri';
 
 const SIGN_URL = 'user/register/';
 
@@ -46,7 +47,7 @@ const SignupForm = () => {
       setErrorMessage('Valid!');
     } else {
       setIsPasswordValid(false);
-      setErrorMessage('Invalid! Password must have at least 6 characters including letters and numbers.');
+      setErrorMessage('at least 6 characters including both letters and numbers');
     }
   };
 
@@ -94,9 +95,9 @@ const SignupForm = () => {
   return (  
   <div className='signup'>
     <div className='wrapper'>  
+    {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>} 
       <form onSubmit={handleSubmit}> 
-        {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>} 
-        <h1>Sign Up</h1>  
+        <h1>Signup</h1>  
         <div className="input-box">  
           <input  
             type='text'  
@@ -120,7 +121,7 @@ const SignupForm = () => {
           />  
           <FaLock className='icon' />  
           {errorMessage && (  
-            <span style={{ color: isPasswordValid ? 'green' : 'red', margin: '10px', fontWeight: 'bold' }}>  
+            <span style={{ color: isPasswordValid ? 'green' : 'red', margin: '10px', fontWeight: 'bold',alignmentBaseline: 'justify',fontSize: '11px' }}>  
               {errorMessage}  
             </span>  
           )}  

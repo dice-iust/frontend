@@ -1,5 +1,5 @@
 .signup {  
-    background-color: #22487a; 
+    background: linear-gradient(180deg, #22487a,#22487a, rgb(234,110,12));	
     min-height: 100vh;  
     display: flex;  
     justify-content: center;  
@@ -44,7 +44,6 @@
     font-size: 16px;
     color: #22487a;
     padding: 20px 45px 20px 20px;
-
 }
 
 .input-box input::placeholder{

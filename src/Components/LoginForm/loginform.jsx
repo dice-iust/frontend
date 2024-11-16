@@ -46,7 +46,7 @@ const LoginForm = () => {
           }else if(err.response?.status===400){
             setErrMsg('Missing Username or Password');
           }else if(err.response?.status===401){
-            setErrMsg('You do not have an account');
+            setErrMsg("You do not have an account");
           }else{
             setErrMsg('Login Failed');
           }
@@ -69,7 +69,12 @@ const LoginForm = () => {
     ):(
   <div className="LoginForm"> 
     <div className='wrapper'>
-      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>{errMsg}</p>
+      <p   
+      style={{color: 'rgb(234,110,12)'}}
+      ref={errRef}   
+      className={`${errMsg ? "errmsg" : "offscreen"} no-wrap`}   
+      aria-live='assertive'  >  
+      {errMsg}   </p> 
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>  
           <div className="input-box">
@@ -81,14 +86,15 @@ const LoginForm = () => {
             <FaLock className='icon' />
           </div>
           <div className="remember-forgot">
-            <label> <input type="checkbox" /> Remember me </label>
+            <label> <input type="checkbox" /> 
+            Remember me </label>
             <a href="#">Forgot Password?</a>
           </div>
           <button type="submit">Login</button>
           <div className="register-link">
-            <p>Don't have an account?<Link to="/signup">Register</Link></p>
+            <p>Don't have an account? <Link to="/signup">Register</Link></p>
           </div>
-        </form>     
+        </form>    
     </div>
   </div>
     )}

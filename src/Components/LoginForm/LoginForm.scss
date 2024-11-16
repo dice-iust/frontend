@@ -1,14 +1,16 @@
 .LoginForm {  
-    background-color: #22487a; 
+    background-color: #f6f6f6;
+    background: linear-gradient(180deg, #22487a,#22487a, rgb(234,110,12));	
     min-height: 100vh;  
     display: flex;  
     justify-content: center;  
     align-items: center;  
     background-size:cover;
-    background-position: center; 
+    background-position: right; 
   }
 
 .wrapper {  
+    word-spacing: 3px;
     width: 100%;  
     max-width: 420px; 
     background: #fff;  
@@ -68,8 +70,8 @@
 }  
 
 .remember-forgot label input {  
-    accent-color: #0396c7;  
-    margin-right: 4px;  
+    accent-color: rgb(234,110,12);  
+    margin-left: 10px;  
     margin-top: 16px;  
 }  
 
@@ -77,17 +79,18 @@
     color: #13053e;  
     text-decoration: none;  
     font-weight: 600;  
-    margin-top: 10px; 
+    margin-top: 16px; 
 }  
 
 .remember-forgot a:hover {  
     text-decoration: underline;  
+    color: rgb(234,110,12);
 }  
 
 .wrapper button {  
     width: 100%;  
     height: 45px;  
-    background: #22487a;  
+    background-color: #22487a;  
     border: none;  
     outline: none;  
     border-radius: 40px;  
@@ -96,10 +99,16 @@
     font-size: 16px;  
     color: #f7f1f1;  
     font-weight: 700;  
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s; 
 }  
 
 .wrapper button:hover {  
-    transform: scale(1.05); 
+    background-color: rgb(234,110,12);
+    color: #fff;
+    transform: translateX(-5px); 
 }  
 
 .wrapper .register-link {  
@@ -115,7 +124,9 @@
 }  
 
 .register-link p a:hover {  
-    text-decoration: underline;  
+    text-decoration: underline; 
+    color: rgb(234,110,12); 
+
 }  
 
 /* Responsive Styles */  
