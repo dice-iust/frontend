@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoginForm.scss'
 import { FaUser,FaLock } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link,Navigate,useNavigate } from 'react-router-dom';
 import {useRef,useState,useEffect,useContext} from 'react';
 import AuthContext from './AuthProvider';
 import axios from '../../api/axios';
@@ -15,7 +15,7 @@ const LoginForm = () => {
     const [user,setUser]=useState('');
     const[pwd,setPwd]=useState('');
     const[errMsg,setErrMsg]=useState('');
-    const[success,setSuccess]=useState(false);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         userRef.current.focus();
@@ -39,7 +39,7 @@ const LoginForm = () => {
         setAuth({user,pwd,accessToken});
         setUser('');
         setPwd('');
-        setSuccess(true);
+        navigate('/Main');
       } catch(err){
           if(!err?.response){
             setErrMsg('No Server Response 404 :)');
@@ -57,16 +57,6 @@ const LoginForm = () => {
     }
   return (
     
-    <>
-    {success ? (
-        <section>
-          <h1>Logged in successfully!</h1>
-          <br/>
-          <p>
-            <a href='#'>Go to Home</a>
-          </p>
-        </section>
-    ):(
   <div className="LoginForm"> 
     <div className='wrapper'>
       <p   
@@ -97,9 +87,7 @@ const LoginForm = () => {
         </form>    
     </div>
   </div>
-    )}
-    </>
-    
+
   )
 }
 

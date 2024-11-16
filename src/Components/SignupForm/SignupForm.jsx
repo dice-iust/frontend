@@ -139,8 +139,7 @@ const SignupForm = () => {
         </div>  
 
         <button type="submit">Sign Up</button>  
-
-        {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>}  
+ 
 
         <div className="register-link">  
           <p>Already have an account? <Link to="/login">Log in</Link></p>  
