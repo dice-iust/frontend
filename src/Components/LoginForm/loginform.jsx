@@ -56,6 +56,7 @@ const LoginForm = () => {
 
     }
   return (
+    
     <>
     {success ? (
         <section>
@@ -66,30 +67,33 @@ const LoginForm = () => {
           </p>
         </section>
     ):(
-  <div className='wrapper'>
-    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>{errMsg}</p>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>  
-        <div className="input-box">
-          <input type='text' id="username" ref={userRef} autoComplete="off" onChange={(e)=>setUser(e.target.value)} value={user} placeholder='Username' required/>
-          <FaUser className='icon'/>
-        </div>
-        <div className="input-box">
-          <input type='password' id="password" onChange={(e)=>setPwd(e.target.value)} value={pwd} placeholder='Password' required/>
-          <FaLock className='icon' />
-        </div>
-        <div className="remember-forgot">
-          <label> <input type="checkbox" /> Remember me </label>
-          <a href="#">Forgot Password?</a>
-        </div>
-        <button type="submit">Login</button>
-        <div className="register-link">
-          <p>Don't have an account?<Link to="/signup">Register</Link></p>
-        </div>
-      </form>     
+  <div className="LoginForm"> 
+    <div className='wrapper'>
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live='assertive'>{errMsg}</p>
+        <form onSubmit={handleSubmit}>
+          <h1>Login</h1>  
+          <div className="input-box">
+            <input type='text' id="username" ref={userRef} autoComplete="off" onChange={(e)=>setUser(e.target.value)} value={user} placeholder='Username' required/>
+            <FaUser className='icon'/>
+          </div>
+          <div className="input-box">
+            <input type='password' id="password" onChange={(e)=>setPwd(e.target.value)} value={pwd} placeholder='Password' required/>
+            <FaLock className='icon' />
+          </div>
+          <div className="remember-forgot">
+            <label> <input type="checkbox" /> Remember me </label>
+            <a href="#">Forgot Password?</a>
+          </div>
+          <button type="submit">Login</button>
+          <div className="register-link">
+            <p>Don't have an account?<Link to="/signup">Register</Link></p>
+          </div>
+        </form>     
+    </div>
   </div>
     )}
     </>
+    
   )
 }
 

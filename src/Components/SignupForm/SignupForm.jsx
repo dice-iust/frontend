@@ -4,7 +4,7 @@ import { MdEmail } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from './AuthProvider';
 import axios from '../../api/axios';
-import './SignupForm.css';
+import './SignupForm.scss';
 
 const SIGN_URL = 'user/register/';
 
@@ -92,6 +92,7 @@ const SignupForm = () => {
   };
 
   return (  
+  <div className='signup'>
     <div className='wrapper'>  
       <form onSubmit={handleSubmit}> 
         {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>} 
@@ -145,6 +146,7 @@ const SignupForm = () => {
         </div>  
       </form>  
     </div>  
+  </div>
   );  
 }  
 
