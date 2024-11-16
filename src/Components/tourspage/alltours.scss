@@ -6,12 +6,20 @@
   .tour-list-container {  
     max-width: 1200px;  
     margin: 0 auto;  
+    
+    
 
+    
     .tour-list {  
       display: flex;  
       flex-wrap: wrap;   
       justify-content: space-between;  
+      
     }  
+
+    
+
+    
 
     .tour-card {  
       display: flex;  
@@ -22,6 +30,8 @@
       margin: 10px; 
       width: 220px;  
       transition: transform 0.3s;  
+
+      
 
       &:hover {  
         transform: scale(1.05);  
