@@ -2,36 +2,27 @@
   text-align: center;  
   background-color: #f9f9f9;  
   padding: 20px;  
-  
+
   .tour-list-container {  
     max-width: 1200px;  
     margin: 0 auto;  
-    
-    
 
-    
     .tour-list {  
       display: flex;  
-      flex-wrap: wrap;   
+      flex-wrap: wrap;  
       justify-content: space-between;  
-      
     }  
-
-    
-
-    
 
     .tour-card {  
       display: flex;  
-      flex-direction: column; 
+      flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      margin: 10px; 
-      width: 220px;  
+      margin: 10px;  
+      width: 220px; // Adjust width as needed  
       transition: transform 0.3s;  
-
-      
+      position: relative;  
 
       &:hover {  
         transform: scale(1.05);  
@@ -40,32 +31,32 @@
 
       .tour-image {  
         width: 100%;  
-        height: 150px;  
+        height: 150px; // Fixed height for the image  
         object-fit: cover;  
       }  
 
       .tour-info {  
-        padding: 10px; 
+        padding: 10px;  
         .tour-name {  
           font-size: 1.3em;  
           font-weight: bold;  
         }  
 
         .tour-route {  
-          font-size: 0.9em; 
+          font-size: 0.9em;  
           margin: 5px 0;  
           display: flex;  
           justify-content: center;  
           align-items: center;  
 
           > span {  
-            margin: 0 5px;  
+            margin: 0 2px;  
           }  
         }  
 
         .tour-route svg {  
           margin: 0 5px;  
-          font-size: 18px; 
+          font-size: 18px;  
         }  
 
         .tour-type {  
@@ -74,7 +65,7 @@
           padding: 4px;  
           border-radius: 5px;  
           font-weight: bold;  
-          text-transform: capitalize; 
+          text-transform: capitalize;  
         }  
 
         .Budget-Friendly {  
@@ -88,13 +79,13 @@
         }  
 
         .tour-admin {  
-          display: flex;                   
-          align-items: center;            
-          justify-content: center;         
+          display: flex;  
+          align-items: center;  
+          justify-content: center;  
           margin-top: 5px;  
 
           .admin-photo {  
-            width: 25px;      
+            width: 25px;  
             height: 25px;  
             border-radius: 50%;  
             margin-right: 5px;  
@@ -106,52 +97,104 @@
         }  
       }  
     }  
-  
-    
+
     .slick-prev,  
     .slick-next {  
       background-color: #f6f9fc;  
-      color: white;               
-      border: none;                
-      padding: 10px 15px;          
-      border-radius: 50%;          
-      cursor: pointer;             
-
-      
-      position: absolute;          
-      top: 50%;                   
+      color: white;  
+      border: none;  
+      padding: 10px 15px;  
+      border-radius: 50%;  
+      cursor: pointer;  
+      position: absolute;  
+      top: 50%;  
       transform: translateY(-50%);  
-      z-index: 1;                
+      z-index: 1;  
       transition: background-color 0.3s ease, transform 0.3s ease;  
 
       &:hover {  
         background-color: #f4f6f8;  
-        transform: scale(1.1);       
+        transform: scale(1.1);  
       }  
 
-      
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
 
       &::before {  
-        font-size: 16px;             
-        line-height: 0;              
+        font-size: 16px;  
+        line-height: 0;  
       }  
 
       &.slick-prev::before {  
-        content: '←';                
+        content: '←';  
       }  
 
       &.slick-next::before {  
-        content: '→';                
+        content: '→';  
       }  
     }  
 
     .slick-prev {  
-      left: 15px;                  
+      left: 15px;  
     }  
 
     .slick-next {  
-      right: 15px;                  
+      right: 15px;  
     }  
-  }
+
+    
+    .upcoming-trips-section {  
+      margin-top: 20px;  
+      padding: 15px;  
+      background-color: rgba(34, 72, 122, 0.5); 
+      border-radius: 10px;  
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
+      
+      h2 {  
+        font-size: 1.5em;  
+        font-weight: bold;  
+        color: rgba(34, 72, 122, 0.5);  
+        padding: 10px 0;  
+        cursor: pointer;  
+        transition: color 0.3s ease;  
+
+        &:hover {  
+          color: rgba(34, 72, 122, 0.5); 
+        }  
+      }  
+
+      .upcoming-card {  
+        width: 150px; 
+        height: 150px; 
+        margin: 10px;
+        border-radius: 10px;  
+        overflow: hidden;  
+        background-color: #ffffff; 
+        position: relative; 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+        transition: transform 0.3s;  
+
+        &:hover {  
+          transform: scale(1.05);  
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  
+        }  
+
+        .upcoming-image {  
+          width: 100%;  
+          height: 100%;  
+          object-fit: cover; 
+        }  
+
+        .upcoming-info {  
+          position: absolute;  
+          bottom: 0;  
+          left: 10px; 
+          right: 10px; 
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #ffffff; 
+          padding: 5px;  
+          border-radius: 5px; 
+        }  
+      }  
+    }  
+  }  
 }
