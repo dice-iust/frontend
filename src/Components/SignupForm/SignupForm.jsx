@@ -166,8 +166,7 @@ const SignupForm = () => {
         }  
       );  
 
-      const accessToken = response?.data?.accessToken;  
-      // setAuth({ username, email, password, accessToken });  
+      const accessToken = response?.data?.accessToken;   
       setUsername('');  
       setPassword('');  
       setEmail('');  
