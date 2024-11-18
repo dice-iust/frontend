@@ -16,9 +16,14 @@ const SignupForm = () => {
   const [username, setUsername] = useState('');  
   const [password, setPassword] = useState('');  
   const [email, setEmail] = useState('');  
+  const [confirm, setConfirm] = useState('');  
   const [errMsg, setErrMsg] = useState('');  
-  const [errorMessage, setErrorMessage] = useState('');  
+  const [errorMessagePassword, setErrorMessagePassword] = useState('');  
+  const [errorMessageUserName, setErrorMessageUserName] = useState(''); 
+  const [errorMessageEmail, setErrorMessageEmail] = useState(''); 
+  const [errorMessageConfirm, setErrorMessageConfirm] = useState(''); 
   const [isPasswordValid, setIsPasswordValid] = useState(false);  
+  const [isUserNameValid, setisUserNameValid] = useState(false);  
   const navigate = useNavigate();  
 
   useEffect(() => {  
@@ -27,13 +32,15 @@ const SignupForm = () => {
 
   useEffect(() => {  
     setErrMsg('');  
-  }, [username, password, email]);  
+  }, [username, password, email,confirm]);  
 
   const validatePassword = (password) => {  
     const hasLetters = /[a-zA-Z]/.test(password);  
     const hasNumbers = /\d/.test(password);  
-    const isLongEnough = password.length >= 6;  
-
+    const isLongEnough = password.length >= 6;   
+      if(!password)  {
+        return 'Please fillout this field';
+      }
     if (!hasLetters && !hasNumbers) {  
       return 'Password must contain letters and numbers';  
     }  
@@ -55,6 +62,26 @@ const SignupForm = () => {
     return '';  
   };  
 
+  const validateUsername = (username) => { 
+    const isLongEnough_username = username.length >= 3;  
+    if (!username) {  
+      return 'Please fill out this field';  
+    }  
+    if (!isLongEnough_username) {  
+      return 'Username must be at least 3 characters';  
+    }  
+    return '';  
+  };  
+    const validateEmail = (email) => {  
+      if (!email) {  
+        return 'Please fill out this field';  
+      }  
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
+      if (!emailPattern.test(email)) {  
+        return 'Please enter a valid email address like email@example.com';  
+      }  
+      return '';  
+    };  
   const handlePasswordChange = (e) => {  
     const inputPassword = e.target.value;  
     setPassword(inputPassword);  
@@ -62,26 +89,77 @@ const SignupForm = () => {
     const validationMessage = validatePassword(inputPassword);  
     if (validationMessage === '') {  
       setIsPasswordValid(true);  
-      setErrorMessage('Valid!');  
+      setErrorMessagePassword('Valid!');  
     } else {  
       setIsPasswordValid(false);  
-      setErrorMessage(validationMessage);  
+      setErrorMessagePassword(validationMessage);  
     }  
   };  
+  const handleUserNameChange = (e) => {  
+    const inputusername = e.target.value;  
+    setUsername(inputusername);  
 
+    const validationMessage = validateUsername(inputusername);  
+    if (validationMessage === '') {  
+      setisUserNameValid(true);  
+      setErrorMessageUserName('Valid!');  
+    } else {  
+      setisUserNameValid(false);  
+      setErrorMessageUserName(validationMessage);  
+    }  
+  }; 
+      const handleEmailChange = (e) => {  
+        const inputEmail = e.target.value;  
+        setEmail(inputEmail);  
+
+        const validationMessage = validateEmail(inputEmail);  
+        if (validationMessage === '') {  
+          setErrorMessageEmail('Valid!');  
+        } else {  
+          setErrorMessageEmail(validationMessage);  
+        }  
+      };  
+      const handleConfirmPasswordChange = (e) => {  
+        const inputConfirm = e.target.value;  
+        setConfirm(inputConfirm);  
+        if(!e){
+          setErrorMessageConfirm('Please fill out this field');
+        }
+        // Check if password and confirm match  
+        if (inputConfirm !== password) {  
+          setErrorMessageConfirm('Passwords do not match');  
+        } else {  
+          setErrorMessageConfirm('');  
+        }  
+      };  
   const handleSubmit = async (e) => {  
     e.preventDefault();  
-    const validationMessage = validatePassword(password);  
-    if (validationMessage) {  
-      alert(validationMessage);  
-      setPassword('');  
-      setErrorMessage('');  
-      return;  
-    }  
+
+        const usernameError = validateUsername(username);  
+        const emailError = validateEmail(email);  
+        const passwordError = validatePassword(password);  
+
+        if (usernameError) {  
+          setErrorMessageUserName(usernameError);    
+        } else {  
+          setErrorMessageUserName('');  
+        }  
+
+        if (emailError) {  
+          setErrorMessageEmail(emailError);  
+        } else {  
+          setErrorMessageEmail('');  
+        }  
+
+        if (passwordError) {  
+          setErrorMessagePassword(passwordError);  
+        } else {  
+          setErrorMessagePassword('');  
+        }  
 
     try {  
       const response = await axios.post(SIGN_URL,  
-        JSON.stringify({ user_name: username, email, password }),  
+        JSON.stringify({ user_name: username, email, password,confirm }),  
         {  
           headers: { 'Content-Type': 'application/json' },  
           withCredentials: false  
@@ -93,17 +171,18 @@ const SignupForm = () => {
       setUsername('');  
       setPassword('');  
       setEmail('');  
+      setConfirm('');
       navigate('/login');  
     }   
     catch (err) {  
       if (!err?.response) {  
         setErrMsg('An error occurred');  
-      } else if (err.response?.status === 400) {  
+      } else if (username && password &&err.response?.status === 400) {  
         setErrMsg('This Username or Email is already existed');  
       } else if (err.response?.status === 401) {  
         setErrMsg('You do not have an account');  
       } else {  
-        setErrMsg('Signup Failed');  
+        setErrMsg('Please fill out all required fields!');  
       }  
       if (errRef.current) {  
         errRef.current.focus();  
@@ -122,20 +201,30 @@ const SignupForm = () => {
               type='text'  
               placeholder='Username'  
               value={username}  
-              onChange={(e) => setUsername(e.target.value)}  
+              onChange={handleUserNameChange}  
               ref={userRef}  
               autoComplete="off"  
             />  
-            <FaUser className='icon' />  
+            <FaUser className='icon' /> 
+            {errorMessageUserName && (  
+              <span style={{ color: isUserNameValid ? 'green' : 'red', margin: '10px', fontWeight: 'bold', fontSize: '11px' }}>  
+                {errorMessageUserName}  
+              </span>  
+            )}   
           </div>  
           <div className="input-box">  
             <input  
-              type='email'  
-              placeholder='Email'  
-              value={email}  
-              onChange={(e) => setEmail(e.target.value)}  
+                  type='text'  
+                  placeholder='Email'  
+                  value={email}  
+                  onChange={handleEmailChange}  
             />  
             <MdEmail className='icon' />  
+                {errorMessageEmail && (  
+                  <span style={{ color: errorMessageEmail === 'Valid!' ? 'green' : 'red', margin: '10px', fontWeight: 'bold', fontSize: '11px' }}>  
+                    {errorMessageEmail}  
+                  </span>  
+                )}   
           </div>   
           <div className="input-box">  
             <input  
@@ -145,22 +234,29 @@ const SignupForm = () => {
               onChange={handlePasswordChange}  
             />  
             <FaLock className='icon' />  
-            {errorMessage && (  
+            {errorMessagePassword && (  
               <span style={{ color: isPasswordValid ? 'green' : 'red', margin: '10px', fontWeight: 'bold', fontSize: '11px' }}>  
-                {errorMessage}  
+                {errorMessagePassword}  
               </span>  
             )}  
           </div>   
           <div className="input-box">  
             <input  
               type='password'  
-              placeholder='Confirm Password'   
+              placeholder='Confirm Password'  
+              value={confirm} 
+              onChange={handleConfirmPasswordChange} 
             />  
             <FaLock className='icon' />  
+            {errorMessageConfirm && (  
+              <span style={{ color: errorMessageConfirm ? 'red' : 'green', margin: '10px', fontWeight: 'bold', fontSize: '11px' }}>  
+                {errorMessageConfirm}  
+              </span>  
+            )}  
           </div>   
-          <button type="submit">Sign up</button>  
+          <button type="submit">Signup</button>  
           <div className="register-link">  
-            <p>Already have an account? <Link to="/login">Log in</Link></p>  
+            <p>Already have an account? <Link to="/login">Login</Link></p>  
           </div>  
         </form>  
       </div>  
