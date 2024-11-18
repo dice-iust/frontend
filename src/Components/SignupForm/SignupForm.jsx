@@ -26,6 +26,7 @@ const SignupForm = () => {
   const [isUserNameValid, setisUserNameValid] = useState(false);  
   const navigate = useNavigate();  
 
+  
   useEffect(() => {  
     userRef.current.focus();  
   }, []);  
@@ -125,7 +126,6 @@ const SignupForm = () => {
         if(!e){
           setErrorMessageConfirm('Please fill out this field');
         }
-        // Check if password and confirm match  
         if (inputConfirm !== password) {  
           setErrorMessageConfirm('Passwords do not match');  
         } else {  
