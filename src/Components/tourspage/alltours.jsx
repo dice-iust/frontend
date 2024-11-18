@@ -12,11 +12,27 @@ import { FaRegCalendar } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";   
 import "slick-carousel/slick/slick-theme.css";  
 import Slider from "react-slick"; 
+import Travelsnav from "./Nav.jsx";
 // import populartours from "./populartours.jsx";
+
+
  
 
 
-const TourList = () => {  
+const TourList = () => { 
+    
+    const categories = [  
+        { id: 1, name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
+        { id: 2, name: 'Short Trips', image: 'https://img.freepik.com/free-vector/time-travel-agency-web-site-vacation-tourism-illustration-man-with-ticket-hand-backpack-suitcase-baggage-running-plane-people-visit-countries-cities-landmarks_126523-2351.jpg?t=st=1731946833~exp=1731950433~hmac=ba7d41a82b0169b4e78833810f20c3577486f60f4b09a8fef15f7e35c82db0ef&w=740' },    
+        { id: 3, name: 'Spring Trips', image: 'https://img.freepik.com/premium-vector/smiling-female-tourist-with-travel-bags-vacation_1310786-25862.jpg' },  
+        { id: 4, name: 'Summer Trips', image: 'https://img.freepik.com/free-vector/beach-vacations_24908-53903.jpg' },  
+        { id: 5, name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
+        { id: 6, name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
+        { id: 7, name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
+        { id: 8, name: 'Budget-Friendly', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
+      ];  
+
+
   
   const tours = [  
     {  
@@ -299,7 +315,7 @@ const TourList = () => {
     slidesToScroll: 1, 
     centerMode: true, 
                
-    centerPadding: '200px', 
+    centerPadding: '236px', 
     
     
     
@@ -325,322 +341,68 @@ const TourList = () => {
   };  
 
   return (  
-    <div className="tour-list-container">  
-        <h1>Popular Trips</h1>  
-        <div>  
-            <Slider {...settings}>  
-                {tours  
-                    .sort((a, b) => b.travellers - a.travellers)  
-                    .slice(0, 5)  
-                    .map((tour) => (  
-                        <div key={tour.id} className="tour-card">  
-                            <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                            <div className="tour-info">  
-                                <h2 className="tour-name">{tour.name}</h2>  
-                                <p className="tour-route">  
-                                    {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                </p>  
-                                <p className="tour-dates">  
-                                    <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                    <span>{formatDate(tour.date)}</span>  
-                                </p>  
-                                <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                    <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                    {formatDate(tour.returnDate)}  
-                                </p>  
-                                <span className={`tour-type ${tour.type}`}>  
-                                    <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                </span>  
-                                {tour.admin && (  
-                                    <p className="tour-admin">  
-                                        <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                        {tour.admin.name}  
-                                    </p>  
-                                )}  
-                            </div>  
-                        </div>  
-                    ))}  
-            </Slider>  
-        </div>  
-
-        {/* Upcoming Trips Section */}  
-        <div className="upcoming-trips-section"> 
-             
-            <h2 onClick={() => setShowUpcoming(!showUpcoming)} style={{ cursor: 'pointer', color: 'black' }}>  
-                Upcoming Trips {showUpcoming ? '▲' : '▼'}  
-            </h2>  
-            {showUpcoming && (  
-                <div>  
-                    <Slider {...settings}>  
-                        {tours  
-                            .filter(tour => {  
-                                const tourDate = new Date(tour.date);  
-                                return tourDate.getFullYear() === currentYear && tourDate.getMonth() === currentMonth;  
-                            })  
-                            .map((tour) => (  
-                                <div key={tour.id} className="tour-card">  
-                                    <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                    <div className="tour-info">  
-                                        <h2 className="tour-name">{tour.name}</h2>  
-                                        <p className="tour-route">  
-                                            {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                        </p>  
-                                        <p className="tour-dates">  
-                                            <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                            <span>{formatDate(tour.date)}</span>  
-                                        </p>  
-                                        <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                            <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                            {formatDate(tour.returnDate)}  
-                                        </p>  
-                                        <span className={`tour-type ${tour.type}`}>  
-                                            <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                        </span>  
-                                        {tour.admin && (  
-                                            <p className="tour-admin">  
-                                                <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                {tour.admin.name}  
-                                            </p>  
-                                        )}  
-                                    </div>  
-                                </div>  
-                            ))}  
-                    </Slider>  
+    
+    <div className="tour-list-container"> 
+    <Travelsnav/>
+      <h1>Popular Trips</h1>  
+      <div className="popular-trips-box"> {/* Added this div for styling */}  
+        <Slider {...settings}>  
+          {tours  
+            .sort((a, b) => b.travellers - a.travellers)  
+            .slice(0, 5)  
+            .map((tour) => (  
+              <div key={tour.id} className="tour-card">  
+                <img  
+                  src={tour.photo}  
+                  alt={`Image of ${tour.name}`}  
+                  className="tour-image"  
+                />  
+                <div className="tour-info">  
+                  <h2 className="tour-name">{tour.name}</h2>  
+                  <p className="tour-route">  
+                    {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
+                  </p>  
+                  <p className="tour-dates">  
+                    <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
+                    <span>{formatDate(tour.date)}</span>  
+                  </p>  
+                  <p className="tour-length" style={{ textAlign: 'center' }}>  
+                    <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
+                    {formatDate(tour.returnDate)}  
+                  </p>  
+                  <span className={`tour-type ${tour.type}`}>  
+                    <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+                  </span>  
+                  {tour.admin && (  
+                    <p className="tour-admin">  
+                      <img  
+                        src={tour.admin.photo}  
+                        alt={`Profile of ${tour.admin.name}`}  
+                        className="admin-photo"  
+                      />  
+                      {tour.admin.name}  
+                    </p>  
+                  )}  
                 </div>  
-            )} 
-            </div>
-
-
-
-
-
-             
-        <div className="upcoming-trips-section"> 
-             
-             <h2 onClick={() => setShowQuick(!showQuick)} style={{ cursor: 'pointer', color: 'black' }}>  
-                 Quick Trips {showQuick ? '▲' : '▼'}  
-             </h2>  
-             {showQuick && (  
-                 <div>  
-                     <Slider {...settings}>  
-                         {tours.filter(tour => {  
-            const tourDate = new Date(tour.date);
-            const tourDateback=new Date(tour.returnDate);
-            return tourDate.getFullYear() === tourDateback.getFullYear() && tourDate.getMonth() === tourDateback.getMonth() && tourDate.getDay()-tourDateback.getDay()<=2;  
-        }).map((tour) => (  
-                                 <div key={tour.id} className="tour-card">  
-                                     <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                     <div className="tour-info">  
-                                         <h2 className="tour-name">{tour.name}</h2>  
-                                         <p className="tour-route">  
-                                             {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                         </p>  
-                                         <p className="tour-dates">  
-                                             <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             <span>{formatDate(tour.date)}</span>  
-                                         </p>  
-                                         <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                             <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             {formatDate(tour.returnDate)}  
-                                         </p>  
-                                         <span className={`tour-type ${tour.type}`}>  
-                                             <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                         </span>  
-                                         {tour.admin && (  
-                                             <p className="tour-admin">  
-                                                 <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                 {tour.admin.name}  
-                                             </p>  
-                                         )}  
-                                     </div>  
-                                 </div>  
-                             ))}  
-                     </Slider>  
-                 </div>  
-             )}  
-        </div>
-
-        <div className="upcoming-trips-section"> 
-             
-             <h2 onClick={() => setShowSpring(!showSpring)} style={{ cursor: 'pointer', color: 'black' }}>  
-                 spring Trips {showQuick ? '▲' : '▼'}  
-             </h2>  
-             {showSpring && (  
-                 <div>  
-                     <Slider {...settings}>  
-                         {tours.filter(tour => {  
-            const tourDate = new Date(tour.date);  
-            return tourDate.getMonth() === 0|| tourDate.getMonth() === 1 || tourDate.getMonth() === 2;  
-        }).map((tour) => (  
-                                 <div key={tour.id} className="tour-card">  
-                                     <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                     <div className="tour-info">  
-                                         <h2 className="tour-name">{tour.name}</h2>  
-                                         <p className="tour-route">  
-                                             {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                         </p>  
-                                         <p className="tour-dates">  
-                                             <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             <span>{formatDate(tour.date)}</span>  
-                                         </p>  
-                                         <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                             <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             {formatDate(tour.returnDate)}  
-                                         </p>  
-                                         <span className={`tour-type ${tour.type}`}>  
-                                             <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                         </span>  
-                                         {tour.admin && (  
-                                             <p className="tour-admin">  
-                                                 <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                 {tour.admin.name}  
-                                             </p>  
-                                         )}  
-                                     </div>  
-                                 </div>  
-                             ))}  
-                     </Slider>  
-                 </div>  
-             )}  
-        </div>
-
-
-        <div className="upcoming-trips-section"> 
-             
-             <h2 onClick={() => setShowSummer(!showSummer)} style={{ cursor: 'pointer', color: 'black' }}>  
-                 Summer Trips {showSummer ? '▲' : '▼'}  
-             </h2>  
-             {showSummer && (  
-                 <div>  
-                     <Slider {...settings}>  
-                         {tours.filter(tour => {  
-            const tourDate = new Date(tour.date);  
-            return tourDate.getMonth() === 3|| tourDate.getMonth() === 4 || tourDate.getMonth() === 5;  
-        }).map((tour) => (  
-                                 <div key={tour.id} className="tour-card">  
-                                     <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                     <div className="tour-info">  
-                                         <h2 className="tour-name">{tour.name}</h2>  
-                                         <p className="tour-route">  
-                                             {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                         </p>  
-                                         <p className="tour-dates">  
-                                             <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             <span>{formatDate(tour.date)}</span>  
-                                         </p>  
-                                         <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                             <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             {formatDate(tour.returnDate)}  
-                                         </p>  
-                                         <span className={`tour-type ${tour.type}`}>  
-                                             <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                         </span>  
-                                         {tour.admin && (  
-                                             <p className="tour-admin">  
-                                                 <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                 {tour.admin.name}  
-                                             </p>  
-                                         )}  
-                                     </div>  
-                                 </div>  
-                             ))}  
-                     </Slider>  
-                 </div>  
-             )}  
-        </div>
-
-
-        <div className="upcoming-trips-section"> 
-             
-             <h2 onClick={() => setShowAutumn(!showAutumn)} style={{ cursor: 'pointer', color: 'black' }}>  
-                 Autumn Trips {showAutumn ? '▲' : '▼'}  
-             </h2>  
-             {showAutumn && (  
-                 <div>  
-                     <Slider {...settings}>  
-                         {tours.filter(tour => {  
-            const tourDate = new Date(tour.date);  
-            return tourDate.getMonth() === 6|| tourDate.getMonth() === 7 || tourDate.getMonth() === 8;  
-        }).map((tour) => (  
-                                 <div key={tour.id} className="tour-card">  
-                                     <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                     <div className="tour-info">  
-                                         <h2 className="tour-name">{tour.name}</h2>  
-                                         <p className="tour-route">  
-                                             {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                         </p>  
-                                         <p className="tour-dates">  
-                                             <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             <span>{formatDate(tour.date)}</span>  
-                                         </p>  
-                                         <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                             <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             {formatDate(tour.returnDate)}  
-                                         </p>  
-                                         <span className={`tour-type ${tour.type}`}>  
-                                             <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                         </span>  
-                                         {tour.admin && (  
-                                             <p className="tour-admin">  
-                                                 <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                 {tour.admin.name}  
-                                             </p>  
-                                         )}  
-                                     </div>  
-                                 </div>  
-                             ))}  
-                     </Slider>  
-                 </div>  
-             )}  
-        </div>
-
-        <div className="upcoming-trips-section"> 
-             
-             <h2 onClick={() => setShowWinter(!showWinter)} style={{ cursor: 'pointer', color: 'black' }}>  
-                 Winter Trips {showWinter ? '▲' : '▼'}  
-             </h2>  
-             {showWinter && (  
-                 <div>  
-                     <Slider {...settings}>  
-                         {tours.filter(tour => {  
-            const tourDate = new Date(tour.date);  
-            return tourDate.getMonth() === 9|| tourDate.getMonth() === 10 || tourDate.getMonth() === 11;  
-        }).map((tour) => (  
-                                 <div key={tour.id} className="tour-card">  
-                                     <img src={tour.photo} alt={`Image of ${tour.name}`} className="tour-image" />  
-                                     <div className="tour-info">  
-                                         <h2 className="tour-name">{tour.name}</h2>  
-                                         <p className="tour-route">  
-                                             {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                                         </p>  
-                                         <p className="tour-dates">  
-                                             <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             <span>{formatDate(tour.date)}</span>  
-                                         </p>  
-                                         <p className="tour-length" style={{ textAlign: 'center' }}>  
-                                             <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                                             {formatDate(tour.returnDate)}  
-                                         </p>  
-                                         <span className={`tour-type ${tour.type}`}>  
-                                             <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                                         </span>  
-                                         {tour.admin && (  
-                                             <p className="tour-admin">  
-                                                 <img src={tour.admin.photo} alt={`Profile of ${tour.admin.name}`} className="admin-photo" />  
-                                                 {tour.admin.name}  
-                                             </p>  
-                                         )}  
-                                     </div>  
-                                 </div>  
-                             ))}  
-                     </Slider>  
-                 </div>  
-             )}  
-        </div>
-
-
+              </div>  
+            ))}  
+        </Slider>  
+      </div> {/* Closing the new green box div */}  
+      <h1>Categories</h1>
+      <div className="blue-box">  
+        <div className="category-cards">  
+          {categories.map((category) => (  
+            <div key={category.id} className="card">  
+              <img src={category.image} alt={category.name} className="card-image" />  
+              <h3 className="card-title">{category.name}</h3>  
+            </div>  
+          ))}  
         </div>  
-    // </div>  
+      </div>  
+    </div>  
+
+       
+    // </div>   */}
 );  
 };  
 

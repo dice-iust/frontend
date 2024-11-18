@@ -1,17 +1,86 @@
 .App {  
   text-align: center;  
-  background-color: #f9f9f9;  
-  padding: 20px;  
+  // background-color: #f9f9f9;  
+  padding: 2px;  
 
   .tour-list-container {  
-    max-width: 1200px;  
+    max-width: 1320px;  
     margin: 0 auto;  
+    
 
     .tour-list {  
+       
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
+    } 
+    
+    .popular-trips-box {  
+      
+      
+      background-color: #22487a;
+      position: relative;  
+      padding: 20px;
+      border-radius: 8px; 
+      margin-bottom: 20px; 
+      
+    }
+
+
+
+    
+
+    .blue-box {  
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      background-color: #22487a; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+    }
+
+    .category-cards {  
+      display: flex;  
+      flex-wrap: wrap;  
+      justify-content: center;  
+      gap: 40px; 
     }  
+
+    .card {  
+      width: 150px; 
+       
+      background-color: #ea7d29;  
+      
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      transition: transform 0.3s;  
+
+      &:hover {  
+        transform: scale(1.05); 
+      }  
+    }  
+
+    .card-image {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover; 
+    }  
+
+    .card-title {  
+      margin-top: 10px; 
+      font-size: 1rem; 
+      text-align: center;  
+      color: #fff; 
+    }
 
     .tour-card {  
       display: flex;  
@@ -19,19 +88,20 @@
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      margin: 10px;  
-      width: 220px; // Adjust width as needed  
+      margin:0 15px;  
+      width: 220px; 
       transition: transform 0.3s;  
       position: relative;  
+      
 
       &:hover {  
-        transform: scale(1.05);  
+        transform: scale(1.04); 
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
 
       .tour-image {  
         width: 100%;  
-        height: 150px; // Fixed height for the image  
+        height: 150px; 
         object-fit: cover;  
       }  
 
@@ -98,103 +168,111 @@
       }  
     }  
 
-    .slick-prev,  
-    .slick-next {  
-      background-color: #f6f9fc;  
-      color: white;  
-      border: none;  
-      padding: 10px 15px;  
-      border-radius: 50%;  
-      cursor: pointer;  
-      position: absolute;  
-      top: 50%;  
-      transform: translateY(-50%);  
-      z-index: 1;  
-      transition: background-color 0.3s ease, transform 0.3s ease;  
+ 
+    .slick-track {
+      display: flex;
+      gap: 1rem;
+  }
+    .slick-prev,
+  .slick-next
+  {
+      font-size: 0;
+      line-height: 0;
 
-      &:hover {  
-        background-color: #f4f6f8;  
-        transform: scale(1.1);  
-      }  
+      position: absolute;
+      top: 50%;
 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
+      display: block;
 
-      &::before {  
-        font-size: 16px;  
-        line-height: 0;  
-      }  
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
 
-      &.slick-prev::before {  
-        content: '←';  
-      }  
+      cursor: pointer;
 
-      &.slick-next::before {  
-        content: '→';  
-      }  
-    }  
+      color: transparent;
+      border: none;
+      outline: none;
+      background: transparent;
+  }
+  .slick-prev:hover,
+  .slick-prev:focus,
+  .slick-next:hover,
+  .slick-next:focus
+  {
+      color: transparent;
+      outline: none;
+      background: transparent;
+  }
+  .slick-prev:hover:before,
+  .slick-prev:focus:before,
+  .slick-next:hover:before,
+  .slick-next:focus:before
+  {
+      opacity: 1;
+  }
+  .slick-prev.slick-disabled:before,
+  .slick-next.slick-disabled:before
+  {
+      opacity: .25;
+  }
 
-    .slick-prev {  
-      left: 15px;  
-    }  
+  .slick-prev:before,
+  .slick-next:before
+  {
+      font-family: 'slick';
+      font-size: 20px;
+      line-height: 1;
 
-    .slick-next {  
-      right: 15px;  
-    }  
+      opacity: .75;
+      color: white;
 
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slick-prev
+  {
+      left: -20px;
+  }
+  [dir='rtl'] .slick-prev
+  {
+      right: -25px;
+      left: auto;
+  }
+  .slick-prev:before
+  {
+      content: '←';
+  }
+  [dir='rtl'] .slick-prev:before
+  {
+      content: '→';
+  }
+
+  .slick-next
+  {
+      right: -20px;
+  }
+  [dir='rtl'] .slick-next
+  {
+      right: auto;
+      left: -25px;
+  }
+  .slick-next:before
+  {
+      content: '→';
+  }
+  [dir='rtl'] .slick-next:before
+  {
+      content: '←';
+  }
+
+  
     
-    .upcoming-trips-section {  
-      margin-top: 20px;  
-      padding: 15px;  
-      background-color: rgba(34, 72, 122, 0.5); 
-      border-radius: 10px;  
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  
-      
-      h2 {  
-        font-size: 1.5em;  
-        font-weight: bold;  
-        color: rgba(34, 72, 122, 0.5);  
-        padding: 10px 0;  
-        cursor: pointer;  
-        transition: color 0.3s ease;  
-
-        &:hover {  
-          color: rgba(34, 72, 122, 0.5); 
-        }  
-      }  
-
-      .upcoming-card {  
-        width: 150px; 
-        height: 150px; 
-        margin: 10px;
-        border-radius: 10px;  
-        overflow: hidden;  
-        background-color: #ffffff; 
-        position: relative; 
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
-        transition: transform 0.3s;  
-
-        &:hover {  
-          transform: scale(1.05);  
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  
-        }  
-
-        .upcoming-image {  
-          width: 100%;  
-          height: 100%;  
-          object-fit: cover; 
-        }  
-
-        .upcoming-info {  
-          position: absolute;  
-          bottom: 0;  
-          left: 10px; 
-          right: 10px; 
-          background-color: rgba(0, 0, 0, 0.5);
-          color: #ffffff; 
-          padding: 5px;  
-          border-radius: 5px; 
-        }  
-      }  
-    }  
+        
+     
   }  
 }
