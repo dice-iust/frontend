@@ -1,33 +1,49 @@
 .signup {  
-    background: linear-gradient(180deg, #22487a,#22487a, rgb(234,110,12));	
+    background-color: #fefdfd;  
+    width: 100%;
     min-height: 100vh;  
     display: flex;  
     justify-content: center;  
     align-items: center;  
-    background-size:cover;
-    background-position: center; 
   }
 .wrapper {  
-    background-color: rgb(234, 110, 12); /* set orange background */  
-    width: 900px;  
-    border: 2px solid rgba(255, 255, 255, .2);  
+    background: linear-gradient(180deg, #22487a,#22487a);
+    display: flex; 
+    width: 1000px;  
+    max-width: 1000px; 
+    border-radius: 15px; 
     box-shadow: 50px 50px 50px rgba(0, 0, 0, .2);  
+    overflow: hidden; 
+}
+.form-container {   
+    background: #fff;  
+    padding: 20px 20px;   
+    width: 40%; 
+    display: flex;  
+    flex-direction: column;   
     color: #22487a;  
-    border-radius: 15px;  
-    padding: 30px 40px;  
-}
-.wrapper h1{
-    font-size: 36px;
-    text-align: center;
-    
-}
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); 
+}  
+
+.image-container {   
+    width: 60%; 
+    background-image: url('../LoginForm/IMG_8279.jpg');
+    background-size: cover; 
+    background-position: center;  
+}  
+
+
+.wrapper h1 {  
+    font-size: 36px;  
+    text-align: center;  
+}  
 
 .wrapper .input-box {
     position: relative;
     width:100%;
     height: 50px;
     color: #22487a;
-    margin: 30px 0;
+    margin: 25px 0;
 
 }
 
@@ -58,20 +74,23 @@
 }
 
 .wrapper button{
-    width: 100%;
-    height: 45px;
-    background: #22487a;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-    cursor: pointer;
-    font-size: 16px;
-    color:#f7f1f1;
-    font-weight: 700;
+    width: 100%;  
+    height: 45px;  
+    background-color: #22487a;  
+    border: none;  
+    outline: none;  
+    border-radius: 40px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);  
+    cursor: pointer;  
+    font-size: 16px;  
+    color: #f7f1f1;  
+    font-weight: 700;  
+    transition: background-color 0.2s, transform 0.2s;   
 }
 .wrapper button:hover {  
-    transform: scale(1.05); 
+    background-color: rgb(234, 110, 12);  
+    color: #fff;  
+    transform: translateY(-2px); 
 }  
 
 .wrapper .register-link{
@@ -84,9 +103,78 @@
     color: #1e0371;
     text-decoration: none;
     font-weight: 600;
+    color: rgb(234, 110, 12); 
 }
 
 .register-link p a:hover{
     text-decoration: underline;
 
+}
+
+@media (max-width: 700px) {  
+    .wrapper {  
+        flex-direction: column; 
+        max-width: 100%; 
+    }  
+
+    .form-container {  
+        width: 100%; 
+        padding: 0;
+    }  
+
+    .image-container {  
+        display: none; 
+    }  
+
+    .wrapper h1 {  
+        font-size: 25px;  
+    }  
+
+    .input-box input {  
+        font-size: 14px;  
+    }  
+
+    .remember-forgot {  
+        font-size: 13px;   
+    }  
+
+    .wrapper button {  
+        height: 40px;   
+        font-size: 14px;  
+    }  
+
+    .register-link {  
+        font-size: 13px;   
+    }  
+}  
+
+@media (min-width: 500px) {  
+    .wrapper {  
+        padding: 40px 30px;   
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);   
+    }  
+
+    .wrapper h1 {  
+        font-size: 40px;   
+    }  
+
+    .input-box input {  
+        font-size: 16px;  
+        padding: 20px 60px;   
+    }  
+
+    .remember-forgot {  
+        font-size: 15px;  
+        margin: 0 0 20px;   
+    }  
+
+    .wrapper button {  
+        height: 50px;  
+        font-size: 18px;   
+    }  
+
+    .register-link {  
+        font-size: 15px;   
+        margin: 25px 0 20px;  
+    }  
 }

@@ -192,6 +192,7 @@ const SignupForm = () => {
   return (  
     <div className='signup'>  
       <div className='wrapper'>  
+      <div className="form-container">  
         {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>}   
         <form onSubmit={handleSubmit}>   
           <h1>Signup</h1>  
@@ -257,7 +258,9 @@ const SignupForm = () => {
           <div className="register-link">  
             <p>Already have an account? <Link to="/login">Login</Link></p>  
           </div>  
-        </form>  
+        </form> 
+        </div>
+        <div className="image-container"> </div> 
       </div>  
     </div>  
   );  
