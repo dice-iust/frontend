@@ -45,7 +45,7 @@ const Home = () => {
               <a href="#" class="btn2">{data.paginate}<FiArrowRight /></a>  
           </div>
           <div class="right">
-            <img src={data.image_url } alt="Bus" class="person"></img>
+            <img src={ BusImg||data.image_url } alt="Bus" class="person"></img>
           </div>
           </div>
       </div>
