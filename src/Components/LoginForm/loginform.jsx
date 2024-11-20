@@ -33,9 +33,10 @@ const LoginForm = () => {
             headers :{'Content-Type':'application/json'},
             withCredentials:false
           }
-        );
-        console.log(JSON.stringify(response?.data));
-        const accessToken=response?.data?.accessToken;
+        );  
+        console.log(response.data.access_token);
+        const accessToken=response?.data?.access_token;
+        localStorage.setItem("token", accessToken);
         setAuth({user,pwd,accessToken});
         setUser('');
         setPwd('');
