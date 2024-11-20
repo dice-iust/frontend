@@ -52,10 +52,10 @@
         position: relative;
         flex-direction: column;   
         box-sizing: border-box;
-        
-        height: 110vh;  
-        width: 93.5vw;  
-        z-index: 0; 
+        margin-left: 20px;
+        height: 120vh;  
+        width: 100vw;  
+        // z-index: 0; 
     }
     .logo {  
         display: flex;  
