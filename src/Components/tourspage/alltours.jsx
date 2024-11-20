@@ -15,6 +15,8 @@ import Slider from "react-slick";
 import Travelsnav from "./Nav.jsx";
 // import populartours from "./populartours.jsx";
 import Footer from './footer.jsx';
+import { FaArrowRight } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
 
 
  
@@ -30,7 +32,7 @@ const TourList = () => {
         { id: 5, name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
         { id: 6, name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
         { id: 7, name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
-        { id: 8, name: 'economical', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
+        { id: 8, name: 'economical Trips', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
       ];  
 
 
@@ -346,6 +348,16 @@ const TourList = () => {
     <div className="tour-list-container"> 
     <Travelsnav/>
       <br></br>
+      <h1>Categories</h1>  
+
+<div className="category-cards">  
+  {categories.map((category) => (  
+    <div key={category.id} className="card">  
+      <img src={category.image} alt={category.name} className="card-image" />  
+      <h3 className="card-title"><IoIosArrowBack />{category.name}</h3>  
+    </div>  
+  ))}  
+</div>  
       <h1>Popular Trips</h1>  
       <Slider {...settings}>  
   {tours  
@@ -375,6 +387,7 @@ const TourList = () => {
               <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
               <span>{formatDate(tour.date)}</span>  
             </p>  
+            <FaArrowRight />
             <p className="tour-length" style={{ textAlign: 'center' }}>  
               <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
               {formatDate(tour.returnDate)}  
@@ -394,17 +407,10 @@ const TourList = () => {
       </div>  
     ))}  
 </Slider>
+<br></br>
+<br></br>
       
-      <h1>Categories</h1>
       
-        <div className="category-cards">  
-          {categories.map((category) => (  
-            <div key={category.id} className="card">  
-              <img src={category.image} alt={category.name} className="card-image" />  
-              <h3 className="card-title">{category.name}</h3>  
-            </div>  
-          ))}  
-        </div>  
         <Footer /> 
       </div>  
     

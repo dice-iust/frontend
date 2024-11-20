@@ -42,20 +42,20 @@
         }  
     } 
    
-    .home-back {
-       
-        display: flex; 
-        background-image: url(../tourspage/Assests/home1.png); 
-        background-size: cover;  
+    .home-back {  
+        display: flex;   
+        background-image: url(../tourspage/Assests/home1.png);   
+        background-size: cover;   
         background-repeat: no-repeat;  
-        background-position: center center; 
-        position: relative;
+        background-position: center;   
+        position: relative;  
         flex-direction: column;   
-        box-sizing: border-box;
-        margin-left: 20px;
-        height: 90vh;  
-        width: 100vw;  
-        // z-index: 0; 
+        box-sizing: border-box;  
+        
+        min-height: 100vh; /* Full viewport height */  
+        width: 100%; /* Full width */  
+        margin: 0; /* Reset margins */  
+        padding: 0; /* Reset padding */  
     }
     .logo {  
         display: flex;  
