@@ -7,12 +7,12 @@ import axios from '../../api/axios';
 import './SignupForm.scss';  
 
 const SIGN_URL = 'user/register/';  
-
+const LOGIN_URL = 'user/login/'; 
 const SignupForm = () => {  
   const { setAuth } = useContext(AuthContext);  
   const userRef = useRef();  
   const errRef = useRef();  
-
+  const [data, setData] = useState(null);  
   const [username, setUsername] = useState('');  
   const [password, setPassword] = useState('');  
   const [email, setEmail] = useState('');  
@@ -26,7 +26,17 @@ const SignupForm = () => {
   const [isUserNameValid, setisUserNameValid] = useState(false);  
   const navigate = useNavigate();  
 
-  
+  useEffect(() => {  
+    const fetchData = async () => {  
+        try {  
+            const response = await axios.get(LOGIN_URL);  
+            setData(response.data);  
+        } catch (error) {  
+            console.error("Error fetching data:", error);  
+        }  
+    };  
+    fetchData();  
+}, []);   
   useEffect(() => {  
     userRef.current.focus();  
   }, []);  
@@ -46,10 +56,10 @@ const SignupForm = () => {
       return 'Password must contain letters and numbers';  
     }  
     if (!hasLetters && !isLongEnough ) {  
-      return 'Password must also contain letters and at least 6 symbols';  
+      return 'must also contain letters and at least 6 symbols';  
     }  
     if (!hasNumbers && !isLongEnough) {  
-      return 'Password must also contain digits and at least 6 symbols';  
+      return 'must also contain digits and at least 6 symbols';  
     }  
     if (!hasLetters ) {  
       return 'Password must contain letters';  
@@ -79,7 +89,7 @@ const SignupForm = () => {
       }  
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
       if (!emailPattern.test(email)) {  
-        return 'Please enter a valid email address like email@example.com';  
+        return 'Not a valid email! example: email@example.com';  
       }  
       return '';  
     };  
@@ -159,7 +169,7 @@ const SignupForm = () => {
 
     try {  
       const response = await axios.post(SIGN_URL,  
-        JSON.stringify({ user_name: username, email, password,confirm }),  
+        JSON.stringify({ user_name: username, email, password,confirmPassword: confirm }),  
         {  
           headers: { 'Content-Type': 'application/json' },  
           withCredentials: false  
@@ -259,8 +269,15 @@ const SignupForm = () => {
             <p>Already have an account? <Link to="/login">Login</Link></p>  
           </div>  
         </form> 
-        </div>
-        <div className="image-container"> </div> 
+        </div> 
+        <div className="image-container">   
+                {data && data.photo && (  
+                    <img  
+                        src={data.photo}  
+                        alt="travel"  
+                    />  
+                )}
+                </div> 
       </div>  
     </div>  
   );  
