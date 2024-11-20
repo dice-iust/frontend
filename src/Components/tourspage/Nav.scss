@@ -40,9 +40,34 @@
             top: 1rem;  
             right: 1rem;  
         }  
-    }  
-
-    
+    } 
+   
+    .home-back {
+       
+        display: flex; 
+        background-image: url(../tourspage/Assests/home.png); 
+        background-size: cover;  
+        background-repeat: no-repeat;  
+        background-position: center center; 
+        position: relative;
+        flex-direction: column;   
+        box-sizing: border-box;
+        
+        height: 110vh;  
+        width: 93.5vw;  
+        z-index: 0; 
+    }
+    .logo {  
+        display: flex;  
+        align-items: center;  
+        cursor: pointer;  
+      }  
+      
+     
+    .logo img {  
+    width: 38px;
+    margin-right: 0.6rem;  
+    } 
     .primary-button {  
         position: relative;  
         padding: 0.9rem 1.75rem;  
@@ -55,20 +80,26 @@
         cursor: pointer;  
         font-weight: 600;  
         transition: background-color 0.2s, transform 0.2s;  
+        
     }  
 
     
-    header {  
-        display: flex;  
-        align-items: center;  
-        justify-content: space-between;  
-        height: 80px;  
-        padding: 0 2rem;  
-        background-color: var(--mainColor);  
-        color: var(--textColor);  
-
+    header { 
+        position: relative;  
+        top: 20px;  
+        left: 50%;  
+        transform: translate(-50%,-50%);  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 80px;
+        padding: 0 2rem;
+        color: var(--textColor);
+        z-index: 1;  
+        margin-top: 10px;
+        
         .nav-btn {  
-            padding: 5px;  
+            padding: 0px;  
             cursor: pointer;  
             background: transparent;  
             border: none;  
@@ -76,12 +107,78 @@
             color: var(--textColor);  
             visibility: hidden;  
             opacity: 0;  
-            font-size: 1.8rem;  
+            font-size: 1.8rem; 
         }  
     }  
 
+    .search {  
+    &__container {  
+        padding-top: 570px;  
+    }  
+
+    &__input {  
+        width: 80%;  
+        padding: 15px 10px; 
+       
+        padding-left:20px ;
+
+        background-color: var(--mainColor);  
+        transition: transform 250ms ease-in-out;   
+        font-size: 14px;  
+        line-height: 18px;  
     
-    @media only screen and (max-width: 1024px) {  
+        color: white;   
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' fill='white'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");  
+        background-repeat: no-repeat;  
+        background-size: 18px 18px;   
+        background-position: 95% center;   
+        border-radius: 50px;   
+        border: 1px solid var(--mainColorLight);   
+        transition: all 250ms ease-in-out;   
+
+        &::placeholder {   
+            color: var(--textColor);  
+            text-transform: uppercase;  
+            letter-spacing: 1.5px;   
+            opacity: 0.8;  
+        }  
+
+        &:hover,  
+        &:focus {  
+            padding: 15px 10px; 
+            outline: 0;  
+            border: 1px solid transparent;  
+            border-bottom: 1px solid var(--lightMainColor);   
+            border-radius: 0;  
+        }  }
+        
+    }
+    
+    @media only screen and (max-width: 1024px) { 
+        .land-back {  
+            height: auto; 
+            width: 100vw;  
+            padding: 20px;  
+        }  
+        .logo{
+            padding: 0.5rem; 
+            justify-content: center;
+        }
+        .logo img{
+            width: 32px; 
+            margin-right: 0.4rem; 
+        }
+        .search {  
+            &__container {   
+                padding-top: 400px;
+                } 
+        
+            &__input {    
+                width: 90%; 
+                font-size: 16px; 
+                }  
+        
+        }
         header {  
             .nav-btn {  
                 visibility: visible;  
@@ -107,7 +204,7 @@
                 }  
             }  
         }  
-
+        
         main {  
             margin-right: 30%;   
             transition: margin-right 0.3s ease;   
@@ -122,4 +219,5 @@
             margin-top: 1.5rem;   
         }  
     }  
+   
 }

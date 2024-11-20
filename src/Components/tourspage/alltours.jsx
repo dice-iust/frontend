@@ -344,6 +344,7 @@ const TourList = () => {
     
     <div className="tour-list-container"> 
     <Travelsnav/>
+      <br></br>
       <h1>Popular Trips</h1>  
       <div className="popular-trips-box"> {/* Added this div for styling */}  
         <Slider {...settings}>  
