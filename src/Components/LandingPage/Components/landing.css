@@ -26,7 +26,7 @@
   height: 100vh;  
   width: 100vw;  
   display: flex;  
-  background-image: url(../Assets/back1.jpg);  
+  background-image: url(../Assets/back2.png);  
   background-size: cover;  
   background-repeat: no-repeat;  
   background-position: center center;  
@@ -109,7 +109,7 @@ header .container {
 }  
 
 .links a:hover {  
-  color: #e36b2f;  
+  color: #EA6E0C;  
   transform: scale(1.05);  
   text-decoration: underline; /* Add underline on hover */  
 }  
