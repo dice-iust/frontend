@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './EditProfile.css'; 
 import profile from "./assets/profile.jpg"
+import axios from 'axios';
 
 
 const EditProfile = () => {
@@ -17,6 +18,33 @@ const EditProfile = () => {
     city: '',
     phone: '',
   });
+
+  const getFormData = ()=>{
+    axios({
+          method: 'get',
+          url: '',
+          responseType: 'json'
+        })
+          .then(function (response) {
+            // console.log(response)     
+            setFormData({
+              profilePicture: response.profilePicture,
+              firstName: response.firstName,
+              lastName: response.lastName,
+              username: response.username,
+              newPassword: response.newPassword,
+              email: response.email,
+              bio: response.bio,
+              gender: response.gender,
+              birthDate: response.birthDate,
+              city: response.city,
+              phone: response.phone,
+            })
+          })
+          .catch(error => {
+            console.log(error)
+          });
+        }
 
   const handleChange = (e) => {
     console.log(e.target.value)
