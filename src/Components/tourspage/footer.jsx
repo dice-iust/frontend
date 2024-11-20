@@ -3,29 +3,53 @@ import './footer.scss'; // Make sure to import the SCSS file
 
 const Footer = () => {  
     return (  
- 
-<footer class="footer">  
-    <div class="footer-content">  
-        <div class="footer-left">  
-            <h3>Site Name</h3>  
-            <img src=".\Assests\logo.png" alt="Logo" class="footer-logo"/> 
-            <p class="footer-links">  
-                <a href="#">Home</a>  
-                <a href="#">Login</a>  
-                <a href="#">Sign Up</a>  
-                <a href="#">Categories</a>  
-            </p>  
-        </div>  
+<footer class="footer-distributed">
 
-        <div class="footer-right">  
-            <h4>Be in Touch with Us!</h4>  
-            <form action="#">  
-                <input type="email" placeholder="Your Email" class="footer-email" required/>  
-                <button type="submit" class="footer-button">Subscribe</button>  
-            </form>  
-        </div>  
-    </div>  
-</footer>
+			<div class="footer-left">
+
+				<h3>Trip<span>Tide</span></h3>
+
+				<p class="footer-links">
+					<a href="#" class="link-1">Home</a>
+					
+					<a href="#">Blog</a>
+				
+					<a href="#">Pricing</a>
+				
+					<a href="#">About</a>
+					
+					<a href="#">Faq</a>
+					
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">Travel safe © 2024</p>
+			</div>
+
+			<div class="footer-center">
+            <h4>Contact Us!</h4>  
+                <p>We will send you our news</p>  
+                <input type="email" placeholder="Your Email" className="footer-email" required />  
+                <button type="submit" className="footer-button">Subscribe</button> 
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About TripTide</span>
+					Here you can manage your trips and budget! Travel with your friends or you van find your own group to go on vacation!
+				</p>
+
+				<div class="footer-icons">
+
+                    
+
+				</div>
+
+			</div>
+
+		</footer>
         
     );  
 };  

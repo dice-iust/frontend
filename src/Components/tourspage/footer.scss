@@ -1,87 +1,204 @@
-body {  
-    margin: 0;  
-    font-family: Arial, sans-serif;  
-}  
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
-.footer {  
-    background-color: #22487a;  
-    color: white;  
-    padding: 20px;  
-}  
+* {
+  font-family: Open Sans;
+}
 
-.footer-content {  
+section {
+  width: 100%;
+  display: inline-block;
+  background: #333;
+  height: 50vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-distributed{
+	background: #22487a;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+    display: flex;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Open Sans', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  #ea7d29;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+  font-weight:400;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #222;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {  
+    width: 35%;  
+    text-align: center; /* Center all text alignment */  
     display: flex;  
-    flex-wrap: wrap;  
-    justify-content: space-between; /* Aligns child divs to space between */  
-    align-items: center; /* Vertically centered */  
+    flex-direction: column; /* Column layout for children */  
+    align-items: center; /* Center items horizontally */  
 }  
 
-.footer-left {  
-    flex: 1; /* Growth 1 allows room for the footer-right */  
-    min-width: 200px; /* Minimum width to maintain space */  
+.footer-distributed .footer-center h4 {  
+    color: #ffffff;  
+    margin-bottom: 10px; /* Space below the heading */  
 }  
 
-.footer-logo {  
-    max-width: 150px; /* Adjust based on your logo size */  
-    height: auto;  
-}  
-
-.footer-links {  
-    list-style: none; /* Remove default list styles */  
-    padding: 0; /* Remove padding */  
-    margin: 10px 0; /* Margin for spacing */  
-}  
-
-.footer-links a {  
-    color: orange; /* Orange color for links */  
-    text-decoration: none; /* Remove underline from links */  
-    margin-right: 15px; /* Space between links */  
-}  
-
-.footer-links a:hover {  
-    text-decoration: underline; /* Underline on hover for effect */  
-}  
-
-.footer-right {  
-    flex: 1; /* Growth 1 allows room for the footer-left */  
-    text-align: right; /* Align text to the right */  
+.footer-distributed .footer-center p {  
+    color: #ea7d29;  
+    margin: 0 0 20px; /* Space below the paragraph */  
 }  
 
 .footer-email {  
     padding: 10px;  
     border: none;  
     border-radius: 5px;  
-    width: 250px; /* Width for the email input */  
+    width: calc(100% - 15px); /* Full width, accounting for padding */  
+    margin-bottom: 10px; /* Space below the input */  
+    font-size: 16px;  
+    text-align: center; /* Optional: Center the input text */  
 }  
 
 .footer-button {  
     padding: 10px;  
-    background-color: orange; /* Button background color */  
+    background-color: #ea7d29; /* Button background color */  
     border: none;  
     border-radius: 5px;  
-    color: white; /* Text color for button */  
-    cursor: pointer; /* Pointer cursor on hover */  
-    transition: background-color 0.3s; /* Smooth transition */  
+    color: white;  
+    cursor: pointer;  
+    transition: background-color 0.3s, transform 0.2s;  
+    width: 100%; /* Full width to match the email box */  
 }  
 
 .footer-button:hover {  
-    background-color: #FFA500; /* Darker orange on hover */  
+    background-color: #FF9C00; /* Darker orange on hover */  
+    transform: scale(1.05); /* Slightly grow on hover */  
 }  
 
-/* Responsive Styles */  
-@media (max-width: 768px) {  
-    .footer-content {  
-        flex-direction: column; /* Stack elements vertically */  
-        align-items: center; /* Center align for smaller screens */  
-    }  
 
-    .footer-left,  
-    .footer-right {  
-        text-align: center; /* Center text for smaller widths */  
-        margin: 10px 0; /* Space between sections */  
-    }  
 
-    .footer-email {  
-        width: 200px; /* Reduce size of email input */  
-    }  
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
 }
