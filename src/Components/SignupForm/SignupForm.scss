@@ -1,34 +1,61 @@
 .signup {  
-    background: linear-gradient(180deg, #22487a,#22487a, rgb(234,110,12));	
+    background-color: #fefdfd;  
+    width: 100%;
     min-height: 100vh;  
     display: flex;  
     justify-content: center;  
     align-items: center;  
-    background-size:cover;
-    background-position: center; 
   }
-.wrapper {
-    width:420px;
-    background: #fff;
-    border: 2px solid rgba(255,255,255,.2);
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-    color: #22487a;
-    border-radius: 15px;
-    padding: 30px 40px;
+.wrapper {  
+    background: linear-gradient(180deg, #22487a, #22487a);  
+    display: flex;   
+    width: 100%; 
+    max-width: 900px;   
+    height: auto; /* Allow height to adjust based on content */  
+    // max-height: 550px; /* Limit max height if needed */  
+    border-radius: 15px;   
+    box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.2);  
+    overflow: hidden;  
+    align-items: stretch; 
+    padding: 30px 30px 30px; 
+    // flex-wrap: wrap; 
+}
+.form-container {   
+    background: #fff;  
+    padding: 20px 20px;   
+    width: 80%; 
+    display: flex;  
+    flex-direction: column;   
+    color: #22487a;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); 
+}  
+
+.image-container {   
+    width: 20%;   
+    background-size: cover;   
+    background-position: center;  
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}  
+
+.image-container img {  
+    width: 100%;  /* Set the desired width */  
+    height: 100%;  /* Maintain aspect ratio */  
+    object-fit: cover;
 }
 
-.wrapper h1{
-    font-size: 36px;
-    text-align: center;
-    
-}
+.wrapper h1 {  
+    font-size: 36px;  
+    text-align: center;  
+}  
 
 .wrapper .input-box {
     position: relative;
     width:100%;
     height: 50px;
     color: #22487a;
-    margin: 30px 0;
+    margin: 25px 0;
 
 }
 
@@ -59,20 +86,23 @@
 }
 
 .wrapper button{
-    width: 100%;
-    height: 45px;
-    background: #22487a;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-    cursor: pointer;
-    font-size: 16px;
-    color:#f7f1f1;
-    font-weight: 700;
+    width: 100%;  
+    height: 45px;  
+    background-color: #22487a;  
+    border: none;  
+    outline: none;  
+    border-radius: 40px;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);  
+    cursor: pointer;  
+    font-size: 16px;  
+    color: #f7f1f1;  
+    font-weight: 700;  
+    transition: background-color 0.2s, transform 0.2s;   
 }
 .wrapper button:hover {  
-    transform: scale(1.05); 
+    background-color: rgb(234, 110, 12);  
+    color: #fff;  
+    transform: translateY(-2px); 
 }  
 
 .wrapper .register-link{
@@ -85,9 +115,85 @@
     color: #1e0371;
     text-decoration: none;
     font-weight: 600;
+    color: rgb(234, 110, 12); 
 }
 
 .register-link p a:hover{
     text-decoration: underline;
 
 }
+
+@media (max-width: 700px) {  
+    .wrapper {  
+        flex-direction: column;   
+    }  
+
+    .form-container {  
+        width: 100%;   
+        padding: 0;  
+    }  
+
+    .image-container {  
+        display: none; /* Hide on small screens */   
+    }  
+
+    .wrapper h1 {  
+        font-size: 25px;  
+    }  
+
+    .input-box input {  
+        font-size: 14px;  
+    }  
+
+    .remember-forgot {  
+        font-size: 13px;   
+    }  
+
+    .wrapper button {  
+        height: 40px;   
+        font-size: 14px;  
+    }  
+
+    .register-link {  
+        font-size: 13px;   
+    }  
+}  
+
+@media (min-width: 700px) {  
+    .wrapper {  
+        flex-direction: row; /* Restore original layout for larger screens */  
+    }  
+
+    .form-container {  
+        width: 40%; /* Adjust to ensure space for image */  
+        padding: 20px; // Optional padding  
+    }  
+
+    .image-container {  
+        width: 60%;   
+        display: flex;         
+    }  
+
+    .wrapper h1 {  
+        font-size: 40px;   
+    }  
+
+    .input-box input {  
+        font-size: 16px;  
+    }  
+
+    .remember-forgot {  
+        font-size: 15px;  
+        margin: 0 0 20px;   
+    }  
+
+    .wrapper button {  
+        height: 50px;  
+        font-size: 18px;   
+    }  
+
+    .register-link {  
+        font-size: 15px;   
+        margin: 25px 0 20px;  
+    }  
+}  

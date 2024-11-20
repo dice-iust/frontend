@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import './App.css';  
 import LoginForm from "./Components/LoginForm/loginform.jsx";  
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
-import Home from "./Components/LandingPage/Components/Home.js";
+import Home from "./Components/LandingPage/Components/Home.jsx";
 import TourList from "./Components/tourspage/alltours.jsx";
 function App() {  
   return (  
