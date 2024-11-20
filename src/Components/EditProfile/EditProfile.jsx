@@ -46,6 +46,29 @@ const EditProfile = () => {
           });
         }
 
+        const putDataForm = ()=>{
+          const fdata = {
+            profilePicture: formData.profilePicture,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
+                    username: formData.username,
+                    newPassword: formData.newPassword,
+                    email: formData.email,
+                    bio: formData.bio,
+                    gender: formData.gender,
+                    birthDate: formData.birthDate,
+                    city: formData.city,
+                    phone: formData.phone,
+          }
+          axios.put('', fdata)
+          .then(response => {
+            console.log(response)
+          })
+          .catch(error => {
+            console.log(error)
+          });
+        }
+
   const handleChange = (e) => {
     console.log(e.target.value)
     setFormData({ ...formData, [e.target.name]: e.target.value });
