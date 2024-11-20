@@ -2,7 +2,7 @@
 import BusImg from "../Assets/bus.png";  
 
 import { FiArrowRight } from "react-icons/fi";  
-import "./landing.scss";
+import "./landing.css";
 import axios  from "axios";
 import React, { useEffect, useState } from "react";
 import LogoImg from "../Assets/logo.png" 
@@ -49,16 +49,17 @@ const Home = () => {
         </nav>
       </header>    
       <div class="content-center"> 
-        <h1 class="big-title">Start Your Adventure
-          
-        </h1> 
-        <a href="#" class="btn2">Let's Go<FiArrowRight /></a> 
+      <h1 class="title">
+      Start Your Adventure !
         {/* <div class="aurora">
-            <div class="aurora__item"></div>
-            <div class="aurora__item"></div>
-            <div class="aurora__item"></div>
-            <div class="aurora__item"></div>
-          </div> */}
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+        </div> */}
+       </h1> 
+        <a href="#" class="btn2">Let's Go<FiArrowRight /></a> 
+
       </div>
       {/* <div class="showcase-area">
         <div class="container">
