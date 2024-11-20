@@ -13,8 +13,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";  
 import Slider from "react-slick"; 
 import Travelsnav from "./Nav.jsx";
-import Footer from './footer.jsx';
 // import populartours from "./populartours.jsx";
+import Footer from './footer.jsx';
 
 
  
@@ -30,7 +30,7 @@ const TourList = () => {
         { id: 5, name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
         { id: 6, name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
         { id: 7, name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
-        { id: 8, name: 'Budget-Friendly', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
+        { id: 8, name: 'economical', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
       ];  
 
 
@@ -43,7 +43,7 @@ const TourList = () => {
       photo: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
       destination: "Tehran",  
       admin: { name: "Admin5", photo: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
-      type : "Budget-Friendly" , 
+      type : "economical" , 
       startPlace : "Isfahan",
       transportation : "Car",
        returnDate : "2023-11-27",
@@ -69,7 +69,7 @@ const TourList = () => {
         date: "2023-02-10",  
         photo: "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/c22254fa-16b3-4b2d-93b5-1d137d507a04/9326e659-781d-4b90-89b2-106c1bf54c18.png",
         admin: { name: "Admin5", photo: "https://png.pngtree.com/png-clipart/20230408/original/pngtree-admin-of-female-job-vacancies-png-image_9037122.png" },  
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         destination: "Shiraz", 
         startPlace : "Yazd",
         transportation : "Plane",
@@ -82,7 +82,7 @@ const TourList = () => {
         date: "2023-11-10",  
         photo: "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/c22254fa-16b3-4b2d-93b5-1d137d507a04/9326e659-781d-4b90-89b2-106c1bf54c18.png",
         admin: { name: "Admin5", photo: "https://png.pngtree.com/png-clipart/20230408/original/pngtree-admin-of-female-job-vacancies-png-image_9037122.png" },  
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         destination: "Shiraz", 
         startPlace : "Yazd",
         transportation : "Plane",
@@ -149,7 +149,7 @@ const TourList = () => {
         photo: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtNDAtbHVrZXN0YWNrcG9vbGUtc2tpLXNsb3BlLmpwZw.jpg",
         destination: "Mazandaran",  
         admin: { name: "Admin5", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8eSw47BxCpB5qcTaEsA_U7poqHaCDa0ZAQ&s" }, 
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         startPlace : "Babol",
         transportation : "Train",
         returnDate : "2023-12-21",
@@ -162,7 +162,7 @@ const TourList = () => {
         photo: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtNDAtbHVrZXN0YWNrcG9vbGUtc2tpLXNsb3BlLmpwZw.jpg",
         destination: "Mazandaran",  
         admin: { name: "Admin5", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8eSw47BxCpB5qcTaEsA_U7poqHaCDa0ZAQ&s" }, 
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         startPlace : "Babol",
         transportation : "Train",
         returnDate : "2023-12-21",
@@ -175,7 +175,7 @@ const TourList = () => {
         photo: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtNDAtbHVrZXN0YWNrcG9vbGUtc2tpLXNsb3BlLmpwZw.jpg",
         destination: "Mazandaran",  
         admin: { name: "Admin5", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8eSw47BxCpB5qcTaEsA_U7poqHaCDa0ZAQ&s" }, 
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         startPlace : "Babol",
         transportation : "Train",
         returnDate : "2023-12-21",
@@ -183,12 +183,12 @@ const TourList = () => {
       }, 
       {  
         id: 5,  
-        name: "Winter Trip20 ",  
+        name: "Winter Trip ",  
         date: "2023-12-20",  
         photo: "https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtNDAtbHVrZXN0YWNrcG9vbGUtc2tpLXNsb3BlLmpwZw.jpg",
         destination: "Mazandaran",  
         admin: { name: "Admin5", photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz8eSw47BxCpB5qcTaEsA_U7poqHaCDa0ZAQ&s" }, 
-        type : "Budget-Friendly" ,
+        type : "economical" ,
         startPlace : "Babol",
         transportation : "Train",
         returnDate : "2023-12-21",
@@ -201,7 +201,7 @@ const TourList = () => {
         photo: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
         destination: "Tehran",  
         admin: { name: "Admin5", photo: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
-        type : "Budget-Friendly" , 
+        type : "economical" , 
         startPlace : "Isfahan",
         transportation : "Car",
          returnDate : "2023-11-27",
@@ -214,7 +214,7 @@ const TourList = () => {
         photo: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
         destination: "Tehran",  
         admin: { name: "Admin5", photo: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
-        type : "Budget-Friendly" , 
+        type : "economical" , 
         startPlace : "Isfahan",
         transportation : "Car",
          returnDate : "2023-11-27",
@@ -222,12 +222,12 @@ const TourList = () => {
       }, 
       {  
         id: 4,  
-        name: "City Trip--",  
+        name: "City Trip",  
         date: "2024-11-01",  
         photo: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
         destination: "Tehran",  
         admin: { name: "Admin5", photo: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
-        type : "Budget-Friendly" , 
+        type : "economical" , 
         startPlace : "Isfahan",
         transportation : "Car",
          returnDate : "2023-11-27",
@@ -235,7 +235,7 @@ const TourList = () => {
       }, 
       {  
         id: 3,  
-        name: "Adventure Trip--",  
+        name: "Adventure Trip",  
         date: "2024-8-20",  
         photo: "https://cdn.mashreghnews.ir/d/2021/07/06/4/3192979.jpg",
         destination: "sari", 
@@ -248,7 +248,7 @@ const TourList = () => {
       }, 
       {  
         id: 3,  
-        name: "Adventure Trip5",  
+        name: "Adventure Trip",  
         date: "2024-11-20",  
         photo: "https://cdn.mashreghnews.ir/d/2021/07/06/4/3192979.jpg",
         destination: "sari", 
@@ -347,51 +347,56 @@ const TourList = () => {
     <Travelsnav/>
       <br></br>
       <h1>Popular Trips</h1>  
-      <div className="popular-trips-box"> {/* Added this div for styling */}  
-        <Slider {...settings}>  
-          {tours  
-            .sort((a, b) => b.travellers - a.travellers)  
-            .slice(0, 5)  
-            .map((tour) => (  
-              <div key={tour.id} className="tour-card">  
-                <img  
-                  src={tour.photo}  
-                  alt={`Image of ${tour.name}`}  
-                  className="tour-image"  
-                />  
-                <div className="tour-info">  
-                  <h2 className="tour-name">{tour.name}</h2>  
-                  <p className="tour-route">  
-                    {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                  </p>  
-                  <p className="tour-dates">  
-                    <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                    <span>{formatDate(tour.date)}</span>  
-                  </p>  
-                  <p className="tour-length" style={{ textAlign: 'center' }}>  
-                    <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-                    {formatDate(tour.returnDate)}  
-                  </p>  
-                  <span className={`tour-type ${tour.type}`}>  
-                    <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-                  </span>  
-                  {tour.admin && (  
-                    <p className="tour-admin">  
-                      <img  
-                        src={tour.admin.photo}  
-                        alt={`Profile of ${tour.admin.name}`}  
-                        className="admin-photo"  
-                      />  
-                      {tour.admin.name}  
-                    </p>  
-                  )}  
-                </div>  
-              </div>  
-            ))}  
-        </Slider>  
-      </div> {/* Closing the new green box div */}  
+      <Slider {...settings}>  
+  {tours  
+    .sort((a, b) => b.travellers - a.travellers)  
+    .slice(0, 5)  
+    .map((tour) => (  
+      <div key={tour.id} className="tour-card">  
+        <div className="tour-image-container">  
+          <img  
+            src={tour.photo}  
+            alt={`Image of ${tour.name}`}  
+            className="tour-image"  
+          />  
+          <div className={`tour-type-mark ${tour.type}`}>  
+            <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+          </div>  
+        </div>  
+        <div className="tour-info">  
+          <h5 className="tour-name">{tour.name}</h5>  
+          <div className="tour-details">  
+            <p className="tour-route">  
+              {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
+            </p>  
+          </div>  
+          <div className="tour-meta">  
+            <p className="tour-dates">  
+              <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
+              <span>{formatDate(tour.date)}</span>  
+            </p>  
+            <p className="tour-length" style={{ textAlign: 'center' }}>  
+              <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
+              {formatDate(tour.returnDate)}  
+            </p>  
+          </div>  
+          {tour.admin && (  
+            <div className="tour-admin">  
+              <img  
+                src={tour.admin.photo}  
+                alt={`Profile of ${tour.admin.name}`}  
+                className="admin-photo"  
+              />  
+              {tour.admin.name}  
+            </div>  
+          )}  
+        </div>  
+      </div>  
+    ))}  
+</Slider>
+      
       <h1>Categories</h1>
-      <div className="blue-box">  
+      
         <div className="category-cards">  
           {categories.map((category) => (  
             <div key={category.id} className="card">  
@@ -400,12 +405,9 @@ const TourList = () => {
             </div>  
           ))}  
         </div>  
-      </div> 
-      <Footer /> 
-    </div>  
+        <Footer /> 
+      </div>  
     
-       
-    // </div>   */}
 );  
 };  
 
