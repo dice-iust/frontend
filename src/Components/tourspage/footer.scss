@@ -77,7 +77,10 @@ section {
 /* Footer Center */
 
 .footer-distributed .footer-center {  
-    width: 35%;  
+    width: 30%;  /* Adjust width to provide more space to the left side */  
+    margin-left: 0;  /* Add left margin to shift it to the left */ 
+    margin-right: 17%; 
+    margin-top: 0;
     text-align: center; /* Center all text alignment */  
     display: flex;  
     flex-direction: column; /* Column layout for children */  
@@ -85,6 +88,7 @@ section {
 }  
 
 .footer-distributed .footer-center h4 {  
+    margin-top: 0;
     color: #ffffff;  
     margin-bottom: 10px; /* Space below the heading */  
 }  
@@ -141,6 +145,7 @@ section {
 
 .footer-distributed .footer-right{
 	width: 20%;
+    margin-left: 0;
 }
 
 .footer-distributed .footer-company-about{
