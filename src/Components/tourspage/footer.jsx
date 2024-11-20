@@ -12,23 +12,21 @@ const Footer = () => {
 				<p class="footer-links">
 					<a href="#" class="link-1">Home</a>
 					
-					<a href="#">Blog</a>
-				
-					<a href="#">Pricing</a>
-				
 					<a href="#">About</a>
+				
+					<a href="#">Login</a>
+				
+					<a href="#">Signup</a>
 					
-					<a href="#">Faq</a>
-					
-					<a href="#">Contact</a>
+					<a href="#">Profile</a>
 				</p>
 
 				<p class="footer-company-name">Travel safe © 2024</p>
 			</div>
 
 			<div class="footer-center">
-            <h4>Contact Us!</h4>  
-                <p>We will send you our news</p>  
+            <h4>Be In Touch with us</h4>  
+                <p>We will send you our news!</p>  
                 <input type="email" placeholder="Your Email" className="footer-email" required />  
                 <button type="submit" className="footer-button">Subscribe</button> 
 
@@ -45,7 +43,7 @@ const Footer = () => {
 
                     
 
-				</div>
+			</div>
 
 			</div>
 
