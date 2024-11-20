@@ -3,37 +3,67 @@ import './footer.scss'; // Make sure to import the SCSS file
 
 const Footer = () => {  
     return (  
-        <footer className="footer">  
-            <div className="footer__content">  
-                <div className="footer__section">  
-                    <h3 className="footer__heading">Explore</h3>  
-                    <ul className="footer__links">  
-                        <li><a href="#destinations">Destinations</a></li>  
-                        <li><a href="#tours">Tours</a></li>  
-                        <li><a href="#blog">Blog</a></li>  
-                        <li><a href="#about">About Us</a></li>  
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Trip<span>Tide</span></h3>
+
+				<p class="footer-links">
+					<a href="#" class="link-1">Home</a>
+					
+					<a href="#">Blog</a>
+				
+					<a href="#">Pricing</a>
+				
+					<a href="#">About</a>
+					
+					<a href="#">Faq</a>
+					
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">Travel safe © 2024</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="footer-company-about"></i>
+					<span>Contact us!</span>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+                    <ul>  
+                        <li>support@company.com</li>  
+                        <li>support@company.com</li>  
+                        <li>support@company.com</li>  
+                        <li>support@company.com</li>  
+                        <li>support@company.com</li>  
+                        <li>support@company.com</li>  
                     </ul>  
-                </div>  
-                <div className="footer__section">  
-                    <h3 className="footer__heading">Connect</h3>  
-                    <ul className="footer__links">  
-                        <li><a href="#contact">Contact Us</a></li>  
-                        <li><a href="#support">Support</a></li>  
-                    </ul>  
-                </div>  
-                <div className="footer__section">  
-                    <h3 className="footer__heading">Follow Us</h3>  
-                    <div className="footer__social">  
-                        <a href="#facebook" className="footer__social-icon">Facebook</a>  
-                        <a href="#twitter" className="footer__social-icon">Twitter</a>  
-                        <a href="#instagram" className="footer__social-icon">Instagram</a>  
-                    </div>  
-                </div>  
-            </div>  
-            <div className="footer__bottom">  
-                <p>&copy; 2024 Travel Agency. All rights reserved.</p>  
-            </div>  
-        </footer>  
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About TripTide</span>
+					Here you can manage your trips and budget! Travel with your friends or you van find your own group to go on vacation!
+				</p>
+
+				<div class="footer-icons">
+
+                    
+
+				</div>
+
+			</div>
+
+		</footer>
+        
     );  
 };  
 
