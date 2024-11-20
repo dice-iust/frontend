@@ -69,6 +69,11 @@ const EditProfile = () => {
           });
         }
 
+        useEffect(()=>{
+          // getFormData()
+        
+        },[])
+
   const handleChange = (e) => {
     console.log(e.target.value)
     setFormData({ ...formData, [e.target.name]: e.target.value });
