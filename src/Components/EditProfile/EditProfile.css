@@ -47,7 +47,7 @@
   }
   
   .title {
-    color: #333;
+    color: #22487a;
     margin-bottom: 20px;
   }
   
@@ -68,7 +68,7 @@
   .form-label {
     display: block;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     font-weight: bold;
   }
   .profile{
@@ -91,13 +91,12 @@
     background: transparent;
     border: 2px solid rgba(3, 2, 2, 0.2);
     outline: none;
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 16px;
     color: #22487a;
     padding: 20px 45px 20px 20px;
-    
   }
-  
+
   .nameSection{
     display: flex;
     gap:20px;
@@ -118,7 +117,8 @@
   .form-input:focus,
   .form-textarea:focus,
   .file-input:focus {
-    border-color: rgb(255, 123, 0);
+    border-color: rgba(255, 123, 0, .4);
+    box-shadow: 0 0 10px rgba(255, 123, 0, .4);
     outline: none;
   }
   
@@ -169,3 +169,15 @@
     justify-content: center;
   }
   
+  @media (max-width: 768px) {
+    .edit-profile-container {
+      padding: 15px;
+    }
+    .nameSection {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .profile-form {
+      padding: 20px 30px;
+    }
+  }

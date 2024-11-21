@@ -10,7 +10,7 @@ const EditProfile = () => {
     firstName: '',
     lastName: '',
     username: '',
-    newPassword: '',
+    Password: '',
     email: '',
     bio: '',
     gender: '',
@@ -32,7 +32,7 @@ const EditProfile = () => {
               firstName: response.firstName,
               lastName: response.lastName,
               username: response.username,
-              newPassword: response.newPassword,
+              Password: response.Password,
               email: response.email,
               bio: response.bio,
               gender: response.gender,
@@ -52,7 +52,7 @@ const EditProfile = () => {
                     firstName: formData.firstName,
                     lastName: formData.lastName,
                     username: formData.username,
-                    newPassword: formData.newPassword,
+                    Password: formData.Password,
                     email: formData.email,
                     bio: formData.bio,
                     gender: formData.gender,
@@ -75,7 +75,7 @@ const EditProfile = () => {
         },[])
 
   const handleChange = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -103,32 +103,32 @@ const EditProfile = () => {
         </div>
         <div className="nameSection">
         <label className="form-label">
-          First Name:
+          First Name
           <input type="text" name="firstName" className="form-input" value={formData.firstName} onChange={handleChange} />
         </label>
         <label className="form-label">
-          Last Name:
+          Last Name
           <input type="text" name="lastName" className="form-input" value={formData.lastName} onChange={handleChange} />
         </label>
         </div>
         <label className="form-label">
-          Username:
+          Username
           <input type="text" name="username" className="form-input" value={formData.username} onChange={handleChange} />
         </label>
         <label className="form-label">
-          New Password:
-          <input type="password" name="newPassword" className="form-input" value={formData.newPassword} onChange={handleChange} />
+          Password
+          <input type="password" name="password" className="form-input" value={formData.Password} onChange={handleChange} />
         </label>
         <label className="form-label">
-          Email:
+          Email
           <input type="email" name="email" className="form-input" value={formData.email} onChange={handleChange} />
         </label>
         <label className="form-label">
-          Birth Date:
+          Birth Date
           <input type="date" name="birthDate" className="form-input" value={formData.birthDate} onChange={handleChange} />
         </label>
         <label className="form-label">
-          Gender:
+          Gender
           <select name="gender" className="form-input" onChange={handleChange}>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -136,15 +136,15 @@ const EditProfile = () => {
           </select>
           </label>
         <label className="form-label">
-          City:
+          City
           <input type="text" name="city" className="form-input" value={formData.city} onChange={handleChange} />
         </label>
         <label className="form-label">
-          Phone:
+          Phone
           <input type="tel" name="phone" className="form-input" value={formData.phone} onChange={handleChange} />
         </label>
           <label className="form-label">
-            Bio:
+            Bio
             <textarea name="bio" className="form-textarea" value={formData.bio} onChange={handleChange} />
           </label>
           <div className='submit'>
