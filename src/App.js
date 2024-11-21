@@ -6,10 +6,12 @@ import './App.css';
 // import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
 // import Home from "./Components/LandingPage/Components/Home.js";
 import TourList from "./Components/tourspage/alltours.jsx";
+import Upcoming from "./Components/tourspage/Upcomintrips.jsx";
 function App() {  
   return (  
     <div className="App">  
-      <TourList />  
+      {/* <TourList />   */}
+      <Upcoming/>
     </div>  
     // <Router>  
     //   <Routes>  

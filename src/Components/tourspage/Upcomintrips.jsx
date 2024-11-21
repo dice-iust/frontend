@@ -1,5 +1,5 @@
 // import React from 'react'; 
-import './alltours.scss'; 
+import './Upcomingtrips.scss'; 
 import React, { useState } from 'react';  
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
@@ -22,7 +22,7 @@ import { IoIosArrowBack } from "react-icons/io";
  
 
 
-const TourList = () => { 
+const Upcoming = () => { 
     
     const categories = [  
         { id: 1, name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
@@ -345,26 +345,10 @@ const TourList = () => {
 
   return (  
     
-    <div className="tour-list-container"> 
-    <Travelsnav/>
-      <br></br>
-      <h1>Categories</h1>  
-
-<div className="category-cards">  
-  {categories.map((category) => (  
-    <div key={category.id} className="card">  
-      <img src={category.image} alt={category.name} className="card-image" />  
-      <h3 className="card-title"><IoIosArrowBack />{category.name}</h3>  
-    </div>  
-  ))}  
-</div>  
-      <h1>Popular Trips</h1>  
-      <Slider {...settings}>  
-  {tours  
-    .sort((a, b) => b.travellers - a.travellers)  
-    .slice(0, 5)  
-    .map((tour) => (  
-      <div key={tour.id} className="tour-card">  
+    <div className="tour-list-container">  
+    <div className="tour-list">  
+      {tours.map((tour) => (  
+        <div key={tour.id} className="tour-card">  
         <div className="tour-image-container">  
           <img  
             src={tour.photo}  
@@ -409,16 +393,11 @@ const TourList = () => {
         </div>  
       </div>  
     ))}  
-</Slider>
-<br></br>
-<br></br>
-      
-      
-        <Footer /> 
-      </div>  
-    
-);  
+    </div>  
+  </div>  
+);
 };  
+export default Upcoming;
+    
 
 
-export default TourList;  
