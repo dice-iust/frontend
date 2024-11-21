@@ -1,6 +1,4 @@
  
-import BusImg from "../Assets/bus.png";  
-
 import { FiArrowRight } from "react-icons/fi";  
 import "./landing.scss";
 import axios  from "axios";
