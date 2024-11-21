@@ -39,7 +39,8 @@
         }  
     }  
     
-    .tour-image {  
+    .tour-image { 
+        margin-bottom: 10px; 
         width: 100%;  
         height: 250px;   
         object-fit: cover; 
@@ -86,7 +87,7 @@
             font-size: 1em;  
             font-weight: bold;  
             margin-bottom: 0px;  
-            margin-top: 3px;
+            margin-top: 7px;
             margin-left: 10px;
             align-self: flex-start;
             color: #22487a;    
@@ -97,13 +98,13 @@
            
             align-items: center;  
             margin-bottom: 0px;  
-            margin-top: 0px;
+            margin-top: 5px;
             
             
     
             .tour-route { 
               margin-left: 10px; 
-              margin-top: 0px; 
+              margin-top: 5px; 
                 font-size: 0.9em;
                 margin-bottom: 5px;  
             }  
@@ -135,7 +136,7 @@
             .tour-dates {  
                 margin-bottom: 5px;
                 margin-left: 10px;
-                margin-top:0px;
+                margin-top:5px;
             }  
         
             .tour-length {  
