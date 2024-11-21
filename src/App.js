@@ -6,6 +6,7 @@ import LoginForm from "./Components/LoginForm/loginform.jsx";
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
 import Home from "./Components/LandingPage/Components/Home.jsx";
 import TourList from "./Components/tourspage/alltours.jsx";
+import About from "./Components/About/about.jsx"
 function App() {  
   return (  
     <Router>  
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/signup" element={<SignupForm />} /> 
         <Route path="/Main" element={<TourList />} /> 
+        <Route path="/about" element={<About />} /> 
       </Routes>  
     </Router>  
   );  
