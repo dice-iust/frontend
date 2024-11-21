@@ -1,6 +1,8 @@
 // import React from 'react'; 
 import './alltours.scss'; 
-import React, { useState } from 'react';  
+
+import axios  from "axios";
+import React, { useEffect, useState } from "react"; 
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
 import { FaCarSide } from "react-icons/fa6";
