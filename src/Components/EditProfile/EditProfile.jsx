@@ -3,14 +3,13 @@ import './EditProfile.css';
 import profile from "./assets/profile.jpg"
 import axios from 'axios';
 
-
 const EditProfile = () => {
   const [formData, setFormData] = useState({
     profilePicture: '',
     firstName: '',
     lastName: '',
     username: '',
-    Password: '',
+    newPassword: '',
     email: '',
     bio: '',
     gender: '',
@@ -32,7 +31,7 @@ const EditProfile = () => {
               firstName: response.firstName,
               lastName: response.lastName,
               username: response.username,
-              Password: response.Password,
+              newPassword: response.newPassword,
               email: response.email,
               bio: response.bio,
               gender: response.gender,
@@ -46,34 +45,32 @@ const EditProfile = () => {
           });
         }
 
-        const putDataForm = ()=>{
-          const fdata = {
-            profilePicture: formData.profilePicture,
-                    firstName: formData.firstName,
-                    lastName: formData.lastName,
-                    username: formData.username,
-                    Password: formData.Password,
-                    email: formData.email,
-                    bio: formData.bio,
-                    gender: formData.gender,
-                    birthDate: formData.birthDate,
-                    city: formData.city,
-                    phone: formData.phone,
-          }
-          axios.put('', fdata)
-          .then(response => {
-            console.log(response)
-          })
-          .catch(error => {
-            console.log(error)
-          });
-        }
+  const putDataForm = ()=>{
+    const fdata = {
+      profilePicture: formData.profilePicture,
+              firstName: formData.firstName,
+              lastName: formData.lastName,
+              username: formData.username,
+              newPassword: formData.newPassword,
+              email: formData.email,
+              bio: formData.bio,
+              gender: formData.gender,
+              birthDate: formData.birthDate,
+              city: formData.city,
+              phone: formData.phone,
+    }
+    axios.put('', fdata)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    });
+  }
+useEffect(()=>{
+  // getFormData()
 
-        useEffect(()=>{
-          // getFormData()
-        
-        },[])
-
+},[])
   const handleChange = (e) => {
     console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -88,7 +85,7 @@ const EditProfile = () => {
   return (
     <div className="edit-profile-container">
       <nav className="navbar">
-        <button className="nav-button" onClick={() => window.history.back()}>Back</button>
+        <button className="nav-button" /*onClick={() => window.history.back()}*/>Back</button>
       </nav>
    
       <form className="profile-form" onSubmit={handleSubmit}>
@@ -117,7 +114,7 @@ const EditProfile = () => {
         </label>
         <label className="form-label">
           Password
-          <input type="password" name="password" className="form-input" value={formData.Password} onChange={handleChange} />
+          <input type="password" name="newPassword" className="form-input" value={formData.newPassword} onChange={handleChange} />
         </label>
         <label className="form-label">
           Email
