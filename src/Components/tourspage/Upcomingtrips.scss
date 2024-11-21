@@ -1,261 +1,237 @@
-.App {  
+.upcoming {  
   text-align: center;  
-  // background-color: #f9f9f9;  
   padding: 2px;  
 
   .tour-list-container2 {  
     max-width: 2000px;  
     margin: 0 auto;  
-    
 
     .tour-list2 {  
-       
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
-    } 
+      gap: 20px;  
+    }  
     
-     
     .moveicon2 {  
-      margin-left:2px;
-      margin-right: 2px;
-      margin-bottom: 0px; 
+      margin-left: 2px;  
+      margin-right: 2px;  
+      margin-bottom: 0px;  
       margin-top: 0px;   
       vertical-align: middle;   
-  }  
+    }  
 
     .card-image2 {  
       width: 100%;  
       height: 100%;  
-      object-fit: cover; 
+      object-fit: cover;   
     }  
 
     .card-title2 {  
-      position: absolute; 
-      bottom: 0px; 
-      right: 0px;
-      margin-bottom: 0px; 
+      position: absolute;   
+      bottom: 0;   
+      right: 0;  
+      margin-bottom: 0;  
       font-size: 1rem;  
       color: #22487a;  
-      background: #fff; 
-      padding: 5px 5px; 
-      border-radius: 2px; 
-      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
-  }  
+      background: #fff;   
+      padding: 5px;  
+      border-radius: 2px;  
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
+    }  
 
     .tour-card2 {  
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
-      overflow: hidden;
-      margin-top: 20px;  
-      margin-bottom: 25px;  
-      margin-left: 20px;
-      margin-right: 20px;
-      width: 460px;
-      height: 400px;   
-      transition: transform 0.3s;  
+      overflow: hidden;  
+      width: calc(33.333% - 20px); /* Three cards per row with consistent gap */  
+      height: 300px;   
+      transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
   
       &:hover {  
-          transform: scale(1.04);   
-          box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
+        animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+        box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
-  }  
-  
-  .tour-image2 {  
+    }  
+
+    .tour-image2 {  
       width: 100%;  
-      height: 250px;   
-      object-fit: cover; 
-      position: relative; 
-  }  
+      height: 150px;   
+      object-fit: cover;   
+      position: relative;   
+    }  
 
-  .tour-image-container2 {  
-    position: relative;  
-}  
-
-
+    .tour-image-container2 {  
+      position: relative;  
+    }  
 
     .tour-admin2 {  
-      position: absolute; /* Position the admin section absolutely */  
-      top: 10px; /* Adjust as needed */  
-      left: 10px; /* Adjust as needed */  
-      display: flex; /* Use flex to align image and name */  
-      align-items: center; /* Center the items vertically */  
-      background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a background for better visibility */  
-      padding: 2px; /* Optional: Add some padding */  
-      border-radius: 5px; /* Optional: Rounded corners for better appearance */  
-      z-index: 20; /* Ensure it stays above other elements */  
+      position: absolute;  
+      top: 10px;  
+      left: 10px;  
+      display: flex;  
+      align-items: center;  
+      background-color: rgba(255, 255, 255, 0.7);  
+      padding: 2px;  
+      border-radius: 5px;  
+      z-index: 20;  
     }  
 
     .admin-photo2 {  
-      width: 30px; /* Adjust size as necessary */  
-      height: 30px; /* Adjust size as necessary */  
-      border-radius: 50%; /* Make the image circular */  
-      margin-right: 5px; /* Spacing between image and name */  
-    }
-    .admin-photo:hover {  
-      transform: scale(1.05); /* Enlarge on hover for interactivity */  
+      width: 30px;  
+      height: 30px;  
+      border-radius: 50%;  
+      margin-right: 5px;  
     }  
 
-    
-  
-  .tour-info2 {  
-      
+    // Hover effect on the admin photo  
+    .admin-photo:hover {  
+      transform: scale(1.05);  
+    }  
+
+    // Tour Info Styles  
+    .tour-info2 {  
       display: flex;  
       flex-direction: column;  
-  
+
       .tour-name2 {  
-          font-size: 1em;  
-          font-weight: bold;  
-          margin-bottom: 0px;  
-          margin-top: 3px;
-          margin-left: 10px;
-          align-self: flex-start;
-          color: #22487a;    
+        font-size: 1em;  
+        font-weight: bold;  
+        margin-bottom: 0px;  
+        margin-top: 3px;  
+        margin-left: 10px;  
+        align-self: flex-start;  
+        color: #22487a;    
       }  
-  
+
       .tour-details2 {  
+        display: flex;  
+        align-items: center;  
+        margin-bottom: 0px;  
+        margin-top: 0px;  
+
+        .tour-route2 {  
           display: flex;  
-         
           align-items: center;  
-          margin-bottom: 0px;  
-          margin-top: 0px;
-          
-          
-  
-          .tour-route2 {  
-            display: flex; /* Use flexbox for alignment */  
-            align-items: center; /* Center the icon with respect to text */  
-            margin-left: 10px;   
-            margin-top: 0px;   
-            font-size: 0.9em;  
-            margin-bottom: 10px;  
+          margin-left: 10px;   
+          margin-top: 0px;   
+          font-size: 0.9em;  
+          margin-bottom: 10px;  
         }  
         
         .moveicon {  
-            margin-left:2px;
-            margin-right: 2px;
-            margin-bottom: 2px; /* Add horizontal spacing around the icon */  
-            margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
-            vertical-align: middle; /* Ensure the icon aligns well with text */  
+          margin-left: 2px;  
+          margin-right: 2px;  
+          margin-bottom: 2px;  
+          margin-top: 0px;   
+          vertical-align: middle;  
         }  
       }  
 
-      
-
- 
-
-      
       .tour-meta3 {  
-        display: flex; 
-        align-items: center; 
-        margin-top: 12px ; 
-        .trip-type2 {
-          
-          font-weight: bold; 
-          margin-right: 7px;
+        display: flex;   
+        align-items: center;   
+        margin-top: 12px;   
+        .trip-type2 {  
+          font-weight: bold;   
+          margin-right: 7px;  
           margin-left: auto;  
-          font-size: 1em; 
-          padding: 4px 8px; 
-          border-radius: 5px; 
-          display: inline-block;
-           
+          font-size: 1em;   
+          padding: 4px 8px;   
+          border-radius: 5px;   
+          display: inline-block;  
         }  
         .trip-type2.economical {  
-          background-color: #c8e6c9; 
+          background-color: #c8e6c9;   
           color: #388e3c;  
         }  
         .trip-type2.fancy {  
-          background-color: #f59e9e;
-          color: #e9362c; 
-        } 
-       
+          background-color: #f59e9e;  
+          color: #e9362c;   
+        }   
       }  
-      
-      
-    
-    
-  
-      
+
       .tour-name {  
         font-size: 1em;  
-          font-weight: bold;  
-          margin-bottom: 0px;  
-          margin-top: 3px;
-          margin-left: 10px;
-          align-self: flex-start;
-          color: #22487a;    
+        font-weight: bold;  
+        margin-bottom: 0px;  
+        margin-top: 3px;  
+        margin-left: 10px;  
+        align-self: flex-start;  
+        color: #22487a;    
       }  
-  
+
       .tour-meta7 {  
-          display: flex;  
-          justify-content: space-between;
-         
-          
-  
-          .tour-date2, .tour-length2 {
-              
-              font-size: 0.9em;  
-          }
-         
-      
-          .tour-dates2 {  
-              margin-bottom: 7px;
-              margin-left: 10px;
-              margin-top:0px;
-              margin-right: 20px;
-          }  
-      
-          .tour-length2 {  
-              margin-right: 15px;
-              margin-bottom: 10px;
-              margin-top:0px;  
-        } 
+        display: flex;  
+        justify-content: space-between;  
+
+        .tour-date2, .tour-length2 {  
+          font-size: 0.9em;  
+        }        .tour-dates2 {  
+          margin-bottom: 7px;  
+          margin-left: 10px;  
+          margin-top: 0px;  
+          margin-right: 20px;  
+        }  
+
+        .tour-length2 {  
+          margin-right: 15px;  
+          margin-bottom: 10px;  
+          margin-top: 0px;  
+        }   
         
         .moveicon3 {  
-          margin-left:2px;
-          margin-right: 4px;
-          margin-bottom: 4px;
+          margin-left: 2px;  
+          margin-right: 4px;  
+          margin-bottom: 4px;  
           margin-top: 0px;   
-          vertical-align: middle; 
+          vertical-align: middle;   
+        }  
+
+        .moveicon4 {  
+          margin-left: 4px;  
+          margin-right: 4px;  
+          margin-bottom: 3px;  
+          margin-top: 3px;   
+          vertical-align: middle;   
+        }  
       }  
 
-      .moveicon4 {  
-        margin-left:4px;
-        margin-right: 4px;
-        margin-bottom: 3px;  
-        margin-top: 3px;   
-        vertical-align: middle; 
-    }  
-      }  
-  
       .tour-admin {  
-          display: flex;  
-          align-items: center;  
-          justify-content: flex-start;  
-  
-          .admin-photo { 
-            margin-left: 10px;
-            margin-bottom: 2px; 
-              width: 25px;  
-              height: 25px;  
-              border-radius: 50%;  
-              margin-right: 5px;  
-          }  
-  
-          span {  
-              font-weight: bold;  
-          }  
-      }  
-  
-    }  
+        display: flex;  
+        align-items: center;  
+        justify-content: flex-start;  
 
- 
-    
-        
-     
+        .admin-photo {   
+          margin-left: 10px;  
+          margin-bottom: 2px;   
+          width: 25px;  
+          height: 25px;  
+          border-radius: 50%;  
+          margin-right: 5px;  
+        }  
+
+        span {  
+          font-weight: bold;  
+        }  
+      }  
+    }  
+  }  
+}  
+
+// Circular Animation Keyframes  
+@keyframes circular-animation {  
+  0% {  
+    transform: rotate(0deg) scale(1);  
+  }  
+  50% {  
+    transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
+  }  
+  100% {  
+    transform: rotate(0deg) scale(1); /* Returning to original state */  
   }  
 }
