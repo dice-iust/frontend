@@ -70,6 +70,13 @@
         transform: scale(1.05); 
       }  
     }  
+    .moveicon2 {  
+      margin-left:2px;
+      margin-right: 2px;
+      margin-bottom: 0px; /* Add horizontal spacing around the icon */  
+      margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
+      vertical-align: middle; /* Ensure the icon aligns well with text */  
+  }  
 
     .card-image {  
       width: 100%;  
@@ -119,32 +126,31 @@
     position: relative;  
 }  
 
-    .tour-type-mark {  
-        position: absolute;  
-        bottom: 10px;  
-        right: 10px;  
-        background-color: rgba(255, 255, 255, 0.8);    
-        padding: 5px 10px;  
-        border-radius: 5px;  
-        font-size: 0.85em;  
-        font-weight: bold;  
-        display: flex;  
-        align-items: center;  
-        z-index: 10;
+
+
+    .tour-admin {  
+      position: absolute; /* Position the admin section absolutely */  
+      top: 10px; /* Adjust as needed */  
+      left: 10px; /* Adjust as needed */  
+      display: flex; /* Use flex to align image and name */  
+      align-items: center; /* Center the items vertically */  
+      background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a background for better visibility */  
+      padding: 2px; /* Optional: Add some padding */  
+      border-radius: 5px; /* Optional: Rounded corners for better appearance */  
+      z-index: 20; /* Ensure it stays above other elements */  
+    }  
+
+    .admin-photo {  
+      width: 30px; /* Adjust size as necessary */  
+      height: 30px; /* Adjust size as necessary */  
+      border-radius: 50%; /* Make the image circular */  
+      margin-right: 5px; /* Spacing between image and name */  
+    }
+    .admin-photo:hover {  
+      transform: scale(1.05); /* Enlarge on hover for interactivity */  
     }  
 
     
-    .tour-type-mark.fancy {  
-        background-color: #f59e9e;
-        color: #e9362c;   
-    }  
-
-    .tour-type-mark.economical {  
-        background-color: #c8e6c9; 
-        color: #388e3c; 
-    }  
-
-
   
   .tour-info {  
       
@@ -170,29 +176,74 @@
           
           
   
-          .tour-route { 
-            margin-left: 10px; 
-            margin-top: 0px; 
-              font-size: 0.9em;
-              margin-bottom: 5px;  
-          }  
-      }  
-
-      .tour-type {  
-        display: inline-block;  
-        margin-top: 5px;  
-        padding: 4px;  
-        border-radius: 5px;  
-        font-weight: bold;  
-        text-transform: capitalize;  
+          .tour-route {  
+            display: flex; /* Use flexbox for alignment */  
+            align-items: center; /* Center the icon with respect to text */  
+            margin-left: 10px;   
+            margin-top: 0px;   
+            font-size: 0.9em;  
+            margin-bottom: 10px;  
+        }  
+        
+        .moveicon {  
+            margin-left:2px;
+            margin-right: 2px;
+            margin-bottom: 2px; /* Add horizontal spacing around the icon */  
+            margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
+            vertical-align: middle; /* Ensure the icon aligns well with text */  
+        }  
       }  
 
       
+
+ 
+
       
+      .tour-meta3 {  
+        display: flex; /* Use flex to align trip type and tour name side by side */  
+        align-items: center; /* Center them vertically */  
+        margin-top: 12px ; /* Add some vertical spacing */ 
+        .trip-type {
+          // margin-left: 30px;  
+          font-weight: bold; /* Make the trip type stand out */    
+          margin-right: 7px;
+          margin-left: auto; /* Add some spacing to separate from the tour name */  
+          font-size: 1em; /* Adjust the font size */  
+          padding: 4px 8px; /* Add some padding for a better button-like appearance */  
+          border-radius: 5px; /* Rounded corners for the trip type label */  
+          display: inline-block;
+           /* Ensure it takes up only as much space as necessary */  
+        }  
+        .trip-type.economical {  
+          background-color: #c8e6c9; 
+          color: #388e3c;  
+        }  
+        .trip-type.fancy {  
+          background-color: #f59e9e;
+          color: #e9362c; 
+        } 
+       
+      }  
+      
+      
+    
+    
+  
+      
+      .tour-name {  
+        font-size: 1em;  
+          font-weight: bold;  
+          margin-bottom: 0px;  
+          margin-top: 3px;
+          margin-left: 10px;
+          align-self: flex-start;
+          color: #22487a;    
+      }  
   
       .tour-meta {  
           display: flex;  
-          justify-content: space-between;  
+          justify-content: space-between;
+         
           
   
           .tour-date, .tour-length {
@@ -202,7 +253,7 @@
          
       
           .tour-dates {  
-              margin-bottom: 5px;
+              margin-bottom: 7px;
               margin-left: 10px;
               margin-top:0px;
           }  
@@ -211,7 +262,23 @@
                margin-right: 15px;
               margin-bottom: 10px;
               margin-top:0px;  
-        }  
+        } 
+        
+        .moveicon3 {  
+          margin-left:2px;
+          margin-right: 4px;
+          margin-bottom: 4px; /* Add horizontal spacing around the icon */  
+          margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
+          vertical-align: middle; /* Ensure the icon aligns well with text */  
+      }  
+
+      .moveicon4 {  
+        margin-left:4px;
+        margin-right: 4px;
+        margin-bottom: 3px; /* Add horizontal spacing around the icon */  
+        margin-top: 3px; /* Adjust this value to move the icon down slightly if needed */  
+        vertical-align: middle; /* Ensure the icon aligns well with text */  
+    }  
       }  
   
       .tour-admin {  

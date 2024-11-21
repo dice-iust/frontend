@@ -345,31 +345,31 @@ const Upcoming = () => {
 
   return (  
     
-    <div className="tour-list-container">  
-    <div className="tour-list">  
+    <div className="tour-list-container2">  
+    <div className="tour-list2">  
       {tours.map((tour) => (  
-        <div key={tour.id} className="tour-card">  
-        <div className="tour-image-container">  
+        <div key={tour.id} className="tour-card2">  
+        <div className="tour-image-container2">  
           <img  
             src={tour.photo}  
             alt={`Image of ${tour.name}`}  
-            className="tour-image"  
+            className="tour-image2"  
           />  
           <div className={`tour-type-mark ${tour.type}`}> 
              
-            <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+            <GrMoney aria-hidden="true1" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
           </div>  
           
         </div>  
-        <div className="tour-info">  
-          <h5 className="tour-name">{tour.name}</h5>  
-          <div className="tour-details">  
+        <div className="tour-info2">  
+          <h5 className="tour-name2">{tour.name}</h5>  
+          <div className="tour-details2">  
             <p className="tour-route">  
               {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
             </p>  
           </div>  
           {tour.admin && (  
-            <div className="tour-admin">  
+            <div className="tour-admin2">  
               <img  
                 src={tour.admin.photo}  
                 alt={`Profile of ${tour.admin.name}`}  
@@ -378,13 +378,13 @@ const Upcoming = () => {
               {tour.admin.name}  
             </div>  
           )}  
-          <div className="tour-meta">  
-            <p className="tour-dates">  
+          <div className="tour-meta2">  
+            <p className="tour-dates2">  
               <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
               <span>{formatDate(tour.date)}</span>  
             </p>  
             <FaArrowRight />
-            <p className="tour-length" style={{ textAlign: 'center' }}>  
+            <p className="tour-length2" style={{ textAlign: 'center' }}>  
               <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
               {formatDate(tour.returnDate)}  
             </p>  

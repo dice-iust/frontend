@@ -2,14 +2,14 @@
     text-align: center;  
     // background-color: #f9f9f9;  
     
-    .tour-list-container {  
+    .tour-list-container2 {  
       
       max-width: 2000px;
       width: 100%;  
       margin: 0 auto;  
       flex: 1;
   
-      .tour-list {  
+      .tour-list2 {  
          
         display: flex;  
         flex-wrap: wrap;  
@@ -19,7 +19,7 @@
       
   
       
-      .tour-card {  
+      .tour-card2 {  
         display: flex;  
         flex-direction: column;  
         background: white;  
@@ -39,7 +39,7 @@
         }  
     }  
     
-    .tour-image { 
+    .tour-image2 { 
         margin-bottom: 10px; 
         width: 100%;  
         height: 250px;   
@@ -47,11 +47,11 @@
         position: relative; 
     }  
   
-    .tour-image-container {  
+    .tour-image-container2 {  
       position: relative;  
   }  
   
-      .tour-type-mark {  
+      .tour-type-mark2 {  
           position: absolute;  
           bottom: 10px;  
           right: 10px;  
@@ -66,24 +66,24 @@
       }  
   
       
-      .tour-type-mark.fancy {  
+      .tour-type-mark.fancy2{  
           background-color: #f59e9e;
           color: #e9362c;   
       }  
   
-      .tour-type-mark.economical {  
+      .tour-type-mark.economical2 {  
           background-color: #c8e6c9; 
           color: #388e3c; 
       }  
   
   
     
-    .tour-info {  
+    .tour-info2 {  
         
         display: flex;  
         flex-direction: column;  
     
-        .tour-name {  
+        .tour-name2 {  
             font-size: 1em;  
             font-weight: bold;  
             margin-bottom: 0px;  
@@ -93,7 +93,7 @@
             color: #22487a;    
         }  
     
-        .tour-details {  
+        .tour-details2 {  
             display: flex;  
            
             align-items: center;  
@@ -102,7 +102,7 @@
             
             
     
-            .tour-route { 
+            .tour-route2 { 
               margin-left: 10px; 
               margin-top: 5px; 
                 font-size: 0.9em;
@@ -110,7 +110,7 @@
             }  
         }  
   
-        .tour-type {  
+        .tour-type2 {  
           display: inline-block;  
           margin-top: 5px;  
           padding: 4px;  
@@ -122,7 +122,7 @@
         
         
     
-        .tour-meta {  
+        .tour-meta2 {  
             display: flex;  
             justify-content: space-between;  
             
@@ -146,7 +146,7 @@
           }  
         }  
     
-        .tour-admin {  
+        .tour-admin2 {  
             display: flex;  
             align-items: center;  
             justify-content: flex-start;  

@@ -289,13 +289,13 @@ const TourList = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon"/>;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon" />;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon" />;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon"/>;  
       default:  
         return null;  
     }  
@@ -354,61 +354,67 @@ const TourList = () => {
   {categories.map((category) => (  
     <div key={category.id} className="card">  
       <img src={category.image} alt={category.name} className="card-image" />  
-      <h3 className="card-title"><IoIosArrowBack />{category.name}</h3>  
+      <h3 className="card-title"><IoIosArrowBack className='moveicon2' />{category.name}</h3>  
     </div>  
   ))}  
 </div>  
       <h1>Popular Trips</h1>  
       <Slider {...settings}>  
-  {tours  
-    .sort((a, b) => b.travellers - a.travellers)  
-    .slice(0, 5)  
-    .map((tour) => (  
-      <div key={tour.id} className="tour-card">  
-        <div className="tour-image-container">  
-          <img  
-            src={tour.photo}  
-            alt={`Image of ${tour.name}`}  
-            className="tour-image"  
-          />  
-          <div className={`tour-type-mark ${tour.type}`}> 
-             
-            <GrMoney aria-hidden="true" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+      {tours  
+  .sort((a, b) => b.travellers - a.travellers)  
+  .slice(0, 5)  
+  .map((tour) => (  
+    <div key={tour.id} className="tour-card">  
+      <div className="tour-image-container">  
+        <img  
+          src={tour.photo}  
+          alt={`Image of ${tour.name}`}  
+          className="tour-image"  
+        />  
+        {tour.admin && (  
+          <div className="tour-admin">  
+            <img  
+              src={tour.admin.photo}  
+              alt={`Profile of ${tour.admin.name}`}  
+              className="admin-photo"  
+            />  
+            {tour.admin.name}  
           </div>  
-          
+        )}  
+        {/* <div className={`tour-type-mark ${tour.type}`}>  
+          <GrMoney aria-hidden="true" />{" "}  
+          {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+        </div>   */}
+      </div>  
+      <div className="tour-info">  
+      <p className="tour-meta3">  
+      <span className="tour-name">{tour.name}</span>  
+      <div className={`trip-type ${tour.type}`}>  
+          <GrMoney aria-hidden="true" />{" "}  
+          {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  {/* Capitalize the tour type */}  
         </div>  
-        <div className="tour-info">  
-          <h5 className="tour-name">{tour.name}</h5>  
-          <div className="tour-details">  
-            <p className="tour-route">  
-              {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-            </p>  
-          </div>  
-          {tour.admin && (  
-            <div className="tour-admin">  
-              <img  
-                src={tour.admin.photo}  
-                alt={`Profile of ${tour.admin.name}`}  
-                className="admin-photo"  
-              />  
-              {tour.admin.name}  
-            </div>  
-          )}  
-          <div className="tour-meta">  
-            <p className="tour-dates">  
-              <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-              <span>{formatDate(tour.date)}</span>  
-            </p>  
-            <FaArrowRight />
-            <p className="tour-length" style={{ textAlign: 'center' }}>  
-              <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-              {formatDate(tour.returnDate)}  
-            </p>  
-          </div>  
-          
+        
+      </p>  
+        <div className="tour-details">  
+        <p className="tour-route">  
+    <span className="tour-text">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+    {/* This renders the icon */}  
+</p>  
+        </div>  
+        <div className="tour-meta">  
+          <p className="tour-dates">  
+            <FaRegCalendar className='moveicon3' />  
+            <span>{formatDate(tour.date)}</span>  
+          </p>  
+          <FaArrowRight className='moveicon4' />  
+          <p className="tour-length" style={{ textAlign: "center" }}>  
+            <FaUndoAlt className='moveicon3' />  
+            {formatDate(tour.returnDate)}  
+          </p>  
         </div>  
       </div>  
-    ))}  
+    </div>  
+  ))}
 </Slider>
 <br></br>
 <br></br>
