@@ -212,7 +212,7 @@ const Upcoming = () => {
       {  
         id: 4,  
         name: "City Trip",  
-        date: "2024-7-15",  
+        date: "2024-11-15",  
         photo: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
         destination: "Tehran",  
         admin: { name: "Admin5", photo: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
@@ -251,14 +251,14 @@ const Upcoming = () => {
       {  
         id: 3,  
         name: "Adventure Trip",  
-        date: "2024-11-20",  
+        date: "2025-11-20",  
         photo: "https://cdn.mashreghnews.ir/d/2021/07/06/4/3192979.jpg",
         destination: "sari", 
         admin: { name: "Admin5", photo: "https://png.pngitem.com/pimgs/s/111-1114718_transparent-sleep-icon-png-person-icon-circle-png.png" },   
         type : "fancy", 
         startPlace : "Tehran",
         transportation : "Bus",
-         returnDate : "2024-10-23",
+         returnDate : "2024/10/23",
          travellers:30,
       },  
       {  
@@ -286,6 +286,8 @@ const Upcoming = () => {
     return `${year}/${month}/${day}`;  
   };  
 
+  
+
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
@@ -300,103 +302,67 @@ const Upcoming = () => {
         return null;  
     }  
   };
-  const [showUpcoming, setShowUpcoming] = useState(false);
-  const [showQuick, setShowQuick] = useState(false);  
-  const [showSpring, setShowSpring] = useState(false); 
-  const [showSummer, setShowSummer] = useState(false); 
-  const [showAutumn, setShowAutumn] = useState(false); 
-  const [showWinter, setShowWinter] = useState(false);  
+  
     const currentDate = new Date();  
-    const currentYear = currentDate.getFullYear();  
-    const currentMonth = currentDate.getMonth();   
-
-  const settings = {  
-    dots: true,  
-    infinite: true,  
-    speed: 500,  
-    slidesToShow: 3,  
-    slidesToScroll: 1, 
-    centerMode: true, 
-               
-    centerPadding: '236px', 
     
-    
-    
-   
-    
-    responsive: [  
-      {  
-        breakpoint: 1024,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 600,  
-        settings: {  
-          slidesToShow: 1,  
-          slidesToScroll: 1,  
-        }  
-      }  
-    ]  
-  };  
-
-  return (  
-    
-    <div className="tour-list-container2">  
-    <div className="tour-list2">  
-      {tours.map((tour) => (  
-        <div key={tour.id} className="tour-card2">  
-        <div className="tour-image-container2">  
-          <img  
-            src={tour.photo}  
-            alt={`Image of ${tour.name}`}  
-            className="tour-image2"  
-          />  
-          <div className={`tour-type-mark ${tour.type}`}> 
-             
-            <GrMoney aria-hidden="true1" /> {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+    return (  
+      <div>  
+          <div className="tour-list-container2">  
+              <div className="tour-list2">  
+                  {tours.map((tour) => {  
+                     
+                      return (  
+                          <div key={tour.id} className="tour-card2">  
+                              <div className="tour-image-container2">  
+                                  <img  
+                                      src={tour.photo}  
+                                      alt={`Image of ${tour.name}`}  
+                                      className="tour-image2"  
+                                  />  
+                                  {tour.admin && (  
+                                      <div className="tour-admin2">  
+                                          <img  
+                                              src={tour.admin.photo}  
+                                              alt={`Profile of ${tour.admin.name}`}  
+                                              className="admin-photo2"  
+                                          />  
+                                          {tour.admin.name}  
+                                      </div>  
+                                  )}  
+                              </div>  
+                              <div className="tour-info2">  
+                                  <p className="tour-meta3">  
+                                      <span className="tour-name2">{tour.name}</span>  
+                                      <div className={`trip-type2 ${tour.type}`}>  
+                                          <GrMoney aria-hidden="true" />{" "}  
+                                          {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
+                                      </div>  
+                                  </p>  
+                                  <div className="tour-details2">  
+                                      <p className="tour-route2">  
+                                          <span className="tour-text2">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+                                      </p>  
+                                  </div>  
+                                  <div className="tour-meta2">  
+                                      <p className="tour-dates2">  
+                                          <FaRegCalendar className='moveicon3' />  
+                                          <span>{formatDate(tour.date)}</span>  
+                                      </p>  
+                                      <p className="tour-length2" style={{ textAlign: "center" }}>  
+                                          <FaUndoAlt className='moveicon3' />  
+                                          {formatDate(tour.returnDate)}  
+                                      </p>  
+                                     
+                                  </div>  
+                              </div>  
+                          </div>  
+                      );  
+                  })}  
+              </div>  
           </div>  
-          
-        </div>  
-        <div className="tour-info2">  
-          <h5 className="tour-name2">{tour.name}</h5>  
-          <div className="tour-details2">  
-            <p className="tour-route">  
-              {tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}  
-            </p>  
-          </div>  
-          {tour.admin && (  
-            <div className="tour-admin2">  
-              <img  
-                src={tour.admin.photo}  
-                alt={`Profile of ${tour.admin.name}`}  
-                className="admin-photo"  
-              />  
-              {tour.admin.name}  
-            </div>  
-          )}  
-          <div className="tour-meta2">  
-            <p className="tour-dates2">  
-              <FaRegCalendar style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-              <span>{formatDate(tour.date)}</span>  
-            </p>  
-            <FaArrowRight />
-            <p className="tour-length2" style={{ textAlign: 'center' }}>  
-              <FaUndoAlt style={{ marginRight: '1.5px' }} aria-hidden="true" />  
-              {formatDate(tour.returnDate)}  
-            </p>  
-          </div>  
-          
-        </div>  
+          <Footer />  
       </div>  
-    ))}  
-    </div>  
-    <Footer/>
-  </div>  
-);
+  );  
 };  
 export default Upcoming;
     

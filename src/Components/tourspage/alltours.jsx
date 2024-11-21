@@ -344,9 +344,10 @@ const TourList = () => {
   };  
 
   return (  
-    
+    <div>
+      <Travelsnav/>
     <div className="tour-list-container"> 
-    <Travelsnav/>
+    
       <br></br>
       <h1>Categories</h1>  
 
@@ -358,6 +359,8 @@ const TourList = () => {
     </div>  
   ))}  
 </div>  
+<br></br>
+<br></br>
       <h1>Popular Trips</h1>  
       <Slider {...settings}>  
       {tours  
@@ -418,10 +421,13 @@ const TourList = () => {
 </Slider>
 <br></br>
 <br></br>
+<br></br>
       
       
-        <Footer /> 
+       
       </div>  
+       <Footer /> 
+       </div>
     
 );  
 };  

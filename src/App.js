@@ -10,8 +10,8 @@ import Upcoming from "./Components/tourspage/Upcomintrips.jsx";
 function App() {  
   return (  
     <div className="App">  
-      <TourList />  
-      {/* <Upcoming/> */}
+      {/* <TourList />   */}
+      <Upcoming/>
     </div>  
     // <Router>  
     //   <Routes>  
