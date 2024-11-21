@@ -17,6 +17,7 @@ import Travelsnav from "./Nav.jsx";
 import Footer from './footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
+import { IoIosTimer } from "react-icons/io";
 
 
  
@@ -50,6 +51,7 @@ const Upcoming = () => {
       transportation : "Car",
        returnDate : "2023-11-27",
        travellers:15,
+       timeLeft:2
 
     }, 
     {  
@@ -64,6 +66,7 @@ const Upcoming = () => {
         transportation : "Train",
          returnDate : "2023-11-24",
          travellers:2,
+         timeLeft:3
       }, 
     {  
         id: 1,  
@@ -77,6 +80,7 @@ const Upcoming = () => {
         transportation : "Plane",
          returnDate : "2023-10-25",
          travellers:12,
+         timeLeft:5
       }, 
       {  
         id: 1,  
@@ -90,6 +94,7 @@ const Upcoming = () => {
         transportation : "Plane",
          returnDate : "2023-10-25",
          travellers:12,
+         timeLeft:2
       }, 
       
       {  
@@ -104,6 +109,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2023-12-23",
          travellers:2,
+         timeLeft:4
       }, 
       {  
         id: 3,  
@@ -117,6 +123,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2023-12-23",
          travellers:2,
+         timeLeft:1
       },  
       {  
         id: 3,  
@@ -130,6 +137,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2023-12-23",
          travellers:2,
+         timeLeft:2
       },  
       {  
         id: 3,  
@@ -143,6 +151,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2023-12-23",
          travellers:2,
+         timeLeft:2
       },  
     {  
         id: 5,  
@@ -156,6 +165,7 @@ const Upcoming = () => {
         transportation : "Train",
         returnDate : "2023-12-21",
         travellers:6,
+        timeLeft:2
       }, 
       {  
         id: 5,  
@@ -169,6 +179,7 @@ const Upcoming = () => {
         transportation : "Train",
         returnDate : "2023-12-21",
         travellers:6,
+        timeLeft:3
       }, 
       {  
         id: 5,  
@@ -182,6 +193,7 @@ const Upcoming = () => {
         transportation : "Train",
         returnDate : "2023-12-21",
         travellers:6,
+        timeLeft:4
       }, 
       {  
         id: 5,  
@@ -195,6 +207,7 @@ const Upcoming = () => {
         transportation : "Train",
         returnDate : "2023-12-21",
         travellers:106,
+        timeLeft:2
       }, 
       {  
         id: 4,  
@@ -208,6 +221,7 @@ const Upcoming = () => {
         transportation : "Car",
          returnDate : "2023-11-27",
          travellers:7,
+         timeLeft:2
       }, 
       {  
         id: 4,  
@@ -221,6 +235,7 @@ const Upcoming = () => {
         transportation : "Car",
          returnDate : "2023-11-27",
          travellers:50,
+         timeLeft:2
       }, 
       {  
         id: 4,  
@@ -234,6 +249,7 @@ const Upcoming = () => {
         transportation : "Car",
          returnDate : "2023-11-27",
          travellers:30,
+         timeLeft:2
       }, 
       {  
         id: 3,  
@@ -247,6 +263,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2023-12-23",
          travellers:30,
+         timeLeft:2
       }, 
       {  
         id: 3,  
@@ -260,6 +277,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2024/10/23",
          travellers:30,
+         timeLeft:2
       },  
       {  
         id: 3,  
@@ -273,6 +291,7 @@ const Upcoming = () => {
         transportation : "Bus",
          returnDate : "2024-10-23",
          travellers:30,
+         timeLeft:3
       },  
     
       
@@ -307,6 +326,7 @@ const Upcoming = () => {
     
     return (  
       <div>  
+        <Travelsnav/>
           <div className="tour-list-container2">  
               <div className="tour-list2">  
                   {tours.map((tour) => {  
@@ -343,17 +363,22 @@ const Upcoming = () => {
                                           <span className="tour-text2">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
                                       </p>  
                                   </div>  
-                                  <div className="tour-meta2">  
+                                  <div className="tour-meta7">  
                                       <p className="tour-dates2">  
                                           <FaRegCalendar className='moveicon3' />  
                                           <span>{formatDate(tour.date)}</span>  
                                       </p>  
-                                      <p className="tour-length2" style={{ textAlign: "center" }}>  
-                                          <FaUndoAlt className='moveicon3' />  
+                                      <p className="tour-length2" style={{ textAlign: "left" }}>  
+                                          <FaUndoAlt className='moveicon3'/>  
                                           {formatDate(tour.returnDate)}  
                                       </p>  
-                                     
-                                  </div>  
+                                  </div> 
+                                  <div className="tour-meta7">  
+                                      <p className="tour-dates2"> 
+                                        <IoIosTimer  className='moveicon3'/> 
+                                          Time Left : <span>{(tour.timeLeft)}</span>  days
+                                      </p>  
+                                  </div> 
                               </div>  
                           </div>  
                       );  

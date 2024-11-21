@@ -4,7 +4,7 @@
   padding: 2px;  
 
   .tour-list-container2 {  
-    max-width: 1320px;  
+    max-width: 2000px;  
     margin: 0 auto;  
     
 
@@ -49,11 +49,12 @@
       background: white;  
       border-radius: 10px;  
       overflow: hidden;
-      margin-top: 15px;  
-      margin-bottom: 15px;  
-      margin-left: 15px;
-      width: 400px;
-      height: 500px;   
+      margin-top: 20px;  
+      margin-bottom: 25px;  
+      margin-left: 20px;
+      margin-right: 20px;
+      width: 460px;
+      height: 400px;   
       transition: transform 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
@@ -189,26 +190,27 @@
           color: #22487a;    
       }  
   
-      .tour-meta {  
+      .tour-meta7 {  
           display: flex;  
           justify-content: space-between;
          
           
   
-          .tour-date, .tour-length {
+          .tour-date2, .tour-length2 {
               
               font-size: 0.9em;  
           }
          
       
-          .tour-dates {  
+          .tour-dates2 {  
               margin-bottom: 7px;
               margin-left: 10px;
               margin-top:0px;
+              margin-right: 20px;
           }  
       
-          .tour-length {  
-               margin-right: 15px;
+          .tour-length2 {  
+              margin-right: 15px;
               margin-bottom: 10px;
               margin-top:0px;  
         } 
