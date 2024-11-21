@@ -384,56 +384,52 @@ const TourList = () => {
       <h1>Popular Trips</h1> 
       <br></br> 
       <Slider {...settings}>  
-      {tours
+      {data.Popular_Trips
   .sort((a, b) => b.travellers - a.travellers)  
   .slice(0, 5)  
   .map((tour) => (  
     <div key={tour.id} className="tour-card">  
       <div className="tour-image-container">  
         <img  
-          src={tour.photo}  
+          src={tour.image_url}  
           alt={`Image of ${tour.name}`}  
           className="tour-image"  
         />  
         {tour.admin && (  
           <div className="tour-admin">  
             <img  
-              src={tour.admin.photo}  
-              alt={`Profile of ${tour.admin.name}`}  
+              src={tour.admin.phrofile_image}  
+              alt={`Profile of ${tour.admin.user_name}`}  
               className="admin-photo"  
             />  
-            {tour.admin.name}  
+            {tour.admin.user_name}  
           </div>  
         )}  
-        {/* <div className={`tour-type-mark ${tour.type}`}>  
-          <GrMoney aria-hidden="true" />{" "}  
-          {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
-        </div>   */}
       </div>  
       <div className="tour-info">  
       <p className="tour-meta3">  
       <span className="tour-name">{tour.name}</span>  
-      <div className={`trip-type ${tour.type}`}>  
+      <div className={`trip-type ${tour.mode}`}>  
           <GrMoney aria-hidden="true" />{" "}  
-          {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  {/* Capitalize the tour type */}  
+          {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)} 
         </div>  
         
       </p>  
         <div className="tour-details">  
         <p className="tour-route">  
-    <span className="tour-text">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+    <span className="tour-text">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
     {/* This renders the icon */}  
 </p>  
         </div>  
         <div className="tour-meta">  
           <p className="tour-dates">  
             <FaRegCalendar className='moveicon3' />  
-            <span>{formatDate(tour.date)}</span>  
+            <span>{formatDate(tour.start_date)}</span>  
           </p>  
           <FaArrowRight className='moveicon4' />  
           <p className="tour-length" style={{ textAlign: "center" }}>  
             <FaUndoAlt className='moveicon3' />  
-            {formatDate(tour.returnDate)}  
+            {formatDate(tour.end_date)}  
           </p>  
         </div>  
       </div>  
