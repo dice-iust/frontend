@@ -344,12 +344,13 @@ const TourList = () => {
   };  
 
   return (  
-    <div>
+    <div className='travelpage'>
       <Travelsnav/>
     <div className="tour-list-container"> 
     
       <br></br>
       <h1>Categories</h1>  
+      <br></br>
 
 <div className="category-cards">  
   {categories.map((category) => (  
@@ -361,7 +362,8 @@ const TourList = () => {
 </div>  
 <br></br>
 <br></br>
-      <h1>Popular Trips</h1>  
+      <h1>Popular Trips</h1> 
+      <br></br> 
       <Slider {...settings}>  
       {tours  
   .sort((a, b) => b.travellers - a.travellers)  
