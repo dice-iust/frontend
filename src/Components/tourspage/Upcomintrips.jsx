@@ -307,6 +307,7 @@ const Upcoming = () => {
     
     return (  
       <div>  
+        <Travelsnav/>
           <div className="tour-list-container2">  
               <div className="tour-list2">  
                   {tours.map((tour) => {  
