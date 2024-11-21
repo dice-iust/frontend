@@ -14,6 +14,15 @@ function App() {
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/signup" element={<SignupForm />} /> 
         <Route path="/Main" element={<TourList />} /> 
+        <Route path="/Main/Autumn" element={<TourList />} /> 
+        <Route path="/Main/Summer" element={<TourList />} /> 
+        <Route path="/Main/Spring" element={<TourList />} /> 
+        <Route path="/Main/Short" element={<TourList />} /> 
+        <Route path="/Main/UpComing" element={<TourList />} /> 
+        <Route path="/Main/Economical" element={<TourList />} /> 
+        <Route path="/Main/Fancy" element={<TourList />} /> 
+        <Route path="/Main/Winter" element={<TourList />} /> 
+
       </Routes>  
     </Router>  
   );  

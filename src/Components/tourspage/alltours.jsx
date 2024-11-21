@@ -17,6 +17,7 @@ import Travelsnav from "./Nav.jsx";
 import Footer from './footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
+import { Link } from 'react-router-dom'; 
 
 
  
