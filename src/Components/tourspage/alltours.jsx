@@ -21,10 +21,23 @@ import { Link } from 'react-router-dom';
 
 
 
- 
+const PopularTravels_URL = 'travels/';
 
 
 const TourList = () => { 
+
+  const [data, setData] = useState(null);
+  useEffect(() => {  
+      const fetchData = async () => {  
+          try {  
+              const response = await axios.get(PopularTravels_URL);  
+              setData(response.data);  
+          } catch (error) {  
+              console.error("Error fetching data:", error);  
+          }  
+      };  
+      fetchData();  
+  }, []);  
     
     const categories = [  
         { id: 'UpComing', name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
@@ -369,7 +382,7 @@ const TourList = () => {
       <h1>Popular Trips</h1> 
       <br></br> 
       <Slider {...settings}>  
-      {tours  
+      {tours
   .sort((a, b) => b.travellers - a.travellers)  
   .slice(0, 5)  
   .map((tour) => (  

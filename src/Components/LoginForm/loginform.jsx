@@ -12,12 +12,12 @@ const LoginForm = () => {
     const { setAuth } = useContext(AuthContext);  
     const userRef = useRef(null);  
     const errRef = useRef();  
-    const [data, setData] = useState(null);  
+      
     const [user, setUser] = useState('');  
     const [pwd, setPwd] = useState('');  
     const [errMsg, setErrMsg] = useState('');  
     const navigate = useNavigate();  
-
+    const [data, setData] = useState(null);
     useEffect(() => {  
         const fetchData = async () => {  
             try {  
