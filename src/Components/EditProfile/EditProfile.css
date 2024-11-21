@@ -1,10 +1,7 @@
-* {
+  .body {
     margin:0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -15,7 +12,7 @@
     background-size:cover;
     background-position: center;
     background-color: #f6f6f6;
-    background-image: linear-gradient(rgb(187, 220, 233), rgb(253, 253, 252),rgb(187, 220, 233));
+    background-image: linear-gradient(rgb(187, 220, 233), rgb(255, 160, 122),rgb(187, 220, 233));
   }
   .edit-profile-container {
     padding: 20px;
@@ -30,7 +27,7 @@
   }
   
   .nav-button {
-    background-color: rgb(255, 123, 0);
+    background-color: #11354d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -122,14 +119,16 @@
   }
   
   .submit-button {
-    background-color: rgb(255, 123, 0);
+    background-color: #11354d;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-size: 16px;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
   }
   
   .submit-button:hover {
@@ -145,7 +144,7 @@
   
   .change-button {
     display:inline;
-    background-color: rgb(255, 123, 0);
+    background-color: #11354d;
     max-width: fit-content;
     color: white;
     border: none;
@@ -155,6 +154,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 5px;
+    width: 100px;
   }
   
   .change-button:hover {
@@ -163,7 +163,6 @@
   
   .submit{
     display: flex;
-    width: 100%;
     align-items: center;
     justify-content: center;
   }
