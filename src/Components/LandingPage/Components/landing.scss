@@ -112,7 +112,8 @@ header .container {
   margin: 0;  
   color: white; /* Default text color */  
   z-index: 3; /* Ensure text is above aurora */  
-  animation: textColorChange 6s linear infinite; /* Add text color change animation */  
+  animation: textColorChange 6s linear infinite; /* Add text color change animation */ 
+  margin-top: 20px; 
 }  
 
 
@@ -211,38 +212,84 @@ header .container {
 //     }
 
      
-@media (max-width: 480px) {  
-  /* Styles for small screens */  
+@media (max-width: 480px) { 
+  .land-back{
+    background-image: url(../Assets/480.png); 
+    background-size: contain;
+    background-size: cover;
+  }
+  .links a {  
+    margin-left: .2rem; /* Reduce margin for smaller screens */  
+  }  
+  .logo{
+    cursor: pointer;  
+
+  }
+  .links a {  
+    
+    font-size: 15px;  
+   
+  } 
+  
+  .logo img {  
+    width: 35vw; /* Further resize logo for very small screens */  
+    max-width: 30px; /* Cap max width */  
+  }    
+  .logo h3 {  
+    font-size: 0.75rem;     
+  }  
+
+  .title {  
+    font-size: 10vw; /* Larger adjustment for mobile */
+    margin-top: 80px;  
+  }  
+
+  .btn2 {  
+    width: 50%; /* Make button full width */  
+    padding: 0.5rem; /* Adjust padding */  
+    margin: 1rem 0; /* Add some vertical space */  
+  }    
 }  
 
 /* Medium devices (tablets) */  
 @media (min-width: 481px) and (max-width: 768px) {  
   .links a {  
-    margin-left: 1rem; /* Reduce margin for smaller screens */  
+    margin-left: .5rem; /* Reduce margin for smaller screens */  
   }  
+  .logo{
+    cursor: pointer;  
+
+  }
+  
   
   .logo h3 {  
-    font-size: 1.5rem; 
-          
+    
         font-size: 1.5rem;  
-      }  
+    }  
     
-      .title {  
-        margin-top: 20px;
-        font-size: 6vw; /* Adjust title font size for smaller devices */  
-      }  
+    .title {  
+      margin-top: 40px;
+      font-size: 6vw; /* Adjust title font size for smaller devices */ 
+      margin-top: 40px;  
+ 
+    }  
     
-      .btn2 {  
-        font-size: 1rem; /* Slightly smaller button text */  
-        padding: 0.8rem 1.2rem; /* Adjust padding for button */  
-      }   
+    .btn2 {  
+      font-size: 1rem; /* Slightly smaller button text */  
+      padding: 1rem .5rem; /* Adjust padding for button */ 
+      width: 30%;  
+    }   
 }  
 
 /* Large devices (laptops) */  
-@media (min-width: 769px) and (max-width: 1024px) {  
+@media (min-width: 769px) and (max-width: 1023px) {  
   .links a {  
     margin-left: 1rem; /* Reduce margin for smaller screens */  
   }  
+  .logo{
+    cursor: pointer;  
+
+  }
   
   .logo h3 {  
     font-size: 1.5rem; 
@@ -252,12 +299,14 @@ header .container {
     
       .title {  
         margin-top: 15px;
-        font-size: 6vw; /* Adjust title font size for smaller devices */  
+        font-size: 6vw; /* Adjust title font size for smaller devices */
+        margin-top: 15px;  
       }  
     
       .btn2 {  
         font-size: 1rem; /* Slightly smaller button text */  
-        padding: 0.8rem 1.2rem; /* Adjust padding for button */  
+      padding: 1.5rem .5rem; /* Adjust padding for button */ 
+      width: 20%; 
       }  
     }  
     
