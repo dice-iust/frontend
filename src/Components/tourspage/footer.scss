@@ -37,8 +37,102 @@ section {
 
 .footer-distributed .footer-left{
 	width: 40%;
+	margin-top: 0;
+	margin-right: 0;
 }
+.svg-inline--fa {
+	vertical-align: -0.200em;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons {
 
+	text-align: left;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	width: 3.125rem;
+	height: 3.125rem;
+	border: 0.125rem solid transparent;
+	padding: 0;
+	text-decoration: none;
+	text-align: center;
+	color: #fefefe;
+	font-size: 1.5625rem;
+	font-weight: normal;
+	line-height: 2em;
+	border-radius: 1.6875rem;
+	transition: all 0.5s ease;
+	margin-right: 0.25rem;
+	margin-bottom: 0.25rem; 
+
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
+	-webkit-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+			transform: rotate(360deg);
+  }
+  
+  .footer-distributed .footer-left  .rounded-social-buttons .fa-twitter, .fa-facebook-f, .fa-tiktok, .fa-youtube, .fa-instagram {
+	font-size: 25px;
+  }
+  .footer-distributed .footer-left  .rounded-social-buttons .fa-telegram {
+	font-size: 30px;
+  } 
+  
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.twitter {
+	color: #000609;
+	background: #fefefe;
+	border-color: #00080b;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.twitter:hover, .rounded-social-buttons .social-button.twitter:focus {
+	color: #f4f5f6;
+	background: #080808;
+	border-color: #f8fafc;
+  }
+  
+  .footer-distributed .footer-left  .rounded-social-buttons .social-button.linkedin {
+	color: #007bb5;
+	background: #fefefe;
+	border-color: #007bb5;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
+	color: #f7f9fb;
+	background: #007bb5;
+	border-color: #fbfdfe;
+  }
+  
+
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.youtube {
+	color: #bb0000;
+	background: #fefefe;
+	border-color: #bb0000;
+  }
+  
+  .footer-distributed .footer-left  .rounded-social-buttons .social-button.youtube:hover, .rounded-social-buttons .social-button.youtube:focus {
+	color: #f5f1f1;
+	background: #bb0000;
+	border-color: #fbf9f9;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.instagram {
+	color: #ea7d29;
+	background: #fefefe;
+	border-color: #ea7d29;
+  }
+  
+  .footer-distributed .footer-left .rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
+	color: #fefefe;
+	background: #ea7d29;
+	border-color: #faf7f5;
+  }
 /* The company logo */
 
 .footer-distributed h3{
@@ -62,31 +156,47 @@ section {
 .footer-distributed .footer-links a{
 	display:inline-block;
 	line-height: 1.8;
-  font-weight:400;
+  	font-weight:400;
 	text-decoration: none;
 	color:  inherit;
 }
+.footer-distributed .footer-links :hover{
+	text-decoration: underline;
+	color: #ea7d29;
 
+}
 .footer-distributed .footer-company-name{
 	color:  #222;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
+	margin-bottom: 30px;
 }
 
 /* Footer Center */
 
 .footer-distributed .footer-center {  
-    width: 30%;  /* Adjust width to provide more space to the left side */  
+    width: 40%;  /* Adjust width to provide more space to the left side */  
     margin-left: 0;  /* Add left margin to shift it to the left */ 
-    margin-right: 17%; 
-    margin-top: 0;
-    text-align: center; /* Center all text alignment */  
+    margin-right: 10%; 
+    margin-top: 10px;
+    // text-align: center; /* Center all text alignment */  
     display: flex;  
     flex-direction: column; /* Column layout for children */  
-    align-items: center; /* Center items horizontally */  
+    // align-items: center; /* Center items horizontally */  
 }  
 
+.footer-distributed .footer-center .contact .icon{
+	color: #ea7d29;
+	margin-right: 5px;
+	margin-top: 3px;
+}
+.footer-distributed .footer-center .contact{
+	display: flex;
+	position: relative;
+	color: #f4f5f6;
+
+}
 .footer-distributed .footer-center h4 {  
     margin-top: 0;
     color: #ffffff;  
@@ -105,7 +215,7 @@ section {
     width: calc(100% - 15px); /* Full width, accounting for padding */  
     margin-bottom: 10px; /* Space below the input */  
     font-size: 16px;  
-    text-align: center; /* Optional: Center the input text */  
+    text-align: left; /* Optional: Center the input text */  
 }  
 
 .footer-button {  
@@ -116,7 +226,7 @@ section {
     color: white;  
     cursor: pointer;  
     transition: background-color 0.3s, transform 0.2s;  
-    width: 100%; /* Full width to match the email box */  
+    width:calc(100% - 15px); /* Full width to match the email box */  
 }  
 
 .footer-button:hover {  
@@ -144,14 +254,16 @@ section {
 /* Footer Right */
 
 .footer-distributed .footer-right{
-	width: 20%;
+	width: 30%;
     margin-left: 0;
+	margin-top: 10px;
 }
 
 .footer-distributed .footer-company-about{
 	line-height: 20px;
 	color:  #92999f;
-	font-size: 13px;
+	font-size: 16px;
+	line-height: 25px;
 	font-weight: normal;
 	margin: 0;
 }
