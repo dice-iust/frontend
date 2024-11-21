@@ -44,14 +44,19 @@
       flex-wrap: wrap;  
       justify-content: center;  
       gap: 40px; 
+      margin-left: 125px;
+      margin-right: 125px;
       
     }  
 
     .card {  
-      width: 150px; 
-       
-      background-color: #ea7d29;  
+      width: 170px;
+      height :155px; 
+      position: relative;
       
+      
+      // background-color: #ea7d29;  
+      border: 2px solid rgba(34, 72, 122, 0.5); 
       border-radius: 8px; 
       overflow: hidden; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
@@ -73,11 +78,17 @@
     }  
 
     .card-title {  
-      margin-top: 10px; 
-      font-size: 1rem; 
-      text-align: center;  
-      color: #fff; 
-    }
+      position: absolute; /* Position it absolutely within the card */  
+      bottom: 0px; /* Position from the bottom */  
+      right: 0px;
+      margin-bottom: 0px; /* Position from the right */  
+      font-size: 1rem;  
+      color: #22487a; /* Change text color to black for contrast */  
+      background: #fff; /* Set background to white */  
+      padding: 5px 5px; /* Add some padding for aesthetics */  
+      border-radius: 2px; /* Rounded corners for the title background */  
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); /* Optional: add shadow for better visibility */  
+  }  
 
     .tour-card {  
       display: flex;  
