@@ -394,6 +394,7 @@ const Upcoming = () => {
       </div>  
     ))}  
     </div>  
+    <Footer/>
   </div>  
 );
 };  
