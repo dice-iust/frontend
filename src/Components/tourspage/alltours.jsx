@@ -20,20 +20,21 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom'; 
 
 
+
  
 
 
 const TourList = () => { 
     
     const categories = [  
-        { id: 1, name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
-        { id: 2, name: 'Short Trips', image: 'https://img.freepik.com/free-vector/time-travel-agency-web-site-vacation-tourism-illustration-man-with-ticket-hand-backpack-suitcase-baggage-running-plane-people-visit-countries-cities-landmarks_126523-2351.jpg?t=st=1731946833~exp=1731950433~hmac=ba7d41a82b0169b4e78833810f20c3577486f60f4b09a8fef15f7e35c82db0ef&w=740' },    
-        { id: 3, name: 'Spring Trips', image: 'https://img.freepik.com/premium-vector/smiling-female-tourist-with-travel-bags-vacation_1310786-25862.jpg' },  
-        { id: 4, name: 'Summer Trips', image: 'https://img.freepik.com/free-vector/beach-vacations_24908-53903.jpg' },  
-        { id: 5, name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
-        { id: 6, name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
-        { id: 7, name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
-        { id: 8, name: 'economical Trips', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
+        { id: 'UpComing', name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
+        { id: 'Short', name: 'Short Trips', image: 'https://img.freepik.com/free-vector/time-travel-agency-web-site-vacation-tourism-illustration-man-with-ticket-hand-backpack-suitcase-baggage-running-plane-people-visit-countries-cities-landmarks_126523-2351.jpg?t=st=1731946833~exp=1731950433~hmac=ba7d41a82b0169b4e78833810f20c3577486f60f4b09a8fef15f7e35c82db0ef&w=740' },    
+        { id: 'Spring', name: 'Spring Trips', image: 'https://img.freepik.com/premium-vector/smiling-female-tourist-with-travel-bags-vacation_1310786-25862.jpg' },  
+        { id: 'Summer', name: 'Summer Trips', image: 'https://img.freepik.com/free-vector/beach-vacations_24908-53903.jpg' },  
+        { id: 'Autumn', name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
+        { id: 'Winter', name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
+        { id: 'Fancy', name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
+        { id: 'Economical', name: 'economical Trips', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
       ];  
 
 
@@ -356,8 +357,10 @@ const TourList = () => {
 <div className="category-cards">  
   {categories.map((category) => (  
     <div key={category.id} className="card">  
+      <Link key={category.id} to={`/Main/${category.id}`} className="card">  
       <img src={category.image} alt={category.name} className="card-image" />  
-      <h3 className="card-title"><IoIosArrowBack className='moveicon2' />{category.name}</h3>  
+      <h3 className="card-title"><IoIosArrowBack className='moveicon2' />{category.name}</h3> 
+      </Link>   
     </div>  
   ))}  
 </div>  

@@ -6,6 +6,16 @@ import LoginForm from "./Components/LoginForm/loginform.jsx";
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
 import Home from "./Components/LandingPage/Components/Home.jsx";
 import TourList from "./Components/tourspage/alltours.jsx";
+import Autumn from "./Components/tourspage/Autumntrips.jsx";
+import Summer from "./Components/tourspage/Summertrips.jsx";
+import Spring from "./Components/tourspage/Springtrips.jsx";
+import Short from "./Components/tourspage/Shorttrips.jsx";
+import Upcoming from './Components/tourspage/Upcomintrips.jsx';
+import Economical from "./Components/tourspage/Economicaltrips.jsx";
+import Fancy from "./Components/tourspage/Fancytrips.jsx";
+import Winter from './Components/tourspage/Wintertrips.jsx';
+
+
 function App() {  
   return (  
     <Router>  
@@ -14,14 +24,14 @@ function App() {
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/signup" element={<SignupForm />} /> 
         <Route path="/Main" element={<TourList />} /> 
-        <Route path="/Main/Autumn" element={<TourList />} /> 
-        <Route path="/Main/Summer" element={<TourList />} /> 
-        <Route path="/Main/Spring" element={<TourList />} /> 
-        <Route path="/Main/Short" element={<TourList />} /> 
-        <Route path="/Main/UpComing" element={<TourList />} /> 
-        <Route path="/Main/Economical" element={<TourList />} /> 
-        <Route path="/Main/Fancy" element={<TourList />} /> 
-        <Route path="/Main/Winter" element={<TourList />} /> 
+        <Route path="/Main/Autumn" element={<Autumn />} /> 
+        <Route path="/Main/Summer" element={<Summer />} /> 
+        <Route path="/Main/Spring" element={<Spring />} /> 
+        <Route path="/Main/Short" element={<Short />} /> 
+        <Route path="/Main/UpComing" element={<Upcoming />} /> 
+        <Route path="/Main/Economical" element={<Economical />} /> 
+        <Route path="/Main/Fancy" element={<Fancy />} /> 
+        <Route path="/Main/Winter" element={<Winter />} /> 
 
       </Routes>  
     </Router>  

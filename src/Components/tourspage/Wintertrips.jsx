@@ -23,7 +23,7 @@ import { IoIosTimer } from "react-icons/io";
  
 
 
-const Upcoming = () => { 
+const Winter = () => { 
     
     const categories = [  
         { id: 1, name: 'Up comingTrips', image: 'https://img.freepik.com/free-vector/time-management-concept-landing-page_23-2148246951.jpg' },
@@ -389,7 +389,7 @@ const Upcoming = () => {
       </div>  
   );  
 };  
-export default Upcoming;
+export default Winter;
     
 
 
