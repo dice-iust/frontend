@@ -116,7 +116,7 @@ const Short = () => {
                   ))}  
               </div>  
           ) : (  
-              <p>Loading spring trips...</p>  
+              <p>Loading short trips...</p>  
           )}    
       </div>   
       <br />   
