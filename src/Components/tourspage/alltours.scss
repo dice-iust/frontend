@@ -1,11 +1,14 @@
-.App {  
+.travelpage {  
   text-align: center;  
-  // background-color: #f9f9f9;  
+  // background-color: #f9f9f9; 
+  // display: flex; 
   padding: 2px;  
+  // display: flex;
 
   .tour-list-container {  
     max-width: 1320px;  
-    margin: 0 auto;  
+    margin: 0 auto; 
+     
     
 
     .tour-list {  
@@ -214,11 +217,11 @@
           display: inline-block;
            
         }  
-        .trip-type.economical {  
+        .trip-type.Budget-friendly {  
           background-color: #c8e6c9; 
           color: #388e3c;  
         }  
-        .trip-type.fancy {  
+        .trip-type.Fancy {  
           background-color: #f59e9e;
           color: #e9362c; 
         } 

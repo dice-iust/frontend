@@ -1,13 +1,22 @@
 
 import React from 'react';  
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Router components  
-import './App.css';  
+// import './App.css';  
 import LoginForm from "./Components/LoginForm/loginform.jsx";  
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
 import Home from "./Components/LandingPage/Components/Home.jsx";
 import TourList from "./Components/tourspage/alltours.jsx";
 import About from "./Components/About/about.jsx"
 import EditProfile from "./Components/EditProfile/EditProfile.jsx"
+import Autumn from "./Components/tourspage/Autumntrips.jsx";
+import Summer from "./Components/tourspage/Summertrips.jsx";
+import Spring from "./Components/tourspage/Springtrips.jsx";
+import Short from "./Components/tourspage/Shorttrips.jsx";
+import Upcoming from './Components/tourspage/Upcomintrips.jsx';
+import Economical from "./Components/tourspage/Economicaltrips.jsx";
+import Fancy from "./Components/tourspage/Fancytrips.jsx";
+import Winter from './Components/tourspage/Wintertrips.jsx';
+
 
 function App() {  
   return (  
@@ -19,6 +28,15 @@ function App() {
         <Route path="/Main" element={<TourList />} /> 
         <Route path="/about" element={<About />} /> 
         <Route path="/EditProfile" element={<EditProfile />} /> 
+        <Route path="/Main/Autumn" element={<Autumn />} /> 
+        <Route path="/Main/Summer" element={<Summer />} /> 
+        <Route path="/Main/Spring" element={<Spring />} /> 
+        <Route path="/Main/Short" element={<Short />} /> 
+        <Route path="/Main/UpComing" element={<Upcoming />} /> 
+        <Route path="/Main/Economical" element={<Economical />} /> 
+        <Route path="/Main/Fancy" element={<Fancy />} /> 
+        <Route path="/Main/Winter" element={<Winter />} /> 
+
       </Routes>  
     </Router>  
   );  

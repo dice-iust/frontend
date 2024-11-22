@@ -1,20 +1,19 @@
-.shorttrips {  
-   
+.summer {  
     text-align: center;  
     padding: 2px;  
   
-    .tour-list-container-short {  
+    .tour-list-container-summer {  
       max-width: 2000px;  
       margin: 0 auto;  
   
-      .tour-list-short {  
+      .tour-list-summer {  
         display: flex;  
         flex-wrap: wrap;  
         justify-content: space-between;  
         gap: 15px;  
       }  
       
-      .moveicon-short2 {  
+      .moveicon-summer2 {  
         margin-left: 2px;  
         margin-right: 2px;  
         margin-bottom: 0px;  
@@ -22,13 +21,13 @@
         vertical-align: middle;   
       }  
   
-      .card-image-short {  
+      .card-image-summer {  
         width: 100%;  
         height: 100%;  
         object-fit: cover;   
       }  
   
-      .card-title-short {  
+      .card-title-summer {  
         position: absolute;   
         bottom: 0;   
         right: 0;  
@@ -41,7 +40,7 @@
         box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
       }  
   
-      .tour-card-short {  
+      .tour-card-summer {  
         display: flex;  
         flex-direction: column;  
         background: white;  
@@ -59,18 +58,18 @@
         }  
       }  
   
-      .tour-image-short {  
+      .tour-image-summer {  
         width: 100%;  
         height: 168px;   
         object-fit: cover;   
         position: relative;   
       }  
   
-      .tour-image-container-short {  
+      .tour-image-container-summer {  
         position: relative;  
       }  
   
-      .tour-admin-short {  
+      .tour-admin-summer {  
         position: absolute;  
         top: 10px;  
         left: 10px;  
@@ -82,7 +81,7 @@
         z-index: 20;  
       }  
   
-      .admin-photo-short {  
+      .admin-photo-summer {  
         width: 30px;  
         height: 30px;  
         border-radius: 50%;  
@@ -95,11 +94,11 @@
       }  
   
       // Tour Info Styles  
-      .tour-info-short {  
+      .tour-info-summer {  
         display: flex;  
         flex-direction: column;  
   
-        .tour-name-short {  
+        .tour-name-summer {  
           font-size: 1em;  
           font-weight: bold;  
           margin-bottom: 0px;  
@@ -109,13 +108,13 @@
           color: #22487a;    
         }  
   
-        .tour-details-short {  
+        .tour-details-summer {  
           display: flex;  
           align-items: center;  
           margin-bottom: 0px;  
           margin-top: 0px;  
   
-          .tour-route-short {  
+          .tour-route-summer {  
             display: flex;  
             align-items: center;  
             margin-left: 10px;   
@@ -133,11 +132,11 @@
           }  
         }  
   
-        .tour-meta-short3 {  
+        .tour-meta-summer3 {  
           display: flex;   
           align-items: center;   
           margin-top: 12px;   
-          .trip-type-short {  
+          .trip-type-summer{  
             font-weight: bold;   
             margin-right: 7px;  
             margin-left: auto;  
@@ -146,11 +145,11 @@
             border-radius: 5px;   
             display: inline-block;  
           }  
-          .trip-type-short.economical {  
+          .trip-type2.economical {  
             background-color: #c8e6c9;   
             color: #388e3c;  
           }  
-          .trip-type-short.fancy {  
+          .trip-type2.fancy {  
             background-color: #f59e9e;  
             color: #e9362c;   
           }   
@@ -166,26 +165,26 @@
           color: #22487a;    
         }  
   
-        .tour-meta-short7 {  
+        .tour-meta-summer7 {  
           display: flex;  
           justify-content: space-between;  
   
-          .tour-date-short, .tour-length-short {  
+          .tour-date-summer, .tour-length-summer {  
             font-size: 0.9em;  
-          }        .tour-dates-short {  
+          }        .tour-dates-summer {  
             margin-bottom: 7px;  
             margin-left: 10px;  
             margin-top: 0px;  
             margin-right: 20px;  
           }  
   
-          .tour-length-short {  
+          .tour-length-summer {  
             margin-right: 15px;  
             margin-bottom: 10px;  
             margin-top: 0px;  
           }   
           
-          .moveicon-short3 {  
+          .moveicon-summer3 {  
             margin-left: 2px;  
             margin-right: 4px;  
             margin-bottom: 4px;  
@@ -193,8 +192,8 @@
             vertical-align: middle;   
           }  
   
-          .moveicon-short4 {  
-            margin-left: 4px;  
+          .moveicon-summer4 {  
+            margin-left :4px;  
             margin-right: 4px;  
             margin-bottom: 3px;  
             margin-top: 3px;   
@@ -224,7 +223,8 @@
     }  
   }  
   
-   @keyframes circular-animation {  
+  // Circular Animation Keyframes  
+  @keyframes circular-animation {  
     0% {  
       transform: rotate(0deg) scale(1);  
     }  

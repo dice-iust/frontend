@@ -30,9 +30,10 @@ function Navbar() {
               <FaBars />  
             </button>
         </header>
+        
+        </div>  
         <div className="search__container">  
         <input class="search__input" type="text" placeholder="Search ..." />
-        </div>  
       </div>
     </div>
   );

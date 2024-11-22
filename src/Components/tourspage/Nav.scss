@@ -44,7 +44,7 @@
    
     .home-back {  
         display: flex;   
-        background-image: url(../tourspage/Assests/home1.png);   
+        background-image: url(../tourspage/Assests/home.png);   
         background-size: cover;   
         background-repeat: no-repeat;  
         background-position: center;   
@@ -52,7 +52,7 @@
         flex-direction: column;   
         box-sizing: border-box;  
         
-        min-height: 100vh; /* Full viewport height */  
+        min-height: 105vh; /* Full viewport height */  
         width: 100%; /* Full width */  
         margin: 0; /* Reset margins */  
         padding: 0; /* Reset padding */  
@@ -114,6 +114,11 @@
     .search {  
     &__container {  
         padding-top: 390px;  
+        padding: 0; /* Set this to 0 or adjust for spacing */  
+        position: relative;  
+        margin-top: -30px; /* Use negative margin to pull it closer */  
+        align-self: center;  
+         
     }  
 
     &__input {  
@@ -149,11 +154,14 @@
             outline: 0;  
             border: 1px solid transparent;  
             border-bottom: 1px solid var(--lightMainColor);   
-            border-radius: 0;  
+            border-radius: 20px;  
         }  }
         
     }
-    
+    .trip-title
+    {
+        color:white;
+    }
     @media only screen and (max-width: 1024px) { 
         // .land-back {  
         //     height: auto; 
