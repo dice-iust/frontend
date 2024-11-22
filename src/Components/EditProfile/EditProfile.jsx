@@ -10,7 +10,7 @@ const EditProfile = () => {
     profilePicture: '',
     firstName: '',
     lastName: '',
-    username: '',
+    user_name: '',
     password: '',
     email: '',
     bio: '',
@@ -21,20 +21,25 @@ const EditProfile = () => {
   });
 
 const [isValidPassword, setIsValidPassword] = useState(false)
+const [isValidEmail, setValidEmail] = useState(false)
 
   const getFormData = ()=>{
+    // const auth = `Bearer ${localStorage.getItem("token")}`
     axios({
           method: 'get',
           url: 'https://triptide.pythonanywhere.com/editprofile/update',
-          responseType: 'json'
+          responseType: 'json',
+          // headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}
+          // headers:{Authorization: auth}
+          headers:{Authorization: localStorage.getItem("token")}
+          // headers:{Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNzMyMzA4NzIxLCJpYXQiOjE3MzIyMjIzMjF9.E3NO9aoryxrtRIUd14e_22GXEe5na5FES_6qGxwDAu8"}
         })
-          .then(function (response) {
-            // console.log(response)     
+          .then(function (response) {    
             setFormData({
               profilePicture: response.profilePicture,
               firstName: response.firstName,
               lastName: response.lastName,
-              username: response.username,
+              user_name: response.user_name,
               password: response.password,
               email: response.email,
               bio: response.bio,
@@ -54,12 +59,12 @@ const [isValidPassword, setIsValidPassword] = useState(false)
       profilePicture: formData.profilePicture,
               firstName: formData.firstName,
               lastName: formData.lastName,
-              user_name: formData.username,
+              user_name: formData.user_name,
               password: formData.password,
               email: formData.email,
               bio: formData.bio,
               gender: formData.gender,
-              birthDate: formData.birthDate,
+              birthDate: formData.birthDate.replace(/-/g, "/"),
               city: formData.city,
               phone: formData.phone,
     }
@@ -76,6 +81,7 @@ const [isValidPassword, setIsValidPassword] = useState(false)
 
 useEffect(()=>{
   const token = localStorage.getItem("token")
+  console.log(token)
   if (!token){
     navigate("/login"); 
   }
@@ -86,15 +92,15 @@ useEffect(()=>{
 const validatePassword = (password) => {  
   const hasLetters = /[a-zA-Z]/.test(password);  
   const hasNumbers = /\d/.test(password);  
-  const isLongEnough = password.length >= 6;   
+  const isLongEnough = password.length >= 8;   
   if (!hasLetters && !hasNumbers) {  
     return 'Password must contain letters and numbers';  
   }  
   if (!hasLetters && !isLongEnough ) {  
-    return 'must also contain letters and at least 6 symbols';  
+    return 'must also contain letters and at least 8 symbols';  
   }  
   if (!hasNumbers && !isLongEnough) {  
-    return 'must also contain digits and at least 6 symbols';  
+    return 'must also contain digits and at least 8 symbols';  
   }  
   if (!hasLetters ) {  
     return 'Password must contain letters';  
@@ -103,7 +109,18 @@ const validatePassword = (password) => {
     return 'Password must contain digits';  
   }  
   if (!isLongEnough) {  
-    return 'Password must be at least 6 characters long';  
+    return 'Password must be at least 8 characters long';  
+  }  
+  return '';  
+};  
+
+const validateEmail = (email) => {  
+  if (!email) {  
+    return 'Please fill out this field';  
+  }  
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
+  if (!emailPattern.test(email)) {  
+    return 'Not a valid email! example: email@example.com';  
   }  
   return '';  
 };  
@@ -111,8 +128,10 @@ const validatePassword = (password) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(validatePassword(formData.password))
+    console.log(e.target.value)
+
     validatePassword(formData.password) === ''? setIsValidPassword(false) : setIsValidPassword(true)
+    validateEmail(formData.email) === ''? setValidEmail(false) : setValidEmail(true)
   };
 
   const handleSubmit = (e) => {
@@ -151,16 +170,17 @@ const validatePassword = (password) => {
           </div>
           <label className="form-label">
             Username
-            <input type="text" name="username" className="form-input" value={formData.username} onChange={handleChange} />
+            <input type="text" name="user_name" className="form-input" value={formData.user_name} onChange={handleChange} />
           </label>
           <label className="form-label">
             Password
             <input type="password" name="password" className="form-input" value={formData.password} onChange={handleChange} />
-            {isValidPassword ? <div style={{color: "red",margin: "10px 10px", fontSize:"11px"}}>invalid password</div> : null}
+            {isValidPassword ? <div style={{color: "red",margin: "10px", fontSize:"11px"}}>invalid password</div> : null}
           </label>
           <label className="form-label">
             Email
             <input type="email" name="email" className="form-input" value={formData.email} onChange={handleChange} />
+            {isValidEmail ? <div style={{color: "red",margin: "10px", fontSize:"11px"}}>invalid email</div> : null}
           </label>
           <label className="form-label">
             Birth Date
