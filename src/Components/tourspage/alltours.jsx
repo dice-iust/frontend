@@ -1,7 +1,7 @@
 // import React from 'react'; 
 import './alltours.scss'; 
 
-import axios  from "axios";
+import axios  from "../../api/axios.js";
 import React, { useEffect, useState } from "react"; 
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
@@ -34,6 +34,7 @@ const TourList = () => {
           try {  
               const response = await axios.get(PopularTravels_URL);  
               setData(response.data);  
+              console.log(response.data);
           } catch (error) {  
               console.error("Error fetching data:", error);  
           }  
@@ -383,59 +384,58 @@ const TourList = () => {
 <br></br>
       <h1>Popular Trips</h1> 
       <br></br> 
-      <Slider {...settings}>  
-      {data.Popular_Trips
-  .sort((a, b) => b.travellers - a.travellers)  
-  .slice(0, 5)  
-  .map((tour) => (  
-    <div key={tour.id} className="tour-card">  
-      <div className="tour-image-container">  
-        <img  
-          src={tour.image_url}  
-          alt={`Image of ${tour.name}`}  
-          className="tour-image"  
-        />  
-        {tour.admin && (  
-          <div className="tour-admin">  
-            <img  
-              src={tour.admin.phrofile_image}  
-              alt={`Profile of ${tour.admin.user_name}`}  
-              className="admin-photo"  
-            />  
-            {tour.admin.user_name}  
-          </div>  
+      {data && data.Popular_Trips ? (  
+          <Slider {...settings}>  
+            {data.Popular_Trips.slice(0, 5).map((tour) => (  
+              <div key={tour.id} className="tour-card">  
+                <div className="tour-image-container">  
+                  <img  
+                    src={tour.image_url}  
+                    alt={`Image of ${tour.name}`}  
+                    className="tour-image"  
+                  />  
+                  {tour.admin && (  
+                    <div className="tour-admin">  
+                      <img  
+                        src={tour.admin__phrofile_image}  
+                        alt={`Profile of ${tour.admin__user_name}`}  
+                        className="admin-photo"  
+                      />  
+                      {tour.admin.user_name}  
+                    </div>  
+                  )}  
+                </div>  
+                <div className="tour-info">  
+                  <p className="tour-meta3">  
+                    <span className="tour-name">{tour.name}</span>  
+                    <div className={`trip-type ${tour.mode}`}>  
+                      <GrMoney aria-hidden="true" />  
+                      {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)}  
+                    </div>  
+                  </p>  
+                  <div className="tour-details">  
+                    <p className="tour-route">  
+                      <span className="tour-text">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+                    </p>  
+                  </div>  
+                  <div className="tour-meta">  
+                    <p className="tour-dates">  
+                      <FaRegCalendar className='moveicon3' />  
+                      <span>{formatDate(tour.start_date)}</span>  
+                    </p>  
+                    <FaArrowRight className='moveicon4' />  
+                    <p className="tour-length" style={{ textAlign: "center" }}>  
+                      <FaUndoAlt className='moveicon3' />  
+                      {formatDate(tour.end_date)}  
+                    </p>  
+                  </div>  
+                </div>  
+              </div>  
+            ))}  
+          </Slider>  
+        ) : (  
+          <p>Loading popular trips...</p>  
         )}  
-      </div>  
-      <div className="tour-info">  
-      <p className="tour-meta3">  
-      <span className="tour-name">{tour.name}</span>  
-      <div className={`trip-type ${tour.mode}`}>  
-          <GrMoney aria-hidden="true" />{" "}  
-          {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)} 
-        </div>  
-        
-      </p>  
-        <div className="tour-details">  
-        <p className="tour-route">  
-    <span className="tour-text">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
-    {/* This renders the icon */}  
-</p>  
-        </div>  
-        <div className="tour-meta">  
-          <p className="tour-dates">  
-            <FaRegCalendar className='moveicon3' />  
-            <span>{formatDate(tour.start_date)}</span>  
-          </p>  
-          <FaArrowRight className='moveicon4' />  
-          <p className="tour-length" style={{ textAlign: "center" }}>  
-            <FaUndoAlt className='moveicon3' />  
-            {formatDate(tour.end_date)}  
-          </p>  
-        </div>  
-      </div>  
-    </div>  
-  ))}
-</Slider>
 <br></br>
 <br></br>
 <br></br>
