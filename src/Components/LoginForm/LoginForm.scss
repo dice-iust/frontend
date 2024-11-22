@@ -1,31 +1,65 @@
-
-
- .wrapper {  
+.LoginForm {  
+    background-color: #fefdfd;  
     width: 100%;  
-    max-width: 420px; 
-    background: #fff;  
-    border: 2px solid rgba(255,255,255,.2);  
-    box-shadow: 0 0 10px rgba(0,0,0,.2);  
-    color: #22487a;  
-    border-radius: 15px;  
-    padding: 30px 20px; 
+    min-height: 100vh;  
     display: flex;  
-    flex-direction: column; 
-    margin: auto; 
-    filter: drop-shadow();
+    justify-content: center;  
+    align-items: center;  
 }  
 
-.wrapper h1 {  
+.wrapperLogin {  
+    background:  #22487a;  
+    display: flex;   
+    width: 100%;  
+    max-width: 900px;   
+    height: auto;  
+    box-shadow: 50px 50px 50px  rgba(0, 0, 0, 0.2);   
+    border-radius: 15px;   
+    border: 2px solid rgba(3, 2, 2, 0.2);
+    box-shadow: 50px 50px 50px  rgba(0, 0, 0, 0.2);   
+    // overflow: hidden;  
+    align-items: stretch; 
+    position: relative;
+    // z-index: 10; 
+}  
+
+.form-container {   
+    background: #fff;  
+    padding: 20px 20px;   
+    width: 40%; 
+    display: flex;  
+    flex-direction: column;   
+    color: #22487a;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2); 
+}  
+
+.image-container {   
+    width: 60%;   
+    background-size: cover;   
+    background-position: center;  
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}  
+
+.image-container img {  
+    width: 100%;  
+    height: 100%;   
+}
+
+.wrapperLogin h1 {  
     font-size: 36px;  
     text-align: center;  
+    margin-bottom: 20px;
 }  
 
-.wrapper .input-box {  
+.input-box {  
     position: relative;  
     width: 100%;  
     height: 50px;  
     color: #22487a;  
-    margin: 15px 0; 
+    margin: 15px 0;   
 }  
 
 .input-box input {  
@@ -38,6 +72,7 @@
     font-size: 16px;  
     color: #22487a;  
     padding: 20px 45px 20px 20px;  
+    transition: border-color 0.3s; 
 }  
 
 .input-box input::placeholder {  
@@ -52,7 +87,7 @@
     font-size: 16px;  
 }  
 
-.wrapper .remember-forgot {  
+.remember-forgot {  
     display: flex;  
     justify-content: space-between;  
     font-size: 14.5px;  
@@ -60,41 +95,46 @@
 }  
 
 .remember-forgot label input {  
-    accent-color: #0396c7;  
-    margin-right: 4px;  
-    margin-top: 16px;  
+    accent-color: rgb(234, 110, 12);  
+    margin-left: 10px;  
+    margin-top: 18px;  
 }  
 
 .remember-forgot a {  
     color: #13053e;  
     text-decoration: none;  
     font-weight: 600;  
-    margin-top: 10px; 
+    margin-top: 16px;   
 }  
 
 .remember-forgot a:hover {  
     text-decoration: underline;  
+    color: rgb(234, 110, 12);  
 }  
 
-.wrapper button {  
+.wrapperLogin button {  
     width: 100%;  
     height: 45px;  
-    background: #22487a;  
+    background-color: #22487a;  
     border: none;  
     outline: none;  
     border-radius: 40px;  
-    box-shadow: 0 0 10px rgba(0,0,0,.1);  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  /* Softer button shadow */  
     cursor: pointer;  
     font-size: 16px;  
     color: #f7f1f1;  
     font-weight: 700;  
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;   
 }  
 
-.wrapper button:hover {  
-    transform: scale(1.05); 
+.wrapperLogin button:hover {  
+    background-color: rgb(234, 110, 12);  
+    color: #fff;  
+    transform: translateY(-2px);   
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */  
 }  
 
-.wrapper .register-link {  
+.register-link {  
     font-size: 14.5px;  
     text-align: center;  
     margin: 20px 0 15px;  
@@ -107,70 +147,78 @@
 }  
 
 .register-link p a:hover {  
-    text-decoration: underline;  
+    text-decoration: underline;   
+    color: rgb(234, 110, 12);   
 }  
 
 /* Responsive Styles */  
 
-@media (max-width: 500px) {  
-    .wrapper {  
-        padding: 25px 10px;
+@media (max-width: 700px) {  
+    .wrapperLogin {  
+        flex-direction: column;   
+        max-width: 100%;   
+        padding: 10px; /* Added padding for mobile */  
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for mobile */  
     }  
 
-    .wrapper h1 {  
-        font-size: 25px;
+    .form-container {  
+        width: 100%;   
+        padding: 0;  
+    }  
+
+    .image-container {  
+        display: none;   
+    }  
+
+    .wrapperLogin h1 {  
+        font-size: 25px;  
     }  
 
     .input-box input {  
-        font-size: 14px;
+        font-size: 14px;  
     }  
 
     .remember-forgot {  
-        font-size: 13px; 
+        font-size: 13px;   
     }  
 
-    .wrapper button {  
-        height: 40px; 
-        font-size: 14px;
+    .wrapperLogin button {  
+        height: 40px;   
+        font-size: 14px;  
     }  
 
-    .wrapper .register-link {  
+    .register-link {  
         font-size: 13px;   
     }  
 }  
 
 @media (min-width: 500px) {  
-    .wrapper {  
-        padding: 40px 30px; 
-        box-shadow: 0 0 15px rgba(0,0,0, 0.3); 
-        width:420px; 
+    .wrapperLogin {  
+        padding: 40px 30px;   
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);   
     }  
 
-    .wrapper h1 {  
-        font-size: 40px; 
+    .wrapperLogin h1 {  
+        font-size: 40px;   
     }  
 
     .input-box input {  
-        font-size: 16px;
-        padding: 20px 60px; 
+        font-size: 16px;  
+        padding: 20px 60px;   
     }  
 
     .remember-forgot {  
-        font-size: 15px;
+        font-size: 15px;  
         margin: 0 0 20px;   
     }  
 
-    .remember-forgot a {  
-        margin-top: 15px;
-    }  
-
-    .wrapper button {  
+    .wrapperLogin button {  
         height: 50px;  
-        font-size: 18px; 
+        font-size: 18px;   
     }  
 
-    .wrapper .register-link {  
-        font-size: 15px; 
+    .register-link {  
+        font-size: 15px;   
         margin: 25px 0 20px;  
     }  
-}  
+} 

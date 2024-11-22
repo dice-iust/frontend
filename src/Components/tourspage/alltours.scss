@@ -1,0 +1,415 @@
+.travelpage {  
+  text-align: center;  
+  // background-color: #f9f9f9; 
+  // display: flex; 
+  padding: 2px;  
+  // display: flex;
+
+  .tour-list-container {  
+    max-width: 1320px;  
+    margin: 0 auto; 
+     
+    
+
+    .tour-list {  
+       
+      display: flex;  
+      flex-wrap: wrap;  
+      justify-content: space-between;  
+    } 
+    
+    .popular-trips-box {  
+      
+      
+      background-color: #22487a;
+      position: relative;  
+      padding: 20px;
+      border-radius: 8px; 
+      margin-bottom: 20px; 
+      
+    }
+
+    .blue-box {  
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      background-color: #22487a; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+    }
+
+    .category-cards {  
+      display: flex;  
+      flex-wrap: wrap;  
+      justify-content: center;  
+      gap: 40px; 
+      margin-left: 125px;
+      margin-right: 125px;
+      
+    }  
+
+    .card {  
+      width: 170px;
+      height :155px; 
+      position: relative;
+      
+      
+      
+      border: 2px solid rgba(34, 72, 122, 0.5); 
+      border-radius: 8px; 
+      overflow: hidden; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      transition: transform 0.3s;  
+
+      &:hover {  
+        transform: scale(1.05); 
+      }  
+    }  
+    .moveicon2 {  
+      margin-left:2px;
+      margin-right: 2px;
+      margin-bottom: 0px; 
+      margin-top: 0px;   
+      vertical-align: middle;   
+  }  
+
+    .card-image {  
+      width: 100%;  
+      height: 100%;  
+      object-fit: cover; 
+    }  
+
+    .card-title {  
+      position: absolute; /* Position it absolutely within the card */  
+      bottom: 0px; /* Position from the bottom */  
+      right: 0px;
+      margin-bottom: 0px; /* Position from the right */  
+      font-size: 1rem;  
+      color: #22487a; /* Change text color to black for contrast */  
+      background: #fff; /* Set background to white */  
+      padding: 5px 5px; /* Add some padding for aesthetics */  
+      border-radius: 2px; /* Rounded corners for the title background */  
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); /* Optional: add shadow for better visibility */  
+  }  
+
+    .tour-card {  
+      display: flex;  
+      flex-direction: column;  
+      background: white;  
+      border-radius: 10px;  
+      overflow: hidden;  
+      margin: 0 15px;  
+      width: 220px;   
+      transition: transform 0.3s;  
+      position: relative;  
+      border: 2px solid rgba(34, 72, 122, 0.5);  
+  
+      &:hover {  
+          transform: scale(1.04);   
+          box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
+      }  
+  }  
+  
+  .tour-image {  
+      width: 100%;  
+      height: 150px;   
+      object-fit: cover; 
+      position: relative; 
+  }  
+
+  .tour-image-container {  
+    position: relative;  
+}  
+
+
+
+    .tour-admin {  
+      position: absolute; /* Position the admin section absolutely */  
+      top: 10px; /* Adjust as needed */  
+      left: 10px; /* Adjust as needed */  
+      display: flex; /* Use flex to align image and name */  
+      align-items: center; /* Center the items vertically */  
+      background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a background for better visibility */  
+      padding: 2px; /* Optional: Add some padding */  
+      border-radius: 5px; /* Optional: Rounded corners for better appearance */  
+      z-index: 20; /* Ensure it stays above other elements */  
+    }  
+
+    .admin-photo {  
+      width: 30px; /* Adjust size as necessary */  
+      height: 30px; /* Adjust size as necessary */  
+      border-radius: 50%; /* Make the image circular */  
+      margin-right: 5px; /* Spacing between image and name */  
+    }
+    .admin-photo:hover {  
+      transform: scale(1.05); /* Enlarge on hover for interactivity */  
+    }  
+
+    
+  
+  .tour-info {  
+      
+      display: flex;  
+      flex-direction: column;  
+  
+      .tour-name {  
+          font-size: 1em;  
+          font-weight: bold;  
+          margin-bottom: 0px;  
+          margin-top: 3px;
+          margin-left: 10px;
+          align-self: flex-start;
+          color: #22487a;    
+      }  
+  
+      .tour-details {  
+          display: flex;  
+         
+          align-items: center;  
+          margin-bottom: 0px;  
+          margin-top: 0px;
+          
+          
+  
+          .tour-route {  
+            display: flex; /* Use flexbox for alignment */  
+            align-items: center; /* Center the icon with respect to text */  
+            margin-left: 10px;   
+            margin-top: 0px;   
+            font-size: 0.9em;  
+            margin-bottom: 10px;  
+        }  
+        
+        .moveicon {  
+            margin-left:2px;
+            margin-right: 2px;
+            margin-bottom: 2px; /* Add horizontal spacing around the icon */  
+            margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
+            vertical-align: middle; /* Ensure the icon aligns well with text */  
+        }  
+      }  
+
+      
+
+ 
+
+      
+      .tour-meta3 {  
+        display: flex; 
+        align-items: center; 
+        margin-top: 12px ; 
+        .trip-type {
+          
+          font-weight: bold; 
+          margin-right: 7px;
+          margin-left: auto;  
+          font-size: 1em; 
+          padding: 4px 8px; 
+          border-radius: 5px; 
+          display: inline-block;
+           
+        }  
+        .trip-type.Budget-friendly {  
+          background-color: #c8e6c9; 
+          color: #388e3c;  
+        }  
+        .trip-type.Fancy {  
+          background-color: #f59e9e;
+          color: #e9362c; 
+        } 
+       
+      }  
+      
+      
+    
+    
+  
+      
+      .tour-name {  
+        font-size: 1em;  
+          font-weight: bold;  
+          margin-bottom: 0px;  
+          margin-top: 3px;
+          margin-left: 10px;
+          align-self: flex-start;
+          color: #22487a;    
+      }  
+  
+      .tour-meta {  
+          display: flex;  
+          justify-content: space-between;
+         
+          
+  
+          .tour-date, .tour-length {
+              
+              font-size: 0.9em;  
+          }
+         
+      
+          .tour-dates {  
+              margin-bottom: 7px;
+              margin-left: 10px;
+              margin-top:0px;
+          }  
+      
+          .tour-length {  
+               margin-right: 15px;
+              margin-bottom: 10px;
+              margin-top:0px;  
+        } 
+        
+        .moveicon3 {  
+          margin-left:2px;
+          margin-right: 4px;
+          margin-bottom: 4px;
+          margin-top: 0px;   
+          vertical-align: middle; 
+      }  
+
+      .moveicon4 {  
+        margin-left:4px;
+        margin-right: 4px;
+        margin-bottom: 3px;  
+        margin-top: 3px;   
+        vertical-align: middle; 
+    }  
+      }  
+  
+      .tour-admin {  
+          display: flex;  
+          align-items: center;  
+          justify-content: flex-start;  
+  
+          .admin-photo { 
+            margin-left: 10px;
+            margin-bottom: 2px; 
+              width: 25px;  
+              height: 25px;  
+              border-radius: 50%;  
+              margin-right: 5px;  
+          }  
+  
+          span {  
+              font-weight: bold;  
+          }  
+      }  
+  
+    }  
+
+ 
+    .slick-track {
+      display: flex;
+      gap: 1rem;
+  }
+    .slick-prev,
+  .slick-next
+  {
+      font-size: 0;
+      line-height: 0;
+
+      position: absolute;
+      top: 50%;
+
+      display: block;
+
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+
+      cursor: pointer;
+
+      color: transparent;
+      border: none;
+      outline: none;
+      background: transparent;
+  }
+  .slick-prev:hover,
+  .slick-prev:focus,
+  .slick-next:hover,
+  .slick-next:focus
+  {
+      color: transparent;
+      outline: none;
+      background: transparent;
+  }
+  .slick-prev:hover:before,
+  .slick-prev:focus:before,
+  .slick-next:hover:before,
+  .slick-next:focus:before
+  {
+      opacity: 1;
+  }
+  .slick-prev.slick-disabled:before,
+  .slick-next.slick-disabled:before
+  {
+      opacity: .25;
+  }
+
+  .slick-prev:before,
+  .slick-next:before
+  {
+      font-family: 'slick';
+      font-size: 20px;
+      line-height: 1;
+
+      opacity: .75;
+      color: rgba(34, 72, 122, 0.5);
+
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slick-prev
+  {
+      left: -20px;
+  }
+  [dir='rtl'] .slick-prev
+  {
+      right: -25px;
+      left: auto;
+  }
+  .slick-prev:before
+  {
+      content: '←';
+  }
+  [dir='rtl'] .slick-prev:before
+  {
+      content: '→';
+  }
+
+  .slick-next
+  {
+      right: -20px;
+  }
+  [dir='rtl'] .slick-next
+  {
+      right: auto;
+      left: -25px;
+  }
+  .slick-next:before
+  {
+      content: '→';
+  }
+  [dir='rtl'] .slick-next:before
+  {
+      content: '←';
+  }
+
+  
+    
+        
+     
+  }  
+}

@@ -1,0 +1,316 @@
+
+.LandingForm {  
+  background-image: white;
+  background-position: center;  
+  display: flex;  
+  justify-content: center;  
+  align-items: flex-start;   
+  width: 100%;  
+  height: 100vh;  
+}  
+
+.land-back {  
+  height: 100vh;  
+  width: 100vw;  
+  display: flex;  
+  background-image: url(../Assets/back3.png);  
+  background-size: cover;  
+  background-repeat: no-repeat;  
+  background-position: center center;  
+  flex-direction: column; 
+  box-sizing: border-box;  
+  position: relative; 
+  z-index: 0;  
+  @media (max-width: 768px) {  
+    // background-image: url(../Assets/phone-back.png); // Change image for smaller screens  
+  } 
+}  
+
+
+img {  
+  max-width: 100%;  
+  height: auto;  
+}  
+  
+
+.container {  
+  position: relative;  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  width: 100%;
+  margin-top: -15px;
+}  
+
+  
+header .container {  
+  padding: 20px; 
+}  
+
+ 
+.logo {  
+  display: flex;  
+  align-items: center;  
+  cursor: pointer;  
+}  
+ 
+.logo img {  
+  width: 45px;   
+  margin-right: 0.6rem;  
+}  
+
+ 
+.logo h3 {  
+  color: #11354d;  
+  font-size: 1.65rem; /* Increased size for visibility */  
+  line-height: 1.2;  
+  font-weight: 700;  
+}  
+
+
+.links ul {  
+  display: flex;  
+  list-style: none;  
+  align-items: center;  
+}  
+.links a {  
+  color: #22487a;  
+  margin-left: 2rem; /* Reduced spacing for compactness */  
+  display: inline-block;  
+  transition: color 0.3s, transform 0.3s, text-decoration 0.3s; /* Include text-decoration in transition */  
+  font-size: 500;  
+  font-weight: 800;  
+  text-decoration: none; /* Remove underline by default */  
+}  
+
+.links a:hover {  
+  color: #EA6E0C;  
+  transform: scale(1.05);  
+  text-decoration: underline; /* Add underline on hover */  
+}  
+
+
+.content-center {  
+  display: flex;  
+  flex-direction: column;    /* Stack text and button vertically */  
+  align-items: center;       /* Center horizontally */  
+  justify-content: flex-start; /* Align items to the top, not center */  
+  height: calc(100vh - 60px); /* Adjust this value to the height of your navbar */  
+  padding: 2rem;             /* Padding for spacing */  
+  padding-top: 8px;        /* Add extra padding if needed for spacing below the navbar */  
+  text-align: center;        /* Center text alignment */  
+  position: relative;        /* Positioning within the container */  
+  z-index: 1;                /* Maintain layer order */  
+  margin-top: 10px;          /* Center text alignment */  
+}
+
+.title {  
+  font-size: 80px;  
+  font-weight: 600;  
+  letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);  
+  position: relative;  
+  overflow: hidden;  
+  margin: 0;  
+  color: white; /* Default text color */  
+  z-index: 3; /* Ensure text is above aurora */  
+  animation: textColorChange 6s linear infinite; /* Add text color change animation */ 
+  margin-top: -2px; 
+}  
+
+
+@keyframes textColorChange {  
+  0%, 100% { color: #eee; }  
+  25% { color:#5767aa; }  
+  50% { color: #22487a; }  
+  75% { color: rgb(234,110,12); }  
+}  
+
+
+
+ 
+.btn2 {  
+  padding: 1rem 1.5rem;  
+  background-color: #22487a;  
+  text-decoration: none;
+  outline: none;  
+  border: none;  
+  border-radius: 5rem;  
+  font-size: 1.1rem;  
+  cursor: pointer;  
+  font-weight: 600;  
+  color: white;  
+  transition: background-color 0.2s, transform 0.2s;   
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  margin-left: 12rem;  
+  margin-right: 13rem;  
+}  
+.btn2 svg {  
+  margin-left: 1rem;   
+  font-size: 1.5rem;  
+  opacity: 0;   
+  transition: opacity 0.2s;  
+}  
+.btn2:hover {  
+  background-color: #e36b2f;  
+  transform: translateX(-5px);
+  
+}  
+.btn2:hover svg {  
+  opacity: 1;   
+}  
+.btn2:not(:hover) svg {  
+  display: none;   
+}  
+
+
+// @media (max-width: 768px) {  
+//   .links a {  
+//     margin-left: 1rem; /* Reduce margin for smaller screens */  
+//   }  
+  
+//   .logo h3 {  
+//     font-size: 1.5rem; /* Adjust
+//         /* Adjust logo text size for smaller screens */  
+//         font-size: 1.5rem;  
+//       }  
+    
+//       .title {  
+//         font-size: 6vw; /* Adjust title font size for smaller devices */  
+//       }  
+    
+//       .btn2 {  
+//         font-size: 1rem; /* Slightly smaller button text */  
+//         padding: 0.8rem 1.2rem; /* Adjust padding for button */  
+//       }  
+//     }  
+    
+//     @media (max-width: 480px) {  
+//       .logo img {  
+//         width: 20vw; /* Further resize logo for very small screens */  
+//         max-width: 40px; /* Cap max width */  
+//       }  
+    
+//       .logo h3 {  
+//         font-size: 1rem; /* Reduce the logo name size */  
+//       }  
+    
+//       .links a {  
+//         margin-left: 0.5rem; /* Smaller margins for links */  
+//         font-size: 0.9rem; /* Smaller font size for links */  
+//       }  
+    
+//       .title {  
+//         font-size: 10vw; /* Larger adjustment for mobile */  
+//       }  
+    
+//       .btn2 {  
+//         width: 90%; /* Make button full width */  
+//         padding: 0.5rem; /* Adjust padding */  
+//         margin: 1rem 0; /* Add some vertical space */  
+//       }  
+//     }
+
+     
+@media (max-width: 480px) { 
+  .land-back{
+    background-image: url(../Assets/480.png); 
+    background-size: contain;
+    background-size: cover;
+  }
+  .links a {  
+    margin-left: .2rem; /* Reduce margin for smaller screens */  
+  }  
+  .logo{
+    cursor: pointer;  
+
+  }
+  .links a {  
+    
+    font-size: 15px;  
+   
+  } 
+  
+  .logo img {  
+    width: 35vw; /* Further resize logo for very small screens */  
+    max-width: 30px; /* Cap max width */  
+  }    
+  .logo h3 {  
+    font-size: 0.75rem;     
+  }  
+
+  .title {  
+    font-size: 10vw; /* Larger adjustment for mobile */
+    margin-top: 80px;  
+  }  
+
+  .btn2 {  
+    width: 50%; /* Make button full width */  
+    padding: 0.5rem; /* Adjust padding */  
+    margin: 1rem 0; /* Add some vertical space */  
+  }    
+}  
+
+/* Medium devices (tablets) */  
+@media (min-width: 481px) and (max-width: 768px) {  
+  .links a {  
+    margin-left: .5rem; /* Reduce margin for smaller screens */  
+  }  
+  .logo{
+    cursor: pointer;  
+
+  }
+  
+  
+  .logo h3 {  
+    
+        font-size: 1.5rem;  
+    }  
+    
+    .title {  
+      margin-top: 40px;
+      font-size: 6vw; /* Adjust title font size for smaller devices */ 
+      margin-top: 40px;  
+ 
+    }  
+    
+    .btn2 {  
+      font-size: 1rem; /* Slightly smaller button text */  
+      padding: 1rem .5rem; /* Adjust padding for button */ 
+      width: 30%;  
+    }   
+}  
+
+/* Large devices (laptops) */  
+@media (min-width: 769px) and (max-width: 1023px) {  
+  .links a {  
+    margin-left: 1rem; /* Reduce margin for smaller screens */  
+  }  
+  .logo{
+    cursor: pointer;  
+
+  }
+  
+  .logo h3 {  
+    font-size: 1.5rem; 
+          
+        font-size: 1.5rem;  
+      }  
+    
+      .title {  
+        margin-top: 15px;
+        font-size: 6vw; /* Adjust title font size for smaller devices */
+        margin-top: 15px;  
+      }  
+    
+      .btn2 {  
+        font-size: 1rem; /* Slightly smaller button text */  
+      padding: 1.5rem .5rem; /* Adjust padding for button */ 
+      width: 20%; 
+      }  
+    }  
+    
+    
+  
+ 
