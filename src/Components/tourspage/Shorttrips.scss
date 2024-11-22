@@ -4,7 +4,7 @@
     padding: 2px;  
   
     .tour-list-container-short {  
-      max-width: 2000px;  
+      max-width: 1000px;  
       margin: 0 auto;  
   
       .tour-list-short {  
@@ -47,7 +47,7 @@
         background: white;  
         border-radius: 10px;  
         overflow: hidden;  
-        width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+        width: calc(50% - 10px); /* Three cards per row with consistent gap */  
         height: 300px;   
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
@@ -146,11 +146,11 @@
             border-radius: 5px;   
             display: inline-block;  
           }  
-          .trip-type-short.economical {  
+          .trip-type-short.Budget-friendly {  
             background-color: #c8e6c9;   
             color: #388e3c;  
           }  
-          .trip-type-short.fancy {  
+          .trip-type-short.Fancy {  
             background-color: #f59e9e;  
             color: #e9362c;   
           }   
