@@ -1,22 +1,22 @@
 .economial {  
-    text-align: center;  
-    // background-color: #f9f9f9;  
+    text-align: center;   
     padding: 2px;  
   
-    .tour-list-container2 {  
+    .tour-list-container-economical {  
       max-width: 2000px;  
       margin: 0 auto;  
       
   
-      .tour-list2 {  
+      .tour-list-economical {  
          
         display: flex;  
         flex-wrap: wrap;  
         justify-content: space-between;  
+        gap: 15px;
       } 
       
        
-      .moveicon2 {  
+      .moveicon-economical2 {  
         margin-left:2px;
         margin-right: 2px;
         margin-bottom: 0px; 
@@ -24,13 +24,13 @@
         vertical-align: middle;   
     }  
   
-      .card-image2 {  
+      .card-image-economical {  
         width: 100%;  
         height: 100%;  
         object-fit: cover; 
       }  
   
-      .card-title2 {  
+      .card-title-economical {  
         position: absolute; 
         bottom: 0px; 
         right: 0px;
@@ -38,51 +38,47 @@
         font-size: 1rem;  
         color: #22487a;  
         background: #fff; 
-        padding: 5px 5px; 
+        padding: 5px ; 
         border-radius: 2px; 
         box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
     }  
   
-      .tour-card2 {  
+      .tour-card-economical {  
         display: flex;  
-        flex-direction: column;  
-        background: white;  
-        border-radius: 10px;  
-        overflow: hidden;
-        margin-top: 20px;  
-        margin-bottom: 25px;  
-        margin-left: 20px;
-        margin-right: 20px;
-        width: 460px;
-        height: 400px;   
-        transition: transform 0.3s;  
-        position: relative;  
-        border: 2px solid rgba(34, 72, 122, 0.5);  
-    
+      flex-direction: column;  
+      background: white;  
+      border-radius: 10px;  
+      overflow: hidden;  
+      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+      height: 300px;   
+      transition: transform 0.3s, box-shadow 0.3s;  
+      position: relative;  
+      border: 2px solid rgba(34, 72, 122, 0.5);  
+  
         &:hover {  
-            transform: scale(1.04);   
-            box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
+          animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+          box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
         }  
     }  
     
-    .tour-image2 {  
+    .tour-image-economical {  
         width: 100%;  
-        height: 250px;   
+        height: 168px;   
         object-fit: cover; 
         position: relative; 
     }  
   
-    .tour-image-container2 {  
+    .tour-image-container-economical {  
       position: relative;  
   }  
   
   
   
-      .tour-admin2 {  
-        position: absolute; /* Position the admin section absolutely */  
-        top: 10px; /* Adjust as needed */  
-        left: 10px; /* Adjust as needed */  
-        display: flex; /* Use flex to align image and name */  
+      .tour-admin-economical {  
+        position: absolute;
+        top: 10px; 
+        left: 10px;  
+        display: flex; 
         align-items: center; /* Center the items vertically */  
         background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a background for better visibility */  
         padding: 2px; /* Optional: Add some padding */  
@@ -90,7 +86,7 @@
         z-index: 20; /* Ensure it stays above other elements */  
       }  
   
-      .admin-photo2 {  
+      .admin-photo-economical {  
         width: 30px; /* Adjust size as necessary */  
         height: 30px; /* Adjust size as necessary */  
         border-radius: 50%; /* Make the image circular */  
@@ -102,12 +98,12 @@
   
       
     
-    .tour-info2 {  
+    .tour-info-economical {  
         
         display: flex;  
         flex-direction: column;  
     
-        .tour-name2 {  
+        .tour-name-economical{  
             font-size: 1em;  
             font-weight: bold;  
             margin-bottom: 0px;  
@@ -117,7 +113,7 @@
             color: #22487a;    
         }  
     
-        .tour-details2 {  
+        .tour-details-economical{  
             display: flex;  
            
             align-items: center;  
@@ -126,7 +122,7 @@
             
             
     
-            .tour-route2 {  
+            .tour-route-economical {  
               display: flex; /* Use flexbox for alignment */  
               align-items: center; /* Center the icon with respect to text */  
               margin-left: 10px;   
@@ -135,7 +131,7 @@
               margin-bottom: 10px;  
           }  
           
-          .moveicon {  
+          .moveicon-economical {  
               margin-left:2px;
               margin-right: 2px;
               margin-bottom: 2px; /* Add horizontal spacing around the icon */  
@@ -149,11 +145,11 @@
    
   
         
-        .tour-meta3 {  
+        .tour-meta-economical3 {  
           display: flex; 
           align-items: center; 
           margin-top: 12px ; 
-          .trip-type2 {
+          .trip-type-economical {
             
             font-weight: bold; 
             margin-right: 7px;
@@ -164,11 +160,11 @@
             display: inline-block;
              
           }  
-          .trip-type2.economical {  
+          .trip-type-economical.economical {  
             background-color: #c8e6c9; 
             color: #388e3c;  
           }  
-          .trip-type2.fancy {  
+          .trip-type-economical.fancy {  
             background-color: #f59e9e;
             color: #e9362c; 
           } 
@@ -190,32 +186,32 @@
             color: #22487a;    
         }  
     
-        .tour-meta7 {  
+        .tour-meta-economical7 {  
             display: flex;  
             justify-content: space-between;
            
             
     
-            .tour-date2, .tour-length2 {
+            .tour-date-economical2, .tour-length-economical2 {
                 
                 font-size: 0.9em;  
             }
            
         
-            .tour-dates2 {  
+            .tour-dates-economical2 {  
                 margin-bottom: 7px;
                 margin-left: 10px;
                 margin-top:0px;
                 margin-right: 20px;
             }  
         
-            .tour-length2 {  
+            .tour-length-economical2 {  
                 margin-right: 15px;
                 margin-bottom: 10px;
                 margin-top:0px;  
           } 
           
-          .moveicon3 {  
+          .moveicon-economical3 {  
             margin-left:2px;
             margin-right: 4px;
             margin-bottom: 4px;
@@ -223,7 +219,7 @@
             vertical-align: middle; 
         }  
   
-        .moveicon4 {  
+        .moveicon-economical4 {  
           margin-left:4px;
           margin-right: 4px;
           margin-bottom: 3px;  
@@ -252,10 +248,16 @@
         }  
     
       }  
-  
-   
-      
-          
-       
+    }  
+  }
+  @keyframes circular-animation {  
+    0% {  
+      transform: rotate(0deg) scale(1);  
+    }  
+    50% {  
+      transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
+    }  
+    100% {  
+      transform: rotate(0deg) scale(1); /* Returning to original state */  
     }  
   }
