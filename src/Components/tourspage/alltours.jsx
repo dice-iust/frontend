@@ -48,7 +48,7 @@ const TourList = () => {
         { id: 'Autumn', name: 'Autumn Trips', image: 'https://img.freepik.com/free-vector/hand-drawn-flat-autumn-illustration_23-2149102842.jpg' }, 
         { id: 'Winter', name: 'Winter Trips', image: 'https://img.freepik.com/free-vector/flat-christmas-travel-illustration_23-2149739903.jpg' },  
         { id: 'Fancy', name: 'Fancy Trips', image: 'https://img.freepik.com/free-vector/local-tourism-concept_52683-42353.jpg' },  
-        { id: 'Economical', name: 'economical Trips', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
+        { id: 'Economical', name: 'Economical Trips', image: 'https://img.freepik.com/premium-vector/happy-girl-makes-money_203228-281.jpg' },  
       ];  
 
 
