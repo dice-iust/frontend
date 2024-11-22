@@ -325,7 +325,7 @@ const Spring = () => {
     const currentDate = new Date();  
     
     return (  
-      <div>  
+      <div className='spring' >  
         <Travelsnav/>
           <div className="tour-list-container2">  
               <div className="tour-list2">  
@@ -384,7 +384,8 @@ const Spring = () => {
                       );  
                   })}  
               </div>  
-          </div>  
+          </div> 
+          <br></br> 
           <Footer />  
       </div>  
   );  

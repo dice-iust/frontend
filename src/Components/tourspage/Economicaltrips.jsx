@@ -325,7 +325,7 @@ const Economical = () => {
     const currentDate = new Date();  
     
     return (  
-      <div>  
+      <div className='economial'>  
         <Travelsnav/>
           <div className="tour-list-container2">  
               <div className="tour-list2">  

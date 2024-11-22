@@ -325,7 +325,7 @@ const Fancy = () => {
     const currentDate = new Date();  
     
     return (  
-      <div>  
+      <div className='fancy'>  
         <Travelsnav/>
           <div className="tour-list-container2">  
               <div className="tour-list2">  
