@@ -1,19 +1,20 @@
 .spring {  
+
   text-align: center;  
   padding: 2px;  
 
-  .tour-list-container2 {  
+  .tour-list-container-spring {  
     max-width: 2000px;  
     margin: 0 auto;  
 
-    .tour-list2 {  
+    .tour-list-spring {  
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
-      gap: 20px;  
+      gap: 15px;  
     }  
     
-    .moveicon2 {  
+    .moveicon-spring2 {  
       margin-left: 2px;  
       margin-right: 2px;  
       margin-bottom: 0px;  
@@ -21,13 +22,13 @@
       vertical-align: middle;   
     }  
 
-    .card-image2 {  
+    .card-image-spring {  
       width: 100%;  
       height: 100%;  
       object-fit: cover;   
     }  
 
-    .card-title2 {  
+    .card-title-spring {  
       position: absolute;   
       bottom: 0;   
       right: 0;  
@@ -40,13 +41,13 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card2 {  
+    .tour-card-spring {  
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(33.333% - 20px); /* Three cards per row with consistent gap */  
+      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
@@ -58,18 +59,18 @@
       }  
     }  
 
-    .tour-image2 {  
+    .tour-image-spring {  
       width: 100%;  
-      height: 150px;   
+      height: 168px;   
       object-fit: cover;   
       position: relative;   
     }  
 
-    .tour-image-container2 {  
+    .tour-image-container-spring {  
       position: relative;  
     }  
 
-    .tour-admin2 {  
+    .tour-admin-spring {  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -81,7 +82,7 @@
       z-index: 20;  
     }  
 
-    .admin-photo2 {  
+    .admin-photo-spring {  
       width: 30px;  
       height: 30px;  
       border-radius: 50%;  
@@ -94,11 +95,11 @@
     }  
 
     // Tour Info Styles  
-    .tour-info2 {  
+    .tour-info-spring {  
       display: flex;  
       flex-direction: column;  
 
-      .tour-name2 {  
+      .tour-name-spring {  
         font-size: 1em;  
         font-weight: bold;  
         margin-bottom: 0px;  
@@ -108,13 +109,13 @@
         color: #22487a;    
       }  
 
-      .tour-details2 {  
+      .tour-details-spring {  
         display: flex;  
         align-items: center;  
         margin-bottom: 0px;  
         margin-top: 0px;  
 
-        .tour-route2 {  
+        .tour-route-spring {  
           display: flex;  
           align-items: center;  
           margin-left: 10px;   
@@ -132,11 +133,11 @@
         }  
       }  
 
-      .tour-meta3 {  
+      .tour-meta-spring3 {  
         display: flex;   
         align-items: center;   
         margin-top: 12px;   
-        .trip-type2 {  
+        .trip-type-spring {  
           font-weight: bold;   
           margin-right: 7px;  
           margin-left: auto;  
@@ -145,11 +146,11 @@
           border-radius: 5px;   
           display: inline-block;  
         }  
-        .trip-type2.economical {  
+        .trip-type-spring.economical {  
           background-color: #c8e6c9;   
           color: #388e3c;  
         }  
-        .trip-type2.fancy {  
+        .trip-type-spring.fancy {  
           background-color: #f59e9e;  
           color: #e9362c;   
         }   
@@ -165,26 +166,26 @@
         color: #22487a;    
       }  
 
-      .tour-meta7 {  
+      .tour-meta-spring7 {  
         display: flex;  
         justify-content: space-between;  
 
-        .tour-date2, .tour-length2 {  
+        .tour-date-spring, .tour-length-spring {  
           font-size: 0.9em;  
-        }        .tour-dates2 {  
+        }        .tour-dates-spring {  
           margin-bottom: 7px;  
           margin-left: 10px;  
           margin-top: 0px;  
           margin-right: 20px;  
         }  
 
-        .tour-length2 {  
+        .tour-length-spring {  
           margin-right: 15px;  
           margin-bottom: 10px;  
           margin-top: 0px;  
         }   
         
-        .moveicon3 {  
+        .moveicon-spring3 {  
           margin-left: 2px;  
           margin-right: 4px;  
           margin-bottom: 4px;  
@@ -192,7 +193,7 @@
           vertical-align: middle;   
         }  
 
-        .moveicon4 {  
+        .moveicon-spring4 {  
           margin-left: 4px;  
           margin-right: 4px;  
           margin-bottom: 3px;  

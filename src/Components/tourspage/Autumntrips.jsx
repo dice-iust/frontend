@@ -1,5 +1,5 @@
 // import React from 'react'; 
-import './Upcomingtrips.scss'; 
+import './Autumntrips.scss'; 
 import React, { useState } from 'react';  
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
@@ -327,55 +327,55 @@ const Autumn = () => {
     return (  
       <div className='autumn'>  
         <Travelsnav/>
-          <div className="tour-list-container2">  
-              <div className="tour-list2">  
+          <div className="tour-list-container-autumn">  
+              <div className="tour-list-autumn">  
                   {tours.map((tour) => {  
                      
                       return (  
-                          <div key={tour.id} className="tour-card2">  
-                              <div className="tour-image-container2">  
+                          <div key={tour.id} className="tour-card-autumn">  
+                              <div className="tour-image-container-autumn">  
                                   <img  
                                       src={tour.photo}  
                                       alt={`Image of ${tour.name}`}  
-                                      className="tour-image2"  
+                                      className="tour-image-autumn"  
                                   />  
                                   {tour.admin && (  
-                                      <div className="tour-admin2">  
+                                      <div className="tour-admin-autumn">  
                                           <img  
                                               src={tour.admin.photo}  
                                               alt={`Profile of ${tour.admin.name}`}  
-                                              className="admin-photo2"  
+                                              className="admin-photo-autumn"  
                                           />  
                                           {tour.admin.name}  
                                       </div>  
                                   )}  
                               </div>  
-                              <div className="tour-info2">  
-                                  <p className="tour-meta3">  
-                                      <span className="tour-name2">{tour.name}</span>  
-                                      <div className={`trip-type2 ${tour.type}`}>  
+                              <div className="tour-info-autumn">  
+                                  <p className="tour-meta-autumn3">  
+                                      <span className="tour-name-autumn">{tour.name}</span>  
+                                      <div className={`trip-type-autumn ${tour.type}`}>  
                                           <GrMoney aria-hidden="true" />{" "}  
                                           {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
                                       </div>  
                                   </p>  
-                                  <div className="tour-details2">  
-                                      <p className="tour-route2">  
-                                          <span className="tour-text2">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+                                  <div className="tour-details-autumn">  
+                                      <p className="tour-route-autumn">  
+                                          <span className="tour-text-autumn">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
                                       </p>  
                                   </div>  
-                                  <div className="tour-meta7">  
-                                      <p className="tour-dates2">  
-                                          <FaRegCalendar className='moveicon3' />  
+                                  <div className="tour-meta-autumn7">  
+                                      <p className="tour-dates-autumn">  
+                                          <FaRegCalendar className='moveicon-autumn3' />  
                                           <span>{formatDate(tour.date)}</span>  
                                       </p>  
-                                      <p className="tour-length2" style={{ textAlign: "left" }}>  
-                                          <FaUndoAlt className='moveicon3'/>  
+                                      <p className="tour-length-autumn" style={{ textAlign: "left" }}>  
+                                          <FaUndoAlt className='moveicon-autumn3'/>  
                                           {formatDate(tour.returnDate)}  
                                       </p>  
                                   </div> 
-                                  <div className="tour-meta7">  
-                                      <p className="tour-dates2"> 
-                                        <IoIosTimer  className='moveicon3'/> 
+                                  <div className="tour-meta-autumn7">  
+                                      <p className="tour-dates-autumn"> 
+                                        <IoIosTimer  className='moveicon-autumn3'/> 
                                           Time Left : <span>{(tour.timeLeft)}</span>  days
                                       </p>  
                                   </div> 
@@ -384,7 +384,8 @@ const Autumn = () => {
                       );  
                   })}  
               </div>  
-          </div>  
+          </div> 
+          <br></br> 
           <Footer />  
       </div>  
   );  

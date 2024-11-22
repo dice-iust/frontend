@@ -1,5 +1,5 @@
 // import React from 'react'; 
-import './Upcomingtrips.scss'; 
+import './Fancytrips.scss'; 
 import React, { useState } from 'react';  
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
@@ -327,55 +327,55 @@ const Fancy = () => {
     return (  
       <div className='fancy'>  
         <Travelsnav/>
-          <div className="tour-list-container2">  
-              <div className="tour-list2">  
+          <div className="tour-list-container-fancy">  
+              <div className="tour-list-fancy">  
                   {tours.map((tour) => {  
                      
                       return (  
-                          <div key={tour.id} className="tour-card2">  
-                              <div className="tour-image-container2">  
+                          <div key={tour.id} className="tour-card-fancy">  
+                              <div className="tour-image-container-fancy">  
                                   <img  
                                       src={tour.photo}  
                                       alt={`Image of ${tour.name}`}  
-                                      className="tour-image2"  
+                                      className="tour-image-fancy"  
                                   />  
                                   {tour.admin && (  
-                                      <div className="tour-admin2">  
+                                      <div className="tour-admin-fancy">  
                                           <img  
                                               src={tour.admin.photo}  
                                               alt={`Profile of ${tour.admin.name}`}  
-                                              className="admin-photo2"  
+                                              className="admin-photo-fancy"  
                                           />  
                                           {tour.admin.name}  
                                       </div>  
                                   )}  
                               </div>  
-                              <div className="tour-info2">  
-                                  <p className="tour-meta3">  
-                                      <span className="tour-name2">{tour.name}</span>  
-                                      <div className={`trip-type2 ${tour.type}`}>  
+                              <div className="tour-info-fancy">  
+                                  <p className="tour-meta-fancy3">  
+                                      <span className="tour-name-fancy">{tour.name}</span>  
+                                      <div className={`trip-type-fancy ${tour.type}`}>  
                                           <GrMoney aria-hidden="true" />{" "}  
                                           {tour.type.charAt(0).toUpperCase() + tour.type.slice(1)}  
                                       </div>  
                                   </p>  
-                                  <div className="tour-details2">  
-                                      <p className="tour-route2">  
-                                          <span className="tour-text2">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+                                  <div className="tour-details-fancy">  
+                                      <p className="tour-route-fancy">  
+                                          <span className="tour-text-fancy">{tour.startPlace} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
                                       </p>  
                                   </div>  
-                                  <div className="tour-meta7">  
-                                      <p className="tour-dates2">  
-                                          <FaRegCalendar className='moveicon3' />  
+                                  <div className="tour-meta-fancy7">  
+                                      <p className="tour-dates-fancy">  
+                                          <FaRegCalendar className='moveicon-fancy3' />  
                                           <span>{formatDate(tour.date)}</span>  
                                       </p>  
-                                      <p className="tour-length2" style={{ textAlign: "left" }}>  
-                                          <FaUndoAlt className='moveicon3'/>  
+                                      <p className="tour-length-fancy" style={{ textAlign: "left" }}>  
+                                          <FaUndoAlt className='moveicon-fancy3'/>  
                                           {formatDate(tour.returnDate)}  
                                       </p>  
                                   </div> 
-                                  <div className="tour-meta7">  
-                                      <p className="tour-dates2"> 
-                                        <IoIosTimer  className='moveicon3'/> 
+                                  <div className="tour-meta-fancy7">  
+                                      <p className="tour-dates-fancy"> 
+                                        <IoIosTimer  className='moveicon-fancy3'/> 
                                           Time Left : <span>{(tour.timeLeft)}</span>  days
                                       </p>  
                                   </div> 
@@ -385,6 +385,7 @@ const Fancy = () => {
                   })}  
               </div>  
           </div>  
+          <br></br>
           <Footer />  
       </div>  
   );  
