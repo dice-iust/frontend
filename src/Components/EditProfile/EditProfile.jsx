@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './EditProfile.css'; 
 import profile from "./assets/profile.jpg"
 import axios from 'axios';
+import { Link } from 'react-router-dom'; 
 
 
 const EditProfile = () => {
@@ -143,7 +144,7 @@ const validateEmail = (email) => {
     <div className='body'>
       <div className="edit-profile-container">
         <nav className="navbar">
-          <button className="nav-button" /*onClick={() => window.history.back()}*/>Back</button>
+        <Link to="/Main"> <button className="nav-button" /*onClick={() => window.history.back()}*/>Back</button></Link>
         </nav>
     
         <form className="profile-form" onSubmit={handleSubmit}>
