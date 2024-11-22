@@ -20,7 +20,7 @@ function App() {
   return (  
     <Router>  
       <Routes>  
-        <Route path="/" element={<TourList />} /> 
+        <Route path="/" element={<Home />} /> 
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/signup" element={<SignupForm />} /> 
         <Route path="/Main" element={<TourList />} /> 
