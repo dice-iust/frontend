@@ -43,7 +43,7 @@ const Upcoming = () => {
   }, []);  
 
   const formatDate = (dateString) => {  
-    const [year, month, day] = dateString.split('-');  
+    const [year, month, day] = dateString.split('-');
     return `${year}/${month}/${day}`;  
   };  
 
@@ -72,7 +72,7 @@ const Upcoming = () => {
           <div className="tour-list-container2">
           {data && data.Popular_Trips ? (  
               <div className="tour-list2">  
-                  {data.Upcoming_Trips.map((tour) => {   
+                  {data.Up_comingTrips.map((tour) => {   
                           <div key={tour.id} className="tour-card2">  
                               <div className="tour-image-container2">  
                                   <img  
@@ -83,8 +83,8 @@ const Upcoming = () => {
                                   {tour.admin && (  
                                       <div className="tour-admin2">  
                                           <img  
-                                              src={tour.admin.photo}  
-                                              alt={`Profile of ${tour.admin.name}`}  
+                                              src={tour.admin.phrofile_image}  
+                                              alt={`Profile of ${tour.admin.user_name}`}  
                                               className="admin-photo2"  
                                           />  
                                           {tour.admin.user_name}   
@@ -96,7 +96,7 @@ const Upcoming = () => {
                                   <span className="tour-name2">{tour.name}</span>  
                                   <div className={`trip-type2 ${tour.mode}`}>  
                                           <GrMoney aria-hidden="true" />{" "}  
-                                          {tour.type.charAt(0).toUpperCase() + tour.mode.slice(1)}  
+                                          {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)}  
                                       </div>  
                                   </p>  
                                   <div className="tour-details2">  
@@ -114,12 +114,6 @@ const Upcoming = () => {
                                           {formatDate(tour.end_date)}  
                                       </p>  
                                   </div> 
-                                  {/* <div className="tour-meta7">  
-                                      <p className="tour-dates2"> 
-                                        <IoIosTimer  className='moveicon3'/> 
-                                          Time Left : <span>{(tour.timeLeft)}</span>  days
-                                      </p>  
-                                  </div>  */}
                               </div>  
                           </div>  
                       ;  
