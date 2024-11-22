@@ -3,73 +3,19 @@
   // background-color: #f9f9f9;  
   padding: 2px;  
 
-  .tour-list-container {  
-    max-width: 1320px;  
+  .tour-list-container2 {  
+    max-width: 2000px;  
     margin: 0 auto;  
     
 
-    .tour-list {  
+    .tour-list2 {  
        
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
     } 
     
-    .popular-trips-box {  
-      
-      
-      background-color: #22487a;
-      position: relative;  
-      padding: 20px;
-      border-radius: 8px; 
-      margin-bottom: 20px; 
-      
-    }
-
-    .blue-box {  
-      margin-top: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-      background-color: #22487a; 
-      padding: 20px; 
-      border-radius: 8px; 
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-    }
-
-    .category-cards {  
-      display: flex;  
-      flex-wrap: wrap;  
-      justify-content: center;  
-      gap: 40px; 
-      margin-left: 125px;
-      margin-right: 125px;
-      
-    }  
-
-    .card {  
-      width: 170px;
-      height :155px; 
-      position: relative;
-      
-      
-      
-      border: 2px solid rgba(34, 72, 122, 0.5); 
-      border-radius: 8px; 
-      overflow: hidden; 
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-      display: flex;  
-      flex-direction: column;  
-      align-items: center;  
-      justify-content: center;  
-      transition: transform 0.3s;  
-
-      &:hover {  
-        transform: scale(1.05); 
-      }  
-    }  
+     
     .moveicon2 {  
       margin-left:2px;
       margin-right: 2px;
@@ -78,33 +24,37 @@
       vertical-align: middle;   
   }  
 
-    .card-image {  
+    .card-image2 {  
       width: 100%;  
       height: 100%;  
       object-fit: cover; 
     }  
 
-    .card-title {  
-      position: absolute; /* Position it absolutely within the card */  
-      bottom: 0px; /* Position from the bottom */  
+    .card-title2 {  
+      position: absolute; 
+      bottom: 0px; 
       right: 0px;
-      margin-bottom: 0px; /* Position from the right */  
+      margin-bottom: 0px; 
       font-size: 1rem;  
-      color: #22487a; /* Change text color to black for contrast */  
-      background: #fff; /* Set background to white */  
-      padding: 5px 5px; /* Add some padding for aesthetics */  
-      border-radius: 2px; /* Rounded corners for the title background */  
-      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); /* Optional: add shadow for better visibility */  
+      color: #22487a;  
+      background: #fff; 
+      padding: 5px 5px; 
+      border-radius: 2px; 
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
   }  
 
-    .tour-card {  
+    .tour-card2 {  
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
-      overflow: hidden;  
-      margin: 0 15px;  
-      width: 220px;   
+      overflow: hidden;
+      margin-top: 20px;  
+      margin-bottom: 25px;  
+      margin-left: 20px;
+      margin-right: 20px;
+      width: 460px;
+      height: 400px;   
       transition: transform 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
@@ -115,20 +65,20 @@
       }  
   }  
   
-  .tour-image {  
+  .tour-image2 {  
       width: 100%;  
-      height: 150px;   
+      height: 250px;   
       object-fit: cover; 
       position: relative; 
   }  
 
-  .tour-image-container {  
+  .tour-image-container2 {  
     position: relative;  
 }  
 
 
 
-    .tour-admin {  
+    .tour-admin2 {  
       position: absolute; /* Position the admin section absolutely */  
       top: 10px; /* Adjust as needed */  
       left: 10px; /* Adjust as needed */  
@@ -140,7 +90,7 @@
       z-index: 20; /* Ensure it stays above other elements */  
     }  
 
-    .admin-photo {  
+    .admin-photo2 {  
       width: 30px; /* Adjust size as necessary */  
       height: 30px; /* Adjust size as necessary */  
       border-radius: 50%; /* Make the image circular */  
@@ -152,12 +102,12 @@
 
     
   
-  .tour-info {  
+  .tour-info2 {  
       
       display: flex;  
       flex-direction: column;  
   
-      .tour-name {  
+      .tour-name2 {  
           font-size: 1em;  
           font-weight: bold;  
           margin-bottom: 0px;  
@@ -167,7 +117,7 @@
           color: #22487a;    
       }  
   
-      .tour-details {  
+      .tour-details2 {  
           display: flex;  
          
           align-items: center;  
@@ -176,7 +126,7 @@
           
           
   
-          .tour-route {  
+          .tour-route2 {  
             display: flex; /* Use flexbox for alignment */  
             align-items: center; /* Center the icon with respect to text */  
             margin-left: 10px;   
@@ -203,7 +153,7 @@
         display: flex; 
         align-items: center; 
         margin-top: 12px ; 
-        .trip-type {
+        .trip-type2 {
           
           font-weight: bold; 
           margin-right: 7px;
@@ -214,11 +164,11 @@
           display: inline-block;
            
         }  
-        .trip-type.economical {  
+        .trip-type2.economical {  
           background-color: #c8e6c9; 
           color: #388e3c;  
         }  
-        .trip-type.fancy {  
+        .trip-type2.fancy {  
           background-color: #f59e9e;
           color: #e9362c; 
         } 
@@ -240,26 +190,27 @@
           color: #22487a;    
       }  
   
-      .tour-meta {  
+      .tour-meta7 {  
           display: flex;  
           justify-content: space-between;
          
           
   
-          .tour-date, .tour-length {
+          .tour-date2, .tour-length2 {
               
               font-size: 0.9em;  
           }
          
       
-          .tour-dates {  
+          .tour-dates2 {  
               margin-bottom: 7px;
               margin-left: 10px;
               margin-top:0px;
+              margin-right: 20px;
           }  
       
-          .tour-length {  
-               margin-right: 15px;
+          .tour-length2 {  
+              margin-right: 15px;
               margin-bottom: 10px;
               margin-top:0px;  
         } 
@@ -303,108 +254,6 @@
     }  
 
  
-    .slick-track {
-      display: flex;
-      gap: 1rem;
-  }
-    .slick-prev,
-  .slick-next
-  {
-      font-size: 0;
-      line-height: 0;
-
-      position: absolute;
-      top: 50%;
-
-      display: block;
-
-      width: 20px;
-      height: 20px;
-      padding: 0;
-      -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-
-      cursor: pointer;
-
-      color: transparent;
-      border: none;
-      outline: none;
-      background: transparent;
-  }
-  .slick-prev:hover,
-  .slick-prev:focus,
-  .slick-next:hover,
-  .slick-next:focus
-  {
-      color: transparent;
-      outline: none;
-      background: transparent;
-  }
-  .slick-prev:hover:before,
-  .slick-prev:focus:before,
-  .slick-next:hover:before,
-  .slick-next:focus:before
-  {
-      opacity: 1;
-  }
-  .slick-prev.slick-disabled:before,
-  .slick-next.slick-disabled:before
-  {
-      opacity: .25;
-  }
-
-  .slick-prev:before,
-  .slick-next:before
-  {
-      font-family: 'slick';
-      font-size: 20px;
-      line-height: 1;
-
-      opacity: .75;
-      color: rgba(34, 72, 122, 0.5);
-
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-  }
-
-  .slick-prev
-  {
-      left: -20px;
-  }
-  [dir='rtl'] .slick-prev
-  {
-      right: -25px;
-      left: auto;
-  }
-  .slick-prev:before
-  {
-      content: '←';
-  }
-  [dir='rtl'] .slick-prev:before
-  {
-      content: '→';
-  }
-
-  .slick-next
-  {
-      right: -20px;
-  }
-  [dir='rtl'] .slick-next
-  {
-      right: auto;
-      left: -25px;
-  }
-  .slick-next:before
-  {
-      content: '→';
-  }
-  [dir='rtl'] .slick-next:before
-  {
-      content: '←';
-  }
-
-  
     
         
      
