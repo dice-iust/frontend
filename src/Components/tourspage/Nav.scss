@@ -11,27 +11,37 @@
 
 .nav-page { 
     * {  
-        margin-top: 5px;
+        margin: 0px;
         padding: 0;  
         box-sizing: border-box;  
-        border-radius: 8px;  
+        border-radius: 0px;  
         font-family: "Titillium Web", sans-serif;  
-        margin-bottom: 5px;  
+         background-color: #22487a;
     }  
 
     
     nav {  
         display: flex; 
         align-items: center;  
-        margin-left: auto;  
+        // margin-right: 1px; 
+        margin-top: 5px;
+        // background-color: #ea7d29; 
+        // margin-right: 0;
+        padding-left: 55rem;
+        // padding-right: 1rem;
 
         a {  
-            margin: 0 1rem;  
+            margin: 0 0.2rem;  
             color: var(--textColor);  
-            text-decoration: none;  
+            text-decoration: none;
+            font-size: 1.2rem; 
+            font-weight: 150;
+            margin-right: 1px; 
+            padding-right: 10px;
 
             &:hover {  
-                color: var(--secondaryColor);  
+                color: var(--secondaryColor);
+                text-decoration: underline; /* Add underline on hover */   
             }  
         }  
 
@@ -44,29 +54,28 @@
    
     .home-back {  
         display: flex;   
-        background-image: url(../tourspage/Assests/home.png);   
+        background-image: url(../tourspage/Assests/home-back.jpg);   
         background-size: cover;   
         background-repeat: no-repeat;  
         background-position: center;   
         position: relative;  
         flex-direction: column;   
         box-sizing: border-box;  
-        
+        margin-top: 0px;
         min-height: 105vh; /* Full viewport height */  
-        width: 100%; /* Full width */  
-        margin: 0; /* Reset margins */  
-        padding: 0; /* Reset padding */  
+        width: 100%; /* Full width */   
     }
     .logo {  
         display: flex;  
         align-items: center;  
         cursor: pointer;  
+        margin: 0 .2rem;
       }  
       
      
     .logo img {  
     width: 38px;
-    margin-right: 0.6rem;  
+    margin-right: 0.5rem;  
     } 
     .primary-button {  
         position: relative;  
@@ -76,7 +85,7 @@
         outline: none;  
         border: none;  
         border-radius: 5rem;  
-        font-size: 1.1rem;  
+        font-size: 1.2rem;  
         cursor: pointer;  
         font-weight: 600;  
         transition: background-color 0.2s, transform 0.2s;  
@@ -85,82 +94,37 @@
 
     
     header { 
-        position: relative;  
-        top: 20px;  
-        left: 50%;  
-        transform: translate(-50%,-50%);  
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 80px;
-        padding: 0 2rem;
-        color: var(--textColor);
+        display: flex;  
+        align-items: center;  
+        justify-content: flex-end; /* Adjusted to place the title right and align with the nav */  
+        height: 60px;  
+        padding: 0 1rem; /* Use padding for spacing */  
+        color: var(--textColor);  
         z-index: 1;  
-        margin-top: 10px;
-        
+        margin-top: 0px;  
+        gap: 1px; 
         .nav-btn {  
-            padding: 0px;  
+            padding: 5px 0px; /* Adjusted padding for better spacing */  
             cursor: pointer;  
             background: transparent;  
             border: none;  
             outline: none;  
-            color: var(--textColor);  
+            color: var(--textColor);   
             visibility: hidden;  
-            opacity: 0;  
-            font-size: 1.8rem; 
-        }  
+            opacity: 5px; /* Changed to 0 - negative value for opacity is invalid */  
+            font-size: 1rem;   
+            margin-right: 0px; /* Adjust this value to control space between buttons */  
+            // gap:50x;
+        }
     }  
 
-    .search {  
-    &__container {  
-        padding-top: 390px;  
-        padding: 0; /* Set this to 0 or adjust for spacing */  
-        position: relative;  
-        margin-top: -30px; /* Use negative margin to pull it closer */  
-        align-self: center;  
-         
-    }  
-
-    &__input {  
-        width: 80%;  
-        padding: 15px 10px; 
-       
-        padding-left:20px ;
-
-        background-color: var(--mainColor);  
-        transition: transform 250ms ease-in-out;   
-        font-size: 14px;  
-        line-height: 18px;  
     
-        color: white;   
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' fill='white'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");  
-        background-repeat: no-repeat;  
-        background-size: 18px 18px;   
-        background-position: 95% center;   
-        border-radius: 50px;   
-        border: 1px solid var(--mainColorLight);   
-        transition: all 250ms ease-in-out;   
-
-        &::placeholder {   
-            color: var(--textColor);  
-            text-transform: uppercase;  
-            letter-spacing: 1.5px;   
-            opacity: 0.8;  
-        }  
-
-        &:hover,  
-        &:focus {  
-            padding: 15px 10px; 
-            outline: 0;  
-            border: 1px solid transparent;  
-            border-bottom: 1px solid var(--lightMainColor);   
-            border-radius: 20px;  
-        }  }
-        
-    }
     .trip-title
     {
         color:white;
+        font-size: 20px;
+        margin: 0 .2rem;
+        // margin-right: 100px;
     }
     @media only screen and (max-width: 1024px) { 
         // .land-back {  
@@ -187,31 +151,7 @@
         //         }  
         
         // }
-        header {  
-            .nav-btn {  
-                visibility: visible;  
-                opacity: 1;  
-            }  
-
-            nav {  
-                position: fixed;  
-                top: 0;  
-                right: -100%;  
-                height: 100%;   
-                width: 20%;   
-                display: flex;  
-                flex-direction: column;  
-                align-items: center;  
-                justify-content: start;   
-                background-color: var(--mainColor);  
-                transition: right 0.3s ease;   
-                z-index: 1000;  
-
-                &.responsive_nav {  
-                    right: 0;   
-                }  
-            }  
-        }  
+       
         
         main {  
             margin-right: 30%;   
@@ -229,3 +169,45 @@
     }  
    
 }
+@media only screen and (max-width: 1024px) { /* Tablet screens */  
+    nav {  
+        padding-left: 2rem; /* Adjust padding for tablet */ 
+
+    }  
+
+    a {  
+        font-size: 1.2rem;  
+    }  
+
+    .trip-title {  
+        font-size: 15px;  /* Slightly smaller title */  
+    }  
+}  
+
+@media only screen and (max-width: 768px) { /* Mobile screens */  
+    nav {  
+        flex-direction: column;  
+        padding-left: 1rem;  
+    }  
+
+    a {  
+        font-size: 1rem;  
+        margin: 0.2rem 0; /* Stack links vertically */  
+    }  
+
+    .trip-title {  
+        font-size: 16px; /* Further reduce title size for mobile */  
+        margin: 0; /* No margin for mobile */  
+    }  
+
+    .logo img {  
+        width: 30px; /* Smaller logo on mobile */  
+        margin-right: 0.3rem;  
+    }  
+
+    .primary-button {  
+        font-size: 1rem; /* Adjust button size */  
+        padding: 0.7rem 1.5rem; /* Adjust padding */  
+    }  
+}  
+
