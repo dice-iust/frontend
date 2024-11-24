@@ -13,7 +13,7 @@ import { FaRegCalendar } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";   
 import "slick-carousel/slick/slick-theme.css";  
 import Slider from "react-slick"; 
-import Travelsnav from "../Nav.jsx";
+import Travelsnav from "../categories_nav.jsx";  
 // import populartours from "./populartours.jsx";
 import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";

@@ -4,41 +4,36 @@ import "./categories_nav.scss";
 import LogoImg from "../tourspage/Assests/logo.png";
 import { Link } from 'react-router-dom';   
 
-function Navbar_Category() {  
-  const navref_category = useRef();  
+function Navbar_category() {
+	const navref = useRef();
+  const showNavbar = () => {
+    navref.current.classList.toggle("responsive_nav");
+  };
 
-  const showNavbar_Category = () => {  
-    navref_category.current.classList.toggle("responsive_nav-category");  
-  };  
-
-  return (  
-    <div className="nav-page-category">  
-      <header>  
-        <div className="logo-category">   
-            <a href="./"><img src={LogoImg} alt="Logo"/></a>  
-            <h3 className="trip-title-category">Trip Tide</h3>  
+	return (
+		<div className="nav-page">
+      <div class="home-back-category">
+        <header>
+          <div class="logo">
+              <img src={LogoImg} alt="Logo"></img>
+              <h3 className="trip-title" >Trip Tide</h3> 
+          </div>
+            <nav ref={navref}>  
+              <button className="nav-btn nav-close-btn" onClick={showNavbar}>  
+                <FaTimes />  
+              </button>  
+              <Link to="/about"><a href="/">About</a></Link>
+              <Link to="/EditProfile"><a href="/">Profile</a> </Link> 
+            </nav>  
+            <button className="nav-btn" onClick={showNavbar}>  
+              <FaBars />  
+            </button>
+        </header>
+        
         </div>  
-        <nav ref={navref_category}>  
-          <button   
-            className="nav-category-btn nav-category-close-btn"   
-            onClick={showNavbar_Category}   
-            aria-label="Close Navigation"  
-          >  
-            <FaTimes />  
-          </button>  
-          <Link to="/about"><span>About</span></Link>  
-          <Link to="/EditProfile"><span>Profile</span></Link>   
-        </nav>  
-        <button   
-          className="nav-btn-category"   
-          onClick={showNavbar_Category}   
-          aria-label="Open Navigation"  
-        >  
-          <FaBars />  
-        </button>  
-      </header>  
-    </div>  
-  );  
-}  
+       
+    </div>
+	);
+}
 
-export default Navbar_Category;
+export default Navbar_category;
