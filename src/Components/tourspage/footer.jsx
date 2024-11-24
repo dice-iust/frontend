@@ -8,8 +8,7 @@ const email_url = 'email/';
 
 const Footer = () => {  
     const [email_all, setEmail] = useState('');  
-    const [successMessage, setSuccessMessage] = useState(''); // State for success message  
-
+  
     const handleSubmit = async (e) => {  
         e.preventDefault();  
         
@@ -21,12 +20,13 @@ const Footer = () => {
                     withCredentials: false  
                 }  
             );  
-            // Show success message  
-            setSuccessMessage('Thank you for subscribing!');  
+            // Show success alert instead of setting a message state  
+            alert('Thank you for subscribing!');  
             setEmail(''); // Clear the email input  
         } catch (error) {  
             console.error("Error subscribing:", error);  
-            // Handle error appropriately (e.g., set an error message state if desired)  
+            // Optionally handle the error (e.g., display an alert or set an error message state)  
+            alert('There was an error subscribing. Please try again.');  
         }  
     };  
 
@@ -35,8 +35,7 @@ const Footer = () => {
             <div className="footer-left">  
                 <h3>Trip<span>Tide</span></h3>  
                 <p className="footer-links">  
-                    <a href="#" className="link-1">Home</a>  
-                    <a href="#">About</a>  
+                    <a href="#" className="link-1">About</a>  
                     <a href="#">Profile</a>  
                 </p>  
                 <p className="footer-company-name">Travel safe © 2024</p>  
@@ -49,13 +48,12 @@ const Footer = () => {
             </div>  
    
             <div className="footer-center">  
-                <h4>Be In Touch with us</h4>  
-                <p style={{ color: "white", fontWeight: "400" }}>If there are any questions feel free to ask!</p>  
+                <h4 style={{ color: "white", fontWeight: "bold",fontSize:"24px" }}>Be In Touch with us</h4>  
                 <div className='contact'>  
                     <MdEmail className='icon' />  
                     <p style={{ color: "white", fontWeight: "300", textAlign: "left" }}> triptide.contact@gmail.com</p>  
                 </div>  
-                <p>We will send you our news!</p>  
+                <p>If you are interested in getting our news, please enter your email</p>  
                 <form onSubmit={handleSubmit}>  
                     <input type="email" placeholder="Enter Email" className="footer-email"  
                         value={email_all}  
@@ -64,7 +62,6 @@ const Footer = () => {
                     />  
                     <button type="submit" className="footer-button">Subscribe</button>  
                 </form>  
-                {successMessage && <p className="thank-you-message" style={{ color: "orange" ,marginTop:"5px"}}>{successMessage}</p>} {/* Display success message */}  
             </div>  
 
             <div className="footer-right">  
