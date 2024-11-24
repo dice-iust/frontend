@@ -9,8 +9,9 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb";  
 import { FaUndoAlt } from "react-icons/fa";  
 import { FaRegCalendar } from "react-icons/fa6";  
-import Travelsnav from "../Nav.jsx";  
+// import Travelsnav from "../Nav.jsx";  
 import Footer from '../footer.jsx';  
+import Travelsnav from "../categories_nav.jsx";  
 import { IoIosTimer } from "react-icons/io";  
 
 const SpringTravels_URL = 'travels/spring/';  

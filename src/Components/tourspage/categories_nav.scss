@@ -1,35 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");  
+// @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");  
+
 
 :root {  
-    --mainColor: #22487a;  
-    --mainColorLight: #5767aa;  
-    --secondaryColor: #ea7d29;  
-    --textColor: #eee;  
+	--mainColor: #22487a;  
+	--mainColorLight: #5767aa;  
+	--secondaryColor: #ea7d29;  
+	--textColor: #eee;  
 }  
 
-.nav-page-category {   
-    margin-top: 5px;  
-    padding: 0;  
-    box-sizing: border-box;  
-    border-radius: 8px;  
-    font-family: "Titillium Web", sans-serif;  
-    margin-bottom: 5px;  
-    background-color: #22487a;
-    height: 60px;
 
-    .logo-category {
-        margin-left: 10px;  
+.nav-page { 
+    * {  
+        margin-top: 5px;
+        padding: 0;  
+        box-sizing: border-box;  
+        border-radius: 8px;  
+        font-family: "Titillium Web", sans-serif;  
+        margin-bottom: 5px;  
+    }  
+
+    
+    nav {  
+        display: flex; 
+        align-items: center;  
+        margin-left: auto;  
+
+        a {  
+            margin: 0 1rem;  
+            color: var(--textColor);  
+            text-decoration: none;  
+
+            &:hover {  
+                color: var(--secondaryColor);  
+            }  
+        }  
+
+        .nav-close-btn {  
+            position: absolute;  
+            top: 1rem;  
+            right: 1rem;  
+        }  
+    } 
+   
+    .home-back-category {  
+        display: flex;   
+        // Remove or comment out the background-image property  
+        // background-image: url(../tourspage/Assests/home.png);   
+        background-size: cover; 
+        background-color: #22487a;  
+        background-repeat: no-repeat;  
+        background-position: center;   
+        position: relative;  
+        flex-direction: column;   
+        box-sizing: border-box;  
+        
+        // max-height: 105vh; /* Full viewport height */  
+        width: 100%; /* Full width */  
+        margin-bottom: 5px; /* Reset margins */  
+        padding: 0; /* Reset padding */  
+    }
+    .logo {  
         display: flex;  
         align-items: center;  
         cursor: pointer;  
-        
-        img {  
-            width: 38px;  
-            margin-right: 0.6rem;  
-        }  
-    }  
-
-    .primary-button-category {  
+      }  
+      
+     
+    .logo img {  
+    width: 38px;
+    margin-right: 0.6rem;  
+    } 
+    .primary-button {  
         position: relative;  
         padding: 0.9rem 1.75rem;  
         background-color: var(--mainColor);  
@@ -41,70 +82,75 @@
         cursor: pointer;  
         font-weight: 600;  
         transition: background-color 0.2s, transform 0.2s;  
+        
     }  
 
-    .header-category {   
-        background-color: var(--mainColor);  
+    
+    header { 
         position: relative;  
+        top: 20px;  
+        left: 50%;  
+        transform: translate(-50%, -50%);  
         display: flex;  
-        align-items: coulmn;  
-        height: 10px;  
-        padding: 0 2rem;  
+        align-items: center;  
+        justify-content: space-between;  
+        // Reduce the height value  
+        height: 50px; // Adjust this value as needed  
+        padding: 0 2rem; // Adjust padding if necessary  
         color: var(--textColor);  
-        // z-index: 1;  
+        z-index: 1;  
         margin-top: 10px;  
-
-        .nav-category {  
-            display: flex;   
-            align-items: center;  
-            margin-left: 0;  
-
-            a {  
-                color: var(--textColor);  
-                text-decoration: none;  
-
-                &:hover {  
-                    color: var(--secondaryColor);  
-                }  
-            }  
-
-            .nav-category-close-btn {  
-                position: absolute;  
-                top: 1rem;  
-                right: 1rem;  
-            }  
-        }  
-
-        .nav-category-btn {  
+        
+        .nav-btn {  
             padding: 0px;  
             cursor: pointer;  
             background: transparent;  
             border: none;  
             outline: none;  
-            color: var(--secondaryColor);  
+            color: var(--textColor);  
+            visibility: hidden;  
             opacity: 0;  
             font-size: 1.8rem;   
         }  
     }  
 
-    .trip-title-category {  
-        color: var(--textColor);  
-    }  
-
-    @media only screen and (max-width: 1024px) {   
-        .logo-category {  
-            padding: 0.5rem;   
-            justify-content: center;  
-            margin-right: 10px;
-        }  
-
-        .header-category {  
-            .nav-category-btn {  
+    
+    .trip-title
+    {
+        color:white;
+    }
+    @media only screen and (max-width: 1024px) { 
+        // .land-back {  
+        //     height: auto; 
+        //     width: 100vw;  
+        //     padding: 20px;  
+        // }  
+        // // .logo{
+        //     padding: 0.5rem; 
+        //     justify-content: center;
+        // }
+        // .logo img{
+        //     width: 32px; 
+        //     margin-right: 0.4rem; 
+        // }
+        // .search {  
+        //     &__container {   
+        //         padding-top: 400px;
+        //         } 
+        
+        //     &__input {    
+        //         width: 90%; 
+        //         font-size: 16px; 
+        //         }  
+        
+        // }
+        header {  
+            .nav-btn {  
                 visibility: visible;  
                 opacity: 1;  
             }  
 
-            .nav-category {  
+            nav {  
                 position: fixed;  
                 top: 0;  
                 right: -100%;  
@@ -112,30 +158,31 @@
                 width: 20%;   
                 display: flex;  
                 flex-direction: column;  
-                align-items: flex-start;  
-                justify-content: flex-start;   
+                align-items: center;  
+                justify-content: start;   
                 background-color: var(--mainColor);  
                 transition: right 0.3s ease;   
                 z-index: 1000;  
 
-                &.responsive_nav-category {  
+                &.responsive_nav {  
                     right: 0;   
-                }  
-
-                a {  
-                    font-size: 1rem;  
-                    margin-top: 1.5rem;   
                 }  
             }  
         }  
-
-        .main-category {  
+        
+        main {  
             margin-right: 30%;   
             transition: margin-right 0.3s ease;   
 
-            &.responsive_nav-category + & {  
+            &.responsive_nav + main {  
                 margin-right: 0;   
             }  
         }  
+
+        nav a {  
+            font-size: 1rem;  
+            margin-top: 1.5rem;   
+        }  
     }  
+   
 }
