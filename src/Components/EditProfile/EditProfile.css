@@ -1,11 +1,8 @@
   .body {
     margin:0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
+    display: flex ; 
+    flex: 1;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -16,30 +13,8 @@
   }
   .edit-profile-container {
     padding: 20px;
-    max-width: 800px;
-  
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
-  
-  .nav-button {
-    background-color: #11354d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    
-  }
-  
-  
-  .nav-button:hover {
-    background-color: rgb(255, 123, 0);
+    margin: 16px;
+    width: 90%;
   }
   
   .title {
@@ -53,7 +28,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,.2);
     color: #22487a;
     border-radius: 15px;
-    padding: 30px 40px;
+    padding: 30px 120px;
     margin-top: 30px;
     
   }
@@ -62,49 +37,77 @@
   }
   
   .form-label {
-    display: block;
-    align-items: center;
-    margin-bottom: 40px;
-    font-weight: bold;
+    padding-left: 6px;
+    font-size: 14px;
+    color: #777;
+    padding-bottom: 2px;
+    position: relative;
   }
+
   .profile{
     text-align: center;
     margin-top: 30px;
-  
+   margin-bottom: 40px;
   }
+
   .profile-form img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     margin-left: 0;
-  
+    
   }
-  
-  .form-input,
-  .form-textarea {
-    width:100%;
-    height:100%;
+  .edit-pwd{
+    position: absolute;
+    right: 12px;
+    top: 43px;
+    cursor: pointer;
+  }
+
+  .input-div{
+    width: 50%; 
+    position: relative;
+  }
+
+  .form-select{
+    /* Style */
+    width:98.5%;
     background: transparent;
     border: 2px solid rgba(3, 2, 2, 0.2);
     outline: none;
-    border-radius: 20px;
+    border-radius: 12px;
     font-size: 16px;
     color: #22487a;
-    padding: 20px 45px 20px 20px;
+    padding: 14px 10px;
+    margin-top: 4px;
+    /* Arrow */
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
   }
 
-  .nameSection{
+  .form-input,
+  .form-textarea {
+    width:100%;
+    background: transparent;
+    border: 2px solid rgba(3, 2, 2, 0.2);
+    outline: none;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #22487a;
+    padding: 14px 10px;
+    margin-top: 4px;
+  }
+
+  .input-container{
     display: flex;
     gap:20px;
-  }
-  .nameSection input {
-    width: full;
-    height: 65px;
-    
-  }
+    margin-bottom: 16px;
+  } 
   
-  
-  
+
    input::placeholder{
     color :#13053e;
   }
@@ -120,6 +123,7 @@
   
   .submit-button {
     background-color: #11354d;
+    width: 150px;
     color: white;
     border: none;
     border-radius: 10px;
@@ -127,8 +131,6 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 18px;
-    width: 100%;
-    height: 50px;
   }
   
   .submit-button:hover {
@@ -143,6 +145,9 @@
   }
   
   .change-button {
+    position: absolute;
+    bottom: 26px;
+    left: -35px;
     display:inline;
     background-color: #11354d;
     max-width: fit-content;
@@ -165,17 +170,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 20px 0;
   }
   
   @media (max-width: 768px) {
     .edit-profile-container {
       padding: 15px;
     }
-    .nameSection {
+    .input-container {
       flex-direction: column;
       gap: 10px;
     }
     .profile-form {
       padding: 20px 30px;
+    }
+    .input-div{
+      width: 100%;
     }
   }
