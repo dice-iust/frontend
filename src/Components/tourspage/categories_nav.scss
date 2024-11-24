@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");  
+
+:root {  
+    --mainColor: #22487a;  
+    --mainColorLight: #5767aa;  
+    --secondaryColor: #ea7d29;  
+    --textColor: #eee;  
+}  
+
+.nav-page-category {   
+    margin-top: 5px;  
+    padding: 0;  
+    box-sizing: border-box;  
+    border-radius: 8px;  
+    font-family: "Titillium Web", sans-serif;  
+    margin-bottom: 5px;  
+    background-color: #22487a;
+    height: 60px;
+
+    .logo-category {
+        margin-left: 10px;  
+        display: flex;  
+        align-items: center;  
+        cursor: pointer;  
+        
+        img {  
+            width: 38px;  
+            margin-right: 0.6rem;  
+        }  
+    }  
+
+    .primary-button-category {  
+        position: relative;  
+        padding: 0.9rem 1.75rem;  
+        background-color: var(--mainColor);  
+        color: white;  
+        outline: none;  
+        border: none;  
+        border-radius: 5rem;  
+        font-size: 1.1rem;  
+        cursor: pointer;  
+        font-weight: 600;  
+        transition: background-color 0.2s, transform 0.2s;  
+    }  
+
+    .header-category {   
+        background-color: var(--mainColor);  
+        position: relative;  
+        display: flex;  
+        align-items: coulmn;  
+        height: 10px;  
+        padding: 0 2rem;  
+        color: var(--textColor);  
+        // z-index: 1;  
+        margin-top: 10px;  
+
+        .nav-category {  
+            display: flex;   
+            align-items: center;  
+            margin-left: 0;  
+
+            a {  
+                color: var(--textColor);  
+                text-decoration: none;  
+
+                &:hover {  
+                    color: var(--secondaryColor);  
+                }  
+            }  
+
+            .nav-category-close-btn {  
+                position: absolute;  
+                top: 1rem;  
+                right: 1rem;  
+            }  
+        }  
+
+        .nav-category-btn {  
+            padding: 0px;  
+            cursor: pointer;  
+            background: transparent;  
+            border: none;  
+            outline: none;  
+            color: var(--secondaryColor);  
+            opacity: 0;  
+            font-size: 1.8rem;   
+        }  
+    }  
+
+    .trip-title-category {  
+        color: var(--textColor);  
+    }  
+
+    @media only screen and (max-width: 1024px) {   
+        .logo-category {  
+            padding: 0.5rem;   
+            justify-content: center;  
+            margin-right: 10px;
+        }  
+
+        .header-category {  
+            .nav-category-btn {  
+                visibility: visible;  
+                opacity: 1;  
+            }  
+
+            .nav-category {  
+                position: fixed;  
+                top: 0;  
+                right: -100%;  
+                height: 100%;   
+                width: 20%;   
+                display: flex;  
+                flex-direction: column;  
+                align-items: flex-start;  
+                justify-content: flex-start;   
+                background-color: var(--mainColor);  
+                transition: right 0.3s ease;   
+                z-index: 1000;  
+
+                &.responsive_nav-category {  
+                    right: 0;   
+                }  
+
+                a {  
+                    font-size: 1rem;  
+                    margin-top: 1.5rem;   
+                }  
+            }  
+        }  
+
+        .main-category {  
+            margin-right: 30%;   
+            transition: margin-right 0.3s ease;   
+
+            &.responsive_nav-category + & {  
+                margin-right: 0;   
+            }  
+        }  
+    }  
+}

@@ -1,6 +1,6 @@
 // import React from 'react';   
 import './Upcomingtrips.scss';   
-import axios from "../../api/axios.js";  
+import axios from "../../../api/axios.js";  
 import React, { useEffect, useState } from "react";   
 import { GrMoney } from "react-icons/gr";  
 import { FaCarSide } from "react-icons/fa6";  
@@ -9,8 +9,8 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb";  
 import { FaUndoAlt } from "react-icons/fa";  
 import { FaRegCalendar } from "react-icons/fa6";  
-import Travelsnav from "./Nav.jsx";  
-import Footer from './footer.jsx';  
+import Travelsnav from "../categories_nav.jsx";  
+import Footer from '../footer.jsx';  
 import { IoIosTimer } from "react-icons/io";  
 
 const UpcominTravels_URL = 'travels/upcoming/';  
