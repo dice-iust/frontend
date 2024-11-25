@@ -20,7 +20,6 @@ const Footer = () => {
                     withCredentials: false  
                 }  
             );  
-            // Show success alert instead of setting a message state  
             alert('Thank you for subscribing!');  
             setEmail('');   
         } catch (error) {  
