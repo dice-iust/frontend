@@ -10,21 +10,23 @@
 
 
 .nav-page { 
+
+     
     * {  
-        margin: 0px;
+        margin-top: 5px;
         padding: 0;  
         box-sizing: border-box;  
-        border-radius: 0px;  
+        border-radius: 8px;  
         font-family: "Titillium Web", sans-serif;  
-         background-color: #22487a;
+        margin-bottom: 5px;  
+        background-color: #22487a;
     }  
 
     
     nav {  
-        display: flex; 
+       display: flex; 
         align-items: center;  
         margin-left: auto; 
-        // margin-bottom: 2px; 
 
         a {  
             margin: 0 0.2rem;  
@@ -45,7 +47,17 @@
             position: absolute;  
             top: 1rem;  
             right: 1rem;  
-        }  
+        } 
+        
+        .moveaicon{
+            margin-left:2px;
+            margin-right: 2px;
+            margin-bottom: 3px; 
+            margin-top: 0px;   
+            vertical-align: middle;  
+            color: #ea7d29; 
+            
+        }
     } 
    
     .home-back {  
@@ -62,16 +74,15 @@
         width: 100%; /* Full width */   
     }
     .logo {  
-        display: flex;  
+        display: contents;  
         align-items: center;  
         cursor: pointer;  
-        margin: 0 .2rem;
       }  
       
      
     .logo img {  
-    width: 38px;
-    margin-right: 0.5rem;  
+        width: 38px;
+        margin-right: 0.6rem;  
     } 
     .primary-button {  
         position: relative;  
@@ -90,15 +101,32 @@
 
     
     header { 
+        
+        // display: flex;  
+        // align-items: center;  
+        // justify-content: flex-end; /* Adjusted to place the title right and align with the nav */  
+        // height: 60px;  
+        // padding: 0 1rem; /* Use padding for spacing */  
+        // color: var(--textColor);  
+        // z-index: 1;  
+        // margin-top: 0px;  
+        // gap: 1px; 
+        position: relative;  
+        top: 20px;  
+        left: 50%; 
+        height: 60px;  
+        transform: translate(-50%,-50%);  
         display: flex;  
         align-items: center;  
-        justify-content: flex-end; /* Adjusted to place the title right and align with the nav */  
-        height: 60px;  
-        padding: 0 1rem; /* Use padding for spacing */  
+        justify-content: space-between;  
+        // Reduce the height value  
+        height: 50px; // Adjust this value as needed  
+        padding: 0 1rem; // Adjust padding if necessary  
         color: var(--textColor);  
         z-index: 1;  
-        margin-top: 0px;  
-        gap: 1px; 
+        margin-top: 10px;  
+        gap :1px;
+        
         .nav-btn {  
             padding: 5px 0px; /* Adjusted padding for better spacing */  
             cursor: pointer;  
@@ -107,49 +135,64 @@
             outline: none;  
             color: var(--textColor);   
             visibility: hidden;  
-            opacity: 5px; /* Changed to 0 - negative value for opacity is invalid */  
+            opacity: 0px; /* Changed to 0 - negative value for opacity is invalid */  
             font-size: 1rem;   
             margin-right: 0px; /* Adjust this value to control space between buttons */  
             // gap:50x;
         }
     }  
 
+    .link_class
+    {
+       text-decoration: none;
+    }
     
     .trip-title
     {
         color:white;
         font-size: 20px;
         margin: 0 .2rem;
+        
+        &:hover {  
+            color: var(--secondaryColor);
+            text-decoration: underline; /* Add underline on hover */   
+        }   
         // margin-right: 100px;
     }
     @media only screen and (max-width: 1024px) { 
-        // .land-back {  
-        //     height: auto; 
-        //     width: 100vw;  
-        //     padding: 20px;  
-        // }  
-        // // .logo{
-        //     padding: 0.5rem; 
-        //     justify-content: center;
-        // }
-        // .logo img{
-        //     width: 32px; 
-        //     margin-right: 0.4rem; 
-        // }
-        // .search {  
-        //     &__container {   
-        //         padding-top: 400px;
-        //         } 
         
-        //     &__input {    
-        //         width: 90%; 
-        //         font-size: 16px; 
-        //         }  
         
-        // }
-       
+        header {  
+            
+            .nav-btn {  
+                visibility: visible;  
+                opacity: 1;  
+            }  
+
+            nav {  
+                position: fixed;  
+                top: 0;  
+                right: -100%;  
+                height: 100%;   
+                width: 20%;   
+                display: flex;  
+                flex-direction: column;  
+                align-items: center;  
+                justify-content: start;   
+                background-color: var(--mainColor); 
+                transition: right 0.3s ease;   
+                z-index: 1000;  
+                
+
+                &.responsive_nav {  
+                    
+                    right: 0;   
+                }  
+            }  
+        }  
         
-        main {  
+        main { 
+             
             margin-right: 30%;   
             transition: margin-right 0.3s ease;   
 
@@ -159,51 +202,13 @@
         }  
 
         nav a {  
+            
             font-size: 1rem;  
             margin-top: 1.5rem;   
         }  
     }  
    
 }
-@media only screen and (max-width: 1024px) { /* Tablet screens */  
-    nav {  
-        padding-left: 2rem; /* Adjust padding for tablet */ 
 
-    }  
-
-    a {  
-        font-size: 1.2rem;  
-    }  
-
-    .trip-title {  
-        font-size: 15px;  /* Slightly smaller title */  
-    }  
-}  
-
-@media only screen and (max-width: 768px) { /* Mobile screens */  
-    nav {  
-        flex-direction: column;  
-        padding-left: 1rem;  
-    }  
-
-    a {  
-        font-size: 1rem;  
-        margin: 0.2rem 0; /* Stack links vertically */  
-    }  
-
-    .trip-title {  
-        font-size: 16px; /* Further reduce title size for mobile */  
-        margin: 0; /* No margin for mobile */  
-    }  
-
-    .logo img {  
-        width: 30px; /* Smaller logo on mobile */  
-        margin-right: 0.3rem;  
-    }  
-
-    .primary-button {  
-        font-size: 1rem; /* Adjust button size */  
-        padding: 0.7rem 1.5rem; /* Adjust padding */  
-    }  
-}  
+  
 
