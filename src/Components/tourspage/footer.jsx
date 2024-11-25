@@ -26,7 +26,7 @@ const Footer = () => {
             alertBox.className = 'custom-alert';
             alertBox.innerHTML = `
               <h2>Thank you!</h2>
-              <p>We will send you our new trips when they are able to join.</p>
+              <p>We will send you our new trips as soon as they are scheduled.</p>
               <button onclick="document.body.removeChild(this.parentElement)"> OK </button>
             `;
             document.body.appendChild(alertBox);
@@ -40,7 +40,7 @@ const Footer = () => {
             alertBox.className = 'custom-alert';
             alertBox.innerHTML = `
               <h2>We already have your email!</h2>
-              <p>We will send you our new trips when they are able to join.</p>
+              <p>We will send you our new trips as soon as they are scheduled.</p>
               <button onclick="document.body.removeChild(this.parentElement)"> OK </button>
             `;
             document.body.appendChild(alertBox);
