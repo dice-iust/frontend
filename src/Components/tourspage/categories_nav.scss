@@ -29,7 +29,8 @@
         // margin-bottom: 10px;
 
         a {  
-            margin: 0 1rem;  
+            // margin: 0 1rem; 
+            margin-left: 15px; 
             color: var(--textColor);  
             text-decoration: none;  
 
@@ -132,9 +133,16 @@
         }  
     }  
 
-    
+    .linkclass
+    {
+       text-decoration: none;
+    }
     .trip-title-category
     {
+        &:hover {  
+            color: var(--secondaryColor);
+            text-decoration: underline; /* Add underline on hover */   
+        }   
         color:white;
     }
     @media only screen and (max-width: 1024px) { 

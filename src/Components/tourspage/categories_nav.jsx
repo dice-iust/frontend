@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { CgProfile } from "react-icons/cg";
 import { FiInfo } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
+import { BiLogOutCircle } from "react-icons/bi";
 
 
 function Navbar_category() {
@@ -21,7 +22,7 @@ function Navbar_category() {
         <header>
         <div class="logo-category">
         <Link to="/Main">  <img src={LogoImg} alt="Logo-category"></img></Link>
-              <h3 className="trip-title-category" >Trip Tide</h3> 
+        <Link to="/Main" className="linkclass"><h3 className="trip-title-category" >Trip Tide</h3> </Link>
           </div>
             <nav ref={navref}>  
               <button className="nav-btn-category nav-close-btn-category" onClick={showNavbar}>  
@@ -30,6 +31,7 @@ function Navbar_category() {
               <Link to="/Main"><a href="/"><IoHomeOutline className="movepicon"/> Home</a></Link>
               <Link to="/about"><a href="/"><FiInfo className="movepicon"/> About</a></Link>
               <Link to="/EditProfile"><a href="/"><CgProfile className="movepicon"/> Profile</a> </Link> 
+              <Link to="/"><a href="/"><BiLogOutCircle  className="movepicon"/>Logout</a> </Link> 
             </nav>  
             <button className="nav-btn-category" onClick={showNavbar}>  
               <FaBars />  
