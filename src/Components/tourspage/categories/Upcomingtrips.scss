@@ -1,4 +1,4 @@
-.app-container2{  
+.app-container-upcoming{  
   display: flex;  
   flex-direction: column;  
   min-height: 100vh;   
@@ -179,7 +179,7 @@
         display: flex;  
         justify-content: space-between;  
 
-        .tour-date2, .tour-length2 {  
+        .tour-dates2, .tour-length2 {  
           font-size: 0.9em;  
         }        .tour-dates2 {  
           margin-bottom: 7px;  

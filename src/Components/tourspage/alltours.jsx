@@ -175,7 +175,7 @@ const TourList = () => {
                     </p>  
                   </div>  
                   <div className="tour-meta">  
-                    <p className="tour-dates">  
+                    <p className="tour-date">  
                       <FaRegCalendar className='moveicon3' />  
                       <span>{formatDate(tour.start_date)}</span>  
                     </p>  
