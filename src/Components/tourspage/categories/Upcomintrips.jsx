@@ -55,8 +55,10 @@ const Upcoming = () => {
         <div className='app-container-upcoming'>
         <div className='upcoming'>  
             <Travelsnav />  
+
             
             <br/>
+
             
             <div className="tour-list-container2">  
                 {data && data.Up_comingTrips ? (  
@@ -114,6 +116,8 @@ const Upcoming = () => {
             </div>  
             
             <br/>
+
+           
             <Footer />  
         </div>  
     );  
