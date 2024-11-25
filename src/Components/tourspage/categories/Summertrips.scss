@@ -50,7 +50,7 @@
         background: white;  
         border-radius: 10px;  
         overflow: hidden;  
-        width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+        width: calc(32% - 10px); 
         height: 300px;   
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
@@ -58,7 +58,7 @@
         margin-left: 10px;
         margin-right: 10px;
         &:hover {  
-          animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+          animation: circular-animation 0.4s ease forwards;
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
         }  
       }  

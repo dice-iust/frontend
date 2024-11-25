@@ -9,7 +9,7 @@
     .tour-list-fancy {  
       display: flex;  
       flex-wrap: wrap;  
-      justify-content: space-between;  
+      // justify-content: space-between;  
       gap: 15px;  
     }  
     
@@ -46,7 +46,7 @@
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+      width: calc(32% - 10px); /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  

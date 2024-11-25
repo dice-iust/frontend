@@ -6,7 +6,7 @@
   // display: flex;
 
   .tour-list-container {  
-    max-width: 1320px;  
+    max-width: 2000px;  
     margin: 0 auto; 
      
     
@@ -16,6 +16,10 @@
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
+      .slick-track {  
+        display: flex;  
+        gap: 1rem;  
+      }  
     } 
     
     .popular-trips-box {  
@@ -88,16 +92,16 @@
     }  
 
     .card-title {  
-      position: absolute; /* Position it absolutely within the card */  
-      bottom: 0px; /* Position from the bottom */  
+      position: absolute; 
+      bottom: 0px;
       right: 0px;
-      margin-bottom: 0px; /* Position from the right */  
+      margin-bottom: 0px;  
       font-size: 1rem;  
-      color: #22487a; /* Change text color to black for contrast */  
-      background: #fff; /* Set background to white */  
-      padding: 5px 5px; /* Add some padding for aesthetics */  
-      border-radius: 2px; /* Rounded corners for the title background */  
-      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); /* Optional: add shadow for better visibility */  
+      color: #22487a;  
+      background: #fff; 
+      padding: 5px 5px; 
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
   }  
 
     .tour-card {  
@@ -107,7 +111,7 @@
       border-radius: 10px;  
       overflow: hidden;  
       margin: 0 15px;  
-      width: 220px;   
+      width: calc(25% - 30px);;   
       transition: transform 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
