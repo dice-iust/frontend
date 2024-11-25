@@ -14,7 +14,7 @@ function Navbar() {
   };
   return (
     <div className="nav-page">
-      <div class="home-back">
+      
         <header>
           <div class="logo">
               <img src={LogoImg} alt="Logo"></img>
@@ -31,11 +31,8 @@ function Navbar() {
               <FaBars />  
             </button>
         </header>
-        
-        </div>  
-        <div className="search__container">  
-        <input class="search__input" type="text" placeholder="Search ..." />
-      </div>
+
+        <div class="home-back"></div>
     </div>
   );
 }
