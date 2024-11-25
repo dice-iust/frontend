@@ -27,11 +27,13 @@ function Navbar_category() {
             <nav ref={navref}>  
               <button className="nav-btn-category nav-close-btn-category" onClick={showNavbar}>  
                 <FaTimes />  
-              </button>  
+              </button> 
+              <div className="contents">
               <Link to="/Main"><a href="/"><IoHomeOutline className="movepicon"/> Home</a></Link>
               <Link to="/about"><a href="/"><FiInfo className="movepicon"/> About</a></Link>
               <Link to="/EditProfile"><a href="/"><CgProfile className="movepicon"/> Profile</a> </Link> 
               <Link to="/"><a href="/"><BiLogOutCircle  className="movepicon"/>Logout</a> </Link> 
+              </div> 
             </nav>  
             <button className="nav-btn-category" onClick={showNavbar}>  
               <FaBars />  

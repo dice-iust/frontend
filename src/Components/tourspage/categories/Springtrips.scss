@@ -40,7 +40,8 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-spring {  
+    .tour-card-spring { 
+      flex-wrap: wrap;   
       display: flex;  
       flex-direction: column;  
       background: white;  
