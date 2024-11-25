@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowLeft, FaArrowDown, FaEye} from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEdit} from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import './EditProfile.css'; 
 import profile from "./assets/profile.jpg"
@@ -13,14 +13,14 @@ const EditProfile = () => {
     firstName: '',
     lastName: '',
     user_name: '',
-    password: '',
-    currentPassword: '',
     email: '',
     bio: '',
     gender: '',
     birthDate: '',
     city: '',
     phone: '',
+    password: '',
+    currentPassword: '',
   });
 
   const [isValidPassword, setIsValidPassword] = useState(false)
@@ -30,9 +30,19 @@ const EditProfile = () => {
   const [isValidEmail, setValidEmail] = useState(false)
   const [image, setImage] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+
+  const [showField, setShowField] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState)=> !prevState);
+  };
+  const togglePasswordVisibility2 = () => {
+    setShowPassword2((prevState)=> !prevState);
+  };
+
+  const toggleFieldVisibility = () => {
+    setShowField((prevState)=> !prevState);
   };
 
   const handleFileChange = (event) => {
@@ -160,19 +170,9 @@ const validateEmail = (email) => {
     putDataForm();
   };
 
-  const handleCancel = () => {
-    setFormData({
-      firstName: '',
-      lastName: '',
-      user_name: '',
-      password: '',
-      email: '',
-      bio: '',
-      gender: '',
-      birthDate: '',
-      city: '',
-      phone: '',
-    });
+  const handleCancel = (e) => {
+    e.preventDefault();  
+    getFormData()
   };
 
 
@@ -196,32 +196,31 @@ const validateEmail = (email) => {
           <div className='profile'>
             <img src={formData.profile_image ? `http://localhost:3000/editprofile/${formData.profile_image}` : profile} alt="profile" />
             <label className="form-label">
-              <input type="file" accept="image/*" className="file-input" onChange={handleFileChange} />
+              <input type="file" accept="image/*" className="file-input" onChange={handleFileChange}/>
               <span className="change-button">+</span>
             </label>
           </div>
        
           <h3 className='ep-info'>
             Change Password 
-            <button className='p-btn'><FaArrowDown className='ep-icon'/></button>
+            <div className='p-btn' onClick={toggleFieldVisibility}><FaEdit className='ep-icon' /></div>
           </h3> 
-          <div className="input-container">
+            <div className="input-container" style={{ display: showField ? 'flex' : 'none' }}>
+              <div  className="input-div">
+                <label  className="form-label">Current Password</label>
+                <div className='edit-pwd' onClick={togglePasswordVisibility2}><FaEye/></div>
+                <input type={showPassword2 ? 'text' : 'password' } name="currentPassword" className="form-input" value={formData.currentPassword} onChange={handleChange} />
+                  {isValidCurPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
+              </div>
 
-            <div  className="input-div">
-              <label  className="form-label">Current Password</label>
-              <div className='edit-pwd' onClick={togglePasswordVisibility}><FaEye/></div>
-              <input type={showPassword ? 'text' : 'password' } name="currentPassword" className="form-input" value={formData.currentPassword} onChange={handleChange} />
-                {isValidCurPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
+              <div  className="input-div">
+                <label  className="form-label">New Password</label>
+                <div className='edit-pwd' onClick={togglePasswordVisibility}><FaEye/></div>
+                <input type={showPassword ? 'text' : 'password' } name="password" className="form-input" value={formData.password} onChange={handleChange} />
+                  {isValidPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
+                  {errorMessageConfirm ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>{errorMessageConfirm}</div> : null} 
+              </div>
             </div>
-
-            <div  className="input-div">
-              <label  className="form-label">New Password</label>
-              <div className='edit-pwd' onClick={togglePasswordVisibility}><FaEye/></div>
-              <input type={showPassword ? 'text' : 'password' } name="password" className="form-input" value={formData.password} onChange={handleChange} />
-                {isValidPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
-                {errorMessageConfirm ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>{errorMessageConfirm}</div> : null} 
-            </div>
-          </div>
 
           <h3 className='ep-info'>Personal Information</h3>
 
@@ -292,7 +291,7 @@ const validateEmail = (email) => {
           </div>
           
           <div className='submit'>
-              <button type="cancel" className="submit-button" onClick={handleCancel}>Cancel</button>
+              <button type="cancel" className="submit-button" onClick={handleCancel}>Reset</button>
               <button type="submit" className="submit-button" onClick={handleSubmit}>Submit</button>
           </div>
         </form>

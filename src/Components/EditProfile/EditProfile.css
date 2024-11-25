@@ -9,7 +9,7 @@
     background-size:cover;
     background-position: center;
     background-color: #f6f6f6;
-    background-image: linear-gradient(rgb(187, 220, 233),white, rgb(187, 220, 233));
+    background-image: linear-gradient(rgba(187, 220, 233,.3),white,white, rgba(187, 220, 233,.3));
   }
   .edit-profile-container {
     padding: 20px;
@@ -23,8 +23,8 @@
   }
 
   .ep-info{
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 70px;
+    margin-bottom: 30px;
   }
   
   .profile-form {
@@ -52,7 +52,7 @@
   .profile{
     text-align: center;
     margin-top: 30px;
-   margin-bottom: 40px;
+    margin-bottom: 60px;
   }
 
   .profile-form img {
@@ -108,7 +108,7 @@
 
   .input-container{
     display: flex;
-    gap:30px;
+    gap:40px;
     margin-bottom: 16px;
   } 
   
@@ -188,6 +188,8 @@
   .p-btn{
     background: transparent;
     border: none;
+    display: inline;
+
   }
   .ep-la-icon{
     color: #11354d;
@@ -198,8 +200,8 @@
   }
   .ep-icon{
     color: #11354d;
-    height: 18px;
-    width: 14px;
+    height: 1rem;
+    width: 1rem;
     margin-left: 1rem;
     cursor: pointer;
   }
