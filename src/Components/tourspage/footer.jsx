@@ -1,6 +1,6 @@
 import React, { useState } from 'react';  
-import './footer.scss'; // Ensure this file is correct  
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome if using npm  
+import './footer.scss';  
+import '@fortawesome/fontawesome-free/css/all.min.css';  
 import { MdEmail } from "react-icons/md";  
 import axios from '../../api/axios';  
 
@@ -22,10 +22,9 @@ const Footer = () => {
             );  
             // Show success alert instead of setting a message state  
             alert('Thank you for subscribing!');  
-            setEmail(''); // Clear the email input  
+            setEmail('');   
         } catch (error) {  
             console.error("Error subscribing:", error);  
-            // Optionally handle the error (e.g., display an alert or set an error message state)  
             alert('There was an error subscribing. Please try again.');  
         }  
     };  
@@ -48,14 +47,18 @@ const Footer = () => {
             </div>  
    
             <div className="footer-center">  
-                <h4 style={{ color: "white", fontWeight: "bold",fontSize:"24px" }}>Be In Touch with us</h4>  
+                <h4 style={{ color: "white", fontWeight: "bold", fontSize: "24px" }}>Be In Touch with us</h4>  
                 <div className='contact'>  
                     <MdEmail className='icon' />  
-                    <p style={{ color: "white", fontWeight: "300", textAlign: "left" }}> triptide.contact@gmail.com</p>  
+                    <p style={{ color: "white", fontWeight: "300", textAlign: "left" }}>triptide.contact@gmail.com</p>  
                 </div>  
                 <p>If you are interested in getting our news, please enter your email</p>  
-                <form onSubmit={handleSubmit}>  
-                    <input type="email" placeholder="Enter Email" className="footer-email"  
+
+                <form onSubmit={handleSubmit}>   
+                    <input   
+                        type="email"   
+                        placeholder="Enter Email"   
+                        className="footer-email"  
                         value={email_all}  
                         onChange={(e) => setEmail(e.target.value)}  
                         required  
