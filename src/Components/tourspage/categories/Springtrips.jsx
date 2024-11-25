@@ -58,6 +58,8 @@ const currentDate = new Date();
 return (  
   <div className='spring'>  
   <Travelsnav />  
+  <br/>
+  <br/>
   <div className="tour-list-container-spring">  
       {data && data.Spring_Trips ? (  
           <div className="tour-list-spring">  
@@ -111,7 +113,8 @@ return (
           <p>Loading spring trips...</p>  
       )}    
   </div>   
-  <br />   
+  <br/>
+  <br/>  
   <Footer />  
 </div>  
 );  

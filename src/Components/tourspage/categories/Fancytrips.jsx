@@ -69,6 +69,8 @@ const Fancy = () => {
       
         <div className='fancy'>  
         <Travelsnav />  
+        <br/>
+        <br/>
         <div className="tour-list-container-fancy">  
             {data && data.Fancy_Trips ? (  
                 <div className="tour-list-fancy">  
@@ -122,7 +124,8 @@ const Fancy = () => {
                 <p>Loading Fancy trips...</p>  
             )}    
         </div>   
-        <br />   
+        <br/>
+        <br/>   
         <Footer />  
     </div>  
   );  

@@ -73,6 +73,8 @@ const Autumn = () => {
     return (  
       <div className='autumn'>  
       <Travelsnav />  
+      <br/>
+      <br/>
       <div className="tour-list-container-autumn">  
           {data && data.Autumn_Trips ? (  
               <div className="tour-list-autumn">  
@@ -126,7 +128,8 @@ const Autumn = () => {
               <p>Loading Autumn trips...</p>  
           )}    
       </div>   
-      <br />   
+      <br/>
+      <br/>
       <Footer />  
   </div>  
   );  

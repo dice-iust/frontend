@@ -72,6 +72,8 @@ const Economical = () => {
     return (  
       <div className='economial'>  
       <Travelsnav />  
+      <br/>
+      <br/>
       <div className="tour-list-container-economical">  
           {data && data.economical_Trips ? (  
               <div className="tour-list-economical">  
@@ -125,7 +127,8 @@ const Economical = () => {
               <p>Loading Economical trips...</p>  
           )}    
       </div>   
-      <br />   
+      <br/>
+      <br/>  
       <Footer />  
   </div>  
 );  

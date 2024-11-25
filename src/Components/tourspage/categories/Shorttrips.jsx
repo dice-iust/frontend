@@ -67,6 +67,8 @@ const Short = () => {
     return (  
       <div className='shorttrips'>  
       <Travelsnav />  
+      <br/>
+      <br/>
       <div className="tour-list-container-short">  
           {data && data.Short_Trips ? (  
               <div className="tour-list-short">  
@@ -120,7 +122,8 @@ const Short = () => {
               <p>Loading short trips...</p>  
           )}    
       </div>   
-      <br />   
+      <br/>
+      <br/> 
       <Footer />  
     </div>  
     );  

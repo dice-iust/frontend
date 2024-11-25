@@ -70,6 +70,8 @@ const Summer = () => {
     return (  
       <div className='summer'>  
           <Travelsnav />  
+          <br/>
+          <br/>
           <div className="tour-list-container-summer">  
               {data && data.Summer_Trips? (  
                   <div className="tour-list-summer">  
@@ -123,7 +125,8 @@ const Summer = () => {
                   <p>Loading Summer trips...</p>  
               )}    
           </div>   
-          <br />   
+          <br/>
+          <br/> 
           <Footer />  
       </div>  
   );  

@@ -54,7 +54,8 @@
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
-  
+      margin-left: 10px;
+      margin-right: 10px;
         &:hover {  
           animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
