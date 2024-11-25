@@ -41,13 +41,13 @@ return `${year}/${month}/${day}`;
 const getTransportationIcon = (transportation) => {  
 switch (transportation.toLowerCase()) {  
   case 'train':  
-    return <TbTrain style={{ marginRight: '1.5px' }} />;  
+    return <TbTrain className="moveicon-spring" />;  
   case 'bus':  
-    return <TbBus style={{ marginRight: '1.5px' }} />;  
+    return <TbBus className="moveicon-spring" />;  
   case 'plane':  
-    return <FaPlane style={{ marginRight: '1.5px' }} />;  
+    return <FaPlane className="moveicon-spring" />;  
   case 'car':  
-    return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+    return <FaCarSide className="moveicon-spring" />;  
   default:  
     return null;  
 }  

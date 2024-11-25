@@ -27,12 +27,22 @@
         align-items: center;  
         margin-left: auto;  
         // margin-bottom: 10px;
+        .contents
+        {
+            display: flex;              // Use Flexbox to arrange items  
+            // flex-direction: column; 
+                // Stack items vertically  
+            // align-items: flex-end;
+        }
 
         a {  
             // margin: 0 1rem; 
             margin-left: 15px; 
+            // margin-right: 5px;
             color: var(--textColor);  
-            text-decoration: none;  
+            text-decoration: none;
+            // height:10px;
+            // width:70px;  
 
             // &:hover {  
                 &:hover {  
@@ -179,6 +189,7 @@
             }  
 
             nav {  
+                
                 position: fixed;  
                 top: 0;  
                 right: -100%;  
@@ -192,6 +203,17 @@
  
                 transition: right 0.3s ease;   
                 z-index: 1000;  
+
+                .contents
+                {
+                    flex-direction: column; 
+                    
+                }
+
+                a{
+                    margin-left: 5px;
+                    margin-right: 10px;
+                }
                 
 
                 &.responsive_nav-category {  

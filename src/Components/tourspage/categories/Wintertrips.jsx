@@ -49,13 +49,13 @@ const Winter = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon-winter"/>;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon-winter" />;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon-winter"/>;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon-winter" />;  
       default:  
         return null;  
     }  

@@ -56,13 +56,13 @@ const Autumn = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon-autumn" />;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon-autumn"/>;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon-autumn" />;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon-autumn" />;  
       default:  
         return null;  
     }  
