@@ -222,8 +222,8 @@
           font-weight: bold; 
           margin-right: 7px;
           margin-left: auto;  
-          font-size: 1em; 
-          padding: 4px 8px; 
+          font-size: 0.9em; 
+          padding: 4px 4px; 
           border-radius: 5px; 
           display: inline-block;
            
@@ -258,15 +258,18 @@
           display: flex;  
           justify-content: space-between;
          
-          
+          .tour-date
+          {
+            font-size: 0.9em;
+          }
   
-          .tour-date, .tour-length {
+           .tour-length {
               
               font-size: 0.9em;  
           }
          
       
-          .tour-dates {  
+          .tour-date {  
               margin-bottom: 7px;
               margin-left: 10px;
               margin-top:0px;
