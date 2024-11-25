@@ -253,3 +253,67 @@
       transform: rotate(0deg) scale(1); /* Returning to original state */  
     }  
   }
+
+
+  @media (max-width: 1200px) {  
+    .tour-card-summer {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta-summer7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta-summer3 
+      {
+        font-size: 0.9em;
+      }
+      
+  }  
+  
+  @media (max-width: 1200px) {  
+    .tour-card-summer {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    
+    .tour-meta-summer7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta-summer3 {  
+      font-size: 0.9em;  
+    }  
+  }  
+  
+  @media (max-width: 768px) {  
+    .tour-card-summer {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+  
+    .admin-photo {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta-summer7 {  
+      font-size: 0.8em;  
+    }   
+  
+    .tour-name-summer,   
+    .tour-meta-summer3 .trip-type-summer {  
+      font-size: 0.8em;  
+    }  
+  }  
+  
+  @media (max-width: 576px) {  
+    .tour-info-summer {  
+      .tour-name-summer {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta-summer3 .trip-type-summer {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
+    }  
+  }

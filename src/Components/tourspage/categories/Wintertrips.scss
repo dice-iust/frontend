@@ -249,9 +249,65 @@
 
 
 
-// @media (max-width: 500px) { // Optional: handle smaller screens  
-//   & > .tour-card-winter {  
-//     width: calc(100% - 10px); // One card per row for very small screens  
-//   }  
-// }
+@media (max-width: 1200px) {  
+  .tour-card-winter {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  .tour-meta-winter7
+    {
+      font-size:0.9em;
+    } 
 
+    .tour-meta-winter3 
+    {
+      font-size: 0.9em;
+    }
+    
+}  
+
+@media (max-width: 1200px) {  
+  .tour-card-winter {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  
+  .tour-meta-winter7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta-winter3 {  
+    font-size: 0.9em;  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card-winter {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
+
+  .admin-photo {  
+    width: 20px;  
+    height: 20px;  
+  }  
+
+  .tour-meta-winter7 {  
+    font-size: 0.8em;  
+  }   
+
+  .tour-name-winter,   
+  .tour-meta-winter3 .trip-type-winter {  
+    font-size: 0.8em;  
+  }  
+}  
+
+@media (max-width: 576px) {  
+  .tour-info-winter {  
+    .tour-name-winter {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta-winter3 .trip-type-winter {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
+  }  
+}

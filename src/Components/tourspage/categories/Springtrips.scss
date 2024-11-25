@@ -248,7 +248,7 @@
 // Responsive Design Adjustments  
 @media (max-width: 1200px) {  
   .tour-card-spring {  
-    width: calc(50% - 10px); /* Two cards per row on medium screens */  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
   }  
   .tour-meta-spring7
     {
@@ -262,25 +262,36 @@
     
 }  
 
-@media (max-width: 768px) {  
+@media (max-width: 1200px) {  
   .tour-card-spring {  
-    width: calc(100% - 10px); /* One card per row on small screens */  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
   }  
   
+  .tour-meta-spring7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta-spring3 {  
+    font-size: 0.9em;  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card-spring {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
 
   .admin-photo {  
     width: 20px;  
     height: 20px;  
   }  
 
-  .tour-meta-spring7
-    {
-      font-size:0.8em;
-    } 
+  .tour-meta-spring7 {  
+    font-size: 0.8em;  
+  }   
 
-
-
-  .tour-name-spring, .tour-meta-spring3 .trip-type-spring {  
+  .tour-name-spring,   
+  .tour-meta-spring3 .trip-type-spring {  
     font-size: 0.8em;  
   }  
 }  
@@ -289,8 +300,7 @@
   .tour-info-spring {  
     .tour-name-spring {  
       font-size: 0.8em;  
-    } 
-    
+    }   
 
     .tour-meta-spring3 .trip-type-spring {  
       padding: 2px 6px;  

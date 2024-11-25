@@ -242,3 +242,67 @@
       transform: rotate(0deg) scale(1); /* Returning to original state */  
     }  
   }
+
+
+  @media (max-width: 1200px) {  
+    .tour-card-spring {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta-spring7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta-spring3 
+      {
+        font-size: 0.9em;
+      }
+      
+  }  
+  
+  @media (max-width: 1200px) {  
+    .tour-card-spring {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    
+    .tour-meta-spring7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta-spring3 {  
+      font-size: 0.9em;  
+    }  
+  }  
+  
+  @media (max-width: 768px) {  
+    .tour-card-spring {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+  
+    .admin-photo {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta-short7 {  
+      font-size: 0.8em;  
+    }   
+  
+    .tour-name-spring,   
+    .tour-meta-spring3 .trip-type-spring {  
+      font-size: 0.8em;  
+    }  
+  }  
+  
+  @media (max-width: 576px) {  
+    .tour-info-spring {  
+      .tour-name-spring {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta-spring3 .trip-type-spring {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
+    }  
+  }
