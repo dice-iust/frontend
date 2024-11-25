@@ -9,17 +9,22 @@
     background-size:cover;
     background-position: center;
     background-color: #f6f6f6;
-    background-image: linear-gradient(rgb(187, 220, 233), rgb(255, 160, 122),rgb(187, 220, 233));
+    background-image: linear-gradient(rgb(187, 220, 233),white, rgb(187, 220, 233));
   }
   .edit-profile-container {
     padding: 20px;
     margin: 16px;
-    width: 90%;
+    width: 70%;
   }
   
-  .title {
+  .ep-title {
     color: #22487a;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+  }
+
+  .ep-info{
+    margin-top: 80px;
+    margin-bottom: 40px;
   }
   
   .profile-form {
@@ -27,20 +32,20 @@
     border: 2px solid rgba(255,255,255,.2);
     box-shadow: 0 0 10px rgba(0,0,0,.2);
     color: #22487a;
-    border-radius: 15px;
-    padding: 30px 120px;
+    border-radius: 12px;
+    padding: 30px 80px;
     margin-top: 30px;
-    
   }
+
   .profile-form h1{
     text-align: center;
   }
   
   .form-label {
-    padding-left: 6px;
-    font-size: 14px;
-    color: #777;
-    padding-bottom: 2px;
+    padding-left: 8px;
+    font-size: 16px;
+    color: #11354d;
+    padding-bottom: 4px;
     position: relative;
   }
 
@@ -71,11 +76,11 @@
 
   .form-select{
     /* Style */
-    width:98.5%;
+    width:100%;
     background: transparent;
     border: 2px solid rgba(3, 2, 2, 0.2);
     outline: none;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 16px;
     color: #22487a;
     padding: 14px 10px;
@@ -94,7 +99,7 @@
     background: transparent;
     border: 2px solid rgba(3, 2, 2, 0.2);
     outline: none;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 16px;
     color: #22487a;
     padding: 14px 10px;
@@ -103,7 +108,7 @@
 
   .input-container{
     display: flex;
-    gap:20px;
+    gap:30px;
     margin-bottom: 16px;
   } 
   
@@ -117,8 +122,15 @@
   .form-textarea:focus,
   .file-input:focus {
     border-color: rgba(255, 123, 0, .4);
-    box-shadow: 0 0 10px rgba(255, 123, 0, .4);
+    box-shadow: 0 0 10px rgba(255, 123, 0, .3);
     outline: none;
+  }
+
+  .form-btn{
+    display: flex;
+    align-items: center;
+
+
   }
   
   .submit-button {
@@ -126,7 +138,7 @@
     width: 150px;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -170,10 +182,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     margin: 20px 0;
   }
+  .p-btn{
+    background: transparent;
+    border: none;
+  }
+  .ep-la-icon{
+    color: #11354d;
+    border: none;
+    height: 2rem;
+    width: 1rem;
+    cursor: pointer;
+  }
+  .ep-icon{
+    color: #11354d;
+    height: 18px;
+    width: 14px;
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+
   
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     .edit-profile-container {
       padding: 15px;
     }
