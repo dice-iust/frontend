@@ -69,6 +69,7 @@ const Winter = () => {
       <Travelsnav /> 
     
       <br/> 
+      
       <div className="tour-list-container-winter">  
           {data && data.Winter_Trips ? (  
               <div className="tour-list-winter">  
