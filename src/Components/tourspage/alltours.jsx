@@ -97,7 +97,15 @@ const TourList = () => {
     
    
     
-    responsive: [  
+    responsive: [ 
+      {  
+        breakpoint: 1200,  
+        settings: {  
+          slidesToShow: 2,  
+          slidesToScroll: 1,
+          // centerPadding: '0px'  
+        }  
+      },  
       {  
         breakpoint: 1024,  
         settings: {  
