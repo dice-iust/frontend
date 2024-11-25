@@ -1,6 +1,10 @@
 .summer {  
     text-align: center;  
     padding: 2px;  
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   
     .tour-list-container-summer {  
       max-width: 2000px;  
