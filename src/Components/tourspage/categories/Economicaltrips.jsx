@@ -55,13 +55,13 @@ const Economical = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon-economical2" />;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon-economical2" />;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon-economical2"/>;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon-economical2" />;  
       default:  
         return null;  
     }  
