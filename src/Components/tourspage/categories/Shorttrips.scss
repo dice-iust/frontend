@@ -294,7 +294,10 @@
     }  
   }  
   
-  @media (max-width: 576px) {  
+  @media (max-width: 480px) {  
+    .tour-card-spring {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
     .tour-info-spring {  
       .tour-name-spring {  
         font-size: 0.8em;  

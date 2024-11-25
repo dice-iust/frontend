@@ -95,7 +95,7 @@ header .container {
   justify-content: flex-start; /* Align items to the top, not center */  
   height: calc(100vh - 60px); /* Adjust this value to the height of your navbar */  
   padding: 2rem;             /* Padding for spacing */  
-  padding-top: 8px;        /* Add extra padding if needed for spacing below the navbar */  
+  padding-top: 0px;        /* Add extra padding if needed for spacing below the navbar */  
   text-align: center;        /* Center text alignment */  
   position: relative;        /* Positioning within the container */  
   z-index: 1;                /* Maintain layer order */  
@@ -112,7 +112,7 @@ header .container {
   color: white; /* Default text color */  
   z-index: 3; /* Ensure text is above aurora */  
   animation: textColorChange 6s linear infinite; /* Add text color change animation */ 
-  margin-top: -2px; 
+  margin-top: -20px; 
 }  
 
 
