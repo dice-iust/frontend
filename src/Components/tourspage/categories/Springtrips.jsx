@@ -56,10 +56,11 @@ switch (transportation.toLowerCase()) {
 const currentDate = new Date();  
 
 return (  
+    <div className='app-container-spring'>
   <div className='spring'>  
   <Travelsnav />  
   <br/>
-  <br/>
+  
   <div className="tour-list-container-spring">  
       {data && data.Spring_Trips ? (  
           <div className="tour-list-spring">  
@@ -112,9 +113,9 @@ return (
       ) : (  
           <p>Loading spring trips...</p>  
       )}    
+  </div>
   </div>   
-  <br/>
-  <br/>  
+ 
   <Footer />  
 </div>  
 );  

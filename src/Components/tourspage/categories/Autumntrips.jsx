@@ -71,9 +71,10 @@ const Autumn = () => {
     const currentDate = new Date();  
     
     return (  
+    <div className='app-container-autumn'>
       <div className='autumn'>  
       <Travelsnav />  
-      <br/>
+     
       <br/>
       <div className="tour-list-container-autumn">  
           {data && data.Autumn_Trips ? (  
@@ -127,8 +128,9 @@ const Autumn = () => {
           ) : (  
               <p>Loading Autumn trips...</p>  
           )}    
-      </div>   
-      <br/>
+      </div>  
+      </div> 
+      
       <br/>
       <Footer />  
   </div>  

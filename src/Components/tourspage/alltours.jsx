@@ -116,7 +116,8 @@ const TourList = () => {
     ]  
   };  
 
-  return (  
+  return ( 
+    <div className='app-container-main'> 
     <div className='travelpage'>
       <Travelsnav/>
     <div className="tour-list-container"> 
@@ -190,7 +191,8 @@ const TourList = () => {
           </Slider>  
         ) : (  
           <p>Loading popular trips...</p>  
-        )}  
+        )} 
+        </div> 
 <br></br>
 <br></br>
 <br></br>

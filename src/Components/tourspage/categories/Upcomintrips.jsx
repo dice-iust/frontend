@@ -52,9 +52,10 @@ const Upcoming = () => {
     };  
   
     return (  
+        <div className='app-container-upcoming'>
         <div className='upcoming'>  
             <Travelsnav />  
-            <br/>
+            
             <br/>
             
             <div className="tour-list-container2">  
@@ -109,8 +110,9 @@ const Upcoming = () => {
                 ) : (  
                     <p>Loading upcoming trips...</p>  
                 )}    
-            </div>   
-            <br />   
+            </div> 
+            </div>  
+            
             <br/>
             <Footer />  
         </div>  

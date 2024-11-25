@@ -1,10 +1,25 @@
+
+
+.app-container-summer {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+
+
+
 .summer {  
     text-align: center;  
     padding: 2px;  
+    flex: 1; 
+    
   
     .tour-list-container-summer {  
       max-width: 2000px;  
-      margin: 0 auto;  
+      margin-left: 10px;
+      margin-right: 10px;
+      
   
       .tour-list-summer {  
         display: flex;  
@@ -51,8 +66,7 @@
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
         border: 2px solid rgba(34, 72, 122, 0.5);  
-        margin-left: 10px;
-        margin-right: 10px;
+        
         &:hover {  
           animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
