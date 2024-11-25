@@ -99,11 +99,11 @@ header .container {
   text-align: center;        /* Center text alignment */  
   position: relative;        /* Positioning within the container */  
   z-index: 1;                /* Maintain layer order */  
-  margin-top: 10px;          /* Center text alignment */  
+  margin-top: 85px;          /* Center text alignment */  
 }
 
 .title {  
-  font-size: 80px;  
+  font-size: 90px;  
   font-weight: 600;  
   letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);  
   position: relative;  
@@ -127,13 +127,13 @@ header .container {
 
  
 .btn2 {  
-  padding: 1rem 1.5rem;  
+  padding: 1rem 1.8rem;  
   background-color: #22487a;  
   text-decoration: none;
   outline: none;  
   border: none;  
   border-radius: 5rem;  
-  font-size: 1.1rem;  
+  font-size: 1.4rem;  
   cursor: pointer;  
   font-weight: 600;  
   color: white;  
@@ -141,6 +141,7 @@ header .container {
   display: flex;  
   align-items: center;  
   justify-content: center;  
+  margin-top: 20px;
   margin-left: 12rem;  
   margin-right: 13rem;  
 }  
