@@ -70,6 +70,7 @@ const Economical = () => {
     const currentDate = new Date();  
     
     return (  
+    <div className='app-container-economical'>
       <div className='economial'>  
       <Travelsnav />  
       <br/>
@@ -126,7 +127,8 @@ const Economical = () => {
           ) : (  
               <p>Loading Economical trips...</p>  
           )}    
-      </div>   
+      </div> 
+      </div>  
       <br/>
       <br/>  
       <Footer />  

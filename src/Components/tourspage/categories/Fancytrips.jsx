@@ -66,11 +66,11 @@ const Fancy = () => {
     const currentDate = new Date();  
     
     return (  
-      
+        <div className='app-container-fancy'>
         <div className='fancy'>  
         <Travelsnav />  
         <br/>
-        <br/>
+       
         <div className="tour-list-container-fancy">  
             {data && data.Fancy_Trips ? (  
                 <div className="tour-list-fancy">  
@@ -123,8 +123,9 @@ const Fancy = () => {
             ) : (  
                 <p>Loading Fancy trips...</p>  
             )}    
+        </div>
         </div>   
-        <br/>
+        
         <br/>   
         <Footer />  
     </div>  

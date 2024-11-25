@@ -1,10 +1,17 @@
+.app-container-spring {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
 .spring {  
   text-align: center;  
   padding: 2px;  
-
+  flex: 1; 
   .tour-list-container-spring {  
     max-width: 2000px;  
-    margin: 0 auto;  
+    margin-left: 10px;
+    margin-right: 10px; 
 
     .tour-list-spring {  
       display: flex;  
@@ -40,7 +47,8 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-spring { 
+    .tour-card-spring {
+      display: flex;   
       flex-wrap: wrap;   
       display: flex;  
       flex-direction: column;  
@@ -52,8 +60,7 @@
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
-      margin-left: 10px;
-      margin-right: 10px;
+     
       &:hover {  
         animation: circular-animation 0.4s ease forwards;  
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  

@@ -1,8 +1,15 @@
+.app-container-main {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
 .travelpage {  
   text-align: center;  
   // background-color: #f9f9f9; 
   // display: flex; 
-  padding: 2px;  
+  padding: 2px; 
+  flex: 1;  
   // display: flex;
 
   .tour-list-container {  

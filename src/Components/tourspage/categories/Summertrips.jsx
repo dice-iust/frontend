@@ -68,6 +68,8 @@ const Summer = () => {
     const currentDate = new Date();  
     
     return (  
+        <div className='app-container-summer'>  
+      
       <div className='summer'>  
           <Travelsnav />  
           <br/>
@@ -127,6 +129,7 @@ const Summer = () => {
           </div>   
           <br/>
           <br/> 
+          </div>
           <Footer />  
       </div>  
   );  

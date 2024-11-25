@@ -65,10 +65,11 @@ const Short = () => {
     const currentDate = new Date();  
     
     return (  
+        <div className='app-container-short'>
       <div className='shorttrips'>  
       <Travelsnav />  
       <br/>
-      <br/>
+      
       <div className="tour-list-container-short">  
           {data && data.Short_Trips ? (  
               <div className="tour-list-short">  
@@ -121,8 +122,8 @@ const Short = () => {
           ) : (  
               <p>Loading short trips...</p>  
           )}    
-      </div>   
-      <br/>
+      </div> 
+      </div>  
       <br/> 
       <Footer />  
     </div>  
