@@ -6,6 +6,8 @@ import { SiTide } from "react-icons/si";
 import { FaLocationDot } from "react-icons/fa6";
 import LogoImg from "../tourspage/Assests/logo.png";
 import { Link } from 'react-router-dom'; 
+import { FiInfo } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 
 function Navbar() {
   const navref = useRef();
@@ -24,8 +26,8 @@ function Navbar() {
               <button className="nav-btn nav-close-btn" onClick={showNavbar}>  
                 <FaTimes />  
               </button>  
-              <Link to="/about"><a href="/">About</a></Link>
-              <Link to="/EditProfile"><a href="/">Profile</a> </Link> 
+              <Link to="/about"><a href="/"><FiInfo className="moveaicon"/> About</a></Link>
+              <Link to="/EditProfile"><a href="/"><CgProfile className="moveaicon"/> Profile</a> </Link> 
             </nav>  
             <button className="nav-btn" onClick={showNavbar}>  
               <FaBars />  

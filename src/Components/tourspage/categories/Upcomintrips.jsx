@@ -53,7 +53,8 @@ const Upcoming = () => {
   
     return (  
         <div className='upcoming'>  
-            <Travelsnav />  
+            <Travelsnav /> 
+            {/* <br></br>  */}
             <div className="tour-list-container2">  
                 {data && data.Up_comingTrips ? (  
                     <div className="tour-list2">  
