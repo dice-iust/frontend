@@ -16,6 +16,7 @@ import Upcoming from './Components/tourspage/Upcomintrips.jsx';
 import Economical from "./Components/tourspage/Economicaltrips.jsx";
 import Fancy from "./Components/tourspage/Fancytrips.jsx";
 import Winter from './Components/tourspage/Wintertrips.jsx';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
 
 
 function App() {  
@@ -35,7 +36,8 @@ function App() {
         <Route path="/Main/UpComing" element={<Upcoming />} /> 
         <Route path="/Main/Economical" element={<Economical />} /> 
         <Route path="/Main/Fancy" element={<Fancy />} /> 
-        <Route path="/Main/Winter" element={<Winter />} /> 
+        <Route path="/Main/Winter" element={<Winter />} />
+        <Route path="/login/forgot" element={<ForgotPassword/>}/>
 
       </Routes>  
     </Router>  
