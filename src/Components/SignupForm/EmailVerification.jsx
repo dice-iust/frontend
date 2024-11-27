@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';  
-import { MdEmail } from "react-icons/md";  
 import { Link, useNavigate } from 'react-router-dom';  
 import AuthContext from './AuthProvider';  
 import axios from '../../api/axios';  
@@ -16,10 +15,6 @@ const EmailVerification = () => {
   const [isSuccess, setIsSuccess] = useState(false);  
   const navigate = useNavigate();  
 
-  // useEffect(() => {  
-  //   emailRef.current.focus();  
-  // }, []);  
-
   useEffect(() => {  
     setErrMsg('');  
   }, [email]);  
@@ -35,9 +30,13 @@ const EmailVerification = () => {
   const handleSendCode = async () => {  
     try {  
       // Replace with your actual API endpoint for sending the email verification code  
-      await axios.post('/send-verification-code', { email });  
-      alert('Verification code sent to your email!');  
+      // await axios.post('/send-verification-code', { email });  
+      // alert('Verification code sent to your email!');  
       setIsCodeInputVisible(true);  
+      // Focus on the verification code input field  
+      if (emailRef.current) {  
+        emailRef.current.focus();  
+      }  
     } catch (error) {  
       console.error("Error sending verification code:", error);  
       setErrMsg('Failed to send verification code.');  
@@ -57,7 +56,7 @@ const EmailVerification = () => {
           navigate('/main'); // Navigate to the main page after 5 seconds  
         }, 5000);  
       } else {  
-        setErrMsg('Not match');  
+        setErrMsg('Wrong code');  
         setTimeout(() => {  
           navigate('/signup'); // Navigate to signup page if not matched  
         }, 5000);  
