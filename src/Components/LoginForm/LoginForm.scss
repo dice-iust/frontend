@@ -13,14 +13,14 @@
     width: 100%;  
     max-width: 900px;   
     height: auto;  
-    max-height: 500px;  
+    box-shadow: 50px 50px 50px  rgba(0, 0, 0, 0.2);   
     border-radius: 15px;   
     border: 2px solid rgba(3, 2, 2, 0.2);
     box-shadow: 50px 50px 50px  rgba(0, 0, 0, 0.2);   
     // overflow: hidden;  
     align-items: stretch; 
     position: relative;
-    z-index: 10; 
+    // z-index: 10; 
 }  
 
 .form-container {   
@@ -51,7 +51,8 @@
 .wrapperLogin h1 {  
     font-size: 36px;  
     text-align: center;  
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    margin-top: 0;
 }  
 
 .input-box {  

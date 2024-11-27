@@ -1,19 +1,28 @@
-.fancy {  
+.app-container-winter {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+.winter {  
+    
   text-align: center;  
   padding: 2px;  
+  flex: 1; 
 
-  .tour-list-container-fancy {  
+  .tour-list-container-winter {  
     max-width: 2000px;  
-    margin: 0 auto;  
+    margin-left: 10px;
+    margin-right: 10px; 
 
-    .tour-list-fancy {  
+    .tour-list-winter {  
       display: flex;  
       flex-wrap: wrap;  
-      justify-content: space-between;  
+      // justify-content: space-between;  
       gap: 15px;  
     }  
     
-    .moveicon-fancy2 {  
+    .moveicon-winter {  
       margin-left: 2px;  
       margin-right: 2px;  
       margin-bottom: 0px;  
@@ -21,13 +30,13 @@
       vertical-align: middle;   
     }  
 
-    .card-image-fancy {  
+    .card-image-winter {  
       width: 100%;  
       height: 100%;  
       object-fit: cover;   
     }  
 
-    .card-title-fancy {  
+    .card-title-winter {  
       position: absolute;   
       bottom: 0;   
       right: 0;  
@@ -40,36 +49,36 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-fancy {  
+    .tour-card-winter {  
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+      width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
-  
+      flex-wrap: wrap;  
       &:hover {  
         animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
     }  
 
-    .tour-image-fancy {  
+    .tour-image-winter {  
       width: 100%;  
       height: 168px;   
       object-fit: cover;   
       position: relative;   
     }  
 
-    .tour-image-container-fancy {  
+    .tour-image-container-winter {  
       position: relative;  
     }  
 
-    .tour-admin-fancy {  
+    .tour-admin-winter {  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -81,7 +90,7 @@
       z-index: 20;  
     }  
 
-    .admin-photo-fancy {  
+    .admin-photo-winter {  
       width: 30px;  
       height: 30px;  
       border-radius: 50%;  
@@ -94,11 +103,11 @@
     }  
 
     // Tour Info Styles  
-    .tour-info-fancy {  
+    .tour-info-winter {  
       display: flex;  
       flex-direction: column;  
 
-      .tour-name-fancy {  
+      .tour-name-winter {  
         font-size: 1em;  
         font-weight: bold;  
         margin-bottom: 0px;  
@@ -108,13 +117,13 @@
         color: #22487a;    
       }  
 
-      .tour-details-fancy{  
+      .tour-details-winter{  
         display: flex;  
         align-items: center;  
         margin-bottom: 0px;  
         margin-top: 0px;  
 
-        .tour-route-fancy {  
+        .tour-route-winter {  
           display: flex;  
           align-items: center;  
           margin-left: 10px;   
@@ -132,11 +141,11 @@
         }  
       }  
 
-      .tour-meta-fancy3 {  
+      .tour-meta-winter3 {  
         display: flex;   
         align-items: center;   
         margin-top: 12px;   
-        .trip-type-fancy {  
+        .trip-type-winter {  
           font-weight: bold;   
           margin-right: 7px;  
           margin-left: auto;  
@@ -145,11 +154,11 @@
           border-radius: 5px;   
           display: inline-block;  
         }  
-        .trip-type-fancy.Budget-friendly {  
+        .trip-type-winter.Budget-friendly {  
           background-color: #c8e6c9;   
           color: #388e3c;  
         }  
-        .trip-type-fancy.Fancy {  
+        .trip-type-winter.Fancy {  
           background-color: #f59e9e;  
           color: #e9362c;   
         }   
@@ -165,26 +174,26 @@
         color: #22487a;    
       }  
 
-      .tour-meta-fancy7 {  
+      .tour-meta-winter7 {  
         display: flex;  
         justify-content: space-between;  
 
-        .tour-date-fancy, .tour-length-fancy {  
+        .tour-dates-winter, .tour-length-winter {  
           font-size: 0.9em;  
-        }        .tour-dates-fancy {  
+        }        .tour-dates-winter {  
           margin-bottom: 7px;  
           margin-left: 10px;  
           margin-top: 0px;  
           margin-right: 20px;  
         }  
 
-        .tour-length-fancy {  
+        .tour-length-winter {  
           margin-right: 15px;  
           margin-bottom: 10px;  
           margin-top: 0px;  
         }   
         
-        .moveicon-fancy3 {  
+        .moveicon-winter3 {  
           margin-left: 2px;  
           margin-right: 4px;  
           margin-bottom: 4px;  
@@ -192,7 +201,7 @@
           vertical-align: middle;   
         }  
 
-        .moveicon-fancy4 {  
+        .moveicon-winter4 {  
           margin-left: 4px;  
           margin-right: 4px;  
           margin-bottom: 3px;  
@@ -233,5 +242,72 @@
   }  
   100% {  
     transform: rotate(0deg) scale(1); /* Returning to original state */  
+  }  
+  
+ 
+}
+
+
+
+@media (max-width: 1200px) {  
+  .tour-card-winter {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  .tour-meta-winter7
+    {
+      font-size:0.9em;
+    } 
+
+    .tour-meta-winter3 
+    {
+      font-size: 0.9em;
+    }
+    
+}  
+
+@media (max-width: 1200px) {  
+  .tour-card-winter {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  
+  .tour-meta-winter7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta-winter3 {  
+    font-size: 0.9em;  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card-winter {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
+
+  .admin-photo {  
+    width: 20px;  
+    height: 20px;  
+  }  
+
+  .tour-meta-winter7 {  
+    font-size: 0.8em;  
+  }   
+
+  .tour-name-winter,   
+  .tour-meta-winter3 .trip-type-winter {  
+    font-size: 0.8em;  
+  }  
+}  
+
+@media (max-width: 576px) {  
+  .tour-info-winter {  
+    .tour-name-winter {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta-winter3 .trip-type-winter {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
   }  
 }

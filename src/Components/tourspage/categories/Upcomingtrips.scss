@@ -1,19 +1,27 @@
-.spring {  
+.app-container-upcoming{  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+.upcoming {  
   text-align: center;  
-  padding: 2px;  
+  padding: 2px; 
+  flex: 1;  
 
-  .tour-list-container-spring {  
+  .tour-list-container2 {  
     max-width: 2000px;  
-    margin: 0 auto;  
-
-    .tour-list-spring {  
+    margin-left: 10px;
+    margin-right: 10px; 
+    height: auto;
+    .tour-list2 {  
       display: flex;  
       flex-wrap: wrap;  
-      justify-content: space-between;  
+      // justify-content: space-between;  
       gap: 15px;  
     }  
     
-    .moveicon-spring {  
+    .moveicon2 {  
       margin-left: 2px;  
       margin-right: 2px;  
       margin-bottom: 0px;  
@@ -21,13 +29,13 @@
       vertical-align: middle;   
     }  
 
-    .card-image-spring {  
+    .card-image2 {  
       width: 100%;  
       height: 100%;  
       object-fit: cover;   
     }  
 
-    .card-title-spring {  
+    .card-title2 {  
       position: absolute;   
       bottom: 0;   
       right: 0;  
@@ -40,36 +48,38 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-spring {  
+    .tour-card2 {  
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+      width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
-  
+
+      
+
       &:hover {  
         animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
     }  
 
-    .tour-image-spring {  
+    .tour-image2 {  
       width: 100%;  
       height: 168px;   
       object-fit: cover;   
       position: relative;   
     }  
 
-    .tour-image-container-spring {  
+    .tour-image-container2 {  
       position: relative;  
     }  
 
-    .tour-admin-spring {  
+    .tour-admin2 {  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -81,7 +91,7 @@
       z-index: 20;  
     }  
 
-    .admin-photo-spring {  
+    .admin-photo2 {  
       width: 30px;  
       height: 30px;  
       border-radius: 50%;  
@@ -94,11 +104,11 @@
     }  
 
     // Tour Info Styles  
-    .tour-info-spring {  
+    .tour-info2 {  
       display: flex;  
       flex-direction: column;  
 
-      .tour-name-spring {  
+      .tour-name2 {  
         font-size: 1em;  
         font-weight: bold;  
         margin-bottom: 0px;  
@@ -108,13 +118,13 @@
         color: #22487a;    
       }  
 
-      .tour-details-spring{  
+      .tour-details2 {  
         display: flex;  
         align-items: center;  
         margin-bottom: 0px;  
         margin-top: 0px;  
 
-        .tour-route-spring {  
+        .tour-route2 {  
           display: flex;  
           align-items: center;  
           margin-left: 10px;   
@@ -132,11 +142,11 @@
         }  
       }  
 
-      .tour-meta-spring3 {  
+      .tour-meta3 {  
         display: flex;   
         align-items: center;   
         margin-top: 12px;   
-        .trip-type-spring {  
+        .trip-type2 {  
           font-weight: bold;   
           margin-right: 7px;  
           margin-left: auto;  
@@ -145,11 +155,11 @@
           border-radius: 5px;   
           display: inline-block;  
         }  
-        .trip-type-spring.Budget-friendly {  
+        .trip-type2.Budget-friendly {  
           background-color: #c8e6c9;   
           color: #388e3c;  
         }  
-        .trip-type-spring.Fancy {  
+        .trip-type2.Fancy {  
           background-color: #f59e9e;  
           color: #e9362c;   
         }   
@@ -165,26 +175,26 @@
         color: #22487a;    
       }  
 
-      .tour-meta-spring7 {  
+      .tour-meta7 {  
         display: flex;  
         justify-content: space-between;  
 
-        .tour-date-spring, .tour-length-spring {  
+        .tour-dates2, .tour-length2 {  
           font-size: 0.9em;  
-        }        .tour-dates-spring {  
+        }        .tour-dates2 {  
           margin-bottom: 7px;  
           margin-left: 10px;  
           margin-top: 0px;  
           margin-right: 20px;  
         }  
 
-        .tour-length-spring {  
+        .tour-length2 {  
           margin-right: 15px;  
           margin-bottom: 10px;  
           margin-top: 0px;  
         }   
         
-        .moveicon-spring3 {  
+        .moveicon3 {  
           margin-left: 2px;  
           margin-right: 4px;  
           margin-bottom: 4px;  
@@ -192,7 +202,7 @@
           vertical-align: middle;   
         }  
 
-        .moveicon-spring4 {  
+        .moveicon4 {  
           margin-left: 4px;  
           margin-right: 4px;  
           margin-bottom: 3px;  
@@ -233,5 +243,70 @@
   }  
   100% {  
     transform: rotate(0deg) scale(1); /* Returning to original state */  
+  }  
+}
+
+
+@media (max-width: 1200px) {  
+  .tour-card2 {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  .tour-meta7
+    {
+      font-size:0.9em;
+    } 
+
+    .tour-meta3 
+    {
+      font-size: 0.9em;
+    }
+    
+}  
+
+@media (max-width: 1200px) {  
+  .tour-card2 {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  
+  .tour-meta7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta3 {  
+    font-size: 0.9em;  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card2 {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
+
+  .admin-photo2 {  
+    width: 20px;  
+    height: 20px;  
+  }  
+
+  .tour-meta7 {  
+    font-size: 0.8em;  
+  }   
+
+  .tour-name2,   
+  .tour-meta3 .trip-type2 {  
+    font-size: 0.8em;  
+  }  
+}  
+
+@media (max-width: 480px) {  
+  
+  .tour-info2 {  
+    .tour-name2 {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta3 .trip-type2 {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
   }  
 }

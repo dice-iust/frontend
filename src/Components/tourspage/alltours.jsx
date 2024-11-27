@@ -97,7 +97,15 @@ const TourList = () => {
     
    
     
-    responsive: [  
+    responsive: [ 
+      {  
+        breakpoint: 1200,  
+        settings: {  
+          slidesToShow: 2,  
+          slidesToScroll: 1,
+          // centerPadding: '0px'  
+        }  
+      },  
       {  
         breakpoint: 1024,  
         settings: {  
@@ -116,7 +124,8 @@ const TourList = () => {
     ]  
   };  
 
-  return (  
+  return ( 
+    <div className='app-container-main'> 
     <div className='travelpage'>
       <Travelsnav/>
     <div className="tour-list-container"> 
@@ -174,7 +183,7 @@ const TourList = () => {
                     </p>  
                   </div>  
                   <div className="tour-meta">  
-                    <p className="tour-dates">  
+                    <p className="tour-date">  
                       <FaRegCalendar className='moveicon3' />  
                       <span>{formatDate(tour.start_date)}</span>  
                     </p>  
@@ -190,7 +199,8 @@ const TourList = () => {
           </Slider>  
         ) : (  
           <p>Loading popular trips...</p>  
-        )}  
+        )} 
+        </div> 
 <br></br>
 <br></br>
 <br></br>
@@ -206,3 +216,4 @@ const TourList = () => {
 
 
 export default TourList;  
+

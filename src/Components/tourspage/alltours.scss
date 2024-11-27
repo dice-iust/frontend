@@ -1,12 +1,19 @@
+.app-container-main {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
 .travelpage {  
   text-align: center;  
   // background-color: #f9f9f9; 
   // display: flex; 
-  padding: 2px;  
+  padding: 2px; 
+  flex: 1;  
   // display: flex;
 
   .tour-list-container {  
-    max-width: 1320px;  
+    max-width: 1400px;  
     margin: 0 auto; 
      
     
@@ -16,6 +23,10 @@
       display: flex;  
       flex-wrap: wrap;  
       justify-content: space-between;  
+      .slick-track {  
+        display: flex;  
+        gap: 1rem;  
+      }  
     } 
     
     .popular-trips-box {  
@@ -88,16 +99,16 @@
     }  
 
     .card-title {  
-      position: absolute; /* Position it absolutely within the card */  
-      bottom: 0px; /* Position from the bottom */  
+      position: absolute; 
+      bottom: 0px;
       right: 0px;
-      margin-bottom: 0px; /* Position from the right */  
+      margin-bottom: 0px;  
       font-size: 1rem;  
-      color: #22487a; /* Change text color to black for contrast */  
-      background: #fff; /* Set background to white */  
-      padding: 5px 5px; /* Add some padding for aesthetics */  
-      border-radius: 2px; /* Rounded corners for the title background */  
-      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); /* Optional: add shadow for better visibility */  
+      color: #22487a;  
+      background: #fff; 
+      padding: 5px 5px; 
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
   }  
 
     .tour-card {  
@@ -211,8 +222,8 @@
           font-weight: bold; 
           margin-right: 7px;
           margin-left: auto;  
-          font-size: 1em; 
-          padding: 4px 8px; 
+          font-size: 0.9em; 
+          padding: 4px 4px; 
           border-radius: 5px; 
           display: inline-block;
            
@@ -247,15 +258,18 @@
           display: flex;  
           justify-content: space-between;
          
-          
+          .tour-date
+          {
+            font-size: 0.9em;
+          }
   
-          .tour-date, .tour-length {
+           .tour-length {
               
               font-size: 0.9em;  
           }
          
       
-          .tour-dates {  
+          .tour-date {  
               margin-bottom: 7px;
               margin-left: 10px;
               margin-top:0px;
@@ -413,3 +427,4 @@
      
   }  
 }
+

@@ -8,22 +8,51 @@ section {
   width: 100%;
   display: inline-block;
   background: #333;
-  height: 50vh;
+  height: 45vh;
   text-align: center;
   font-size: 22px;
   font-weight: 700;
+  padding: 0%;
   text-decoration: underline;
 }
+.custom-alert {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fffcfa;
+	color: #090909;
+	border: 1px solid #ccc;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.custom-alert button {  
+    background-color: #22487a; 
+    color: white;  
+    border: none; 
+    padding: 10px 20px;  
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;   
+}  
 
+.custom-alert button:hover {  
+    background-color: #ea7d29; 
+	color: #f4f5f6;
+} 
 .footer-distributed{
 	background: #22487a;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
+	margin-top: 0;
 	width: 100%;
+	height: auto;
 	text-align: left;
 	font: bold 16px sans-serif;
-	padding: 55px 50px;
-    display: flex;
+	padding: 20px 50px;
+    display: flex;  
 }
 
 .footer-distributed .footer-left,
@@ -189,7 +218,7 @@ section {
 .footer-distributed .footer-center .contact .icon{
 	color: #ea7d29;
 	margin-right: 5px;
-	margin-top: 3px;
+	margin-top: 5px;
 }
 .footer-distributed .footer-center .contact{
 	display: flex;
@@ -205,6 +234,8 @@ section {
 
 .footer-distributed .footer-center p {  
     color: #ea7d29;  
+	font-weight: normal;
+	font-size: 18px;
     margin: 0 0 20px; /* Space below the paragraph */  
 }  
 
@@ -261,17 +292,18 @@ section {
 
 .footer-distributed .footer-company-about{
 	line-height: 20px;
-	color:  #92999f;
-	font-size: 16px;
-	line-height: 25px;
+	color:  #b2b9be;
+	font-size: 18px;
+	line-height: 35px;
 	font-weight: normal;
 	margin: 0;
+	text-align: justify;
 }
 
 .footer-distributed .footer-company-about span{
 	display: block;
 	color:  #ffffff;
-	font-size: 14px;
+	font-size: 24px;
 	font-weight: bold;
 	margin-bottom: 20px;
 }
@@ -299,23 +331,28 @@ section {
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
-@media (max-width: 880px) {
+@media (max-width: 500px) {  
+    .footer-distributed {  
+        flex-direction: column;  /* Stack footer elements vertically */  
+        align-items: center;     /* Center align items */  
+        padding: 20px;          /* Adjust padding */  
+    }  
 
-	.footer-distributed{
-		font: bold 14px sans-serif;
-	}
+    .footer-distributed .footer-left,  
+    .footer-distributed .footer-center,  
+    .footer-distributed .footer-right {  
+        margin-bottom: 20px;  /* Spacing between sections */  
+        width: 100%;   
+		margin: 10px 20px;        /* Allow full width for each section */  
+    }  
 
-	.footer-distributed .footer-left,
-	.footer-distributed .footer-center,
-	.footer-distributed .footer-right{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
-	}
+    .footer-distributed h3 {  
+        font-size: 28px;      /* Font size for headings on smaller screens */  
+    }  
 
-	.footer-distributed .footer-center i{
-		margin-left: 0;
-	}
-
+    .footer-distributed .footer-icons a {  
+        width: 30px;          /* Smaller icon size */  
+        height: 30px;         /* Smaller icon size */  
+        font-size: 18px;      /* Font size for icons */  
+    }  
 }

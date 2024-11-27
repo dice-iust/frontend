@@ -1,17 +1,25 @@
+.app-container-economical {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
 .economial {  
     text-align: center;   
     padding: 2px;  
+    flex: 1; 
   
     .tour-list-container-economical {  
       max-width: 2000px;  
-      margin: 0 auto;  
+      margin-left: 10px;
+      margin-right: 10px;
       
   
       .tour-list-economical {  
          
         display: flex;  
         flex-wrap: wrap;  
-        justify-content: space-between;  
+        // justify-content: space-between;  
         gap: 15px;
       } 
       
@@ -31,30 +39,30 @@
       }  
   
       .card-title-economical {  
-        position: absolute; 
-        bottom: 0px; 
-        right: 0px;
-        margin-bottom: 0px; 
+        position: absolute;   
+        bottom: 0;   
+        right: 0;  
+        margin-bottom: 0;  
         font-size: 1rem;  
         color: #22487a;  
-        background: #fff; 
-        padding: 5px ; 
-        border-radius: 2px; 
-        box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5); 
+        background: #fff;   
+        padding: 5px;  
+        border-radius: 2px;  
+        box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);  
     }  
   
       .tour-card-economical {  
         display: flex;  
-      flex-direction: column;  
-      background: white;  
-      border-radius: 10px;  
-      overflow: hidden;  
-      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
-      height: 300px;   
-      transition: transform 0.3s, box-shadow 0.3s;  
-      position: relative;  
-      border: 2px solid rgba(34, 72, 122, 0.5);  
-  
+        flex-direction: column;  
+        background: white;  
+        border-radius: 10px;  
+        overflow: hidden;  
+        width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
+        height: 300px;   
+        transition: transform 0.3s, box-shadow 0.3s;  
+        position: relative;  
+        border: 2px solid rgba(34, 72, 122, 0.5);  
+        
         &:hover {  
           animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
@@ -75,22 +83,22 @@
   
   
       .tour-admin-economical {  
-        position: absolute;
-        top: 10px; 
+        position: absolute;  
+        top: 10px;  
         left: 10px;  
-        display: flex; 
-        align-items: center; /* Center the items vertically */  
-        background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a background for better visibility */  
-        padding: 2px; /* Optional: Add some padding */  
-        border-radius: 5px; /* Optional: Rounded corners for better appearance */  
-        z-index: 20; /* Ensure it stays above other elements */  
+        display: flex;  
+        align-items: center;  
+        background-color: rgba(255, 255, 255, 0.7);  
+        padding: 2px;  
+        border-radius: 5px;  
+        z-index: 20;  
       }  
   
       .admin-photo-economical {  
-        width: 30px; /* Adjust size as necessary */  
-        height: 30px; /* Adjust size as necessary */  
-        border-radius: 50%; /* Make the image circular */  
-        margin-right: 5px; /* Spacing between image and name */  
+        width: 30px;  
+      height: 30px;  
+      border-radius: 50%;  
+      margin-right: 5px;    
       }
       .admin-photo:hover {  
         transform: scale(1.05); /* Enlarge on hover for interactivity */  
@@ -104,27 +112,28 @@
         flex-direction: column;  
     
         .tour-name-economical{  
-            font-size: 1em;  
-            font-weight: bold;  
-            margin-bottom: 0px;  
-            margin-top: 3px;
-            margin-left: 10px;
-            align-self: flex-start;
-            color: #22487a;    
+          font-size: 1em;  
+          font-weight: bold;  
+          margin-bottom: 0px;  
+          margin-top: 3px;  
+          margin-left: 10px;  
+          align-self: flex-start;  
+          color: #22487a;     
         }  
     
         .tour-details-economical{  
-            display: flex;  
-           
-            align-items: center;  
-            margin-bottom: 0px;  
-            margin-top: 0px;
+          display: flex;  
+          align-items: center;  
+          margin-bottom: 0px;  
+          margin-top: 0px;  
+    
+  
             
             
     
             .tour-route-economical {  
-              display: flex; /* Use flexbox for alignment */  
-              align-items: center; /* Center the icon with respect to text */  
+              display: flex;  
+              align-items: center;  
               margin-left: 10px;   
               margin-top: 0px;   
               font-size: 0.9em;  
@@ -146,18 +155,18 @@
   
         
         .tour-meta-economical3 {  
-          display: flex; 
-          align-items: center; 
-          margin-top: 12px ; 
+          display: flex;   
+        align-items: center;   
+        margin-top: 12px; 
           .trip-type-economical {
             
-            font-weight: bold; 
-            margin-right: 7px;
+            font-weight: bold;   
+            margin-right: 7px;  
             margin-left: auto;  
-            font-size: 1em; 
-            padding: 4px 8px; 
-            border-radius: 5px; 
-            display: inline-block;
+            font-size: 1em;   
+            padding: 4px 8px;   
+            border-radius: 5px;   
+            display: inline-block; 
              
           }  
           .trip-type-economical.Budget-friendly {  
@@ -176,7 +185,7 @@
       
     
         
-        .tour-name {  
+        .tour-name-economical {  
           font-size: 1em;  
             font-weight: bold;  
             margin-bottom: 0px;  
@@ -192,20 +201,20 @@
            
             
     
-            .tour-date-economical2, .tour-length-economical2 {
+            .tour-dates-economical, .tour-length-economical {
                 
                 font-size: 0.9em;  
             }
            
         
-            .tour-dates-economical2 {  
+            .tour-dates-economical {  
                 margin-bottom: 7px;
                 margin-left: 10px;
                 margin-top:0px;
                 margin-right: 20px;
             }  
         
-            .tour-length-economical2 {  
+            .tour-length-economical {  
                 margin-right: 15px;
                 margin-bottom: 10px;
                 margin-top:0px;  
@@ -259,5 +268,68 @@
     }  
     100% {  
       transform: rotate(0deg) scale(1); /* Returning to original state */  
+    }  
+  }
+
+  @media (max-width: 1200px) {  
+    .tour-card-economical {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta-economical7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta-economical3 
+      {
+        font-size: 0.9em;
+      }
+      
+  }  
+  
+  @media (max-width: 1200px) {  
+    .tour-card-economical {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    
+    .tour-meta-economical7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta-economical3 {  
+      font-size: 0.9em;  
+    }  
+  }  
+  
+  @media (max-width: 768px) {  
+    .tour-card-economical {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+  
+    .admin-photo {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta-economical7 {  
+      font-size: 0.8em;  
+    }   
+  
+    .tour-name-economical,   
+    .tour-meta-economical3 .trip-type-economical {  
+      font-size: 0.8em;  
+    }  
+  }  
+  
+  @media (max-width: 576px) {  
+    .tour-info-economical {  
+      .tour-name-economical {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta-economical3 .trip-type-economical {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
     }  
   }

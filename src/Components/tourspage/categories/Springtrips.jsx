@@ -1,6 +1,6 @@
 // import React from 'react';   
 import './Springtrips.scss';   
-import axios from "../../api/axios.js";  
+import axios from "../../../api/axios.js";  
 import React, { useEffect, useState } from "react";   
 import { GrMoney } from "react-icons/gr";  
 import { FaCarSide } from "react-icons/fa6";  
@@ -9,8 +9,9 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb";  
 import { FaUndoAlt } from "react-icons/fa";  
 import { FaRegCalendar } from "react-icons/fa6";  
-import Travelsnav from "./Nav.jsx";  
-import Footer from './footer.jsx';  
+// import Travelsnav from "../Nav.jsx";  
+import Footer from '../footer.jsx';  
+import Travelsnav from "../categories_nav.jsx";  
 import { IoIosTimer } from "react-icons/io";  
 
 const SpringTravels_URL = 'travels/spring/';  
@@ -40,13 +41,13 @@ return `${year}/${month}/${day}`;
 const getTransportationIcon = (transportation) => {  
 switch (transportation.toLowerCase()) {  
   case 'train':  
-    return <TbTrain style={{ marginRight: '1.5px' }} />;  
+    return <TbTrain className="moveicon-spring" />;  
   case 'bus':  
-    return <TbBus style={{ marginRight: '1.5px' }} />;  
+    return <TbBus className="moveicon-spring" />;  
   case 'plane':  
-    return <FaPlane style={{ marginRight: '1.5px' }} />;  
+    return <FaPlane className="moveicon-spring" />;  
   case 'car':  
-    return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+    return <FaCarSide className="moveicon-spring" />;  
   default:  
     return null;  
 }  
@@ -55,8 +56,11 @@ switch (transportation.toLowerCase()) {
 const currentDate = new Date();  
 
 return (  
+    <div className='app-container-spring'>
   <div className='spring'>  
   <Travelsnav />  
+  <br/>
+  
   <div className="tour-list-container-spring">  
       {data && data.Spring_Trips ? (  
           <div className="tour-list-spring">  
@@ -109,8 +113,9 @@ return (
       ) : (  
           <p>Loading spring trips...</p>  
       )}    
+  </div>
   </div>   
-  <br />   
+ 
   <Footer />  
 </div>  
 );  

@@ -1,19 +1,27 @@
-.autumn {  
-    text-align: center;  
-    padding: 2px;  
-  
-    .tour-list-container-autumn {  
+.app-container-short {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+.shorttrips {  
+   
+  text-align: center;  
+  padding: 2px; 
+  flex: 1;  
+    .tour-list-container-short {  
       max-width: 2000px;  
-      margin: 0 auto;  
+      margin-left: 10px;
+      margin-right: 10px;
   
-      .tour-list-autumn {  
+      .tour-list-short {  
         display: flex;  
         flex-wrap: wrap;  
-        justify-content: space-between;  
+        // justify-content: space-between;  
         gap: 15px;  
       }  
       
-      .moveicon-autumn {  
+      .moveicon-short2 {  
         margin-left: 2px;  
         margin-right: 2px;  
         margin-bottom: 0px;  
@@ -21,13 +29,13 @@
         vertical-align: middle;   
       }  
   
-      .card-image-autumn {  
+      .card-image-short {  
         width: 100%;  
         height: 100%;  
         object-fit: cover;   
       }  
   
-      .card-title-autumn {  
+      .card-title-short {  
         position: absolute;   
         bottom: 0;   
         right: 0;  
@@ -40,36 +48,36 @@
         box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
       }  
   
-      .tour-card-autumn {  
+      .tour-card-short {  
         display: flex;  
         flex-direction: column;  
         background: white;  
         border-radius: 10px;  
         overflow: hidden;  
-        width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+        width:calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
         height: 300px;   
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
         border: 2px solid rgba(34, 72, 122, 0.5);  
-    
+        
         &:hover {  
           animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
         }  
       }  
   
-      .tour-image-autumn{  
+      .tour-image-short {  
         width: 100%;  
         height: 168px;   
         object-fit: cover;   
         position: relative;   
       }  
   
-      .tour-image-container-autumn {  
+      .tour-image-container-short {  
         position: relative;  
       }  
   
-      .tour-admin-autumn {  
+      .tour-admin-short {  
         position: absolute;  
         top: 10px;  
         left: 10px;  
@@ -81,7 +89,7 @@
         z-index: 20;  
       }  
   
-      .admin-photo-autumn {  
+      .admin-photo-short {  
         width: 30px;  
         height: 30px;  
         border-radius: 50%;  
@@ -94,11 +102,11 @@
       }  
   
       // Tour Info Styles  
-      .tour-info-autumn {  
+      .tour-info-short {  
         display: flex;  
         flex-direction: column;  
   
-        .tour-name-autumn {  
+        .tour-name-short {  
           font-size: 1em;  
           font-weight: bold;  
           margin-bottom: 0px;  
@@ -108,13 +116,13 @@
           color: #22487a;    
         }  
   
-        .tour-details-autumn {  
+        .tour-details-short {  
           display: flex;  
           align-items: center;  
           margin-bottom: 0px;  
           margin-top: 0px;  
   
-          .tour-route-autumn {  
+          .tour-route-short {  
             display: flex;  
             align-items: center;  
             margin-left: 10px;   
@@ -132,11 +140,11 @@
           }  
         }  
   
-        .tour-meta-autumn3 {  
+        .tour-meta-short3 {  
           display: flex;   
           align-items: center;   
           margin-top: 12px;   
-          .trip-type-autumn {  
+          .trip-type-short {  
             font-weight: bold;   
             margin-right: 7px;  
             margin-left: auto;  
@@ -145,11 +153,11 @@
             border-radius: 5px;   
             display: inline-block;  
           }  
-          .trip-type-autumn.Budget-friendly {  
+          .trip-type-short.Budget-friendly {  
             background-color: #c8e6c9;   
             color: #388e3c;  
           }  
-          .trip-type-autumn.Fancy {  
+          .trip-type-short.Fancy {  
             background-color: #f59e9e;  
             color: #e9362c;   
           }   
@@ -165,26 +173,26 @@
           color: #22487a;    
         }  
   
-        .tour-meta-autumn7 {  
+        .tour-meta-short7 {  
           display: flex;  
           justify-content: space-between;  
   
-          .tour-date-autumn, .tour-length-autumn {  
+          .tour-dates-short, .tour-length-short {  
             font-size: 0.9em;  
-          }        .tour-dates-autumn{  
+          }        .tour-dates-short {  
             margin-bottom: 7px;  
             margin-left: 10px;  
             margin-top: 0px;  
             margin-right: 20px;  
           }  
   
-          .tour-length-autumn {  
+          .tour-length-short {  
             margin-right: 15px;  
             margin-bottom: 10px;  
             margin-top: 0px;  
           }   
           
-          .moveicon-autumn3 {  
+          .moveicon-short3 {  
             margin-left: 2px;  
             margin-right: 4px;  
             margin-bottom: 4px;  
@@ -192,7 +200,7 @@
             vertical-align: middle;   
           }  
   
-          .moveicon-autumn4 {  
+          .moveicon-short4 {  
             margin-left: 4px;  
             margin-right: 4px;  
             margin-bottom: 3px;  
@@ -223,8 +231,7 @@
     }  
   }  
   
-  // Circular Animation Keyframes  
-  @keyframes circular-animation {  
+   @keyframes circular-animation {  
     0% {  
       transform: rotate(0deg) scale(1);  
     }  
@@ -233,5 +240,72 @@
     }  
     100% {  
       transform: rotate(0deg) scale(1); /* Returning to original state */  
+    }  
+  }
+
+
+  @media (max-width: 1200px) {  
+    .tour-card-spring {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta-spring7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta-spring3 
+      {
+        font-size: 0.9em;
+      }
+      
+  }  
+  
+  @media (max-width: 1200px) {  
+    .tour-card-spring {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    
+    .tour-meta-spring7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta-spring3 {  
+      font-size: 0.9em;  
+    }  
+  }  
+  
+  @media (max-width: 768px) {  
+    .tour-card-spring {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+  
+    .admin-photo {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta-short7 {  
+      font-size: 0.8em;  
+    }   
+  
+    .tour-name-spring,   
+    .tour-meta-spring3 .trip-type-spring {  
+      font-size: 0.8em;  
+    }  
+  }  
+  
+  @media (max-width: 480px) {  
+    .tour-card-spring {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+    .tour-info-spring {  
+      .tour-name-spring {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta-spring3 .trip-type-spring {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
     }  
   }

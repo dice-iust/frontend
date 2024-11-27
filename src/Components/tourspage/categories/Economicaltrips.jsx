@@ -1,7 +1,7 @@
 // import React from 'react'; 
 import './Economicaltrips.scss'; 
 // import React, { useState } from 'react'; 
-import axios from "../../api/axios.js";  
+import axios from "../../../api/axios.js";  
 import React, { useEffect, useState } from "react";   
 // import { MdDateRange } from "react-icons/md";
 import { GrMoney } from "react-icons/gr";
@@ -14,12 +14,14 @@ import { FaRegCalendar } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";   
 import "slick-carousel/slick/slick-theme.css";  
 import Slider from "react-slick"; 
-import Travelsnav from "./Nav.jsx";
+// import Travelsnav from "../Nav.jsx";
 // import populartours from "./populartours.jsx";
-import Footer from './footer.jsx';
+import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
+import Travelsnav from "../categories_nav.jsx";  
+
 
 const EconomicalTravels_URL = 'travels/economy/';  
  
@@ -53,13 +55,13 @@ const Economical = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon-economical2" />;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon-economical2" />;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon-economical2"/>;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon-economical2" />;  
       default:  
         return null;  
     }  
@@ -68,8 +70,11 @@ const Economical = () => {
     const currentDate = new Date();  
     
     return (  
+    <div className='app-container-economical'>
       <div className='economial'>  
       <Travelsnav />  
+      <br/>
+      <br/>
       <div className="tour-list-container-economical">  
           {data && data.economical_Trips ? (  
               <div className="tour-list-economical">  
@@ -122,8 +127,10 @@ const Economical = () => {
           ) : (  
               <p>Loading Economical trips...</p>  
           )}    
-      </div>   
-      <br />   
+      </div> 
+      </div>  
+      <br/>
+      <br/>  
       <Footer />  
   </div>  
 );  

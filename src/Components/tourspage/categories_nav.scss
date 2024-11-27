@@ -9,9 +9,8 @@
 }  
 
 
-.nav-page { 
-
-     
+.nav-page-category { 
+    margin-bottom: 10px;
     * {  
         margin-top: 5px;
         padding: 0;  
@@ -24,41 +23,42 @@
 
     
     nav {  
-       display: flex; 
+        display: flex; 
         align-items: center;  
-        margin-left: auto; 
-
-        .n-contents
+        margin-left: auto;  
+        // margin-bottom: 10px;
+        .contents
         {
             display: flex;              // Use Flexbox to arrange items  
-            
+            // flex-direction: column; 
                 // Stack items vertically  
             // align-items: flex-end;
         }
 
         a {  
-            // margin: 0 0.2rem;
-            margin-left: 2px;  
+            // margin: 0 1rem; 
+            margin-left: 15px; 
+            // margin-right: 5px;
             color: var(--textColor);  
             text-decoration: none;
-            font-size: 1.2rem; 
-            font-weight: 150;
-            // margin-right: 1px; 
-            padding-right: 10px;
+            // height:10px;
+            // width:70px;  
 
-            &:hover {  
-                color: var(--secondaryColor);
-                text-decoration: underline; /* Add underline on hover */   
-            }  
+            // &:hover {  
+                &:hover {  
+                    color: var(--secondaryColor);
+                    text-decoration: underline; /* Add underline on hover */   
+                }  
+            // }  
         }  
 
-        .nav-close-btn {  
+        .nav-close-btn-category {  
             position: absolute;  
-            top: 0rem;  
+            top: 1rem;  
             right: 1rem;  
-        } 
-        
-        .moveaicon{
+        }  
+
+        .movepicon{
             margin-left:2px;
             margin-right: 2px;
             margin-bottom: 3px; 
@@ -69,27 +69,31 @@
         }
     } 
    
-    .home-back {  
+    .home-back-category {  
         display: flex;   
-        background-image: url(../tourspage/Assests/home-back.jpg);   
-        background-size: cover;   
+        // Remove or comment out the background-image property  
+        // background-image: url(../tourspage/Assests/home.png);   
+        background-size: cover; 
+        background-color: #22487a;  
         background-repeat: no-repeat;  
         background-position: center;   
         position: relative;  
         flex-direction: column;   
         box-sizing: border-box;  
-        margin-top: 0px;
-        min-height: 105vh; /* Full viewport height */  
-        width: 100%; /* Full width */   
+        
+        // max-height: 105vh; /* Full viewport height */  
+        width: 100%; /* Full width */  
+        margin-bottom: 5px; /* Reset margins */  
+        padding: 0; /* Reset padding */  
     }
-    .logo {  
-        display: contents;  
+    .logo-category {  
+        display:contents;  
         align-items: center;  
         cursor: pointer;  
       }  
       
      
-    .logo img {  
+    .logo-category img {  
         width: 38px;
         margin-right: 0.6rem;  
     } 
@@ -101,7 +105,7 @@
         outline: none;  
         border: none;  
         border-radius: 5rem;  
-        font-size: 1.2rem;  
+        font-size: 1.1rem;  
         cursor: pointer;  
         font-weight: 600;  
         transition: background-color 0.2s, transform 0.2s;  
@@ -110,33 +114,21 @@
 
     
     header { 
-        
-        // display: flex;  
-        // align-items: center;  
-        // justify-content: flex-end; /* Adjusted to place the title right and align with the nav */  
-        // height: 60px;  
-        // padding: 0 1rem; /* Use padding for spacing */  
-        // color: var(--textColor);  
-        // z-index: 1;  
-        // margin-top: 0px;  
-        // gap: 1px; 
         position: relative;  
         top: 20px;  
-        left: 50%; 
-        height: 60px;  
-        transform: translate(-50%,-50%);  
+        left: 50%;  
+        transform: translate(-50%, -50%);  
         display: flex;  
         align-items: center;  
         justify-content: space-between;  
         // Reduce the height value  
         height: 50px; // Adjust this value as needed  
-        padding: 0 1rem; // Adjust padding if necessary  
+        padding: 0 2rem; // Adjust padding if necessary  
         color: var(--textColor);  
         z-index: 1;  
         margin-top: 10px;  
-        gap :1px;
         
-        .nav-btn {  
+        .nav-btn-category {  
             padding: 5px 0px; /* Adjusted padding for better spacing */  
             cursor: pointer;  
             background: transparent;  
@@ -148,37 +140,56 @@
             font-size: 1rem;   
             margin-right: 0px; /* Adjust this value to control space between buttons */  
             // gap:50x;
-        }
+        }  
     }  
 
-    .link_class
+    .linkclass
     {
        text-decoration: none;
     }
-    
-    .trip-title
+    .trip-title-category
     {
-        color:white;
-        font-size: 20px;
-        margin: 0 .2rem;
-        
         &:hover {  
             color: var(--secondaryColor);
             text-decoration: underline; /* Add underline on hover */   
         }   
-        // margin-right: 100px;
+        color:white;
     }
     @media only screen and (max-width: 1024px) { 
         
+        // .land-back {  
+        //     height: auto; 
+        //     width: 100vw;  
+        //     padding: 20px;  
+        // }  
+        // // .logo{
+        //     padding: 0.5rem; 
+        //     justify-content: center;
+        // }
+        // .logo img{
+        //     width: 32px; 
+        //     margin-right: 0.4rem; 
+        // }
+        // .search {  
+        //     &__container {   
+        //         padding-top: 400px;
+        //         } 
         
+        //     &__input {    
+        //         width: 90%; 
+        //         font-size: 16px; 
+        //         }  
+        
+        // }
         header {  
             
-            .nav-btn {  
+            .nav-btn-category {  
                 visibility: visible;  
                 opacity: 1;  
             }  
 
             nav {  
+                
                 position: fixed;  
                 top: 0;  
                 right: -100%;  
@@ -193,12 +204,19 @@
                 transition: right 0.3s ease;   
                 z-index: 1000;  
 
-                .n-contents{
+                .contents
+                {
                     flex-direction: column; 
+                    
+                }
+
+                a{
+                    margin-left: 5px;
+                    margin-right: 10px;
                 }
                 
 
-                &.responsive_nav {  
+                &.responsive_nav-category {  
                     
                     right: 0;   
                 }  
@@ -223,6 +241,3 @@
     }  
    
 }
-
-  
-

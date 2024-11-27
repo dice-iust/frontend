@@ -1,33 +1,40 @@
-.upcoming {  
+.app-container-spring {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+.spring {  
   text-align: center;  
   padding: 2px;  
-
-  .tour-list-container2 {  
+  flex: 1; 
+  .tour-list-container-spring {  
     max-width: 2000px;  
-    margin: 0 auto;  
+    margin-left: 10px;
+    margin-right: 10px; 
 
-    .tour-list2 {  
+    .tour-list-spring {  
       display: flex;  
       flex-wrap: wrap;  
-      justify-content: space-between;  
+      // justify-content: space-between;  
       gap: 15px;  
     }  
     
-    .moveicon2 {  
+    .moveicon-spring {  
       margin-left: 2px;  
       margin-right: 2px;  
-      margin-bottom: 0px;  
-      margin-top: 0px;   
+      margin-bottom: 0;  
+      margin-top: 0;   
       vertical-align: middle;   
     }  
 
-    .card-image2 {  
+    .card-image-spring {  
       width: 100%;  
       height: 100%;  
       object-fit: cover;   
     }  
 
-    .card-title2 {  
+    .card-title-spring {  
       position: absolute;   
       bottom: 0;   
       right: 0;  
@@ -40,36 +47,38 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card2 {  
+    .tour-card-spring {
+      display: flex;   
+      flex-wrap: wrap;   
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+      width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
       border: 2px solid rgba(34, 72, 122, 0.5);  
-  
+     
       &:hover {  
-        animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+        animation: circular-animation 0.4s ease forwards;  
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
     }  
 
-    .tour-image2 {  
+    .tour-image-spring {  
       width: 100%;  
       height: 168px;   
       object-fit: cover;   
       position: relative;   
     }  
 
-    .tour-image-container2 {  
+    .tour-image-container-spring {  
       position: relative;  
     }  
 
-    .tour-admin2 {  
+    .tour-admin-spring {  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -81,44 +90,42 @@
       z-index: 20;  
     }  
 
-    .admin-photo2 {  
+    .admin-photo-spring {  
       width: 30px;  
       height: 30px;  
       border-radius: 50%;  
       margin-right: 5px;  
     }  
 
-    // Hover effect on the admin photo  
     .admin-photo:hover {  
       transform: scale(1.05);  
     }  
 
-    // Tour Info Styles  
-    .tour-info2 {  
+    .tour-info-spring {  
       display: flex;  
       flex-direction: column;  
 
-      .tour-name2 {  
+      .tour-name-spring {  
         font-size: 1em;  
         font-weight: bold;  
-        margin-bottom: 0px;  
+        margin-bottom: 0;  
         margin-top: 3px;  
         margin-left: 10px;  
         align-self: flex-start;  
         color: #22487a;    
       }  
 
-      .tour-details2 {  
+      .tour-details-spring {  
         display: flex;  
         align-items: center;  
-        margin-bottom: 0px;  
-        margin-top: 0px;  
+        margin-bottom: 0;  
+        margin-top: 0;  
 
-        .tour-route2 {  
+        .tour-route-spring {  
           display: flex;  
           align-items: center;  
           margin-left: 10px;   
-          margin-top: 0px;   
+          margin-top: 0;   
           font-size: 0.9em;  
           margin-bottom: 10px;  
         }  
@@ -127,16 +134,16 @@
           margin-left: 2px;  
           margin-right: 2px;  
           margin-bottom: 2px;  
-          margin-top: 0px;   
-          vertical-align: middle;  
+          margin-top: 0;   
+          vertical-align: middle;   
         }  
       }  
 
-      .tour-meta3 {  
+      .tour-meta-spring3 {  
         display: flex;   
         align-items: center;   
         margin-top: 12px;   
-        .trip-type2 {  
+        .trip-type-spring {  
           font-weight: bold;   
           margin-right: 7px;  
           margin-left: auto;  
@@ -145,11 +152,11 @@
           border-radius: 5px;   
           display: inline-block;  
         }  
-        .trip-type2.Budget-friendly {  
+        .trip-type-spring.Budget-friendly {  
           background-color: #c8e6c9;   
           color: #388e3c;  
         }  
-        .trip-type2.Fancy {  
+        .trip-type-spring.Fancy {  
           background-color: #f59e9e;  
           color: #e9362c;   
         }   
@@ -158,33 +165,35 @@
       .tour-name {  
         font-size: 1em;  
         font-weight: bold;  
-        margin-bottom: 0px;  
+        margin-bottom: 0;  
         margin-top: 3px;  
         margin-left: 10px;  
         align-self: flex-start;  
         color: #22487a;    
       }  
 
-      .tour-meta7 {  
+      .tour-meta-spring7 {  
         display: flex;  
         justify-content: space-between;  
 
-        .tour-date2, .tour-length2 {  
+        .tour-dates-spring, .tour-length-spring {  
           font-size: 0.9em;  
-        }        .tour-dates2 {  
+        }        
+        .tour-dates-spring {  
           margin-bottom: 7px;  
           margin-left: 10px;  
-          margin-top: 0px;  
+          margin-top: 0;  
           margin-right: 20px;  
         }  
 
-        .tour-length2 {  
+        .tour-length-spring {  
           margin-right: 15px;  
           margin-bottom: 10px;  
-          margin-top: 0px;  
+          margin-top: 0;  
         }   
         
-        .moveicon3 {  
+        
+        .moveicon-spring3 {  
           margin-left: 2px;  
           margin-right: 4px;  
           margin-bottom: 4px;  
@@ -192,7 +201,7 @@
           vertical-align: middle;   
         }  
 
-        .moveicon4 {  
+        .moveicon-spring4 {  
           margin-left: 4px;  
           margin-right: 4px;  
           margin-bottom: 3px;  
@@ -233,5 +242,69 @@
   }  
   100% {  
     transform: rotate(0deg) scale(1); /* Returning to original state */  
+  }  
+}  
+
+// Responsive Design Adjustments  
+@media (max-width: 1200px) {  
+  .tour-card-spring {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  .tour-meta-spring7
+    {
+      font-size:0.9em;
+    } 
+
+    .tour-meta-spring3 
+    {
+      font-size: 0.9em;
+    }
+    
+}  
+
+@media (max-width: 1200px) {  
+  .tour-card-spring {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  
+  .tour-meta-spring7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta-spring3 {  
+    font-size: 0.9em;  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card-spring {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
+
+  .admin-photo {  
+    width: 20px;  
+    height: 20px;  
+  }  
+
+  .tour-meta-spring7 {  
+    font-size: 0.8em;  
+  }   
+
+  .tour-name-spring,   
+  .tour-meta-spring3 .trip-type-spring {  
+    font-size: 0.8em;  
+  }  
+}  
+
+@media (max-width: 576px) {  
+  .tour-info-spring {  
+    .tour-name-spring {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta-spring3 .trip-type-spring {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
   }  
 }

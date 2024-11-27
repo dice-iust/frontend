@@ -2,7 +2,7 @@
 import './Fancytrips.scss'; 
 // import React, { useState } from 'react';  
 // import { MdDateRange } from "react-icons/md";
-import axios from "../../api/axios.js";  
+import axios from "../../../api/axios.js";  
 import React, { useEffect, useState } from "react";  
 import { GrMoney } from "react-icons/gr";
 import { FaCarSide } from "react-icons/fa6";
@@ -14,13 +14,13 @@ import { FaRegCalendar } from "react-icons/fa6";
 import "slick-carousel/slick/slick.css";   
 import "slick-carousel/slick/slick-theme.css";  
 import Slider from "react-slick"; 
-import Travelsnav from "./Nav.jsx";
+// import Travelsnav from "../Nav.jsx";
 // import populartours from "./populartours.jsx";
-import Footer from './footer.jsx';
+import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
-
+import Travelsnav from "../categories_nav.jsx";  
 const FancylTravels_URL = 'travels/fancy/';
  
 
@@ -51,13 +51,13 @@ const Fancy = () => {
   const getTransportationIcon = (transportation) => {  
     switch (transportation.toLowerCase()) {  
       case 'train':  
-        return <TbTrain style={{ marginRight: '1.5px' }} />;  
+        return <TbTrain className="moveicon-fancy2" />;  
       case 'bus':  
-        return <TbBus style={{ marginRight: '1.5px' }} />;  
+        return <TbBus className="moveicon-fancy2" />;  
       case 'plane':  
-        return <FaPlane style={{ marginRight: '1.5px' }} />;  
+        return <FaPlane className="moveicon-fancy2"/>;  
       case 'car':  
-        return <FaCarSide style={{ marginRight: '1.5px' }} />;  
+        return <FaCarSide className="moveicon-fancy2" />;  
       default:  
         return null;  
     }  
@@ -66,9 +66,11 @@ const Fancy = () => {
     const currentDate = new Date();  
     
     return (  
-      
+        <div className='app-container-fancy'>
         <div className='fancy'>  
         <Travelsnav />  
+        <br/>
+       
         <div className="tour-list-container-fancy">  
             {data && data.Fancy_Trips ? (  
                 <div className="tour-list-fancy">  
@@ -121,8 +123,10 @@ const Fancy = () => {
             ) : (  
                 <p>Loading Fancy trips...</p>  
             )}    
+        </div>
         </div>   
-        <br />   
+        
+        <br/>   
         <Footer />  
     </div>  
   );  

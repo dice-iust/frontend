@@ -1,10 +1,28 @@
+
+
+.app-container-summer {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh;   
+}  
+
+
+
+
 .summer {  
     text-align: center;  
     padding: 2px;  
+
+    flex: 1; 
+    
+
+
   
     .tour-list-container-summer {  
       max-width: 2000px;  
-      margin: 0 auto;  
+      margin-left: 10px;
+      margin-right: 10px;
+      
   
       .tour-list-summer {  
         display: flex;  
@@ -46,14 +64,14 @@
         background: white;  
         border-radius: 10px;  
         overflow: hidden;  
-        width: calc(33.333% - 10px); /* Three cards per row with consistent gap */  
+        width: calc(32.7% - 2px);; 
         height: 300px;   
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
         border: 2px solid rgba(34, 72, 122, 0.5);  
-    
+        
         &:hover {  
-          animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+          animation: circular-animation 0.4s ease forwards;
           box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
         }  
       }  
@@ -169,7 +187,7 @@
           display: flex;  
           justify-content: space-between;  
   
-          .tour-date-summer, .tour-length-summer {  
+          .tour-dates-summer, .tour-length-summer {  
             font-size: 0.9em;  
           }        .tour-dates-summer {  
             margin-bottom: 7px;  
@@ -233,5 +251,69 @@
     }  
     100% {  
       transform: rotate(0deg) scale(1); /* Returning to original state */  
+    }  
+  }
+
+
+  @media (max-width: 1200px) {  
+    .tour-card-summer {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta-summer7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta-summer3 
+      {
+        font-size: 0.9em;
+      }
+      
+  }  
+  
+  @media (max-width: 1200px) {  
+    .tour-card-summer {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    
+    .tour-meta-summer7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta-summer3 {  
+      font-size: 0.9em;  
+    }  
+  }  
+  
+  @media (max-width: 768px) {  
+    .tour-card-summer {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
+  
+    .admin-photo {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta-summer7 {  
+      font-size: 0.8em;  
+    }   
+  
+    .tour-name-summer,   
+    .tour-meta-summer3 .trip-type-summer {  
+      font-size: 0.8em;  
+    }  
+  }  
+  
+  @media (max-width: 576px) {  
+    .tour-info-summer {  
+      .tour-name-summer {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta-summer3 .trip-type-summer {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
     }  
   }
