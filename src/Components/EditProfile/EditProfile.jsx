@@ -44,68 +44,85 @@ const EditProfile = () => {
   const toggleFieldVisibility = () => {
     setShowField((prevState)=> !prevState);
   };
+  const handleFileChange = (event) => {  
+    const file = event.target.files[0];  
+    if (file) {  
+      setImage(file); 
+      setFormData({ ...formData, profile_image: URL.createObjectURL(file) }); 
+    }  
+  };  
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setImage(file);
-    }
-  };
+  const getFormData = async () => {  
+    try {  
+      const response = await axios.get("https://triptide.pythonanywhere.com/editprofile/update_2/", {  
+        headers: { Authorization: localStorage.getItem("token") },  
+      });  
+      setFormData({  
+        firstName: response.data.firstName || '',  
+        lastName: response.data.lastName || '',  
+        city: response.data.city || '',  
+        user_name: response.data.user_name || '',  
+        profile_image: response.data.profilePicture || '',  
+        gender: response.data.gender || '',  
+        email: response.data.email || '',  
+        bio: response.data.bio || '',  
+        phone: response.data.phone || '',  
+        birthDate: response.data.birthDate || '',  
+      });  
+    } catch (error) {  
+      console.error("Error fetching data:", error);  
+    }  
+  };  
 
-  const getFormData = ()=>{
-    axios({
-          method: "get",
-          url: "https://triptide.pythonanywhere.com/editprofile/update_2/",
-          responseType: "json",
-          headers:{Authorization: localStorage.getItem("token")}
-        })
-          .then(function (response) {  
-            setFormData({
-              firstName: response.data.firstName,
-              lastName: response.data.lastName,
-              city: response.data.city,
-              user_name: response.data.user_name,
-              profile_image: response.data.profilePicture,
-              gender: response.data.gender,
-              email: response.data.email,
-              bio: response.data.bio,
-              phone: response.data.phone,
-              birthDate: response.data.birthDate,
-            })
-          })
-          .catch(error => {
-            console.log(error)
-          });
-        }
+  useEffect(() => {  
+    const token = localStorage.getItem("token");  
+    if (!token) {  
+      navigate("/login");  
+    } else {  
+      getFormData();  
+    }  
+  }, []);  
 
-  const putDataForm = ()=>{
-    const formDataImage = new FormData();
-    formDataImage.append('image', image);
-    const fdata = {
-              firstName: formData.firstName,
-              lastName: formData.lastName,
-              city: formData.city,
-              user_name: formData.user_name,
-              profile_image: formDataImage,
-              gender: formData.gender,
-              email: formData.email,
-              bio: formData.bio,
-              phone: formData.phone,
-              birthDate: formData.birthDate,
-              // password: formData.password,
-              // currentPassword: formData.currentPassword,
-    }
-    console.log(fdata)
-    axios.put("https://triptide.pythonanywhere.com/editprofile/update_2/", fdata ,
-      {headers: {Authorization: localStorage.getItem("token"),'Content-Type': 'multipart/form-data',}} )
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.log(error)
-    });
-  }
+  const putDataForm = async () => {  
+    const formDataImage = new FormData();  
 
+    if (image) {  
+      formDataImage.append('profilePicture', image); 
+    }  
+
+
+    formDataImage.append('firstName', formData.firstName);  
+    formDataImage.append('lastName', formData.lastName);  
+    formDataImage.append('city', formData.city);  
+    formDataImage.append('user_name', formData.user_name);  
+    formDataImage.append('gender', formData.gender);  
+    formDataImage.append('email', formData.email);  
+    formDataImage.append('bio', formData.bio);  
+    formDataImage.append('phone', formData.phone);  
+    formDataImage.append('birthDate', formData.birthDate);  
+    
+
+    if (formData.password) {  
+      formDataImage.append('password', formData.password);  
+    }  
+    if (formData.currentPassword) {  
+      formDataImage.append('currentPassword', formData.currentPassword);  
+    }  
+
+    try {  
+      const response = await axios.put("https://triptide.pythonanywhere.com/editprofile/update_2/", formDataImage, {  
+        headers: {  
+          Authorization: localStorage.getItem("token"),  
+          'Content-Type': 'multipart/form-data',
+        },  
+      });  
+      console.log(response);  
+
+    } catch (error) {
+      console.error("Error updating profile:", error);  
+
+    }  
+}; 
   const token = localStorage.getItem("token")
 
 useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
@@ -149,6 +166,7 @@ const validateEmail = (email) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
     if (e.target.name === 'password'){
       (validatePassword(e.target.value) === '')? setIsValidPassword(false) : setIsValidPassword(true);
       e.target.value === formData.currentPassword ? setErrorMessageConfirm('') : setErrorMessageConfirm('passwords do not match');
@@ -194,9 +212,9 @@ const validateEmail = (email) => {
           <h1 className="ep-title">Edit Profile</h1>
       
           <div className='profile'>
-            <img src={formData.profile_image ? `http://localhost:3000/editprofile/${formData.profile_image}` : profile} alt="profile" />
+            <img src={formData.profile_image} alt="profile" />  
             <label className="form-label">
-              <input type="file" accept="image/*" className="file-input" onChange={handleFileChange}/>
+              <input type="file"  className="file-input" onChange={handleFileChange}/>
               <span className="change-button">+</span>
             </label>
           </div>
@@ -301,3 +319,10 @@ const validateEmail = (email) => {
 };
 
 export default EditProfile;
+
+
+
+
+
+
+ 

@@ -23,6 +23,7 @@ const LoginForm = () => {
             try {  
                 const response = await axios.get(LOGIN_URL);  
                 setData(response.data);  
+                console.log(response.data);
             } catch (error) {  
                 console.error("Error fetching data:", error);  
             }  
