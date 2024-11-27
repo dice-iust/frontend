@@ -17,7 +17,12 @@ const ForgotPassword = () => {
             <span className="key">d</span>
             <span className="key">e</span>
         </div>
-        <div className="box"></div>
+        <div className="box">
+            <div className="title-forgot1">Forgot password</div>
+            <div className="title-forgot2">Enter the email address you use on TripTide.We'll 
+                <br/>send you a link to reset your password.</div>
+            <div className="title-forgot3"> Email</div>
+       </div>
     </div>
     );  
 };  
