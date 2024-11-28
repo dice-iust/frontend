@@ -20,10 +20,9 @@ const EmailVerification = () => {
   const navigate = useNavigate();  
   const [data, setData] = useState(null);  
   const inputsRef = useRef([]);  
-  const timerRef = useRef(null); // To keep track of the timer  
-  const [timeLeft, setTimeLeft] = useState(120); // 2 minutes in seconds  
+  const timerRef = useRef(null); 
+  const [timeLeft, setTimeLeft] = useState(120); 
 
-  // Fetch initial data  
   useEffect(() => {  
     const fetchData = async () => {  
       try {  
@@ -36,7 +35,7 @@ const EmailVerification = () => {
     fetchData();  
   }, []);  
 
-  // Get email from API  
+
   const getFormData = async () => {  
     try {  
       const response = await axios.get("https://triptide.pythonanywhere.com/send/", {  
@@ -48,7 +47,6 @@ const EmailVerification = () => {
     }  
   };  
 
-  // Check token and fetch email  
   useEffect(() => {  
     const token = localStorage.getItem("token");  
     if (!token) {  
@@ -58,17 +56,17 @@ const EmailVerification = () => {
     }  
   }, []);  
 
-  // Clear messages on email change  
+
   useEffect(() => {  
     setErrMsg('');   
     setSuccessMsg('');   
   }, [email]);  
 
-  // Start timer for redirection  
+
   useEffect(() => {  
     timerRef.current = setTimeout(() => {  
-      navigate('/signup'); // Redirect to signup page after 2 minutes  
-    }, 120000); // 120000 milliseconds = 2 minutes  
+      navigate('/signup'); 
+    }, 120000); 
 
     const interval = setInterval(() => {  
       setTimeLeft(prev => {  
@@ -80,20 +78,17 @@ const EmailVerification = () => {
       });  
     }, 1000);  
 
-    // Cleanup function to clear timer on component unmount or when inputs are filled correctly  
     return () => {  
       clearTimeout(timerRef.current);  
       clearInterval(interval);  
     };  
-  }, []); // Run once on mount  
+  }, []);  
 
-  // Handle code verification  
   const handleVerifyCode = async (e) => {  
-    e.preventDefault(); // Prevent default form submission  
-    const code = inputsRef.current.map(input => input.value).join(''); // Collect verification code  
+    e.preventDefault(); 
+    const code = inputsRef.current.map(input => input.value).join(''); 
 
-    console.log("Verification Code:", code); // Log the verification code for debugging  
-
+    console.log("Verification Code:", code); 
     try {  
       const response = await axios.post("https://triptide.pythonanywhere.com/send/",   
         {   
@@ -109,8 +104,8 @@ const EmailVerification = () => {
       if (response.data.success) {  
           setIsSuccess(true);  
           setSuccessMsg('Verified successfully! you are sending to login page.');  
-          clearTimeout(timerRef.current); // Clear the timer on success  
-          clearInterval(); // Clear the interval on success  
+          clearTimeout(timerRef.current); 
+          clearInterval(); 
           setTimeout(() => {  
               navigate('/login');   
           }, 3000);  
