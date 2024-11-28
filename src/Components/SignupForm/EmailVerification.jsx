@@ -88,11 +88,11 @@ useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
   const handleVerifyCode = async () => {  
     try {  
       // Replace with your actual API endpoint for verifying the code  
-      const response = await axios.post('/verify-code', { email, code: verificationCode });  
+      const response = await axios.post(email_URL, { code: verificationCode });  
       if (response.data.success) {  
         setIsSuccess(true);  
         setTimeout(() => {  
-          navigate('/main'); // Navigate to the main page after 5 seconds  
+          navigate('/Main'); 
         }, 5000);  
       } else {  
         setErrMsg('Wrong code');  
@@ -142,14 +142,14 @@ useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
   
 
   return (  
-    <div className='signup'>  
+    <div className='email'>  
       <div className='wrapper-email'>  
       <div className="form-container">  
         {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>}   
         <form 
         // onSubmit={handleSubmit}
         >   
-          <h1>Signup</h1>  
+          <h1>Email Verification</h1>  
           <div className="input-box">  
             <input 
                   type='text'  
@@ -159,8 +159,10 @@ useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
             />  
             <MdEmail className='icon' />  
           </div>   
-          <button type="submit">Next</button>  
-          <div className="container">  
+          <h3 style={{ textAlign: 'center' }}>
+            We have sent a verification code to this email. Please enter the code below.
+          </h3>
+          <div className="container-email">  
             <div id="inputs" className="inputs">  
                 {[...Array(4)].map((_, index) => (  
                     <input  
@@ -176,8 +178,11 @@ useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
                 ))}  
             </div>  
         </div>  
+        <div style={{ display: 'flex', justifyContent: 'center' }}>  
+          <button type="submit" className='button' onClick={handleVerifyCode}>Verify</button>  
+      </div>  
           <div className="register-link">  
-            <p>Already have an account? <Link to="/login">Login</Link></p>  
+            <p>Want to edit email? <Link to="/signup">Signup</Link></p>  
           </div>  
         </form> 
         </div> 
