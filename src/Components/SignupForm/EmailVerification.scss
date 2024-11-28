@@ -19,7 +19,12 @@
     align-items: stretch;   
     padding: 30px;  
 }  
-
+.timer-display {  
+    text-align: center;  
+    font-size: 1.2em;  
+    margin: 15px 0; // Add some space around the timer  
+    color: #333; // Set the text color  
+  }
 .container-email {  
     display: flex;  
     justify-content: center;  

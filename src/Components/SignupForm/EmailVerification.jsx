@@ -20,6 +20,8 @@ const EmailVerification = () => {
   const navigate = useNavigate();  
   const [data, setData] = useState(null);  
   const inputsRef = useRef([]);  
+  const timerRef = useRef(null); // To keep track of the timer  
+  const [timeLeft, setTimeLeft] = useState(120); // 2 minutes in seconds  
 
   // Fetch initial data  
   useEffect(() => {  
@@ -62,6 +64,29 @@ const EmailVerification = () => {
     setSuccessMsg('');   
   }, [email]);  
 
+  // Start timer for redirection  
+  useEffect(() => {  
+    timerRef.current = setTimeout(() => {  
+      navigate('/signup'); // Redirect to signup page after 2 minutes  
+    }, 120000); // 120000 milliseconds = 2 minutes  
+
+    const interval = setInterval(() => {  
+      setTimeLeft(prev => {  
+        if (prev <= 1) {  
+          clearInterval(interval);  
+          return 0;  
+        }  
+        return prev - 1;  
+      });  
+    }, 1000);  
+
+    // Cleanup function to clear timer on component unmount or when inputs are filled correctly  
+    return () => {  
+      clearTimeout(timerRef.current);  
+      clearInterval(interval);  
+    };  
+  }, []); // Run once on mount  
+
   // Handle code verification  
   const handleVerifyCode = async (e) => {  
     e.preventDefault(); // Prevent default form submission  
@@ -75,26 +100,34 @@ const EmailVerification = () => {
             verification_code: code   
         },   
         {   
-            headers: { Authorization: localStorage.getItem("token") } 
+            headers: { Authorization: localStorage.getItem("token") }   
         }  
-    ); 
+    );   
         
-        console.log("Response:", response.data); // Log the response for debugging  
+      console.log("Response:", response.data);  
         
-        if (response.data.success) {  
-            setIsSuccess(true);  
-            setSuccessMsg('Verified successfully!');  
-            setTimeout(() => {  
-                navigate('/Main');   
-            }, 5000);  
-        } else {  
-            setErrMsg('Oops! The code is incorrect.');  
-        }  
+      if (response.data.success) {  
+          setIsSuccess(true);  
+          setSuccessMsg('Verified successfully! you are sending to login page.');  
+          clearTimeout(timerRef.current); // Clear the timer on success  
+          clearInterval(); // Clear the interval on success  
+          setTimeout(() => {  
+              navigate('/login');   
+          }, 3000);  
+      } else {  
+          setErrMsg('Oops! The code is incorrect Please try again.');  
+          inputsRef.current.forEach(input => {  
+            if (input) input.value = '';   
+          });  
+      }  
     } catch (error) {  
-        console.error("Error verifying code:", error.response ? error.response.data : error.message);  
-        setErrMsg(error.message);  
+      console.error("Error verifying code:", error.response ? error.response.data : error.message);  
+      setErrMsg('Oops! The code is incorrect Please try again.');  
+      inputsRef.current.forEach(input => {  
+        if (input) input.value = '';   
+      });  
     }  
-};
+  };  
 
   const handleInput = (e, index) => {  
     const target = e.target;  
@@ -161,11 +194,17 @@ const EmailVerification = () => {
                 ))}  
               </div>  
             </div>  
+
+            {/* Timer Display */}  
+            <div className="timer-display">  
+              <p>Time left: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</p>  
+            </div>  
+
             <div style={{ display: 'flex', justifyContent: 'center' }}>  
               <button type="submit" className='button'>Verify</button>  
             </div>  
             <div className="register-link">  
-              <p>Want to edit email? <Link to="/signup">Signup</Link></p>  
+              <p>Want to edit email? <Link to="/signup">Back</Link></p>  
             </div>  
           </form>   
         </div>   
