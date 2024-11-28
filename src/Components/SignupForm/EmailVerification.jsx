@@ -4,6 +4,8 @@ import AuthContext from './AuthProvider';
 import axios from '../../api/axios';  
 import './EmailVerification.scss';  
 
+
+const email_URL="send/"
 const EmailVerification = () => {  
   const { setAuth } = useContext(AuthContext);  
   const emailRef = useRef();  
@@ -14,6 +16,28 @@ const EmailVerification = () => {
   const [isCodeInputVisible, setIsCodeInputVisible] = useState(false);  
   const [isSuccess, setIsSuccess] = useState(false);  
   const navigate = useNavigate();  
+
+
+
+  const getFormData = async () => {  
+    try {  
+      const response = await axios.get(email_URL, {  
+        headers: { Authorization: localStorage.getItem("token") },  
+      });  
+      setEmail(response.data.email);
+    } catch (error) {  
+      console.error("Error fetching data:", error);  
+    }  
+  };  
+
+  useEffect(() => {  
+    const token = localStorage.getItem("token");  
+    if (!token) {  
+      navigate("/login");  
+    } else {  
+      getFormData();  
+    }  
+  }, []);  
 
   useEffect(() => {  
     setErrMsg('');  
