@@ -3,10 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from './AuthProvider';  
 import axios from '../../api/axios';  
 import './EmailVerification.scss';  
+import { MdEmail } from "react-icons/md";
+import { TbBackground } from 'react-icons/tb';
 
-
-const email_URL="send/"
+const email_URL="send/";
+const photo_URL="send/";
 const EmailVerification = () => {  
+
   const { setAuth } = useContext(AuthContext);  
   const emailRef = useRef();  
   const errRef = useRef();  
@@ -16,12 +19,22 @@ const EmailVerification = () => {
   const [isCodeInputVisible, setIsCodeInputVisible] = useState(false);  
   const [isSuccess, setIsSuccess] = useState(false);  
   const navigate = useNavigate();  
-
-
+  const [data, setData] = useState(null);  
+  useEffect(() => {  
+    const fetchData = async () => {  
+        try {  
+            const response = await axios.get(photo_URL);  
+            setData(response.data);  
+        } catch (error) {  
+            console.error("Error fetching data:", error);  
+        }  
+    };  
+    fetchData();  
+}, []);  
 
   const getFormData = async () => {  
     try {  
-      const response = await axios.get(email_URL, {  
+      const response = await axios.get("https://triptide.pythonanywhere.com/send/", {  
         headers: { Authorization: localStorage.getItem("token") },  
       });  
       setEmail(response.data.email);
@@ -42,7 +55,9 @@ const EmailVerification = () => {
   useEffect(() => {  
     setErrMsg('');  
   }, [email]);  
+  const token = localStorage.getItem("token")
 
+useEffect(()=>{!token ? navigate("/login") : getFormData(); },[])
   const handleEmailChange = (e) => {  
     setEmail(e.target.value);  
   };  
@@ -94,37 +109,86 @@ const EmailVerification = () => {
     }  
   };  
 
+    const inputsRef = useRef([]);  
+
+    const handleInput = (e, index) => {  
+        const target = e.target;  
+        const val = target.value;  
+
+        if (isNaN(val) || val.length > 1) {  
+            target.value = "";  
+            return;  
+        }  
+
+        if (val !== "") {  
+            const nextInput = inputsRef.current[index + 1];  
+            if (nextInput) {  
+                nextInput.focus();  
+            }  
+        }  
+    };  
+
+    const handleKeyUp = (e, index) => {  
+        const key = e.key.toLowerCase();  
+
+        if (key === "backspace" || key === "delete") {  
+            e.target.value = "";  
+            const prevInput = inputsRef.current[index - 1];  
+            if (prevInput) {  
+                prevInput.focus();  
+            }  
+        }  
+    };  
+  
+
   return (  
     <div className='signup'>  
-      <div className='wrapper'>  
-        <div className="form-container">  
-          {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>}   
-          <h1>Email Verification</h1>  
-          <p>Please click on the button to send a code to verify your email.</p>  
-          <button type="button" onClick={handleSendCode}>  
-            Send Verification Code  
-          </button>  
-          
-          {isCodeInputVisible && (  
-            <div className="input-box">  
-              <input  
-                type='text'  
-                placeholder='Enter Verification Code'  
-                value={verificationCode}  
-                onChange={handleCodeChange}  
-                ref={emailRef}  
-              />  
-              <button type="button" onClick={handleVerifyCode}>  
-                Verify Code  
-              </button>  
+      <div className='wrapper-email'>  
+      <div className="form-container">  
+        {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>}   
+        <form 
+        // onSubmit={handleSubmit}
+        >   
+          <h1>Signup</h1>  
+          <div className="input-box">  
+            <input 
+                  type='text'  
+                  placeholder='Email'  
+                  value={email}  
+                  readOnly
+            />  
+            <MdEmail className='icon' />  
+          </div>   
+          <button type="submit">Next</button>  
+          <div className="container">  
+            <div id="inputs" className="inputs">  
+                {[...Array(4)].map((_, index) => (  
+                    <input  
+                        key={index}  
+                        className="input"  
+                        type="text"  
+                        inputMode="numeric"  
+                        maxLength="1"  
+                        ref={el => inputsRef.current[index] = el}  
+                        onInput={e => handleInput(e, index)}  
+                        onKeyUp={e => handleKeyUp(e, index)}  
+                    />  
+                ))}  
             </div>  
-          )}  
-
-          {isSuccess && <p style={{ color: 'green' }}>Verification successful!</p>}  
+        </div>  
           <div className="register-link">  
             <p>Already have an account? <Link to="/login">Login</Link></p>  
           </div>  
-        </div>   
+        </form> 
+        </div> 
+        <div className="image-container">   
+                {data && data.photo && (  
+                    <img  
+                        src={data.photo}  
+                        alt="travel"  
+                    />  
+                )}
+                </div> 
       </div>  
     </div>  
   );  
