@@ -1,70 +1,86 @@
-import axios  from "axios";
-import React, { useEffect, useState } from "react";
-import { FiInfo } from 'react-icons/fi'; // Ensure this is at the top of your file  
+import axios from "axios";  
+import React, { useState } from "react";  
+import { FiInfo } from 'react-icons/fi';  
+import { useNavigate } from 'react-router-dom';  
+import "./ForgotPassword.scss";  
 
-import { useNavigate } from 'react-router-dom';
-import "./ForgotPassword.scss"
-
-const ForgotPassword = () => {
+const ForgotPassword = () => {  
     const [email, setEmail] = useState('');  
     const [error, setError] = useState('');  
+    const navigate = useNavigate();  
 
     const validateEmail = (email) => {  
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex validation  
+        // This regex checks that the email has a structure like "something@something.com"  
+        const regex = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;  // Allows .com, .net, .org, etc.   
         return regex.test(email);  
-    };  
+    };    
 
     const handleChange = (e) => {  
         setEmail(e.target.value);   
-        setError(''); 
-        
+        setError(''); // Clear any previous error when user starts typing  
     };    
-    const handleResetPassword = () => {  
-        // Only validate and show error if the email is not valid  
+
+    const handleResetPassword = (e) => {  
+        e.preventDefault();  
+
+        // Validate email  
         if (!validateEmail(email)) {  
             setError('Invalid email. Please enter email as name@email.com');  
-            // setSuccessMessage(''); // Clear success message if there's an error  
-            return; // Stop execution of the function  
-        }
-      }  ;
-  return (
-    <div className="forgot">
-        <div className="title-forgots" >
-            <span className="key">T</span>
-            <span className="key">r</span>
-            <span className="key">i</span>
-            <span className="key">p</span>
-            <span className="key">T</span>
-            <span className="key">i</span>
-            <span className="key">d</span>
-            <span className="key">e</span>
-        </div>
-        <div className="box">
-            <div className="title-forgot1">Forgot password</div>
-            <div className="title-forgot2">Enter the email address you use on TripTide.We'll 
-                <br/>send you a link to reset your password.</div>
-            <div className="container-forgot">  
-            {error && <div className="error-message"><FiInfo className="moveaicon-forgot"/>{error}</div>}
-                <label className="email-text">Email</label>  
-                <div className="input-box-forgot">
-                <input  
-                    name="email"  
-                    placeholder="name@email.com"  
-                    type="email"  
-                    required=""  
-                    aria-label="Email"  
-                    value={email}  
-                    onChange={handleChange}  
-                    className="input-forgot"  />
-                </div>
-                <a href="#" class="button-forgot" onClick={handleResetPassword}>Reset Password</a>
-            </div> 
-            <div className="container-forgot2">
-                <label className="back-text">Back to</label>
-                <a href="/login" className="login-link">Login</a> 
-            </div>
-        </div>
-    </div>
+            return; // Stop execution if the email is invalid  
+        }  
+
+        // Send POST request to your backend  
+        axios.post('https://triptide.pythonanywhere.com/forgot-password/', { email })   
+            .then(response => {  
+                // Assuming the response is successful, navigate to email_sent page  
+                navigate('/login/forgot/email_sent', { state: { email } });  
+            })  
+            .catch(err => {  
+                setError('There is no account registered with this email.Edit your email.');  
+            });  
+    };  
+
+    return (  
+        <div className="forgot">  
+            <div className="title-forgots">  
+                <span className="key">T</span>  
+                <span className="key">r</span>  
+                <span className="key">i</span>  
+                <span className="key">p</span>  
+                <span className="key">T</span>  
+                <span className="key">i</span>  
+                <span className="key">d</span>  
+                <span className="key">e</span>  
+            </div>  
+            <div className="box-forgot">  
+                <div className="title-forgot1">Forgot password</div>  
+                <div className="title-forgot2">  
+                    Enter the email address you use on TripTide. We'll   
+                    <br/>send you a link to reset your password.  
+                </div>  
+                <div className="container-forgot">  
+                    {error && <div className="error-message"><FiInfo className="moveaicon-forgot"/>{error}</div>}  
+                    <label className="email-text">Email</label>  
+                    <div className="input-box-forgot">  
+                        <input  
+                            name="email"  
+                            placeholder="name@email.com"  
+                            type="email"  
+                            required  
+                            aria-label="Email"  
+                            value={email}  
+                            onChange={handleChange}  
+                            className="input-forgot"   
+                        />  
+                    </div>  
+                    <button type="button" className="button-forgot" onClick={handleResetPassword}>Reset Password</button>  
+                </div>   
+                <div className="container-forgot2">  
+                    <label className="back-text">Back to</label>  
+                    <a href="/login" className="login-link">Login</a>   
+                </div>  
+            </div>  
+        </div>  
     );  
 };  
 
