@@ -43,14 +43,14 @@ const ForgotPassword = () => {
     return (  
         <div className="forgot">  
             <div className="title-forgots">  
-                <span className="key">T</span>  
-                <span className="key">r</span>  
-                <span className="key">i</span>  
-                <span className="key">p</span>  
-                <span className="key">T</span>  
-                <span className="key">i</span>  
-                <span className="key">d</span>  
-                <span className="key">e</span>  
+                <span className="key trip-forgot">T</span>  
+                <span className="key trip-forgot">r</span>  
+                <span className="key trip-forgot">i</span>  
+                <span className="key trip-forgot">p</span>  
+                <span className="key tide-forgot">T</span>  
+                <span className="key tide-forgot">i</span>  
+                <span className="key tide-forgot">d</span>  
+                <span className="key tide-forgot">e</span>  
             </div>  
             <div className="box-forgot">  
                 <div className="title-forgot1">Forgot password</div>  
@@ -66,7 +66,7 @@ const ForgotPassword = () => {
                             name="email"  
                             placeholder="name@email.com"  
                             type="email"  
-                            required  
+                              
                             aria-label="Email"  
                             value={email}  
                             onChange={handleChange}  

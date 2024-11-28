@@ -1,38 +1,112 @@
-import axios  from "axios";
-import React, { useEffect, useState } from "react";
-import { FiInfo } from 'react-icons/fi'; // Ensure this is at the top of your file  
-import { useLocation } from 'react-router-dom';  
+import React, { useState } from 'react';  
+import { FaLock } from "react-icons/fa";  
+import "./change-pass.scss";  
+import axios from "axios"; // Import axios if you plan to use it later for submitting the password  
 
-import { useNavigate } from 'react-router-dom';
-import "./send_email.scss"
+const EmailSent = () => {  
+    const [password, setPassword] = useState('');  
+    const [confirm, setConfirm] = useState('');  
+    const [errorMessagePassword, setErrorMessagePassword] = useState('');  
+    const [errorMessageConfirm, setErrorMessageConfirm] = useState('');  
+    const [isPasswordValid, setIsPasswordValid] = useState(false);  
 
-const EmailSent = () => {
-    const location = useLocation();  
-    const { email } = location.state || {}; // Destructure to get email, if it exists  
+    const handlePasswordChange = (e) => {  
+        const newPassword = e.target.value;  
+        const isValid = validatePassword(newPassword);  
+        setPassword(newPassword);  
+        
+        if (isValid) {  
+            setErrorMessagePassword('');  
+            setIsPasswordValid(true);  
+        } else {  
+            setErrorMessagePassword('Password must be at least 6 characters long and contain both letters and numbers.');  
+            setIsPasswordValid(false);  
+        }  
+    };  
 
-  return (
-    <div className="send-email">
-        <div className="title-send-email" >
-            <span className="key-email">T</span>
-            <span className="key-email">r</span>
-            <span className="key-email">i</span>
-            <span className="key-email">p</span>
-            <span className="key-email">T</span>
-            <span className="key-email">i</span>
-            <span className="key-email">d</span>
-            <span className="key-email">e</span>
-        </div>
-        <div className="box-send-email">
-            <a href="/login/forgot" className="back-link">&lt; Back</a> 
-            <div className="title-forgot-email">Forgot password</div>
-            <div className="sent-image-container"></div>
-            <div className="title-forgot-email1">Check your inbox</div>
-            <div className="title-forgot-email2">An email will be sent shortly to<br/>
-            {email} with<br/>password reset instructions.</div>
-            <a href="/login" class="button-send-email" >GOT IT</a>
+    const handleConfirmPasswordChange = (e) => {  
+        const confirmPassword = e.target.value;  
+        setConfirm(confirmPassword);  
+        
+        if (confirmPassword !== password) {  
+            setErrorMessageConfirm('Passwords do not match.');  
+        } else {  
+            setErrorMessageConfirm('');  
+        }  
+    };  
 
-        </div>
-    </div>
+    const validatePassword = (password) => {  
+        const minLength = 6;  
+        const hasLetter = /[a-zA-Z]/.test(password);  
+        const hasNumber = /\d/.test(password);  
+        return password.length >= minLength && hasLetter && hasNumber;  
+    };  
+
+    const handleSubmit = async (e) => {  
+        e.preventDefault();  
+        if (isPasswordValid && password === confirm) {  
+            try {  
+                // Make a request to submit the new password here  
+                // Example: await axios.post('/your/api/endpoint', { password });  
+                alert('Password reset successfully!'); // Placeholder success message  
+            } catch (error) {  
+                console.error(error);  
+                alert('Failed to reset password.'); // Placeholder error message  
+            }  
+        }  
+    };  
+
+    return (  
+        <div className="changepass">  
+            <div className="title-changepass">  
+                <span className="key-changepass trip-changepass">T</span>  
+                <span className="key-changepass trip-changepass">r</span>  
+                <span className="key-changepass trip-changepass">i</span>  
+                <span className="key-changepass trip-changepass">p</span>  
+                <span className="key-changepass tide-changepass">T</span>  
+                <span className="key-changepass tide-changepass">i</span>  
+                <span className="key-changepass tide-changepass">d</span>  
+                <span className="key-changepass tide-changepass">e</span>  
+            </div>  
+            <div className="box-changepass">  
+                <form onSubmit={handleSubmit}>  
+                    <label className="changepass-text">New Password</label>  
+                    <div className="input-box-changepass">   
+                        <FaLock className='iconchangepass' />   
+                        <input  
+                            type='password'  
+                            placeholder='Password'  
+                            value={password}  
+                            onChange={handlePasswordChange}  
+                            className="input-changepass"  
+                        />  
+                    </div>   
+                    {errorMessagePassword && (  
+                        <span style={{ color: 'red', margin: '10px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
+                            {errorMessagePassword}  
+                        </span>  
+                    )}  
+
+                    <label className="changepass-text">Confirm Password</label>                    <div className="input-box-changepass">   
+                        <FaLock className='iconchangepass' />  
+                        <input  
+                            type='password'  
+                            placeholder='Confirm Password'  
+                            value={confirm}   
+                            onChange={handleConfirmPasswordChange}   
+                            className="input-changepass"  
+                        />  
+                    </div>   
+                    {errorMessageConfirm && (  
+                        <span style={{ color: 'red', margin: '10px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
+                            {errorMessageConfirm}  
+                        </span>  
+                    )}  
+
+                    <button type="submit" className="submit-button">Reset Password</button>  
+                </form>  
+            </div>  
+        </div>  
     );  
 };  
 

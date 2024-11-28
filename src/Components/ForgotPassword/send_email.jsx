@@ -13,14 +13,14 @@ const EmailSent = () => {
   return (
     <div className="send-email">
         <div className="title-send-email" >
-            <span className="key-email">T</span>
-            <span className="key-email">r</span>
-            <span className="key-email">i</span>
-            <span className="key-email">p</span>
-            <span className="key-email">T</span>
-            <span className="key-email">i</span>
-            <span className="key-email">d</span>
-            <span className="key-email">e</span>
+            <span className="key-email trip-sendemail">T</span>
+            <span className="key-email trip-sendemail">r</span>
+            <span className="key-email trip-sendemail">i</span>
+            <span className="key-email trip-sendemail">p</span>
+            <span className="key-email tide-sendemail">T</span>
+            <span className="key-email tide-sendemail" >i</span>
+            <span className="key-email tide-sendemail">d</span>
+            <span className="key-email tide-sendemail">e</span>
         </div>
         <div className="box-send-email">
             <a href="/login/forgot" className="back-link">&lt; Back</a> 

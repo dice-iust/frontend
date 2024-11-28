@@ -41,7 +41,7 @@ function App() {
         <Route path="/Main/Winter" element={<Winter />} />
         <Route path="/login/forgot" element={<ForgotPassword/>}/>
         <Route path="/login/forgot/email_sent" element={<EmailSent/>}/>
-        <Route path="/cahnge_pass" element={<ChangePass/>}/>
+        <Route path="/changePass" element={<ChangePass/>}/>
 
       </Routes>  
     </Router>  

@@ -57,6 +57,13 @@
         &:nth-child(7) { animation: pressDown-email7 2.2s infinite; }  
         &:nth-child(8) { animation: pressDown-email8 3.2s infinite; }  
     }  
+    .trip-sendemail {  
+      color: var(--mainColor);  // Blue for "Trip"  
+    }  
+
+    .tide-sendemail {  
+        color: var(--secondaryColor);  // Orange for "Tide"  
+    }  
     
     .back-link {  
       margin-top: 5px;
