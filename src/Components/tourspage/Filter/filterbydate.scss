@@ -18,7 +18,7 @@ $hover-bg-color: #f0f0f0;
   transition: box-shadow 0.3s ease;  
 
   &:hover {  
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);   
+    box-shadow: 0 8px 20px #22487a;   
   }  
 
   h2 {  
@@ -38,20 +38,24 @@ $hover-bg-color: #f0f0f0;
     .date-picker {  
       flex: 1;
       margin: 0 10px; 
+     
 
       label {  
         margin-right: 10px; 
         font-weight: bold;  
         color: $font-color;  
         font-size: 16px;  
+        
       }  
 
-      .react-datepicker-wrapper {  
+      .react-datepicker-wrapper {
+          
         width: 100%;  
       }  
 
       .react-datepicker__input-container {  
         width: 100%;  
+        
       }  
 
       input {  
@@ -63,10 +67,10 @@ $hover-bg-color: #f0f0f0;
         transition: border-color 0.3s ease, background-color 0.3s ease;  
 
         &:focus {  
-          border-color: $primary-color;  
+          border-color: #ea7d29;  
           outline: none;  
           box-shadow: 0 0 8px #ea7d29;  
-          background-color: #fff8e2;  
+          background-color: #fbcfab;  
         }   
 
         &:hover {  
@@ -81,7 +85,8 @@ $hover-bg-color: #f0f0f0;
     font-size: 20px;  
     font-weight: 600;  
     color: $font-color;  
-    text-align: center;  
+    text-align: center;
+      
 
     p {  
       margin: 0;  
