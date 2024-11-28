@@ -93,8 +93,39 @@ $hover-bg-color: #f0f0f0;
       font-family: 'Arial', sans-serif;  
       color: $primary-color;  
     }  
-  }  
-}  
+  }
+  
+  .submit-button {  
+    margin-top: 32px; 
+    margin-left: 10px; 
+    padding: 0;
+    height: 35px; 
+    width: 35px; 
+    background: linear-gradient(135deg, #22487a, #22487a);  
+    color: white;  
+    border: none;  
+    border-radius: 50%; 
+    cursor: pointer;  
+    font-size: 20px; 
+    font-weight: 600;   
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    transition: background 0.3s ease, transform 0.2s ease;   
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+  
+    &:hover {  
+      background: linear-gradient(135deg, #ea7d29, #ea7d29);   
+      transform: translateY(-2px);   
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);  
+    }  
+  
+    &:focus {  
+      outline: none;   
+      box-shadow: 0 0 0 3px rgba(234, 125, 41, 0.5);   
+    }  
+  }
+}
 
 .react-datepicker__day--selected {  
   background-color: $selected-bg-color !important;   
@@ -129,3 +160,18 @@ $hover-bg-color: #f0f0f0;
   margin-top: 0px;   
   vertical-align: middle;   
 }  
+
+
+.moveiconsearch {  
+  
+  margin-bottom: 2px; 
+  margin-left: 2px;
+  transform: rotate(90deg);  
+}  
+
+.error-message {  
+  color: red;  
+  font-size: 14px;  
+  margin-top: 2px;
+  margin-left: -85px;
+}
