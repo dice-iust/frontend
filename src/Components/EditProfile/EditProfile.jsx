@@ -212,7 +212,7 @@ const validateEmail = (email) => {
           <h1 className="ep-title">Edit Profile</h1>
       
           <div className='profile'>
-            <img src={formData.profile_image} alt="profile" />  
+            <img src={formData.profile_image ? formData.profile_image : profile} alt="profile" />  
             <label className="form-label">
               <input type="file"  className="file-input" onChange={handleFileChange}/>
               <span className="change-button">+</span>
@@ -225,14 +225,14 @@ const validateEmail = (email) => {
           </h3> 
             <div className="input-container" style={{ display: showField ? 'flex' : 'none' }}>
               <div  className="input-div">
-                <label  className="form-label">Current Password</label>
+                <label  className="form-label">Password</label>
                 <div className='edit-pwd' onClick={togglePasswordVisibility2}><FaEye/></div>
                 <input type={showPassword2 ? 'text' : 'password' } name="currentPassword" className="form-input" value={formData.currentPassword} onChange={handleChange} />
                   {isValidCurPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
               </div>
 
               <div  className="input-div">
-                <label  className="form-label">New Password</label>
+                <label  className="form-label">Confirm Password</label>
                 <div className='edit-pwd' onClick={togglePasswordVisibility}><FaEye/></div>
                 <input type={showPassword ? 'text' : 'password' } name="password" className="form-input" value={formData.password} onChange={handleChange} />
                   {isValidPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
