@@ -17,6 +17,7 @@ import Economical from "./Components/tourspage/categories/Economicaltrips.jsx";
 import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
 import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
+import Profile from "./Components/ProfilePage/ProfilePage.jsx";
 
 
 function App() {  
@@ -38,7 +39,8 @@ function App() {
         <Route path="/Main/Fancy" element={<Fancy />} /> 
         <Route path="/Main/Winter" element={<Winter />} /> 
         <Route path="/signup/email_verification" element={<EmailVerification/>} />
-
+        <Route path="/login" element={<LoginForm />} /> 
+        <Route path="/Profile" element={<Profile />} /> 
       </Routes>  
     </Router>  
   );  
