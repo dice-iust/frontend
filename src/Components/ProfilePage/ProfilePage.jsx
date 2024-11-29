@@ -3,7 +3,7 @@ import "./ProfilePage.scss"
 
 const Profile = () => {  
   return (  
-    <div>  
+    <div className='profile'>  
       <nav className="menu" tabIndex="0">  
         <div className="smartphone-menu-trigger"></div>  
         <header className="avatar">  
@@ -11,10 +11,10 @@ const Profile = () => {
           <h2>John D.</h2>  
         </header>  
         <ul>  
-          <li tabIndex="0" className="icon-dashboard"><span>Dashboard</span></li>  
-          <li tabIndex="0" className="icon-customers"><span>Customers</span></li>  
-          <li tabIndex="0" className="icon-users"><span>Users</span></li>  
-          <li tabIndex="0" className="icon-settings"><span>Settings</span></li>  
+          <li tabIndex="0" className="icon-dashboard"><span>My trips</span></li>  
+          <li tabIndex="0" className="icon-customers"><span>My rate</span></li>  
+          <li tabIndex="0" className="icon-users"><span>Create new trip</span></li>  
+          <li tabIndex="0" className="icon-settings"><span>Edit profile</span></li>  
         </ul>  
       </nav>  
       <main>  

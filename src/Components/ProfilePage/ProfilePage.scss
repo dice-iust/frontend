@@ -12,8 +12,8 @@ $icon-url-customers: "#{$icon-url-base}/briefcase.svg";
 $icon-url-users: "#{$icon-url-base}/users.svg";  
 $icon-url-settings: "#{$icon-url-base}/tools.svg";  
 
-// Body styles  
-body {  
+
+.profile {  
   background: $color-1st;  
   margin: 0;  
   font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;  
@@ -21,33 +21,7 @@ body {
   padding-left: $menu-width-desktop;  
 }  
 
-// Main styles  
-main {  
-  position: relative;  
-  height: 100vh;  
 
-  .helper {  
-    background: rgba(0, 0, 0, 0.2);  
-    color: $color-1st;  
-    position: absolute;  
-    top: 50%;  
-    left: 50%;  
-    transform: translate3d(-50%, -50%, 0);  
-    padding: 1.2em 2em;  
-    text-align: center;  
-    border-radius: 20px;  
-    font-size: 2em;  
-    font-weight: bold;  
-
-    span {  
-      color: rgba(0, 0, 0, 0.2);  
-      font-size: 0.4em;  
-      display: block;  
-    }  
-  }  
-}  
-
-// Menu styles  
 .menu {  
   background: $color-2nd;  
   height: 100vh;  
