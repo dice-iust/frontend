@@ -92,10 +92,10 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 
 // Media queries for responsiveness  
 @media screen and (max-width: 900px) and (min-width: 400px) {  
-  body {  
+  .profile{  
     padding-left: $menu-width-tablet;  
   }  
-  .sidebar-menu {  
+  .menu {  
     width: $menu-width-tablet;  
 
     .avatar {  
@@ -171,11 +171,11 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 }  
 
 @media screen and (max-width: 400px) {  
-  body {  
+  .profile {  
     padding-left: 0;  
   }  
 
-  .sidebar-menu {  
+  .menu {  
     width: $menu-width-smartphone;  
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);  
     transform: translate3d(-$menu-width-smartphone, 0, 0);  
