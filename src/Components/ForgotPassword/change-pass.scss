@@ -36,6 +36,7 @@
         // color: rgb(72, 0, 255); // Use variable for consistent color 
         // font-size: large; 
         margin-top: -10px;
+        justify-content: center;
 
     }  
     
@@ -66,6 +67,7 @@
     }  
     .changepass-text
     {
+      margin-top: 15px;
       color:var(--mainColor);
       padding: 0;
       font-size: 20px;
@@ -73,6 +75,7 @@
       font-weight:200;
       line-height: 1;
       letter-spacing: 0;
+      display: flex;
     }
     .input-box-changepass {  
         cursor: text;  
@@ -94,11 +97,12 @@
       } 
     }  
     .iconchangepass{
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 17px;
+      position: absolute;         /* Positioning remains absolute */  
+      left: 20px;                /* Align the icon to the left */  
+      top: 50%;                  /* Vertically center the icon */  
+      transform: translateY(-50%); /* Center icon vertically */  
+      font-size: 17px;           /* icon size */  
+      pointer-events: none;  
     }
     
     .input-box-changepass .input-changepass {  
@@ -109,12 +113,14 @@
         height: 100%;  
         background-color: transparent; // Ensure the background is transparent  
         box-shadow: none;
+        padding-left: 30px;
     }   
-    .title-forgot1{////////////////////////////////////////////////
+    .title-changepass{
     
         margin-top: 10px;
+        display: flex;
         line-height: 1.2;
-        align-items: center;
+        // align-items: center;
         text-align: center;
         // align-self: flex-start;
         color:var(--mainColorLight);
@@ -123,26 +129,47 @@
         letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);  
     
     }
+    .changepass-image-container
+  {
+    background-image: url(./Assests/changepass.png);  
+    margin-top: 40px;  
+    // color: #ea7d29;  
+    height: 120px; // Set a height according to image dimensions  
+    width: 120px; // Ensure it takes full width  
+    background-size: contain; // Cover the container  
+    background-repeat: no-repeat; // Prevent the image from repeating  
+    display: flex; // Optional: Use flexbox for centering text if needed  
+    background-position: center;
+    justify-content: center; // Center horizontally  
+    align-items: center; // Center vertically  
+    margin-left: auto;
+    margin-right: auto;
+    // margin-left: 50px;
+    }
     .submit-button {  
-        background-color: var(--mainColor); // Use your predefined main color  
-        color: white; // Text color  
-        padding: 10px 15px; // Padding for the button  
-        border: none; // No border  
-        border-radius: 5px; // Rounded corners  
-        cursor: pointer; // Pointer on hover  
-        font-weight: bold; // Bold text  
-        margin-top: 15px; // Space above the button  
-        transition: background-color 0.3s; // Smooth transition  
-    
-        &:hover {  
-            background-color: var(--secondaryColor); // Change color on hover  
-        }  
-    
-        &:disabled {  
-            background-color: grey; // Change color when disabled  
-            cursor: not-allowed; // Change cursor to not-allowed  
-        }  
-    }  
+      background-color: var(--mainColor); // Use your predefined main color  
+      color: white; // Text color  
+      padding: 10px 15px; // Padding for the button  
+      border: none; // No border  
+      border-radius: 5px; // Rounded corners  
+      cursor: pointer; // Pointer on hover  
+      font-weight: bold; // Bold text  
+      margin-top: 20px; // Space above the button  
+      margin-left: auto; // Center button horizontally  
+      margin-right: auto; // Center button horizontally  
+      display: block; // Make sure the button is treated as a block element for centering  
+      transition: background-color 0.3s; // Smooth transition  
+      width: 250px;
+      height: 80px;
+  
+      &:hover {  
+          background-color: var(--secondaryColor); // Change color on hover  
+      }  
+  
+      &:disabled {  
+          background-color: grey; // Change color when disabled  
+          cursor: not-allowed; // Change cursor to not-allowed  
+      }  }
 }
 @keyframes pressDown11 {
     30%,

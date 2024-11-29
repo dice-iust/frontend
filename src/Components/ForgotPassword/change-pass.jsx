@@ -1,9 +1,13 @@
 import React, { useState } from 'react';  
 import { FaLock } from "react-icons/fa";  
-import "./change-pass.scss";  
-import axios from "axios"; // Import axios if you plan to use it later for submitting the password  
+import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom  
 
-const EmailSent = () => {  
+import "./change-pass.scss";  
+import axios from "axios";  
+
+// Capitalized the component name  
+const ChangePass = () => {  
+    const { userId, token } = useParams(); // Assuming your path is set to /password-reset-confirm/:userId/:token  
     const [password, setPassword] = useState('');  
     const [confirm, setConfirm] = useState('');  
     const [errorMessagePassword, setErrorMessagePassword] = useState('');  
@@ -12,27 +16,14 @@ const EmailSent = () => {
 
     const handlePasswordChange = (e) => {  
         const newPassword = e.target.value;  
-        const isValid = validatePassword(newPassword);  
         setPassword(newPassword);  
-        
-        if (isValid) {  
-            setErrorMessagePassword('');  
-            setIsPasswordValid(true);  
-        } else {  
-            setErrorMessagePassword('Password must be at least 6 characters long and contain both letters and numbers.');  
-            setIsPasswordValid(false);  
-        }  
+        setErrorMessagePassword('');  
     };  
 
     const handleConfirmPasswordChange = (e) => {  
         const confirmPassword = e.target.value;  
         setConfirm(confirmPassword);  
-        
-        if (confirmPassword !== password) {  
-            setErrorMessageConfirm('Passwords do not match.');  
-        } else {  
-            setErrorMessageConfirm('');  
-        }  
+        setErrorMessageConfirm('');  
     };  
 
     const validatePassword = (password) => {  
@@ -41,19 +32,43 @@ const EmailSent = () => {
         const hasNumber = /\d/.test(password);  
         return password.length >= minLength && hasLetter && hasNumber;  
     };  
+    
+    const handlePasswordBlur = () => {  
+        const isValid = validatePassword(password);  
+        if (!isValid) {  
+            setErrorMessagePassword('Password must be at least 6 characters long and contain both letters and numbers.');  
+            setIsPasswordValid(false);  
+        } else {  
+            setIsPasswordValid(true);  
+            setErrorMessagePassword('');  
+        }  
+    };  
+
+    const handleConfirmBlur = () => {  
+        if (confirm !== password) {  
+            setErrorMessageConfirm('Passwords do not match.');  
+        } else {  
+            setErrorMessageConfirm('');  
+        }  
+    };  
 
     const handleSubmit = async (e) => {  
         e.preventDefault();  
         if (isPasswordValid && password === confirm) {  
             try {  
-                // Make a request to submit the new password here  
-                // Example: await axios.post('/your/api/endpoint', { password });  
-                alert('Password reset successfully!'); // Placeholder success message  
+                // Call the API with userId and token  
+                const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-confirm/${userId}/${token}/', { password });  
+                if (response.status === 200) {  
+                    alert('Password reset successfully!');  
+                    // Optionally redirect to the login page or reset states  
+                } else {  
+                    alert('Failed to reset password. Please try again.');  
+                }  
             } catch (error) {  
                 console.error(error);  
-                alert('Failed to reset password.'); // Placeholder error message  
+                alert('Failed to reset password, please try again.');  
             }  
-        }  
+        }   
     };  
 
     return (  
@@ -68,16 +83,19 @@ const EmailSent = () => {
                 <span className="key-changepass tide-changepass">d</span>  
                 <span className="key-changepass tide-changepass">e</span>  
             </div>  
-            <div className="box-changepass">  
+            <div className="box-changepass">   
+                <div className="title-changepass">Reset your password</div>   
+                <div className="changepass-image-container"></div>  
                 <form onSubmit={handleSubmit}>  
-                    <label className="changepass-text">New Password</label>  
+                    <label className="changepass-text">PASSWORD</label>  
                     <div className="input-box-changepass">   
                         <FaLock className='iconchangepass' />   
                         <input  
                             type='password'  
-                            placeholder='Password'  
+                            placeholder='New Password'  
                             value={password}  
                             onChange={handlePasswordChange}  
+                            onBlur={handlePasswordBlur}  
                             className="input-changepass"  
                         />  
                     </div>   
@@ -87,13 +105,15 @@ const EmailSent = () => {
                         </span>  
                     )}  
 
-                    <label className="changepass-text">Confirm Password</label>                    <div className="input-box-changepass">   
+                    <label className="changepass-text">NEW PASSWORD CONFIRM</label>                    
+                    <div className="input-box-changepass">   
                         <FaLock className='iconchangepass' />  
                         <input  
                             type='password'  
-                            placeholder='Confirm Password'  
+                            placeholder='New Password Confirm'  
                             value={confirm}   
                             onChange={handleConfirmPasswordChange}   
+                            onBlur={handleConfirmBlur}  
                             className="input-changepass"  
                         />  
                     </div>   
@@ -110,4 +130,4 @@ const EmailSent = () => {
     );  
 };  
 
-export default EmailSent;
+export default ChangePass; // Make sure you also export the component correctly
