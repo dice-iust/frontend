@@ -1,5 +1,5 @@
 // Variables  
-$color-1st: #fcfbf8;  
+$color-1st: #fff;  
 $color-2nd: #22487a;  
 
 $menu-width-desktop: 240px;  
@@ -12,17 +12,17 @@ $icon-url-customers: "#{$icon-url-base}/briefcase.svg";
 $icon-url-users: "#{$icon-url-base}/users.svg";  
 $icon-url-settings: "#{$icon-url-base}/tools.svg";  
 
-// Body styles  
+// Body styles (assuming these styles apply only when this component is used)  
 body {  
   background: $color-1st;  
   margin: 0;  
   font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;  
   color: #fff;  
   padding-left: $menu-width-desktop;  
-}  
+}   
 
 // Main styles  
-main {  
+.main-sidebar {  
   position: relative;  
   height: 100vh;  
 
@@ -48,7 +48,7 @@ main {
 }  
 
 // Menu styles  
-.menu {  
+.sidebar-menu {  
   background: $color-2nd;  
   height: 100vh;  
   width: $menu-width-desktop;  
@@ -116,12 +116,12 @@ main {
   }  
 }  
 
-// Media queries  
+// Media queries for responsiveness  
 @media screen and (max-width: 900px) and (min-width: 400px) {  
   body {  
     padding-left: $menu-width-tablet;  
   }  
-  .menu {  
+  .sidebar-menu {  
     width: $menu-width-tablet;  
 
     .avatar {  
@@ -201,7 +201,7 @@ main {
     padding-left: 0;  
   }  
 
-  .menu {  
+  .sidebar-menu {  
     width: $menu-width-smartphone;  
     box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);  
     transform: translate3d(-$menu-width-smartphone, 0, 0);  
@@ -250,4 +250,3 @@ main {
     }  
   }  
 }
-        
