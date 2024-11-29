@@ -103,21 +103,21 @@ const EmailVerification = () => {
         
       if (response.data.success) {  
           setIsSuccess(true);  
-          setSuccessMsg('Verified successfully! you are sending to login page.');  
+          setSuccessMsg('Thanks! Verified successfully. Please wait a few seconds.');  
           clearTimeout(timerRef.current); 
           clearInterval(); 
           setTimeout(() => {  
               navigate('/login');   
           }, 3000);  
       } else {  
-          setErrMsg('Oops! The code is incorrect Please try again.');  
+          setErrMsg('Oops! The code is incorrect. Please enter the correct verification code.');  
           inputsRef.current.forEach(input => {  
             if (input) input.value = '';   
           });  
       }  
     } catch (error) {  
       console.error("Error verifying code:", error.response ? error.response.data : error.message);  
-      setErrMsg('Oops! The code is incorrect Please try again.');  
+      setErrMsg('Oops! The code is incorrect. Please enter the correct verification code.');  
       inputsRef.current.forEach(input => {  
         if (input) input.value = '';   
       });  
@@ -199,7 +199,7 @@ const EmailVerification = () => {
               <button type="submit" className='button'>Verify</button>  
             </div>  
             <div className="register-link">  
-              <p>Want to edit email? <Link to="/signup">Back</Link></p>  
+              <p>Want to use another Email? <Link to="/signup">Back</Link></p>  
             </div>  
           </form>   
         </div>   
