@@ -176,12 +176,13 @@ const SignupForm = () => {
         }  
       );  
 
-      const accessToken = response?.data?.accessToken;   
+      const accessToken = response?.data?.token;  
+      localStorage.setItem("token",accessToken); 
       setUsername('');  
       setPassword('');  
       setEmail('');  
       setConfirm('');
-      navigate('/login');  
+      navigate('/signup/email_verification');  
     }   
     catch (err) {  
       if (!err?.response) {  
@@ -264,7 +265,7 @@ const SignupForm = () => {
               </span>  
             )}  
           </div>   
-          <button type="submit">Signup</button>  
+          <button type="submit">Next</button>  
           <div className="register-link">  
             <p>Already have an account? <Link to="/login">Login</Link></p>  
           </div>  

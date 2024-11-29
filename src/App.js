@@ -16,6 +16,7 @@ import Upcoming from './Components/tourspage/categories/Upcomintrips.jsx';
 import Economical from "./Components/tourspage/categories/Economicaltrips.jsx";
 import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
+import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
 
 
 function App() {  
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Main/Economical" element={<Economical />} /> 
         <Route path="/Main/Fancy" element={<Fancy />} /> 
         <Route path="/Main/Winter" element={<Winter />} /> 
+        <Route path="/signup/email_verification" element={<EmailVerification/>} />
 
       </Routes>  
     </Router>  
