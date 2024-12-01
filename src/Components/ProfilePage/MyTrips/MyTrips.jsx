@@ -63,51 +63,57 @@ const TourList = () => {
     const currentYear = currentDate.getFullYear();  
     const currentMonth = currentDate.getMonth();   
 
-  const settings = {  
-    dots: true,  
-    infinite: true,  
-    speed: 500,  
-    slidesToShow: 3,  
-    slidesToScroll: 1, 
-    centerMode: true, 
-               
-    centerPadding: '236px', 
-    
-    
-    
-   
-    
-    responsive: [ 
-      {  
-        breakpoint: 1200,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          // centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 1024,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 600,  
-        settings: {  
-          slidesToShow: 1,  
-          slidesToScroll: 1,  
-        }  
-      }  
-    ]  
-  };  
+    const settings = {  
+      dots: true,  
+      infinite: true,  
+      speed: 500,  
+      slidesToShow: 3,  
+      slidesToScroll: 1,  
+      centerMode: true,  
+      centerPadding: '236px', 
+      swipe: true, 
+      swipeToSlide: true, 
+      touchMove: true,   
+      responsive: [  
+        {  
+          breakpoint: 1200,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '20px', // Adjusted for better visibility  
+          }  
+        },  
+        {  
+          breakpoint: 1024,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '10px',  
+          }  
+        },  
+        {  
+          breakpoint: 600,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '30px', // No padding for better fit  
+          }  
+        },  
+        {  
+          breakpoint: 480,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '5px', // No padding for better fit  
+          }  
+        },  
+      ]  
+    };
 
   return ( 
-    <div className='app-container-main'> 
-    <div className='travelpage'>
-    <div className="tour-list-container"> 
+    <div className='app-container-main-profile'> 
+    <div className='travelpage-profile'>
+    <div className="tour-list-container-profile"> 
     
 <br></br>
 <br></br>
@@ -116,45 +122,45 @@ const TourList = () => {
       {data && data.Popular_Trips ? (  
           <Slider {...settings}>  
             {data.Popular_Trips.slice(0, 5).map((tour) => (  
-              <div key={tour.id} className="tour-card">  
-                <div className="tour-image-container">  
+              <div key={tour.id} className="tour-card-profile">  
+                <div className="tour-image-container-profile">  
                   <img  
                     src={tour.image_url}  
                     alt={`Image of ${tour.name}`}  
-                    className="tour-image"  
+                    className="tour-image-profile"  
                   />  
                   {tour.admin && (  
-                    <div className="tour-admin">  
+                    <div className="tour-admin-profile">  
                       <img  
                         src={tour.admin.phrofile_image}  
                         alt={`Profile of ${tour.admin.user_name}`}  
-                        className="admin-photo"  
+                        className="admin-photo-profile"  
                       />  
                       {tour.admin.user_name}  
                     </div>  
                   )}  
                 </div>  
-                <div className="tour-info">  
-                  <p className="tour-meta3">  
-                    <span className="tour-name">{tour.name}</span>  
+                <div className="tour-info-profile">  
+                  <p className="tour-meta3-profile">  
+                    <span className="tour-name-profile">{tour.name}</span>  
                     <div className={`trip-type ${tour.mode}`}>  
                       <GrMoney aria-hidden="true" />  
                       {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)}  
                     </div>  
                   </p>  
-                  <div className="tour-details">  
-                    <p className="tour-route">  
-                      <span className="tour-text">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
+                  <div className="tour-details-profile">  
+                    <p className="tour-route-profile">  
+                      <span className="tour-text-profile">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
                     </p>  
                   </div>  
-                  <div className="tour-meta">  
-                    <p className="tour-date">  
-                      <FaRegCalendar className='moveicon3' />  
+                  <div className="tour-meta-profile">  
+                    <p className="tour-date-profile">  
+                      <FaRegCalendar className='moveicon3-profile' />  
                       <span>{formatDate(tour.start_date)}</span>  
                     </p>  
-                    <FaArrowRight className='moveicon4' />  
-                    <p className="tour-length" style={{ textAlign: "center" }}>  
-                      <FaUndoAlt className='moveicon3' />  
+                    <FaArrowRight className='moveicon4-profile' />  
+                    <p className="tour-length-profile" style={{ textAlign: "center" }}>  
+                      <FaUndoAlt className='moveicon3-profile' />  
                       {formatDate(tour.end_date)}  
                     </p>  
                   </div>  
