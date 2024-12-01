@@ -73,7 +73,7 @@ const Profile = () => {
                 className="avatar-image"  
               />  
             )}  
-            <h2>{data ? data.firstName : ''}</h2>  
+            <h2>{data ? data.user_name : ''}</h2>  
             <p>{data ? data.bio : ''}</p>  
           </header>  
           <ul>  

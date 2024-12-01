@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const PopularTravels_URL = 'travels/';
+const Travels_URL = 'mytravels/';
 
 
 const TourList = () => { 
@@ -28,8 +28,8 @@ const TourList = () => {
   useEffect(() => {  
       const fetchData = async () => {  
           try {  
-              const response = await axios.get(PopularTravels_URL);  
-              setData(response.data);  
+              const response = await axios.get(Travels_URL);  
+              setData(response.data.past);  
               console.log(response.data);
           } catch (error) {  
               console.error("Error fetching data:", error);  
@@ -67,7 +67,7 @@ const TourList = () => {
       dots: true,  
       infinite: true,  
       speed: 500,  
-      slidesToShow: 3,  
+      slidesToShow: 2,  
       slidesToScroll: 1,  
       centerMode: true,  
       centerPadding: '236px', 
@@ -121,7 +121,7 @@ const TourList = () => {
       <br></br> 
       {data && data.Popular_Trips ? (  
           <Slider {...settings}>  
-            {data.Popular_Trips.slice(0, 5).map((tour) => (  
+            {data.travel_is.slice(0, 5).map((tour) => (  
               <div key={tour.id} className="tour-card-profile">  
                 <div className="tour-image-container-profile">  
                   <img  
