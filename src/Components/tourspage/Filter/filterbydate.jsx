@@ -4,44 +4,83 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';  
 import './filterbydate.scss';  
 import { MdEditCalendar } from "react-icons/md";  
-import { FaSearch } from "react-icons/fa";  
+import { FaSearch } from "react-icons/fa";   
+import axios from 'axios';   
+import { GrMoney } from "react-icons/gr";  
+import { FaCarSide, FaPlane, FaUndoAlt, FaRegCalendar } from "react-icons/fa";  
+import { TbTrain, TbBus } from "react-icons/tb";  
 
-const DateRangePicker = () => {  
+
+const DateRangePicker = () => {
+  const tour = [  
+    {  
+      Id: 1,  
+      name: "City Trip1",  
+      start_date: "2023-03-15",  
+      image_url: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
+      destination: "Tehran",  
+      admin: { user_name: "Admin5", phrofile_image: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
+      mode : "Budget-Friendly" , 
+      start_place : "Isfahan",
+      transportation : "Car",
+     end_date : "2023-11-27",
+    }
+]
+  
+
   const [startDate, setStartDate] = useState(null);  
   const [endDate, setEndDate] = useState(null);  
   const [isEndDateOpen, setIsEndDateOpen] = useState(false);  
   const [startDateError, setStartDateError] = useState('');   
   const [endDateError, setEndDateError] = useState('');  
   const [message, setMessage] = useState('');  
+  const [resultData, setResultData] = useState([]);  
+
+
 
   const today = new Date();  
-  
+
+  const formatDate = (dateString) => {  
+    const [year, month, day] = dateString.split('-');  
+    return `${year}/${month}/${day}`;  
+  };  
+
+  const getTransportationIcon = (transportation) => {  
+    switch (transportation.toLowerCase()) {  
+      case 'train':  
+        return <TbTrain className="moveicon"/>;  
+      case 'bus':  
+        return <TbBus className="moveicon" />;  
+      case 'plane':  
+        return <FaPlane className="moveicon" />;  
+      case 'car':  
+        return <FaCarSide className="moveicon"/>;  
+      default:  
+        return null;  
+    }  
+  };  
   
   const handleStartDateChange = (date) => {  
-    // Set the date to the start of the day in UTC  
     const startOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
     setStartDate(startOfDayUTC);  
     setIsEndDateOpen(true);   
     setStartDateError('');  
-  
+
     if (endDate && startOfDayUTC > endDate) {  
       setEndDate(null);  
     }   
     
-    Reseterrors();  
+    resetErrors();  
   };  
 
   const handleEndDateChange = (date) => {  
-    // Set the date to the start of the day in UTC  
-    const startOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
-    setEndDate(startOfDayUTC);  
+    const endOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
+    setEndDate(endOfDayUTC);  
     setEndDateError('');   
-    if (startOfDayUTC) {  
-      setIsEndDateOpen(false);  
-    }  
+    setIsEndDateOpen(false);  
   };  
 
-  const handleButtonClick = () => {   
+  const handleButtonClick = async () => {   
     let hasError = false;   
    
     if (!startDate) {  
@@ -56,33 +95,44 @@ const DateRangePicker = () => {
     } else {  
       setEndDateError('');  
     }  
+
     if (!hasError) {  
-       
       const formattedStartDate = startDate.toISOString().split('T')[0];  
       const formattedEndDate = endDate.toISOString().split('T')[0];  
 
-
       setMessage(`Selected Dates: ${formattedStartDate} to ${formattedEndDate}`);  
+      await fetchTravelData(formattedStartDate, formattedEndDate);  
     } else {  
       setMessage('');   
     }  
+  };  
 
-    resetDatePickers();  
-};
+  const fetchTravelData = async (start, end) => {  
+    try {  
+      const response = await axios.get(`https://triptide.pythonanywhere.com//travels/filter/`, {  
+        params: {  
+          start_date: start,  
+          end_date: end,  
+        },  
+      });  
+      console.log('Response from backend:', response.data);  
+      setResultData(response.data); // Store the received data in state  
+    } catch (error) {  
+      console.error('Error fetching data from backend:', error);  
+      setResultData([]); // Clear result data on error  
+    }  
+  };  
 
   const resetDatePickers = () => {  
     setStartDate(null);  
     setEndDate(null);  
-    // setMessage('');  ] 
-    // setStartDateError(''); 
-    // setEndDateError(''); 
     setIsEndDateOpen(false);  
   };  
-  const Reseterrors= () => {
-    setMessage('');  
-  }
-  
 
+  const resetErrors = () => {  
+    setMessage('');  
+  }  
+  
   return (  
     <div className="date-range-picker">  
       <h2><MdEditCalendar className='movecalicon'/> Choose Trip Date</h2>  
@@ -117,14 +167,66 @@ const DateRangePicker = () => {
           {endDateError && <p className="error-message">{endDateError}</p>}   
         </div>  
         <button onClick={handleButtonClick} className="submit-button">  
-        <FaSearch className='moveiconsearch' />  
-      </button>   
+          <FaSearch className='moveiconsearch' />  
+        </button>   
       </div>  
       
       <div className="selected-dates">  
         <p>{message}</p>  
-      </div>  
-    </div>  
+
+        {/* <div className="tour-list-container-filter">   */}
+         
+            <div className="tour-list-filter">  
+              {resultData.map((item) => (  
+                <div key={item.Id} className="tour-card-filter">  
+                  <div className="tour-image-container-filter">  
+                    <img  
+                      src={item.image_url}  
+                      alt={`Image of ${item.name}`}  
+                      className="tour-image-filter"  
+                    />  
+                    {item.admin && (  
+                      <div className="tour-admin-filter">  
+                        <img  
+                          src={item.admin.phrofile_image}   
+                          alt={`Profile of ${item.admin.user_name}`}  
+                          className="admin-photo-filter"  
+                        />  
+                        {item.admin.user_name}   
+                      </div>  
+                    )}  
+                  </div>  
+                  <div className="tour-info-filter">  
+                    <p className="tour-meta-filter3">  
+                      <span className="tour-name-filter">{item.name}</span>  
+                      <div className={`trip-type-filter ${item.mode}`}>  
+                        <GrMoney aria-hidden="true" />{" "}  
+                        {item.mode.charAt(0).toUpperCase() + item.mode.slice(1)}  
+                      </div>  
+                    </p>  
+                    <div className="tour-details-filter">  
+                      <p className="tour-route-filter">  
+                        <span className="tour-text-filter">{item.start_place} {getTransportationIcon(item.transportation)} {item.destination}</span>  
+                      </p>  
+                    </div>  
+                    <div className="tour-meta-filter7">  
+                      <p className="tour-dates-filter">  
+                        <FaRegCalendar className='moveicon-filter3' />  
+                        <span>{formatDate(item.start_date)}</span>  
+                      </p>  
+                      <p className="tour-length-filter" style={{ textAlign: "left" }}>  
+                        <FaUndoAlt className='moveicon-filter3' />  
+                        {formatDate(item.end_date)}  
+                      </p>  
+                    </div>   
+                  </div>  
+                </div>  
+              ))}  
+            </div>  
+         
+        </div>  
+      </div>   
+    // </div>  
   );  
 };  
 
