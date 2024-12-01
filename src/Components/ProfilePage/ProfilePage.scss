@@ -15,14 +15,17 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 .ProfilePage {  
   display: flex;  
   flex-direction: column;  
-  min-height: 200vh; // Ensure full vertical height so footer stays at bottom  
+  min-height: 200vh;
+  margin-left: 4px;
+   // Ensure full vertical height so footer stays at bottom  
 
   .profile-page {  
     display: flex;   
     flex: 1;   
     height: 100%;  
     background: $color-1st;  
-    margin-bottom: 6px;   
+    margin-bottom: 6px;  
+    
 
     .menu {  
       background: $color-2nd;  
@@ -32,6 +35,17 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
       top: 0;  
       z-index: 5;  
       border: 1px solid rgb(234, 110, 12); 
+      border-radius: 4px; 
+
+      .active {  
+        background-color: rgb(234, 110, 12);  
+        color: #fff;  
+        transform: translateY(-2px);   
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        .iconmove {  
+          color: white;
+        }  
+    }  
 
       .avatar {  
         background: rgba(0, 0, 0, 0.1);  
@@ -80,32 +94,38 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
             font-size: 16px;  
           }  
           
-          &.icon-dashboard {  
-            background-image: url(#{$icon-url-dashboard});  
-          }  
-          &.icon-customers {  
-            background-image: url(#{$icon-url-customers});  
-          }  
-          &.icon-users {  
-            background-image: url(#{$icon-url-users});  
-          }  
-          &.icon-settings {  
-            background-image: url(#{$icon-url-settings});  
+          
+            
+          &.icon-settings {   
+            &:hover {  
+              .iconmove {  
+                color: white;
+              }  
+            }  
           }  
 
           &:hover {  
             background-color: rgb(234, 110, 12);  
             color: #fff;  
             transform: translateY(-2px);   
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */  
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
           }  
-
-          &:focus {  
+          cus {  
             outline: none;  
           }  
         }  
       }  
     }  
+
+    .iconmove {  
+      margin-left:2px;
+      margin-right: 2px;
+      margin-bottom: 4px;   
+      margin-top: 0px; 
+      vertical-align: middle; 
+      color: #ea7d29;
+      
+  }    
 
     .content {  
       flex: 1; 
@@ -115,13 +135,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
     }  
   }
-  .iconmove {  
-    margin-left:2px;
-    margin-right: 2px;
-    margin-bottom: 4px; /* Add horizontal spacing around the icon */  
-    margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
-    vertical-align: middle; /* Ensure the icon aligns well with text */  
-}    
+  
 }  
 
 // Media queries for responsiveness  

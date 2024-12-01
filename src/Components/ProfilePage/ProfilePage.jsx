@@ -6,16 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';  
 import { IoAddCircleSharp } from "react-icons/io5";  
 import EditProfile from '../EditProfile/EditProfile.jsx';  
-import MyTrips from './MyTrips/MyTrips.jsx'; 
-import { BsFillSuitcaseFill } from "react-icons/bs";
-import { RxStarFilled } from "react-icons/rx";
-import { FaEdit } from "react-icons/fa";
+import MyTrips from './MyTrips/MyTrips.jsx';   
+import { BsFillSuitcaseFill } from "react-icons/bs";  
+import { RxStarFilled } from "react-icons/rx";  
+import { FaEdit } from "react-icons/fa";  
 
 
 const Profile = () => {  
   const [data, setData] = useState(null);  
-  const [isEditing, setIsEditing] = useState(false);
-  const [showMyTrips, setShowMyTrips] = useState(false);  
+  const [isEditing, setIsEditing] = useState(false);  
+  const [showMyTrips, setShowMyTrips] = useState(true);  
   const navigate = useNavigate();  
 
   const getFormData = async () => {  
@@ -39,24 +39,24 @@ const Profile = () => {
   }, []);  
 
   const handleEdit = () => {  
-    setIsEditing(true);
+    setIsEditing(true);  
     setShowMyTrips(false);   
   };  
 
   const handleSave = (updatedData) => {  
     setData(updatedData);  
-    setIsEditing(false);
+    setIsEditing(false);  
       
   };  
 
   const handleCancel = () => {  
-    setIsEditing(false); 
-    
+    setIsEditing(false);   
+    setShowMyTrips(true);  
   };  
 
   const handleMyTrips = () => {  
-    setShowMyTrips(true); 
-    setIsEditing(false); 
+    setShowMyTrips(true);   
+    setIsEditing(false);   
   };  
 
   return (  
@@ -77,18 +77,18 @@ const Profile = () => {
             <p>{data ? data.bio : ''}</p>  
           </header>  
           <ul>  
-          <li tabIndex="0" className="icon-dashboard" onClick={handleMyTrips}> 
+            <li tabIndex="0" className={`icon-settings ${showMyTrips ? 'active' : ''}`} onClick={handleMyTrips}>   
               <span><BsFillSuitcaseFill className='iconmove'/> My trips</span>  
             </li>  
-            <li tabIndex="0" className="icon-customers"><span><RxStarFilled className='iconmove'/> My rate</span></li>  
-            <li tabIndex="0" className="icon-users"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
-            <span onClick={handleEdit}><li tabIndex="0" className="icon-settings"><FaEdit className='iconmove' /> Edit profile</li> </span>
+            <li tabIndex="0" className="icon-settings "><span><RxStarFilled className='iconmove'/> My rate</span></li>  
+            <li tabIndex="0" className="icon-settings"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+            <span onClick={handleEdit}><li tabIndex="0" className={`icon-settings ${isEditing ? 'active' : ''}`}><FaEdit className='iconmove' /> Edit profile</li> </span>  
           </ul>  
-        </nav> 
+        </nav>   
          
         <main className="content">  
           {showMyTrips ? (  
-            <MyTrips data={data} onCancel={handleCancel} /> 
+            <MyTrips data={data} onCancel={handleCancel} />   
           ) : isEditing ? (  
             <EditProfile data={data} onSave={handleSave} onCancel={handleCancel} />   
           ) : (  

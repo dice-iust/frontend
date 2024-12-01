@@ -29,7 +29,7 @@ function Navbar() {
               </button> 
               <div className="n-contents">
               <Link to="/about"><a href="/"><FiInfo className="moveaicon"/> About</a></Link>
-              <Link to="/EditProfile"><a href="/"><CgProfile className="moveaicon"/> Profile</a> </Link> 
+              <Link to="/Profile"><a href="/"><CgProfile className="moveaicon"/> Profile</a> </Link> 
               <Link to="/"><a href="/"><BiLogOutCircle  className="moveaicon"/>Logout</a> </Link> 
               </div> 
             </nav>  
