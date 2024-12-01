@@ -16,6 +16,7 @@ const DateRangePicker = () => {
 
   const today = new Date();  
   
+  
   const handleStartDateChange = (date) => {  
     setStartDate(date);  
     setIsEndDateOpen(true);   
@@ -52,18 +53,23 @@ const DateRangePicker = () => {
       setEndDateError('');  
     }  
     if (!hasError) {  
-      setMessage(`Selected Dates: ${startDate.toLocaleDateString()} to ${endDate.toLocaleDateString()}`);  
+       
+      const formattedStartDate = startDate.toISOString().split('T')[0];  
+      const formattedEndDate = endDate.toISOString().split('T')[0];  
+
+
+      setMessage(`Selected Dates: ${formattedStartDate} to ${formattedEndDate}`);  
     } else {  
       setMessage('');   
     }  
 
     resetDatePickers();  
-  };  
+};
 
   const resetDatePickers = () => {  
     setStartDate(null);  
     setEndDate(null);  
-    // setMessage('');  // Clear the selected dates message  
+    // setMessage('');  ] 
     setStartDateError(''); 
     setEndDateError(''); 
     setIsEndDateOpen(false);  
