@@ -38,11 +38,11 @@ const Profile = () => {
       <div className='profile-page'>  
         <nav className="menu" tabIndex="0">  
           <div className="smartphone-menu-trigger"></div>  
-          <header className="avatar">  
-          {data && data.profilePicture && (  
+          <header className="avatar"> 
+          {data && data.profilePicture && (   
             <img   
               src={data.profilePicture}
-              alt="Profile of John D."   
+              alt="Profilepic"   
               className="avatar-image"   
             />  
           )}
