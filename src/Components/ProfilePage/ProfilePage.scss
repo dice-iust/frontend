@@ -114,7 +114,14 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
       border-radius: 5px; 
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
     }  
-  }  
+  }
+  .iconmove {  
+    margin-left:2px;
+    margin-right: 2px;
+    margin-bottom: 4px; /* Add horizontal spacing around the icon */  
+    margin-top: 0px; /* Adjust this value to move the icon down slightly if needed */  
+    vertical-align: middle; /* Ensure the icon aligns well with text */  
+}    
 }  
 
 // Media queries for responsiveness  
