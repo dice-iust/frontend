@@ -5,7 +5,7 @@ import Footer from '../tourspage/footer.jsx';
 import { useState, useEffect, useRef, useContext } from 'react';  
 import { Link, useNavigate } from 'react-router-dom';  
 import axios from '../../api/axios';  
-
+import { IoAddCircleSharp } from "react-icons/io5";
 
 const Profile = () => {  
 
@@ -56,7 +56,7 @@ const Profile = () => {
           <ul>  
             <li tabIndex="0" className="icon-dashboard"><span>My trips</span></li>  
             <li tabIndex="0" className="icon-customers"><span>My rate</span></li>  
-            <li tabIndex="0" className="icon-users"><span>Create new trip</span></li>  
+            <li tabIndex="0" className="icon-users"><IoAddCircleSharp className='icon'/> <span>Create new trip</span></li>  
             <li tabIndex="0" className="icon-settings"><span>Edit profile</span></li>  
           </ul>  
         </nav>  

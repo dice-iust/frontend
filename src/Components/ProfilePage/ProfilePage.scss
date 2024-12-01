@@ -77,7 +77,15 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
         background-size: auto 20px;  
         transition: all 0.15s linear;  
         cursor: pointer;  
-
+        &.icon {  
+          position: absolute;  
+          right: 20px;  
+          top: 50%;  
+          margin-top: 27px;
+          transform: translateY(-50%);  
+          font-size: 16px;  
+      }  
+      
         &.icon-dashboard {  
           background-image: url(#{$icon-url-dashboard});  
         }  
@@ -92,7 +100,10 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
         }  
 
         &:hover {  
-          background-color: rgba(0, 0, 0, 0.1);  
+          background-color: rgb(234, 110, 12);  
+          color: #fff;  
+          transform: translateY(-2px);   
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */  
         }  
 
         &:focus {  
