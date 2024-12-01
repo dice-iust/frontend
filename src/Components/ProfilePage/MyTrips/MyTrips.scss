@@ -43,18 +43,7 @@
       align-items: center;  
     }  
 
-    .category-cards-profile {  
-      display: flex;  
-      flex-wrap: wrap;  
-      justify-content: center;  
-      gap: 40px;  
-      margin: 0 125px;  
-
-      @media screen and (max-width: 480px) { /* Adjust for max width 480px */  
-        margin: 0 10px; /* Reduced side margins */  
-        gap: 20px; /* Reduce gap between cards */  
-      }  
-    }  
+    
 
     .card-profile {  
       width: 190px;  

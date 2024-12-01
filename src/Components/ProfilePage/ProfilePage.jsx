@@ -77,11 +77,11 @@ const Profile = () => {
             <p>{data ? data.bio : ''}</p>  
           </header>  
           <ul>  
-          <li tabIndex="0" className="icon-dashboard" onClick={handleMyTrips}> 
+          <li tabIndex="0" className="icon-settings" onClick={handleMyTrips}> 
               <span><BsFillSuitcaseFill className='iconmove'/> My trips</span>  
             </li>  
-            <li tabIndex="0" className="icon-customers"><span><RxStarFilled className='iconmove'/> My rate</span></li>  
-            <li tabIndex="0" className="icon-users"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+            <li tabIndex="0" className="icon-settings"><span><RxStarFilled className='iconmove'/> My rate</span></li>  
+            <li tabIndex="0" className="icon-settings"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
             <span onClick={handleEdit}><li tabIndex="0" className="icon-settings"><FaEdit className='iconmove' /> Edit profile</li> </span>
           </ul>  
         </nav> 
