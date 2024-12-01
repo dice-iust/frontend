@@ -15,14 +15,17 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 .ProfilePage {  
   display: flex;  
   flex-direction: column;  
-  min-height: 200vh; // Ensure full vertical height so footer stays at bottom  
+  min-height: 200vh;
+  margin-left: 4px;
+   // Ensure full vertical height so footer stays at bottom  
 
   .profile-page {  
     display: flex;   
     flex: 1;   
     height: 100%;  
     background: $color-1st;  
-    margin-bottom: 6px;   
+    margin-bottom: 6px;  
+    
 
     .menu {  
       background: $color-2nd;  
@@ -32,6 +35,17 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
       top: 0;  
       z-index: 5;  
       border: 1px solid rgb(234, 110, 12); 
+      border-radius: 4px; 
+
+      .active {  
+        background-color: rgb(234, 110, 12);  
+        color: #fff;  
+        transform: translateY(-2px);   
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        .iconmove {  
+          color: white;
+        }  
+    }  
 
       .avatar {  
         background: rgba(0, 0, 0, 0.1);  

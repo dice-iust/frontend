@@ -31,7 +31,7 @@ function Navbar_category() {
               <div className="contents">
               <Link to="/Main"><a href="/"><IoHomeOutline className="movepicon"/> Home</a></Link>
               <Link to="/about"><a href="/"><FiInfo className="movepicon"/> About</a></Link>
-              <Link to="/EditProfile"><a href="/"><CgProfile className="movepicon"/> Profile</a> </Link> 
+              <Link to="/Profile"><a href="/"><CgProfile className="movepicon"/> Profile</a> </Link> 
               <Link to="/"><a href="/"><BiLogOutCircle  className="movepicon"/>Logout</a> </Link> 
               </div> 
             </nav>  
