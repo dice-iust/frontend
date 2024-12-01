@@ -167,27 +167,28 @@
       flex-direction: column;  
 
       .tour-name {  
-        font-size: 1em; /* Default name font size */  
-        font-weight: bold;  
-        margin-bottom: 0;  
-        margin-top: 3px;  
-        margin-left: 10px;  
-        align-self: flex-start;  
-        color: #22487a;  
+        font-size: 1em;  
+          font-weight: bold;  
+          margin-bottom: 0px;  
+          margin-top: 3px;
+          margin-left: 10px;
+          align-self: flex-start;
+          color: #22487a;       
       }  
 
       .tour-details {  
         display: flex;  
         align-items: center;  
-        margin-bottom: 0;  
-        margin-top: 0;  
+        margin-bottom: 0px;  
+        margin-top: 0px;  
 
         .tour-route {  
-          display: flex;  
-          align-items: center;  
-          margin-left: 10px;   
-          font-size: 0.9em;  
-          margin-bottom: 10px;  
+          display: flex; /* Use flexbox for alignment */  
+            align-items: center; /* Center the icon with respect to text */  
+            margin-left: 10px;   
+            margin-top: 0px;   
+            font-size: 0.9em;  
+            margin-bottom: 10px;   
         }  
 
         .moveicon {  
@@ -200,19 +201,19 @@
       }  
 
       .tour-meta3 {  
-        display: flex;   
-        align-items: center;   
-        margin-top: 12px;  
-
-        .trip-type {  
-          font-weight: bold;   
-          margin-right: 7px;  
+        display: flex; 
+        align-items: center; 
+        margin-top: 12px ; 
+        .trip-type {
+          
+          font-weight: bold; 
+          margin-right: 7px;
           margin-left: auto;  
-          font-size: 0.9em;   
-          padding: 4px 4px;   
-          border-radius: 5px;   
-          display: inline-block;  
-        }  
+          font-size: 0.9em; 
+          padding: 4px 4px; 
+          border-radius: 5px; 
+          display: inline-block;
+        }
 
         .trip-type.Budget-friendly {  
           background-color: #c8e6c9;   
