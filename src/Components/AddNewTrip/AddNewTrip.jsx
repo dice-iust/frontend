@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, MenuItem, Button, FormHelperText, FormControl } from '@mui/material';
+import { TextField, MenuItem, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,10 +21,9 @@ const AddNewTrip = () => {
     });
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState({});
-    console.log(errors,'errors')  // To handle error messages
 
     const validateField = (name, value) => {
-        const newErrors = { ...errors };  // Copy current errors
+        const newErrors = { ...errors };
 
         switch (name) {
             case 'title':
