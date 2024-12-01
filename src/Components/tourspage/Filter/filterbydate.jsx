@@ -18,21 +18,25 @@ const DateRangePicker = () => {
   
   
   const handleStartDateChange = (date) => {  
-    setStartDate(date);  
+    // Set the date to the start of the day in UTC  
+    const startOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
+    setStartDate(startOfDayUTC);  
     setIsEndDateOpen(true);   
     setStartDateError('');  
-
-    if (endDate && date > endDate) {  
+  
+    if (endDate && startOfDayUTC > endDate) {  
       setEndDate(null);  
-    } 
+    }   
     
-    Reseterrors();
+    Reseterrors();  
   };  
 
   const handleEndDateChange = (date) => {  
-    setEndDate(date);  
+    // Set the date to the start of the day in UTC  
+    const startOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
+    setEndDate(startOfDayUTC);  
     setEndDateError('');   
-    if (date) {  
+    if (startOfDayUTC) {  
       setIsEndDateOpen(false);  
     }  
   };  
