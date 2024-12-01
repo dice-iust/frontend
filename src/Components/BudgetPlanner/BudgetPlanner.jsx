@@ -6,41 +6,37 @@ import pic from '../../public/UserDefaultImage/profile.jpg'
 
 
 const BudgetPlanner = () => {
+    const [showAddExpense, setShowAddExpense] = useState(false);
     const [expData, setExpData] = useState([])
+
     useEffect(() => {
         setExpData(expenseData)
     }, [])
 
-    const newExpense = {
-        srcPic: pic,
-        amount: '120',
-        username: 'parmis',
-        title: 'supermarket',
-        id: '4', // Make sure you use a unique id
-    };
-
     const handleAddExpense = () =>{
-        
-       
+        setShowAddExpense((prev)=>!prev)
     }
-    console.log(expData)
 
   return (
     <div>
         <button onClick={handleAddExpense}>Add Expenses</button>
+
+        {showAddExpense ? <AddExpense setExpData={setExpData} setShowAddExpense={setShowAddExpense} /> : null}
+
         {expData.map((item)=>{
             return(
-                <ExpenseUserList username={item.username}
-                                 title={item.title}
-                                 price={item.amount}
-                                 profilePic={item.srcPic}
-                                 id={item.id}
-                                 key={item.id}
-                                 setExpData={setExpData}
-                                  /> 
+                <ExpenseUserList 
+                    username={item.username}
+                    title={item.title}
+                    price={item.amount}
+                    profilePic={item.srcPic}
+                    id={item.id}
+                    key={item.id}
+                    setExpData={setExpData}
+                    /> 
             )
-        })}
-        <AddExpense setExpData={setExpData}/>
+        })}   
+        
     </div>
   )
 }
