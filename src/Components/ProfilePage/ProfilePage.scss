@@ -15,23 +15,26 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 .ProfilePage {  
   display: flex;  
   flex-direction: column;  
-  min-height: 100vh; // Ensure full vertical height so footer stays at bottom  
+  min-height: 200vh; // Ensure full vertical height so footer stays at bottom  
 }  
 
 
-.profile {  
+.profile-page {  
   display: flex; 
   flex: 1; 
+  height: 100%;
   background: $color-1st;  
-  margin-bottom: 0px; 
+  margin-bottom: 6px; 
+  border: #fff;
   margin-top: 0px; 
   .menu {  
     background: $color-2nd;  
-    height: 100%;  
+    height: 200vh;  
     width: $menu-width-desktop;  
     position: sticky;  // Changed to sticky to allow scrolling while staying visible  
     top: 0;  
-    z-index: 5;  
+    z-index: 5; 
+    border: rgb(234, 110, 12); 
     outline: none;  
 
     .avatar {  
@@ -101,7 +104,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 
 // Media queries for responsiveness  
 @media screen and (max-width: 900px) and (min-width: 400px) {  
-  .profile{  
+  .profile-page{  
     padding-left: $menu-width-tablet;  
   }  
   .menu {  
@@ -180,7 +183,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 }  
 
 @media screen and (max-width: 400px) {  
-  .profile {  
+  .profile-page {  
     padding-left: 0;  
   }  
 

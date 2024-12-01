@@ -7,7 +7,7 @@ const Profile = () => {
   return (  
     <div className='ProfilePage'>  
       <Travelsnav/>      
-      <div className='profile'>  
+      <div className='profile-page'>  
         <nav className="menu" tabIndex="0">  
           <div className="smartphone-menu-trigger"></div>  
           <header className="avatar">  
