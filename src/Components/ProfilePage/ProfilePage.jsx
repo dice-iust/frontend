@@ -2,8 +2,36 @@ import React from 'react';
 import "./ProfilePage.scss";  
 import Travelsnav from "../tourspage/categories_nav.jsx";  
 import Footer from '../tourspage/footer.jsx';  
+import { useState, useEffect, useRef, useContext } from 'react';  
+import { Link, useNavigate } from 'react-router-dom';  
+import axios from '../../api/axios';  
+
 
 const Profile = () => {  
+
+  const [data, setData] = useState(null);
+  const navigate = useNavigate();  
+  const getFormData = async () => {  
+    try {  
+      const response = await axios.get("https://triptide.pythonanywhere.com/profile/", {  
+        headers: { Authorization: localStorage.getItem("token") },  
+      }); 
+      setData(response.data) ;
+    } catch (error) {  
+      console.error("Error fetching data:", error);  
+    }  
+  };  
+
+  useEffect(() => {  
+    const token = localStorage.getItem("token");  
+    if (!token) {  
+      navigate("/login");  
+    } else {  
+      getFormData();  
+    }  
+  }, []);  
+
+
   return (  
     <div className='ProfilePage'>  
       <Travelsnav/>      
@@ -11,12 +39,15 @@ const Profile = () => {
         <nav className="menu" tabIndex="0">  
           <div className="smartphone-menu-trigger"></div>  
           <header className="avatar">  
+          {data && data.profilePicture && (  
             <img   
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqafzhnwwYzuOTjTlaYMeQ7hxQLy_Wq8dnQg&s"   
+              src={data.profilePicture}
               alt="Profile of John D."   
               className="avatar-image"   
             />  
-            <h2>John D.</h2>  
+          )}
+            <h2>{data.firstName}</h2>  
+            <p>{data.bio}</p>
           </header>  
           <ul>  
             <li tabIndex="0" className="icon-dashboard"><span>My trips</span></li>  
