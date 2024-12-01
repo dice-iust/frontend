@@ -10,6 +10,8 @@ import axios from '../../api/axios';
 const Profile = () => {  
 
   const [data, setData] = useState(null);
+  const [fname,setFname]=useState(null);
+  const [bio,setBio]=useState(null);
   const navigate = useNavigate();  
   const getFormData = async () => {  
     try {  
@@ -17,6 +19,8 @@ const Profile = () => {
         headers: { Authorization: localStorage.getItem("token") },  
       }); 
       setData(response.data) ;
+      setFname(response.data.firstName);
+      setBio(response.data.bio);
     } catch (error) {  
       console.error("Error fetching data:", error);  
     }  
@@ -46,8 +50,8 @@ const Profile = () => {
               className="avatar-image"   
             />  
           )}
-            <h2>{data.firstName}</h2>  
-            <p>{data.bio}</p>
+            <h2>{fname}</h2>  
+            <p>{bio}</p>
           </header>  
           <ul>  
             <li tabIndex="0" className="icon-dashboard"><span>My trips</span></li>  
