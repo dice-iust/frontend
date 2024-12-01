@@ -6,7 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';  
 import { IoAddCircleSharp } from "react-icons/io5";  
 import EditProfile from '../EditProfile/EditProfile.jsx';  
-import MyTrips from './MyTrips/MyTrips.jsx';  
+import MyTrips from './MyTrips/MyTrips.jsx'; 
+import { BsFillSuitcaseFill } from "react-icons/bs";
+import { RxStarFilled } from "react-icons/rx";
+import { FaEdit } from "react-icons/fa";
+
 
 const Profile = () => {  
   const [data, setData] = useState(null);  
@@ -74,11 +78,11 @@ const Profile = () => {
           </header>  
           <ul>  
           <li tabIndex="0" className="icon-dashboard" onClick={handleMyTrips}> 
-              <span>My trips</span>  
+              <span><BsFillSuitcaseFill className='iconmove'/> My trips</span>  
             </li>  
-            <li tabIndex="0" className="icon-customers"><span>My rate</span></li>  
-            <li tabIndex="0" className="icon-users"><IoAddCircleSharp className='icon' /><span>Create new trip</span></li>  
-            <span onClick={handleEdit}><li tabIndex="0" className="icon-settings">Edit profile</li> </span>
+            <li tabIndex="0" className="icon-customers"><span><RxStarFilled className='iconmove'/> My rate</span></li>  
+            <li tabIndex="0" className="icon-users"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+            <span onClick={handleEdit}><li tabIndex="0" className="icon-settings"><FaEdit className='iconmove' /> Edit profile</li> </span>
           </ul>  
         </nav> 
          
