@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';  
 import { IoAddCircleSharp } from "react-icons/io5";  
 import EditProfile from '../EditProfile/EditProfile.jsx';  
+import MyTrips from './MyTrips/MyTrips.jsx';  
 
 const Profile = () => {  
   const [data, setData] = useState(null);  
-  const [isEditing, setIsEditing] = useState(false);  
+  const [isEditing, setIsEditing] = useState(false);
+  const [showMyTrips, setShowMyTrips] = useState(false);  
   const navigate = useNavigate();  
 
   const getFormData = async () => {  
@@ -33,16 +35,24 @@ const Profile = () => {
   }, []);  
 
   const handleEdit = () => {  
-    setIsEditing(true);  
+    setIsEditing(true);
+    setShowMyTrips(false);   
   };  
 
   const handleSave = (updatedData) => {  
     setData(updatedData);  
-    setIsEditing(false);  
+    setIsEditing(false);
+      
   };  
 
   const handleCancel = () => {  
-    setIsEditing(false);  
+    setIsEditing(false); 
+    
+  };  
+
+  const handleMyTrips = () => {  
+    setShowMyTrips(true); 
+    setIsEditing(false); 
   };  
 
   return (  
@@ -63,23 +73,29 @@ const Profile = () => {
             <p>{data ? data.bio : ''}</p>  
           </header>  
           <ul>  
-            <li tabIndex="0" className="icon-dashboard"><span>My trips</span></li>  
+          <li tabIndex="0" className="icon-dashboard" onClick={handleMyTrips}> 
+              <span>My trips</span>  
+            </li>  
             <li tabIndex="0" className="icon-customers"><span>My rate</span></li>  
             <li tabIndex="0" className="icon-users"><IoAddCircleSharp className='icon' /><span>Create new trip</span></li>  
-            <li tabIndex="0" className="icon-settings"><span onClick={handleEdit}>Edit profile</span></li> {/* Updated to open edit profile */}  
+            <li tabIndex="0" className="icon-settings"><span onClick={handleEdit}>Edit profile</span></li> 
           </ul>  
-        </nav>  
+        </nav> 
+         
         <main className="content">  
-          {!isEditing ? (  
+          {showMyTrips ? (  
+            <MyTrips data={data} onCancel={handleCancel} /> 
+          ) : isEditing ? (  
+            <EditProfile data={data} onSave={handleSave} onCancel={handleCancel} />   
+          ) : (  
             <div className="helper">  
               <h1>Profile Overview</h1>  
               <p>RESIZE THE WINDOW</p>  
               <span>Breakpoints at 900px and 400px</span>  
             </div>  
-          ) : (  
-            <EditProfile data={data} onSave={handleSave} onCancel={handleCancel} /> 
-          )}  
+          )}   
         </main>  
+        
       </div>  
       <Footer />  
     </div>  

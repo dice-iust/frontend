@@ -1,0 +1,309 @@
+.app-container-mytrips {  
+    display: flex;  
+    flex-direction: column;  
+    min-height: 100vh;   
+  }  
+  
+  .mytrips {  
+      text-align: center;  
+      padding: 2px;  
+      flex: 1; 
+    
+      .tour-list-container-mytrips {  
+        max-width: 2000px;  
+        margin-left: 10px;
+        margin-right: 10px;
+    
+        .tour-list-mytrips {  
+          display: flex;  
+          flex-wrap: wrap;  
+          // justify-content: space-between;  
+          gap: 15px;  
+        }  
+        
+        .moveicon-mytrips {  
+          margin-left: 2px;  
+          margin-right: 2px;  
+          margin-bottom: 0px;  
+          margin-top: 0px;   
+          vertical-align: middle;   
+        }  
+    
+        .card-image-mytrips {  
+          width: 100%;  
+          height: 100%;  
+          object-fit: cover;   
+        }  
+    
+        .card-title-mytrips {  
+          position: absolute;   
+          bottom: 0;   
+          right: 0;  
+          margin-bottom: 0;  
+          font-size: 1rem;  
+          color: #22487a;  
+          background: #fff;   
+          padding: 5px;  
+          border-radius: 2px;  
+          box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
+        }  
+    
+        .tour-card-mytrips {  
+          display: flex;  
+          flex-direction: column;  
+          background: white;  
+          border-radius: 10px;  
+          overflow: hidden;  
+          width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
+          height: 300px;   
+          transition: transform 0.3s, box-shadow 0.3s;  
+          position: relative;  
+          border: 2px solid rgba(34, 72, 122, 0.5);  
+          
+          &:hover {  
+            animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+            box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
+          }  
+        }  
+    
+        .tour-image-mytrips{  
+          width: 100%;  
+          height: 168px;   
+          object-fit: cover;   
+          position: relative;   
+        }  
+    
+        .tour-image-container-mytrips {  
+          position: relative;  
+        }  
+    
+        .tour-admin-mytrips {  
+          position: absolute;  
+          top: 10px;  
+          left: 10px;  
+          display: flex;  
+          align-items: center;  
+          background-color: rgba(255, 255, 255, 0.7);  
+          padding: 2px;  
+          border-radius: 5px;  
+          z-index: 20;  
+        }  
+    
+        .admin-photo-mytrips {  
+          width: 30px;  
+          height: 30px;  
+          border-radius: 50%;  
+          margin-right: 5px;  
+        }  
+    
+        // Hover effect on the admin photo  
+        .admin-photo:hover {  
+          transform: scale(1.05);  
+        }  
+    
+        // Tour Info Styles  
+        .tour-info-mytrips {  
+          display: flex;  
+          flex-direction: column;  
+    
+          .tour-name-mytrips {  
+            font-size: 1em;  
+            font-weight: bold;  
+            margin-bottom: 0px;  
+            margin-top: 3px;  
+            margin-left: 10px;  
+            align-self: flex-start;  
+            color: #22487a;    
+          }  
+    
+          .tour-details-mytrips {  
+            display: flex;  
+            align-items: center;  
+            margin-bottom: 0px;  
+            margin-top: 0px;  
+    
+            .tour-route-mytrips {  
+              display: flex;  
+              align-items: center;  
+              margin-left: 10px;   
+              margin-top: 0px;   
+              font-size: 0.9em;  
+              margin-bottom: 10px;  
+            }  
+            
+            .moveicon {  
+              margin-left: 2px;  
+              margin-right: 2px;  
+              margin-bottom: 2px;  
+              margin-top: 0px;   
+              vertical-align: middle;  
+            }  
+          }  
+    
+          .tour-meta-mytrips3 {  
+            display: flex;   
+            align-items: center;   
+            margin-top: 12px;   
+            .trip-type-mytrips {  
+              font-weight: bold;   
+              margin-right: 7px;  
+              margin-left: auto;  
+              font-size: 1em;   
+              padding: 4px 8px;   
+              border-radius: 5px;   
+              display: inline-block;  
+            }  
+            .trip-type-mytrips.Budget-friendly {  
+              background-color: #c8e6c9;   
+              color: #388e3c;  
+            }  
+            .trip-type-mytrips.Fancy {  
+              background-color: #f59e9e;  
+              color: #e9362c;   
+            }   
+          }  
+    
+          .tour-name {  
+            font-size: 1em;  
+            font-weight: bold;  
+            margin-bottom: 0px;  
+            margin-top: 3px;  
+            margin-left: 10px;  
+            align-self: flex-start;  
+            color: #22487a;    
+          }  
+    
+          .tour-meta-mytrips7 {  
+            display: flex;  
+            justify-content: space-between;  
+    
+            .tour-dates-mytrips, .tour-length-mytrips {  
+              font-size: 0.9em;  
+            }        .tour-dates-mytrips{  
+              margin-bottom: 7px;  
+              margin-left: 10px;  
+              margin-top: 0px;  
+              margin-right: 20px;  
+            }  
+    
+            .tour-length-mytrips {  
+              margin-right: 15px;  
+              margin-bottom: 10px;  
+              margin-top: 0px;  
+            }   
+            
+            .moveicon-mytrips3 {  
+              margin-left: 2px;  
+              margin-right: 4px;  
+              margin-bottom: 4px;  
+              margin-top: 0px;   
+              vertical-align: middle;   
+            }  
+    
+            .moveicon-mytrips4 {  
+              margin-left: 4px;  
+              margin-right: 4px;  
+              margin-bottom: 3px;  
+              margin-top: 3px;   
+              vertical-align: middle;   
+            }  
+          }  
+    
+          .tour-admin {  
+            display: flex;  
+            align-items: center;  
+            justify-content: flex-start;  
+    
+            .admin-photo {   
+              margin-left: 10px;  
+              margin-bottom: 2px;   
+              width: 25px;  
+              height: 25px;  
+              border-radius: 50%;  
+              margin-right: 5px;  
+            }  
+    
+            span {  
+              font-weight: bold;  
+            }  
+          }  
+        }  
+      }  
+    }  
+    
+    // Circular Animation Keyframes  
+    @keyframes circular-animation {  
+      0% {  
+        transform: rotate(0deg) scale(1);  
+      }  
+      50% {  
+        transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
+      }  
+      100% {  
+        transform: rotate(0deg) scale(1); /* Returning to original state */  
+      }  
+    }
+  
+  
+    @media (max-width: 1200px) {  
+      .tour-card-mytrips {  
+        width: calc(50% - 0px); /* Two cards per row on medium screens */  
+      }  
+      .tour-meta-mytrips7
+        {
+          font-size:0.9em;
+        } 
+    
+        .tour-meta-mytrips3 
+        {
+          font-size: 0.9em;
+        }
+        
+    }  
+    
+    @media (max-width: 1200px) {  
+      .tour-card-mytrips {  
+        width: calc(50% - 0px); /* Two cards per row on medium screens */  
+      }  
+      
+      .tour-meta-mytrips7 {  
+        font-size: 0.9em;  
+      }   
+      
+      .tour-meta-mytrips3 {  
+        font-size: 0.9em;  
+      }  
+    }  
+    
+    @media (max-width: 768px) {  
+      .tour-card-mytrips {  
+        width: calc(100% - 0px); /* One card per row on small screens */  
+      }  
+    
+      .admin-photo {  
+        width: 20px;  
+        height: 20px;  
+      }  
+    
+      .tour-meta-mytrips7 {  
+        font-size: 0.8em;  
+      }   
+    
+      .tour-name-mytrips,   
+      .tour-meta-mytrips3 .trip-type-mytrips {  
+        font-size: 0.8em;  
+      }  
+    }  
+    
+    @media (max-width: 576px) {  
+      .tour-info-mytrips {  
+        .tour-name-mytrips {  
+          font-size: 0.8em;  
+        }   
+    
+        .tour-meta-mytrips .trip-type-mytrips {  
+          padding: 2px 6px;  
+          font-size: 0.8em;  
+        }  
+      }  
+    }
