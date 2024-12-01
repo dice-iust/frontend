@@ -70,8 +70,8 @@ const DateRangePicker = () => {
     setStartDate(null);  
     setEndDate(null);  
     // setMessage('');  ] 
-    setStartDateError(''); 
-    setEndDateError(''); 
+    // setStartDateError(''); 
+    // setEndDateError(''); 
     setIsEndDateOpen(false);  
   };  
   const Reseterrors= () => {

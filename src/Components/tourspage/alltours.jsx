@@ -84,46 +84,52 @@ const TourList = () => {
     const currentYear = currentDate.getFullYear();  
     const currentMonth = currentDate.getMonth();   
 
-  const settings = {  
-    dots: true,  
-    infinite: true,  
-    speed: 500,  
-    slidesToShow: 3,  
-    slidesToScroll: 1, 
-    centerMode: true, 
-               
-    centerPadding: '236px', 
-    
-    
-    
-   
-    
-    responsive: [ 
-      {  
-        breakpoint: 1200,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          // centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 1024,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 600,  
-        settings: {  
-          slidesToShow: 1,  
-          slidesToScroll: 1,  
-        }  
-      }  
-    ]  
-  };  
+    const settings = {  
+      dots: true,  
+      infinite: true,  
+      speed: 500,  
+      slidesToShow: 3,  
+      slidesToScroll: 1,  
+      centerMode: true,  
+      centerPadding: '236px', 
+      swipe: true, 
+      swipeToSlide: true, 
+      touchMove: true,   
+      responsive: [  
+        {  
+          breakpoint: 1200,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '20px', // Adjusted for better visibility  
+          }  
+        },  
+        {  
+          breakpoint: 1024,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '10px',  
+          }  
+        },  
+        {  
+          breakpoint: 600,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '30px', // No padding for better fit  
+          }  
+        },  
+        {  
+          breakpoint: 480,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '5px', // No padding for better fit  
+          }  
+        },  
+      ]  
+    };
 
   return ( 
     <div className='app-container-main'> 
