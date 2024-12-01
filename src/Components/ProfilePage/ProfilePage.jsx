@@ -78,7 +78,7 @@ const Profile = () => {
             </li>  
             <li tabIndex="0" className="icon-customers"><span>My rate</span></li>  
             <li tabIndex="0" className="icon-users"><IoAddCircleSharp className='icon' /><span>Create new trip</span></li>  
-            <li tabIndex="0" className="icon-settings"><span onClick={handleEdit}>Edit profile</span></li> 
+            <span onClick={handleEdit}><li tabIndex="0" className="icon-settings">Edit profile</li> </span>
           </ul>  
         </nav> 
          
