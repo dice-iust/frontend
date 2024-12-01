@@ -2,7 +2,7 @@
 $color-1st: #fff;  
 $color-2nd: #22487a;  
 
-$menu-width-desktop: 240px;  
+$menu-width-desktop: 300px;  
 $menu-width-tablet: 90px;  
 $menu-width-smartphone: 230px;  
 
@@ -12,81 +12,90 @@ $icon-url-customers: "#{$icon-url-base}/briefcase.svg";
 $icon-url-users: "#{$icon-url-base}/users.svg";  
 $icon-url-settings: "#{$icon-url-base}/tools.svg";  
 
+.ProfilePage {  
+  display: flex;  
+  flex-direction: column;  
+  min-height: 100vh; // Ensure full vertical height so footer stays at bottom  
+}  
+
 
 .profile {  
+  display: flex; 
+  flex: 1; 
   background: $color-1st;  
-  margin: 0;  
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Arial, sans-serif;  
-  color: #fff;  
-  padding-left: $menu-width-desktop;  
-}   
+  margin-bottom: 0px; 
+  margin-top: 0px; 
+  .menu {  
+    background: $color-2nd;  
+    height: 100%;  
+    width: $menu-width-desktop;  
+    position: sticky;  // Changed to sticky to allow scrolling while staying visible  
+    top: 0;  
+    z-index: 5;  
+    outline: none;  
 
+    .avatar {  
+      background: rgba(0, 0, 0, 0.1);  
+      padding: 2em 0.5em;  
+      text-align: center;  
 
-.menu {  
-  background: $color-2nd;  
-  height: 100vh;  
-  width: $menu-width-desktop;  
-  position: fixed;  
-  top: 0;  
-  left: 0;  
-  z-index: 5;  
-  outline: none;  
+      img {  
+        width: 100px;  
+        border-radius: 50%;  
+        overflow: hidden;  
+        border: 4px solid $color-1st;  
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);  
+      }  
 
-  .avatar {  
-    background: rgba(0, 0, 0, 0.1);  
-    padding: 2em 0.5em;  
-    text-align: center;  
-
-    img {  
-      width: 100px;  
-      border-radius: 50%;  
-      overflow: hidden;  
-      border: 4px solid $color-1st;  
-      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);  
+      h2 {  
+        font-weight: normal;  
+        margin-bottom: 0;  
+      }  
     }  
 
-    h2 {  
-      font-weight: normal;  
-      margin-bottom: 0;  
+    ul {  
+      list-style: none;  
+      padding: 0.5em 0;  
+      margin: 0;  
+
+      li {  
+        padding: 0.5em 1em 0.5em 3em;  
+        font-size: 0.95em;  
+        font-weight: regular;  
+        background-repeat: no-repeat;  
+        background-position: left 15px center;  
+        background-size: auto 20px;  
+        transition: all 0.15s linear;  
+        cursor: pointer;  
+
+        &.icon-dashboard {  
+          background-image: url(#{$icon-url-dashboard});  
+        }  
+        &.icon-customers {  
+          background-image: url(#{$icon-url-customers});  
+        }  
+        &.icon-users {  
+          background-image: url(#{$icon-url-users});  
+        }  
+        &.icon-settings {  
+          background-image: url(#{$icon-url-settings});  
+        }  
+
+        &:hover {  
+          background-color: rgba(0, 0, 0, 0.1);  
+        }  
+
+        &:focus {  
+          outline: none;  
+        }  
+      }  
     }  
   }  
 
-  ul {  
-    list-style: none;  
-    padding: 0.5em 0;  
-    margin: 0;  
-
-    li {  
-      padding: 0.5em 1em 0.5em 3em;  
-      font-size: 0.95em;  
-      font-weight: regular;  
-      background-repeat: no-repeat;  
-      background-position: left 15px center;  
-      background-size: auto 20px;  
-      transition: all 0.15s linear;  
-      cursor: pointer;  
-
-      &.icon-dashboard {  
-        background-image: url(#{$icon-url-dashboard});  
-      }  
-      &.icon-customers {  
-        background-image: url(#{$icon-url-customers});  
-      }  
-      &.icon-users {  
-        background-image: url(#{$icon-url-users});  
-      }  
-      &.icon-settings {  
-        background-image: url(#{$icon-url-settings});  
-      }  
-
-      &:hover {  
-        background-color: rgba(0, 0, 0, 0.1);  
-      }  
-
-      &:focus {  
-        outline: none;  
-      }  
-    }  
+  .content {  
+    margin-left: $menu-width-desktop; // Leave space for the sidebar  
+    padding: 20px;  
+    flex: 1; // Make this fill the remaining space  
   }  
 }  
 
