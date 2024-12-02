@@ -7,7 +7,7 @@ $font-color: #333;
 $hover-bg-color: #f0f0f0;   
 
 .date-range-picker {  
-  display: flex;  
+  // display: flex;  
   flex-direction: column;  
   align-items: center;  
   margin: 40px auto;  
@@ -16,6 +16,12 @@ $hover-bg-color: #f0f0f0;
   box-shadow: $shadow;  
   background-color: $date-picker-bg;  
   transition: box-shadow 0.3s ease;  
+  .date-range-picker2 { 
+    display: flex; 
+    flex-direction: column;  
+    align-items: center;  
+    transition: box-shadow 0.3s ease;  
+  }
 
   
 
@@ -85,15 +91,17 @@ $hover-bg-color: #f0f0f0;
   }  
 
   .selected-dates {  
-    margin-top: 25px;  
+    margin-top: 30px;  
+    margin-bottom: 20px;  
     font-size: 20px;  
     font-weight: 600;  
     color: $font-color;  
-    text-align: center;
-
+    text-align: left; 
 
     
-      
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
 
     p {  
       margin: 0;  
@@ -102,14 +110,14 @@ $hover-bg-color: #f0f0f0;
     }  
   }
 
-  .tour-list-container-filter {  
-    margin-top: 20px;  
-  }  
+  
 
   .tour-list-filter {  
     display: flex;  
-    flex-wrap: wrap;  
-    gap: 15px; // Space between tour cards  
+    flex-direction: column; // Stack the trips vertically  
+    align-items: flex-start; // Align items to the start (left)  
+    width: 100%;
+    // Optional: Set width to full to avoid centering  
   }  
 
   .tour-card-filter {  

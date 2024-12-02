@@ -10,24 +10,7 @@ import { GrMoney } from "react-icons/gr";
 import { FaCarSide, FaPlane, FaUndoAlt, FaRegCalendar } from "react-icons/fa";  
 import { TbTrain, TbBus } from "react-icons/tb";  
 
-
-const DateRangePicker = () => {
-  const tour = [  
-    {  
-      Id: 1,  
-      name: "City Trip1",  
-      start_date: "2023-03-15",  
-      image_url: "https://plus.unsplash.com/premium_photo-1697729905164-f61ad5207758?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGVocmFufGVufDB8fDB8fHww",
-      destination: "Tehran",  
-      admin: { user_name: "Admin5", phrofile_image: "https://clipart-library.com/2023/Admin-Profile-Vector-PNG-Clipart.png" }, 
-      mode : "Budget-Friendly" , 
-      start_place : "Isfahan",
-      transportation : "Car",
-     end_date : "2023-11-27",
-    }
-]
-  
-
+const DateRangePicker = () => {  
   const [startDate, setStartDate] = useState(null);  
   const [endDate, setEndDate] = useState(null);  
   const [isEndDateOpen, setIsEndDateOpen] = useState(false);  
@@ -35,9 +18,7 @@ const DateRangePicker = () => {
   const [endDateError, setEndDateError] = useState('');  
   const [message, setMessage] = useState('');  
   const [resultData, setResultData] = useState([]);  
-
-
-
+  const [noTripsMessage, setNoTripsMessage] = useState(''); 
   const today = new Date();  
 
   const formatDate = (dateString) => {  
@@ -100,7 +81,7 @@ const DateRangePicker = () => {
       const formattedStartDate = startDate.toISOString().split('T')[0];  
       const formattedEndDate = endDate.toISOString().split('T')[0];  
 
-      setMessage(`Selected Dates: ${formattedStartDate} to ${formattedEndDate}`);  
+      setMessage(`your travel options for the dates ${formattedStartDate} to ${formattedEndDate}`);  
       await fetchTravelData(formattedStartDate, formattedEndDate);  
     } else {  
       setMessage('');   
@@ -116,10 +97,18 @@ const DateRangePicker = () => {
         },  
       });  
       console.log('Response from backend:', response.data);  
-      setResultData(response.data); // Store the received data in state  
+      setResultData(response.data);  
+
+      
+      if (response.data.length === 0) {  
+        setNoTripsMessage('No trips available for the selected dates.'); 
+      } else {  
+        setNoTripsMessage(`your travel options for the dates ${start} to ${end}`); // Clear the message if trips are available  
+      }  
     } catch (error) {  
       console.error('Error fetching data from backend:', error);  
-      setResultData([]); // Clear result data on error  
+      setResultData([]);   
+      setNoTripsMessage('Error fetching data.'); // Optional error message  
     }  
   };  
 
@@ -131,102 +120,103 @@ const DateRangePicker = () => {
 
   const resetErrors = () => {  
     setMessage('');  
+    setNoTripsMessage(''); // Reset no trips message when errors are reset  
   }  
   
   return (  
     <div className="date-range-picker">  
-      <h2><MdEditCalendar className='movecalicon'/> Choose Trip Date</h2>  
-      <div className="date-picker-container">  
-        <div className="date-picker">  
-          <label>Trip Start Date</label>  
-          <DatePicker  
-            selected={startDate}  
-            onChange={handleStartDateChange}  
-            selectsStart  
-            startDate={startDate}  
-            endDate={endDate}  
-            dateFormat="MMMM d, yyyy"  
-            placeholderText="Select a start date"  
-            minDate={today}   
-          />  
-          {startDateError && <p className="error-message">{startDateError}</p>}   
+      <div className="date-range-picker2">  
+        <h2><MdEditCalendar className='movecalicon'/> Choose Trip Date</h2>  
+        <div className="date-picker-container">  
+          <div className="date-picker">  
+            <label>Trip Start Date</label>  
+            <DatePicker  
+              selected={startDate}  
+              onChange={handleStartDateChange}  
+              selectsStart  
+              startDate={startDate}  
+              endDate={endDate}  
+              dateFormat="MMMM d, yyyy"  
+              placeholderText="Select a start date"  
+              minDate={today}   
+            />  
+            {startDateError && <p className="error-message">{startDateError}</p>}   
+          </div>  
+          <div className="date-picker">  
+            <label>Trip End Date</label>  
+            <DatePicker  
+              selected={endDate}  
+              onChange={handleEndDateChange}  
+              selectsEnd  
+              startDate={startDate}  
+              endDate={endDate}  
+              minDate={startDate}  
+              dateFormat="MMMM d, yyyy"  
+              placeholderText="Select an end date"  
+              open={isEndDateOpen}  
+            />  
+            {endDateError && <p className="error-message">{endDateError}</p>}   
+          </div>  
+          <button onClick={handleButtonClick} className="submit-button">  
+            <FaSearch className='moveiconsearch' />  
+          </button>   
         </div>  
-        <div className="date-picker">  
-          <label>Trip End Date</label>  
-          <DatePicker  
-            selected={endDate}  
-            onChange={handleEndDateChange}  
-            selectsEnd  
-            startDate={startDate}  
-            endDate={endDate}  
-            minDate={startDate}  
-            dateFormat="MMMM d, yyyy"  
-            placeholderText="Select an end date"  
-            open={isEndDateOpen}  
-          />  
-          {endDateError && <p className="error-message">{endDateError}</p>}   
-        </div>  
-        <button onClick={handleButtonClick} className="submit-button">  
-          <FaSearch className='moveiconsearch' />  
-        </button>   
       </div>  
-      
-      <div className="selected-dates">  
-        <p>{message}</p>  
 
-        {/* <div className="tour-list-container-filter">   */}
-         
-            <div className="tour-list-filter">  
-              {resultData.map((item) => (  
-                <div key={item.Id} className="tour-card-filter">  
-                  <div className="tour-image-container-filter">  
-                    <img  
-                      src={item.image_url}  
-                      alt={`Image of ${item.name}`}  
-                      className="tour-image-filter"  
-                    />  
-                    {item.admin && (  
-                      <div className="tour-admin-filter">  
-                        <img  
-                          src={item.admin.phrofile_image}   
-                          alt={`Profile of ${item.admin.user_name}`}  
-                          className="admin-photo-filter"  
-                        />  
-                        {item.admin.user_name}   
-                      </div>  
-                    )}  
-                  </div>  
-                  <div className="tour-info-filter">  
-                    <p className="tour-meta-filter3">  
-                      <span className="tour-name-filter">{item.name}</span>  
-                      <div className={`trip-type-filter ${item.mode}`}>  
-                        <GrMoney aria-hidden="true" />{" "}  
-                        {item.mode.charAt(0).toUpperCase() + item.mode.slice(1)}  
-                      </div>  
-                    </p>  
-                    <div className="tour-details-filter">  
-                      <p className="tour-route-filter">  
-                        <span className="tour-text-filter">{item.start_place} {getTransportationIcon(item.transportation)} {item.destination}</span>  
-                      </p>  
-                    </div>  
-                    <div className="tour-meta-filter7">  
-                      <p className="tour-dates-filter">  
-                        <FaRegCalendar className='moveicon-filter3' />  
-                        <span>{formatDate(item.start_date)}</span>  
-                      </p>  
-                      <p className="tour-length-filter" style={{ textAlign: "left" }}>  
-                        <FaUndoAlt className='moveicon-filter3' />  
-                        {formatDate(item.end_date)}  
-                      </p>  
-                    </div>   
-                  </div>  
+      <div className="selected-dates">   
+          
+          <p className="no-trips-message">{noTripsMessage}</p>  
+        
+     </div>  
+
+      <div className="tour-list-filter">  
+        {resultData.map((item) => (  
+          <div key={item.Id} className="tour-card-filter">  
+            <div className="tour-image-container-filter">  
+              <img  
+                src={item.image_url}  
+                alt={`Image of ${item.name}`}  
+                className="tour-image-filter"  
+              />  
+              {item.admin && (  
+                <div className="tour-admin-filter">  
+                  <img  
+                    src={item.admin.phrofile_image}   
+                    alt={`Profile of ${item.admin.user_name}`}  
+                    className="admin-photo-filter"  
+                  />  
+                  {item.admin.user_name}   
                 </div>  
-              ))}  
+              )}  
             </div>  
-         
-        </div>  
-      </div>   
-    // </div>  
+            <div className="tour-info-filter">  
+              <p className="tour-meta-filter3">  
+                <span className="tour-name-filter">{item.name}</span>  
+                <div className={`trip-type-filter ${item.mode}`}>  
+                  <GrMoney aria-hidden="true" />{" "}  
+                  {item.mode.charAt(0).toUpperCase() + item.mode.slice(1)}  
+                </div>  
+              </p>  
+              <div className="tour-details-filter">  
+                <p className="tour-route-filter">  
+                    <span className="tour-text-filter">{item.start_place} {getTransportationIcon(item.transportation)} {item.destination}</span>  
+                </p>  
+              </div>  
+              <div className="tour-meta-filter7">  
+                <p className="tour-dates-filter">  
+                  <FaRegCalendar className='moveicon-filter3' />  
+                  <span>{formatDate(item.start_date)}</span>  
+                </p>  
+                <p className="tour-length-filter" style={{ textAlign: "left" }}>  
+                  <FaUndoAlt className='moveicon-filter3' />  
+                  {formatDate(item.end_date)}  
+                </p>  
+              </div>   
+            </div>  
+          </div>  
+        ))}  
+      </div>  
+    </div>  
   );  
 };  
 
