@@ -18,6 +18,7 @@ const TourList = () => {
   const [activeTab, setActiveTab] = useState("London");  
   const navigate = useNavigate();  
   const [datacurrent, setDatacurrent] = useState(null);
+  const [dataphoto, setDataphoto] = useState(null);
   const [datapast, setDatapast] = useState(null);
   const [datafuture, setDatafuture] = useState(null);
   const openCity = (cityName) => {  
@@ -33,6 +34,7 @@ const TourList = () => {
               setDatacurrent(response.data.current);
               setDatapast(response.data.past)  ;
               setDatafuture(response.data.future);
+              setDataphoto(response.data.photo);
               console.log(response.data);  
               console.log(datafuture);
           } catch (error) {  
@@ -133,7 +135,12 @@ const TourList = () => {
                         ))}  
                     </div>  
                 ) : (  
-                    <p>You have no current trips!</p>  
+                <div style={{ textAlign: "center"}}> 
+                    <br/> 
+                    <p style={{ fontWeight: "bold", fontSize: "20px"}}>You have no current trips!</p>  
+                        <img src={dataphoto} alt="No trips" />  
+
+                </div>
                 )}    
             </div> 
         </div>  
@@ -193,7 +200,12 @@ const TourList = () => {
                         ))}  
                     </div>  
                 ) : (  
-                    <p>You have no future trips!</p>  
+                    <div style={{ textAlign: "center"}}> 
+                    <br/> 
+                    <p style={{ fontWeight: "bold", fontSize: "20px"}}>You have no future trips!</p>  
+                        <img src={dataphoto} alt="No trips" />  
+
+                </div>
                 )}    
             </div> 
         </div>  
@@ -253,7 +265,12 @@ const TourList = () => {
                         ))}  
                     </div>  
                 ) : (  
-                    <p>You have no past trips!</p>  
+                    <div style={{ textAlign: "center"}}> 
+                    <br/> 
+                    <p style={{ fontWeight: "bold", fontSize: "20px"}}>You have no past trips!</p>  
+                        <img src={dataphoto} alt="No trips" />  
+
+                </div>
                 )}    
             </div> 
         </div>  
