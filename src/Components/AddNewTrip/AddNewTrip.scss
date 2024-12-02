@@ -83,76 +83,72 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         }  
 
         .trip-status-state-wrapper {  
-            display: flex;                      // Use flexbox for layout  
-            justify-content: space-between;     // Space between the items  
-            align-items: flex-start;            // Align items at the start  
-            margin-top: 20px ;
-           
-                .trip-state {  
-                margin-bottom: 20px; 
-                margin-right: 0px; 
-            
+            display: flex;                       
+            justify-content: space-between;      
+            align-items: flex-start;               
+            margin-top: 20px;
+            padding: 0;                     
+        
+            .trip-state {  
+                margin-bottom: 20px;             
+                margin-right: 48px; 
+                padding: 0px;             
+                // flex: 1;                        
+                
                 .MuiFormLabel-root {  
                     margin-bottom: 10px;  
                 }  
-            
+        
                 .MuiRadioGroup-root {  
                     display: flex;  
                     flex-direction: row;  
-                    justify-content: space-between;  
-                    align-items: center;  
+                    justify-content: flex-start;  
+                    // align-items: center;  
                 }  
-            
-            
+        
                 .MuiRadio-root {  
                     &.Mui-checked {  
-                        color: #ea7d29; 
+                        color: #ea7d29;   
                     }  
-            
+        
                     &:hover {  
-                        background-color: #ebc7ac; 
-                        color: #ea7d29;
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
                         border-radius: 50%;  
                     }  
                 }  
-            
-            
-            
-            }
+            }  
             
             .trip-status {  
-                margin-bottom: 20px;  
-            
+                margin-bottom: 20px;              
+                flex: 1; 
+                margin-left: 0px; 
+                                         
+        
                 .MuiFormLabel-root {  
                     margin-bottom: 10px;  
                 }  
-            
+        
                 .MuiRadioGroup-root {  
                     display: flex;  
                     flex-direction: row;  
-                    justify-content: space-between;  
+                    justify-content: flex-start;  
                     align-items: center;  
                 }  
-            
-                
+        
                 .MuiRadio-root {  
                     &.Mui-checked {  
-                        color: #ea7d29; 
+                        color: #ea7d29;   
                     }  
-            
+        
                     &:hover {  
-                        background-color: #ebc7ac; 
-                        color: #ea7d29;
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
                         border-radius: 50%;  
                     }  
                 }  
-            
-            
-            
-            }
-            
+            }  
         }
-
         
 
         .trip-date {  
