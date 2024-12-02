@@ -1,37 +1,61 @@
-import React, {useState} from 'react'
-import './ExpenseUserList.scss'
-import { MdKeyboardArrowDown } from "react-icons/md"; 
-import ExpenseDetails from './ExpenseDetails';
-import {detailsDataJson} from '../../../api/jsondata/planner'
-
+import React, { useState } from "react";
+import "./ExpenseUserList.scss";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import ExpenseDetails from "./ExpenseDetails";
 
 const NewExpense = (props) => {
-  const [showDetails, setShowDetails] = useState(false) 
-  const [detailsData, setDetailsData] = useState({})
+  const { username, title, price, id, date, description } = props;
+  const [showDetails, setShowDetails] = useState(false);
 
-  const handleShowDetails = (id) =>{
-    setShowDetails(prev => !prev)
-    const findData = detailsDataJson.find((item)=>item.id === id)
-    setDetailsData(findData)
-  }
+  const handleShowDetails = () => {
+    setShowDetails((prev) => !prev);
+    // const findData = detailsDataJson.find((item) => item.id === id);
+    // setDetailsData(findData);
+  };
 
   return (
-      <>
-        <div className={showDetails ? 'newExpense-box-showDetails' : 'newExpense-box' }>
-          <div className='profile-expense'>
-            <div><img src={props.profilePic} alt="profile-img" /></div>
-            <div className="">{props.username}</div>
-          </div>
-          <div className="">{props.title}</div>
-          <div className='amount-box'>
-            <div className="amount"><span>Amount</span></div>
-            <div className="">{props.price} $</div>
-          </div>
-          <MdKeyboardArrowDown className='arrowIcon' onClick={() =>handleShowDetails(props.id)}/>
+    <>
+      <div
+        // className="newExpense-box"
+        className={
+          showDetails ? "newExpense-box-showDetails" : "newExpense-box"
+        }
+      >
+        <div className="expense-box">
+          <span>Username</span>
+          <div className="">{username}</div>
         </div>
-        {showDetails ?  <ExpenseDetails data={detailsData}/> : null}
-      </>
-  )
-}
 
-export default NewExpense
+        <div className="expense-box">
+          <span>Title</span>
+          <div className="">{title}</div>
+        </div>
+
+        <div className="expense-box">
+          <span>Amount</span>
+          <div className="">{price} $</div>
+        </div>
+
+        <MdKeyboardArrowDown
+          className="arrowIcon"
+          onClick={() => handleShowDetails()}
+        />
+      </div>
+      {/* {showDetails ? <ExpenseDetails data={detailsData} /> : null} */}
+      {showDetails ? (
+        <div className="details-box">
+          <div className="expense-box">
+            <span>Description:</span>
+            <div className="">{description}</div>
+          </div>
+          <div className="expense-box">
+            <span>Date:</span>
+            <div className="">{date}</div>
+          </div>
+        </div>
+      ) : null}
+    </>
+  );
+};
+
+export default NewExpense;

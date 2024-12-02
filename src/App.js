@@ -40,8 +40,6 @@ function App() {
         <Route path="/Main/Winter" element={<Winter />} /> 
         <Route path="/signup/email_verification" element={<EmailVerification/>} />
         <Route path="/budgetplanner" element={<BudgetPlanner/>} />
-        
-
       </Routes>  
     </Router>  
   );  
