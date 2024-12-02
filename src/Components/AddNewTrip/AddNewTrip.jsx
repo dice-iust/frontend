@@ -3,7 +3,9 @@ import { TextField, MenuItem, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { Radio, RadioGroup, FormControlLabel, FormLabel,FormControl, FormHelperText } from '@mui/material';
 import axios from 'axios';
+import "./AddNewTrip.scss";
 
 const AddNewTrip = () => {
     const [tripData, setTripData] = useState({
@@ -126,7 +128,7 @@ const AddNewTrip = () => {
     };
 
     return (
-        <div>
+        <div className='newtrip'>
             <form onSubmit={handleAddTrip}>
                 <div className='trip-pic'>
                     <TextField
@@ -136,6 +138,54 @@ const AddNewTrip = () => {
                         onChange={handleFileChange}
                     />
                 </div>
+
+                <div className="trip-status-state-wrapper">  
+                <div className="trip-state">  
+                    <FormLabel component="legend">State</FormLabel>  
+                    <RadioGroup  
+                        aria-label="state"  
+                        name="state"  
+                        value={tripData.state}  
+                        onChange={handleChange}  
+                    >  
+                    <FormControlLabel  
+                            value="Private"  
+                            control={<Radio />}  
+                            label="Private"  
+                    />  
+                    <FormControlLabel  
+                            value="Public"  
+                            control={<Radio />}  
+                            label="Public"  
+                    />  
+                    </RadioGroup>  
+                    {errors.state && <FormHelperText error>{errors.state}</FormHelperText>}  
+                </div>
+
+
+                <div className="trip-status">  
+                    <FormLabel component="legend">Status</FormLabel>  
+                    <RadioGroup  
+                        aria-label="status"  
+                        name="status"  
+                        value={tripData.status}  
+                        onChange={handleChange}  
+                    >  
+                    <FormControlLabel  
+                            value="Fancy"  
+                            control={<Radio />}  
+                            label="Fancy"  
+                    />  
+                    <FormControlLabel  
+                            value="Budget-friendly"  
+                            control={<Radio />}  
+                            label="Budget-friendly"  
+                    />  
+                    </RadioGroup>  
+                    {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
+                </div>
+                </div>
+
 
                 <div className="trip-title">
                     <TextField
@@ -147,8 +197,38 @@ const AddNewTrip = () => {
                         required
                         error={!!errors.title}
                         helperText={errors.title}
+                        style={{ marginRight: '20px' }}
                     />
+                    <TextField
+                        type="number"
+                        label="Participants"
+                        variant="outlined"
+                        name="groupNo"
+                        value={tripData.groupNo}
+                        onChange={handleChange}
+                        required
+                        error={!!errors.groupNo}
+                        helperText={errors.groupNo}
+                        style={{ marginRight: '20px' }}
+                    />
+                    <TextField
+                        id="transportation"
+                        select
+                        label="Transportation"
+                        value={tripData.transportation}
+                        name="transportation"
+                        onChange={handleChange}
+                        required
+                        error={!!errors.transportation}
+                        helperText={errors.transportation}
+                    >
+                        <MenuItem value="Bus">Bus</MenuItem>
+                        <MenuItem value="Car">Car</MenuItem>
+                        <MenuItem value="Car">Plane</MenuItem>
+                        <MenuItem value="Car">Train</MenuItem>
+                    </TextField>
                 </div>
+
 
                 <div className="trip-location">
                     <TextField
@@ -160,6 +240,7 @@ const AddNewTrip = () => {
                         required
                         error={!!errors.startingPoint}
                         helperText={errors.startingPoint}
+                        style={{ marginRight: '20px' }}
                     />
                     <TextField
                         value={tripData.destination}
@@ -173,20 +254,6 @@ const AddNewTrip = () => {
                     />
                 </div>
 
-                <div className="trip-description">
-                    <TextField
-                        value={tripData.description}
-                        label="Description"
-                        variant="outlined"
-                        name="description"
-                        onChange={handleChange}
-                        multiline
-                        rows={5}
-                        required
-                        error={!!errors.description}
-                        helperText={errors.description}
-                    />
-                </div>
 
                 <div className="trip-date">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -222,70 +289,25 @@ const AddNewTrip = () => {
                     </LocalizationProvider>
                 </div>
 
-                <div className="trip-group">
+                
+                <div className="trip-description">
                     <TextField
-                        type="number"
-                        label="Participants"
+                        value={tripData.description}
+                        label="Description"
                         variant="outlined"
-                        name="groupNo"
-                        value={tripData.groupNo}
+                        name="description"
                         onChange={handleChange}
+                        multiline
+                        rows={5}
                         required
-                        error={!!errors.groupNo}
-                        helperText={errors.groupNo}
+                        error={!!errors.description}
+                        helperText={errors.description}
                     />
                 </div>
 
-                <div className="trip-status">
-                    <TextField
-                        id="status"
-                        select
-                        label="Status"
-                        value={tripData.status}
-                        name='status'
-                        onChange={handleChange}
-                        required
-                        error={!!errors.status}
-                        helperText={errors.status}
-                    >
-                        <MenuItem value="Fancy">Fancy</MenuItem>
-                        <MenuItem value="Economy">Economy</MenuItem>
-                    </TextField>
-                </div>
+                
 
-                <div className="trip-state">
-                    <TextField
-                        id="state"
-                        select
-                        label="State"
-                        value={tripData.state}
-                        name='state'
-                        onChange={handleChange}
-                        required
-                        error={!!errors.state}
-                        helperText={errors.state}
-                    >
-                        <MenuItem value="Public">Public</MenuItem>
-                        <MenuItem value="Private">Private</MenuItem>
-                    </TextField>
-                </div>
-
-                <div className="trip-state">
-                    <TextField
-                        id="transportation"
-                        select
-                        label="Transportation Method"
-                        value={tripData.transportation}
-                        name="transportation"
-                        onChange={handleChange}
-                        required
-                        error={!!errors.transportation}
-                        helperText={errors.transportation}
-                    >
-                        <MenuItem value="Bus">Bus</MenuItem>
-                        <MenuItem value="Car">Car</MenuItem>
-                    </TextField>
-                </div>
+                
 
                 <Button type="submit" variant="contained" onClick={handleAddTrip}>Submit</Button>
             </form>
