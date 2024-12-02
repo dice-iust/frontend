@@ -298,7 +298,7 @@ const AddNewTrip = () => {
                         name="description"
                         onChange={handleChange}
                         multiline
-                        rows={5}
+                        rows={2}
                         required
                         error={!!errors.description}
                         helperText={errors.description}
