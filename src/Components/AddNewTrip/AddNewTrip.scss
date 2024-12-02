@@ -25,19 +25,19 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     
 
     .image-container {  
-        position: relative;  
-        margin-bottom: 10px;
-        margin-right: 0;  
-        margin-left: 0px; 
-        display: flex; 
-        padding: 0;
+        display: flex;              
+        align-items: flex-start;    
+        justify-content: flex-start; 
+        margin: 0;                 
+        padding: 0;              
+        width: 100%;   
     
         .smaller-image {  
-            width: 150px;              
-            border-radius: 5px;  
-            object-fit: cover;
-            margin-left: 0px;      
-            
+            width: 150px;         
+            border-radius: 10px;  
+            object-fit: cover;  
+            margin-bottom: 10px;    
+            margin-right: 40px;       
         }  
     
         .button-container {  
@@ -46,8 +46,8 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     
             .file-upload-button {  
                 position: absolute;  
-                bottom: -70px; 
-                right: -20px;   
+                bottom: -137px; 
+                right: 10px;   
                 padding: 10px 20px;          
                 color: white;                
                 background-color: #22487a;    
@@ -123,13 +123,17 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         .trip-status-state-wrapper {  
             display: flex;                       
             justify-content: space-between;      
-            align-items: flex-start;               
+            align-items: flex-start;    
+                    
             margin-top: 5px;
+            
             padding: 0;                     
         
             .trip-state {  
+                margin-top: 10px;
                 margin-bottom: 2px;             
                 margin-right: 48px; 
+                margin-left: 50px;
                 padding: 0px;             
                 // flex: 1;                        
                 
@@ -161,6 +165,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                 margin-bottom: 2px;              
                 flex: 1; 
                 margin-left: 0px; 
+                margin-top: 10px;
                                          
         
                 .MuiFormLabel-root {  
@@ -171,7 +176,8 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                     display: flex;  
                     flex-direction: row;  
                     justify-content: flex-start;  
-                    align-items: center;  
+                    align-items: center; 
+                    margin-left: 8px; 
                 }  
         
                 .MuiRadio-root {  

@@ -130,10 +130,12 @@ const AddNewTrip = () => {
     };
 
     return (
+
         <div className='newtrip'>
                 <form onSubmit={handleAddTrip}>
+
                 <div className="trip-status-state-wrapper">  
-                <div className='image-container'>
+                <div className='image-container'>  
                     <img src={pic} alt="Description of Image" className="smaller-image" />  
                     <div className="button-container">  
                         <label htmlFor="file-upload" className="file-upload-button">  
@@ -143,56 +145,55 @@ const AddNewTrip = () => {
                             type="file"   
                             id="file-upload"   
                             onChange={handleFileChange}   
-                            
                         />  
                     </div>  
+                    
+                    <div className="trip-state">   
+                        <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>  
+                        <RadioGroup  
+                            aria-label="state"  
+                            name="state"  
+                            value={tripData.state}  
+                            onChange={handleChange}  
+                        >  
+                            <FormControlLabel  
+                                value="Private"  
+                                control={<Radio />}  
+                                label="Private"  
+                            />  
+                            <FormControlLabel  
+                                value="Public"  
+                                control={<Radio />}  
+                                label="Public"  
+                            />  
+                        </RadioGroup>  
+                        {errors.state && <FormHelperText error>{errors.state}</FormHelperText>}  
+
+                        {/* Place the status section here, inside trip-state */}  
+                        <div className="trip-status">  
+                            <FormLabel component="legend" style={{ marginBottom: '0px' }}>Status</FormLabel>  
+                            <RadioGroup  
+                                aria-label="status"  
+                                name="status"  
+                                value={tripData.status}  
+                                onChange={handleChange}  
+                            >  
+                                <FormControlLabel  
+                                    value="Fancy"  
+                                    control={<Radio />}  
+                                    label="Fancy "  
+                                />  
+                                <FormControlLabel  
+                                    value="Budget-friendly"  
+                                    control={<Radio />}  
+                                    label="Budget-friendly"  
+                                />  
+                            </RadioGroup>  
+                            {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
+                        </div>  
+                    </div>  
                 </div>  
-                <div className="trip-state"> 
-                    <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>
-                    <RadioGroup  
-                        aria-label="state"  
-                        name="state"  
-                        value={tripData.state}  
-                        onChange={handleChange}  
-                    >  
-                    <FormControlLabel  
-                            value="Private"  
-                            control={<Radio />}  
-                            label="Private"  
-                    />  
-                    <FormControlLabel  
-                            value="Public"  
-                            control={<Radio />}  
-                            label="Public"  
-                    />  
-                    </RadioGroup>  
-                    {errors.state && <FormHelperText error>{errors.state}</FormHelperText>}  
-                </div>
-
-
-                <div className="trip-status">  
-                    <FormLabel component="legend"  style={{ marginBottom: '0px' }}>Status</FormLabel>  
-                    <RadioGroup  
-                        aria-label="status"  
-                        name="status"  
-                        value={tripData.status}  
-                        onChange={handleChange}  
-                    >  
-                    <FormControlLabel  
-                            value="Fancy"  
-                            control={<Radio />}  
-                            label="Fancy"  
-                    />  
-                    <FormControlLabel  
-                            value="Budget-friendly"  
-                            control={<Radio />}  
-                            label="Budget-friendly"  
-                    />  
-                    </RadioGroup>  
-                    {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
-                </div>
-                </div>
-
+            </div>
                 <div className="flex-container">  
                 <FormLabel component="legend">Trip information</FormLabel>
                 </div>
