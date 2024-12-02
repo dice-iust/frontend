@@ -8,13 +8,13 @@
     min-height: 100vh;
     background-size:cover;
     background-position: center;
-    background-color: #f6f6f6;
-    background-image: linear-gradient(rgba(187, 220, 233,.3),white,white, rgba(187, 220, 233,.3));
+    background-color: #ffffff;
+    /* background-image: linear-gradient(rgba(187, 220, 233,.3),white,white, rgba(187, 220, 233,.3)); */
   }
   .edit-profile-container {
     padding: 20px;
     margin: 16px;
-    width: 70%;
+    width: 100%;
   }
   
   .ep-title {
