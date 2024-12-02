@@ -1,383 +1,69 @@
-.app-container-main-profile {  
-  display: flex;  
-  flex-direction: column;  
-  min-height: 100vh;  
+.w3-container {  
+  padding: 16px;  
+  font-family: 'Arial', sans-serif; // Consider using a modern font  
+  background-color: #f9f9f9; // Light background for better contrast  
+  border-radius: 8px; // Rounded corners for a softer look  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth  
 }  
 
-.travelpage-profile {  
+.w3-row {  
+  display: flex;  
+  margin-bottom: 16px;  
+}  
+
+.tablink {  
+  flex: 1; // Allow tabs to grow equally  
+  cursor: pointer;  
   text-align: center;  
-  padding: 2px;  
-  flex: 1;  
+  padding: 12px 0; // Vertical padding  
+  background-color: #ffffff; // White background for tabs  
+  color: #333; // Dark text color for better readability  
+  border-top-left-radius: 8px; // Rounded top-left corners  
+  border-top-right-radius: 8px; // Rounded top-right corners  
+  transition: background-color 0.3s, color 0.3s; // Smooth transition for hover  
+  position: relative; // For pseudo-element positioning  
+}  
 
-  .tour-list-container-profile {  
-    max-width: 1100px; /* Container max width */  
-    margin: 0 auto;  
+.tablink:hover {  
+  // background-color: #e0e0e0; // Slightly darker gray on hover  
+  // color: #000; // Dark text on hover  
+  background-color: #22487a; 
+  color: #fbfafa; 
+}  
 
-    .tour-list-profile {  
-      display: flex;  
-      flex-wrap: wrap;  
-      justify-content: space-between;  
+.w3-bottombar {  
+  border-bottom: 3px solid transparent;  
+}  
 
-      .slick-track {  
-        display: flex;  
-        gap: 1rem;  
-      }  
-    }  
+.w3-border-red {  
+  border-bottom: 3px solid rgb(234, 110, 12); // Using a vibrant color for the active tab  
+  transition: border-color 0.3s ease-in-out; // Smooth border change  
+}  
 
-    .popular-trips-box-profile {  
-      background-color: #22487a; /* Background color for box */  
-      position: relative;  
-      padding: 20px;  
-      border-radius: 8px;  
-      margin-bottom: 20px;  
-    }  
+.city {  
+  background-color: #fff; // White background for the content  
+  padding: 16px; // Padding for content  
+  border-radius: 4px; // Rounded corners for content blocks  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for content depth  
+  margin-top: -1px; // Overlap the border of tabs  
+}  
 
-    .blue-box-profile {  
-      margin: 10px;  
-      background-color: #22487a;  
-      padding: 20px;  
-      border-radius: 8px;  
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
-      display: flex;  
-      justify-content: center;  
-      align-items: center;  
-    }  
+.city h2 {  
+  margin-top: 0; // Remove default margin for heading  
+  color: #333; // Dark color for headings  
+}  
 
-    
+.city p {  
+  color: #555; // Slightly lighter text for paragraphs  
+  line-height: 1.6; // Improve the readability of the text  
+}  
 
-    .card-profile {  
-      width: 190px;  
-      height: 155px;  
-      position: relative;  
-      border: 2px solid rgba(34, 72, 122, 0.5);  
-      border-radius: 8px;  
-      overflow: hidden;  
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
-      display: flex;  
-      flex-direction: column;  
-      align-items: center;  
-      justify-content: center;  
-      transition: transform 0.3s;  
+@media (max-width: 600px) {  
+  .tablink {  
+    font-size: 14px; // Smaller font size for small screens  
+  }  
 
-      &:hover {  
-        transform: scale(1.05);  
-      }  
-
-      @media screen and (max-width: 480px) { /* Card adjustments for mobile */  
-        width: 100%; /* Take full width on mobile */  
-        height: auto; /* Adjust height automatically */  
-      }  
-
-    }  
-
-    .card-image-profile {  
-      width: 100%; /* Full width for image */  
-      height: 100%; /* Full height for image */  
-      object-fit: cover;  
-    }  
-
-    .card-title-profile {  
-      position: absolute;  
-      bottom: 0px;  
-      right: 0px;  
-      margin-bottom: 0px;  
-      font-size: 1rem;  
-      color: #22487a;  
-      background: #fff;  
-      padding: 4px; /* Padding for card title */  
-      border-radius: 2px;  
-      box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);  
-    }  
-
-    .tour-card-profile {  
-      display: flex;  
-      flex-direction: column;  
-      background: white;  
-      border-radius: 10px;  
-      overflow: hidden;  
-      margin: 0 15px;  
-      width: 350px; /* Default width for larger screens */  
-      transition: transform 0.3s;  
-      position: relative;  
-      border: 2px solid rgba(34, 72, 122, 0.5);  
-
-      &:hover {  
-        transform: scale(1.04);  
-        box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
-      }  
-
-      // @media screen and (max-width: 480px) { /* Adjustments for mobile */  
-      //   width: 100%; /* Full width */  
-      //   margin: 0px 0; /* Vertical margin */  
-      // }  
-    }  
-
-    .tour-image-profile {  
-      width: 100%; /* Responsive image width */  
-      height: 150px;  
-      object-fit: cover;  
-      position: relative;  
-    }  
-
-    .tour-image-container-profile {  
-      position: relative;  
-    }  
-
-    .tour-admin-profile {  
-      position: absolute;  
-      top: 10px;  
-      left: 10px;  
-      display: flex;  
-      align-items: center;  
-      background-color: rgba(255, 255, 255, 0.7);  
-      padding: 2px;  
-      border-radius: 5px;  
-      z-index: 20;  
-    }  
-
-    .admin-photo-profile {  
-      width: 30px; /* Default photo size */  
-      height: 30px; /* Default photo height */  
-      border-radius: 50%; /* Make the image circular */  
-      margin-right: 5px; /* Space between image and name */  
-
-      @media screen and (max-width: 480px) { /* Adjust photo size on mobile */  
-        width: 25px; /* Reduce size */  
-        height: 25px; /* Reduce size */  
-      }  
-    }  
-
-    .admin-photo-profile:hover {  
-      transform: scale(1.05); /* Enlarge on hover for interactivity */  
-    }  
-
-    .tour-info-profile {  
-      display: flex;  
-      flex-direction: column;  
-
-      .tour-name-profile {  
-        font-size: 1em;  
-          font-weight: bold;  
-          margin-bottom: 0px;  
-          margin-top: 3px;
-          margin-left: 10px;
-          align-self: flex-start;
-          color: #22487a;       
-      }  
-
-      .tour-details-profile {  
-        display: flex;  
-        align-items: center;  
-        margin-bottom: 0px;  
-        margin-top: 0px;  
-
-        .tour-route-profile {  
-          display: flex; /* Use flexbox for alignment */  
-            align-items: center; /* Center the icon with respect to text */  
-            margin-left: 10px;   
-            margin-top: 0px;   
-            font-size: 0.9em;  
-            margin-bottom: 10px;   
-        }  
-
-        .moveicon-profile {  
-          margin-left: 2px;  
-          margin-right: 2px;  
-          margin-bottom: 2px;   
-          margin-top: 0;   
-          vertical-align: middle;   
-        }  
-      }  
-
-      .tour-meta3-profile {  
-        display: flex; 
-        align-items: center; 
-        margin-top: 12px ; 
-        .trip-type {
-          
-          font-weight: bold; 
-          margin-right: 7px;
-          margin-left: auto;  
-          font-size: 0.9em; 
-          padding: 4px 4px; 
-          border-radius: 5px; 
-          display: inline-block;
-        }
-
-        .trip-type.Budget-friendly {  
-          background-color: #c8e6c9;   
-          color: #388e3c;  
-        }  
-        .trip-type.Fancy {  
-          background-color: #f59e9e;   
-          color: #e9362c;   
-        }  
-      }  
-
-      .tour-meta-profile {  
-        display: flex;  
-        justify-content: space-between;  
-
-        .tour-date-profile {  
-          font-size: 0.9em;  
-          margin-bottom: 7px;  
-          margin-left: 10px;  
-          margin-top: 0;  
-        }  
-
-        .tour-length-profile {  
-          font-size: 0.9em;  
-          margin-right: 15px;  
-          margin-bottom: 10px;  
-          margin-top: 0;  
-        }  
-
-        .moveicon3-profile,   
-        .moveicon4-profile {  
-          margin: 0 4px; /* Simplify margin for better response */  
-          vertical-align: middle;   
-        }  
-      }  
-
-      .tour-admin-profile {  
-        display: flex;  
-        align-items: center;  
-        justify-content: flex-start;  
-
-        .admin-photo-profile {  
-          margin-left: 10px;  
-          margin-bottom: 2px;   
-          width: 25px;  
-          height: 25px;  
-          border-radius: 50%;  
-          margin-right: 5px;  
-        }  
-
-        span {  
-          font-weight: bold;  
-        }  
-      }  
-    }  
-
-    .slick-track {  
-      display: flex;  
-      gap: 1rem;  
-    }  
-
-    .slick-prev,  
-    .slick-next{  
-      font-size: 0;  
-      line-height: 0;  
-      position: absolute;  
-      top: 50%;  
-      display: block;  
-      width: 20px;  
-      height: 20px;  
-      padding: 0;  
-      transform: translate(0, -50%);  
-      cursor: pointer;  
-      color: transparent;  
-      border: none;  
-      outline: none;  
-      background: transparent;  
-    }  
-
-    .slick-prev:hover,  
-    .slick-next:hover,  
-    .slick-prev:focus,  
-    .slick-next:focus {  
-      color: transparent;  
-      outline: none;  
-      background: transparent;  
-    }  
-
-    .slick-prev:before,  
-    .slick-next:before {  
-      font-family: 'slick';  
-      font-size: 20px;  
-      line-height: 1;  
-      opacity: .75;  
-      color: rgba(34, 72, 122, 0.5);  
-      -webkit-font-smoothing: antialiased;  
-      -moz-osx-font-smoothing: grayscale;  
-    }  
-
-    .slick-prev {  
-      left: -20px; /* Position of previous button */  
-    }  
-
-    [dir='rtl'] .slick-prev {  
-      right: -25px;  
-      left: auto;  
-    }  
-
-    .slick-prev:before {  
-      content: '←'; /* Icon for previous button */  
-    }  
-
-    [dir='rtl'] .slick-prev:before {  
-      content: '→';  
-    }  
-
-    .slick-next {  
-      right: -20px; /* Position of next button */  
-    }  
-
-    [dir='rtl'] .slick-next {  
-      right: auto;  
-      left: -25px;  
-    }  
-
-    .slick-next:before {  
-      content: '→'; /* Icon for next button */  
-    }  
-
-    [dir='rtl'] .slick-next:before {  
-      content: '←';  
-    }  
-
-    @media screen and (max-width: 480px) {  
-      .travelpage-profile {  
-        padding: 10px;   
-      }  
-
-      .tour-list-container-profile {  
-        margin: 0 10px;
-      }  
-
-      .tour-list-profile {  
-        flex-direction: column;  
-      }  
-
-      .tour-card-profile {  
-        width: 100%; 
-        margin: 5px 0; 
-      }  
-
-      .tour-name-profile {  
-        font-size: 1.2em;
-      }  
-
-      .tour-details-profile,  
-      .tour-meta-profile {  
-        flex-direction: column;  
-        align-items: flex-start; 
-        width: 100%; 
-      }  
-
-      .moveicon-profile {  
-        margin: 0 2px;}
-
-      .trip-type-profile {  
-        font-size: 0.8em; 
-        padding: 2px 3px; 
-      }  
-
-      .tour-date-profile,  
-      .tour-length-profile {  
-        font-size: 0.8em; 
-        margin: 2px 0;
-      }  
-    }  
+  .w3-container {  
+    padding: 12px; // Smaller padding on mobile  
   }  
 }
