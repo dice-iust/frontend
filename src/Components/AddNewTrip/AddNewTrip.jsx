@@ -234,8 +234,8 @@ const AddNewTrip = () => {
                     >
                         <MenuItem value="Bus">Bus</MenuItem>
                         <MenuItem value="Car">Car</MenuItem>
-                        <MenuItem value="Car">Plane</MenuItem>
-                        <MenuItem value="Car">Train</MenuItem>
+                        <MenuItem value="Plane">Plane</MenuItem>
+                        <MenuItem value="Train">Train</MenuItem>
                     </TextField>
                 </div>
 
