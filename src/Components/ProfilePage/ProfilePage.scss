@@ -15,7 +15,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 .ProfilePage {  
   display: flex;  
   flex-direction: column;  
-  min-height: 130vh;
+  min-height: 100vh;
   margin-left: 4px;
    // Ensure full vertical height so footer stays at bottom  
 
@@ -29,7 +29,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 
     .menu {  
       background: $color-2nd;  
-      height: 200vh;  
+      height: 100vh;  
       width: $menu-width-desktop;  
       position: sticky;  
       top: 0;  
