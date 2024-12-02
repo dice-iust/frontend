@@ -6,6 +6,7 @@ import "./ForgotPassword.scss";
 
 const ForgotPassword = () => {  
     const [email, setEmail] = useState('');  
+    const [savedEmail, setSavedEmail] = useState('');  
     const [error, setError] = useState('');  
     const [verificationCode, setVerificationCode] = useState('');  
     const [newPassword, setNewPassword] = useState('');  
@@ -45,11 +46,12 @@ const ForgotPassword = () => {
     
         try {  
             const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-request/', { email });  
-                setShowFields(true);  
-                setError('');   
+            setShowFields(true);  
+            setSavedEmail(email);    
+            setError('');   
         } catch (err) {  
             console.error(err);  
-            setError('Error sending verification email. Please try again.');  
+            setError('There is no account registered with this email. Edit your email.');  
         } finally {  
             setLoading(false);  
         }  
@@ -73,6 +75,7 @@ const ForgotPassword = () => {
     const handleSubmitVerification = async (e) => {  
         e.preventDefault();  
 
+        // Validate input  
         if (!validatePassword(newPassword)) {  
             setErrorMessagePassword('Password must be at least 6 characters long and contain both letters and numbers.');  
             return;  
@@ -89,22 +92,44 @@ const ForgotPassword = () => {
         }  
 
         setLoading(true);  
-        try {  
-            const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', { email, password:            newPassword });  
-            if (response.data.success) {  
+        try {   const verifyResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', { email: savedEmail, verificationCode });  
+
+        if (verifyResponse.data.success) {  
+            // Step 2: If the verification code is valid, proceed to change the password  
+            const resetResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', {  
+                email: savedEmail,  
+                password: newPassword  
+            });  
+
+            if (resetResponse.data.success) {  
                 alert('Password reset successfully!');  
                 window.location.href = '/login';  
             } else {  
-                alert('Failed to reset password: ' + (response.data.message || 'Please try again.'));  
+                alert('Failed to reset password: ' + (resetResponse.data.message || 'Please try again.'));  
             }  
-        } catch (error) {  
-            console.error(error);  
-            alert('Failed to reset password, please try again.');  
-        } finally {  
-            setLoading(false);  
+        } else {  
+            setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
         }  
-    };  
+    } catch (error) {  
+        console.error(error);  
+        alert('Failed to reset password, please try again.');  
+    } finally {  
+        setLoading(false);  
+    }  
+};  
 
+// Handle back to email state  
+const handleBackToEmail = () => {  
+    setShowFields(false);  
+    setEmail('');  
+    setVerificationCode('');  
+    setNewPassword('');  
+    setConfirmPassword('');  
+    setErrorMessagePassword('');  
+    setErrorMessageConfirm('');  
+    setErrorMessageVerification('');  
+    setError('');  
+};  
     return (  
         <div className="forgot">  
             <div className="title-forgots">  
@@ -151,7 +176,12 @@ const ForgotPassword = () => {
                     </>  
                 ) : (  
                     <form onSubmit={handleSubmitVerification}>  
+                        <a href="" onClick={handleBackToEmail} className="back-link">&lt; Back</a>  
                         <div className="title-forgot1">Reset your Password</div>  
+
+                        <div className="title-reset-password">We've sent you verification code.Check your inbox.</div>
+                        <div className="changepass-image-container"></div>  
+                        
                             <label className="forgot-text">VERIFICATION CODE</label>  
                             <div className="input-box-forgot">  
                                 <FaKey className='icon-forgot' />  
@@ -164,7 +194,7 @@ const ForgotPassword = () => {
                                 />  
                             </div>  
                             {errorMessageVerification && (  
-                                <span style={{ color: 'red', margin: '10px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
+                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '1px' }}>  
                                     {errorMessageVerification}  
                                 </span>  
                             )}  
@@ -177,12 +207,13 @@ const ForgotPassword = () => {
                                     placeholder="New Password"  
                                     value={newPassword}  
                                     onChange={handlePasswordChange}  
-                                    className="password-input"  
+                                    className="input-forgot"
                                     required  
+  
                                 />  
                             </div>  
                             {errorMessagePassword && (  
-                                <span style={{ color: 'red', margin: '10px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
+                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
                                     {errorMessagePassword}  
                                 </span>  
                             )}  
@@ -195,12 +226,12 @@ const ForgotPassword = () => {
                                     placeholder="Confirm Password"  
                                     value={confirmPassword}  
                                     onChange={handleConfirmPasswordChange}  
-                                    className="password-input"  
+                                    className="input-forgot"   
                                     required  
                                 />  
                             </div>  
                             {errorMessageConfirm && (  
-                                <span style={{ color: 'red', margin: '10px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
+                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
                                     {errorMessageConfirm}  
                                 </span>  
                             )}  
