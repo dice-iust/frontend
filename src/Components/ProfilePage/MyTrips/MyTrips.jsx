@@ -12,7 +12,7 @@ import { FaUndoAlt } from "react-icons/fa";
 import { FaRegCalendar } from "react-icons/fa6"; 
 
 
-const UpcominTravels_URL = 'travels/upcoming/';  
+const UpcominTravels_URL = 'travels/summer/';  
 
 const TourList = () => {   
   const [activeTab, setActiveTab] = useState("London");  
@@ -79,9 +79,9 @@ const TourList = () => {
 
             <br/>     
             <div className="tour-list-container2">  
-                {data && data.Up_comingTrips ? (  
+                {data && data.Summer_Trips ? (  
                     <div className="tour-list2">  
-                        {data.Up_comingTrips.map((tour) => (  
+                        {data.Summer_Trips.map((tour) => (  
                             <div key={tour.Id} className="tour-card2">  
                                 <div className="tour-image-container2">  
                                     <img  
