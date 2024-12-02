@@ -6,6 +6,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Radio, RadioGroup, FormControlLabel, FormLabel,FormControl, FormHelperText } from '@mui/material';
 import axios from 'axios';
 import "./AddNewTrip.scss";
+import pic from "./assets/Screenshot 2024-12-02 230554.png";
+import { MdAddPhotoAlternate } from "react-icons/md";
 
 const AddNewTrip = () => {
     const [tripData, setTripData] = useState({
@@ -129,17 +131,22 @@ const AddNewTrip = () => {
 
     return (
         <div className='newtrip'>
-            <form onSubmit={handleAddTrip}>
-                <div className='trip-pic'>
-                    <TextField
-                        type="file"
-                        name="picture"
-                        variant="outlined"
-                        onChange={handleFileChange}
-                    />
-                </div>
-
+                <form onSubmit={handleAddTrip}>
                 <div className="trip-status-state-wrapper">  
+                <div className='image-container'>
+                    <img src={pic} alt="Description of Image" className="smaller-image" />  
+                    <div className="button-container">  
+                        <label htmlFor="file-upload" className="file-upload-button">  
+                            <MdAddPhotoAlternate className='moveiconpic' />  
+                        </label>  
+                        <input   
+                            type="file"   
+                            id="file-upload"   
+                            onChange={handleFileChange}   
+                            
+                        />  
+                    </div>  
+                </div>  
                 <div className="trip-state"> 
                     <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>
                     <RadioGroup  

@@ -7,6 +7,9 @@ $new-trip-shadow: rgba(0, 0, 0, 0.1);
 $new-trip-hover-color: lighten($new-trip-button-color, 5%);  
 $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);  
 
+
+
+
 .newtrip {
     background-color: $new-trip-background-color;  
     padding: 30px;  
@@ -16,7 +19,58 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     margin-top: 35px;  
     margin-left: auto;
     margin-right: auto;
-    position: relative;  
+    position: relative;
+
+    
+    
+
+    .image-container {  
+        position: relative;  
+        margin-bottom: 10px;
+        margin-right: 0;  
+        margin-left: 0px; 
+        display: flex; 
+        padding: 0;
+    
+        .smaller-image {  
+            width: 150px;              
+            border-radius: 5px;  
+            object-fit: cover;
+            margin-left: 0px;      
+            
+        }  
+    
+        .button-container {  
+            position: relative; 
+            display: flex; 
+    
+            .file-upload-button {  
+                position: absolute;  
+                bottom: -70px; 
+                right: -20px;   
+                padding: 10px 20px;          
+                color: white;                
+                background-color: #22487a;    
+                border: none;                
+                border-radius: 5px;           
+                cursor: pointer;               
+                transition: background-color 0.3s;  
+                &:hover {  
+                    background-color: #ea7d29;   
+                }  
+
+                .moveiconpic {  
+                    font-size:20px; 
+                 }  
+                 
+            }  
+    
+            input[type='file'] {  
+                display: none;  
+            }  
+        }  
+    }
+
 
     &:before {  
         content: '';  
@@ -35,23 +89,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         flex-direction: column;  
         gap: 11px;  
 
-        .trip-pic {  
-            display: flex;  
-            justify-content: center;  
-
-            input[type="file"] {  
-                width: auto;  
-                padding: 5px;  
-                border: 2px solid $new-trip-input-border;  
-                border-radius: 5px;  
-                transition: border-color 0.3s ease, background-color 0.3s ease;  
-
-                &:hover {  
-                    border-color: $new-trip-title-color;  
-                    background-color: rgba(234, 125, 41, 0.1); 
-                }  
-            }  
-        }  
+        
 
         .trip-title, .trip-location, .trip-description,   
         .trip-date, .trip-group, .trip-status   
