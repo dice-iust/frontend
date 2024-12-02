@@ -22,6 +22,7 @@ $hover-bg-color: #f0f0f0;
     align-items: center;  
     transition: box-shadow 0.3s ease;  
   }
+  
 
   
 
@@ -92,11 +93,41 @@ $hover-bg-color: #f0f0f0;
 
   .selected-dates {  
     margin-top: 30px;  
-    margin-bottom: 20px;  
+    margin-bottom: 20px; 
+   
     font-size: 20px;  
-    font-weight: 600;  
+    font-weight: 600px;  
     color: $font-color;  
-    text-align: left; 
+    text-align: left;
+    .no-trips-blue {  
+      color: #22487a; // Cleaner blue color  
+      font-weight: bold; // Makes it bolder  
+      font-size: 0.9em; // Slightly larger font for emphasis  
+      margin-right: 3px;
+      margin-left: 3px; // Space between blue and orange text  
+    }  
+    
+    .no-trips-orange {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em; // Matches the blue text size for continuity  
+    }  
+    .no-trips-orange2 {  
+      color: #ff6f20;
+      margin-left: 0px;
+      margin-right: 0px; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 0.9em; // Matches the blue text size for continuity  
+    }  
+    .no-trips-blue2 {  
+      color: #22487a; // Cleaner blue color  
+      font-weight: bold; // Makes it bolder  
+      font-size: 0.9em; // Slightly larger font for emphasis  
+      margin-right: 4px;
+      margin-left: 2px; // Space between blue and orange text  
+    }  
 
     
     display: flex; 
@@ -631,5 +662,34 @@ $hover-bg-color: #f0f0f0;
   margin-top: 2px;
   margin-left: -85px;
 }
+
+
+.react-datepicker .react-datepicker__month-dropdown,
+.react-datepicker .react-datepicker__year-dropdown {
+  background-color: #abc0dd;
+  border: 1px solid #22487a; 
+  border-radius: 5px; 
+  padding: 10px; 
+}
+
+.react-datepicker .react-datepicker__month-dropdown:hover,
+.react-datepicker .react-datepicker__year-dropdown:hover {
+  background-color: #abc0dd;
+}
+
+.react-datepicker .react-datepicker__month-option,
+.react-datepicker .react-datepicker__year-option {
+  padding: 5px; 
+  cursor: pointer; 
+  background-color: #abc0dd;
+}
+
+.react-datepicker .react-datepicker__month-option:hover,
+.react-datepicker .react-datepicker__year-option:hover {
+  background-color: #e2bca0;
+}
+
+
+
 
 

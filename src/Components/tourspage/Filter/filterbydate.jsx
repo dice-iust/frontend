@@ -16,9 +16,10 @@ const DateRangePicker = () => {
   const [isEndDateOpen, setIsEndDateOpen] = useState(false);  
   const [startDateError, setStartDateError] = useState('');   
   const [endDateError, setEndDateError] = useState('');  
-  const [message, setMessage] = useState('');  
+  const [isstart, setstart] = useState(null);  
   const [resultData, setResultData] = useState([]);  
-  const [noTripsMessage, setNoTripsMessage] = useState(''); 
+  const [isend, setend] = useState(null); 
+  const [istrip, setIstrip] = useState(null);  
   const today = new Date();  
 
   const formatDate = (dateString) => {  
@@ -42,6 +43,7 @@ const DateRangePicker = () => {
   };  
   
   const handleStartDateChange = (date) => {  
+
     const startOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
     setStartDate(startOfDayUTC);  
     setIsEndDateOpen(true);   
@@ -81,11 +83,12 @@ const DateRangePicker = () => {
       const formattedStartDate = startDate.toISOString().split('T')[0];  
       const formattedEndDate = endDate.toISOString().split('T')[0];  
 
-      setMessage(`your travel options for the dates ${formattedStartDate} to ${formattedEndDate}`);  
+      // setMessage(`your travel options for the dates ${formattedStartDate} to ${formattedEndDate}`);  
       await fetchTravelData(formattedStartDate, formattedEndDate);  
     } else {  
-      setMessage('');   
+      // setMessage('');   
     }  
+    resetDatePickers();  
   };  
 
   const fetchTravelData = async (start, end) => {  
@@ -101,15 +104,21 @@ const DateRangePicker = () => {
 
       
       if (response.data.length === 0) {  
-        setNoTripsMessage('No trips available for the selected dates.'); 
+        setIstrip(false);
+        // setNoTripsMessage('No trips available for the selected dates.Create your own unique journey!'); 
       } else {  
-        setNoTripsMessage(`your travel options for the dates ${start} to ${end}`); // Clear the message if trips are available  
+        setIstrip(true);
+        setstart(start);
+        setend(end);
+        // setNoTripsMessage(`your travel options for the dates ${start} to ${end}`); // Clear the message if trips are available  
       }  
     } catch (error) {  
       console.error('Error fetching data from backend:', error);  
       setResultData([]);   
-      setNoTripsMessage('Error fetching data.'); // Optional error message  
+      // setNoTripsMessage('Error fetching data.'); // Optional error message  
     }  
+
+    
   };  
 
   const resetDatePickers = () => {  
@@ -119,8 +128,12 @@ const DateRangePicker = () => {
   };  
 
   const resetErrors = () => {  
-    setMessage('');  
-    setNoTripsMessage(''); // Reset no trips message when errors are reset  
+    // setMessage('');  
+    // setNoTripsMessage(''); // Reset no trips message when errors are reset    
+    setIstrip(null);
+    setstart(null);
+    setend(null);
+    setResultData([]);
   }  
   
   return (  
@@ -139,6 +152,8 @@ const DateRangePicker = () => {
               dateFormat="MMMM d, yyyy"  
               placeholderText="Select a start date"  
               minDate={today}   
+              showMonthDropdown 
+              showYearDropdown 
             />  
             {startDateError && <p className="error-message">{startDateError}</p>}   
           </div>  
@@ -153,7 +168,10 @@ const DateRangePicker = () => {
               minDate={startDate}  
               dateFormat="MMMM d, yyyy"  
               placeholderText="Select an end date"  
-              open={isEndDateOpen}  
+              open={isEndDateOpen} 
+              openToDate={startDate}
+              showMonthDropdown 
+              showYearDropdown 
             />  
             {endDateError && <p className="error-message">{endDateError}</p>}   
           </div>  
@@ -164,10 +182,24 @@ const DateRangePicker = () => {
       </div>  
 
       <div className="selected-dates">   
-          
-          <p className="no-trips-message">{noTripsMessage}</p>  
-        
-     </div>  
+      
+      {istrip != null && (
+  !istrip ? (  
+    <p>  
+      <span className="no-trips-blue">No trips available for the selected dates. </span>  
+      <span className="no-trips-orange">Create your own unique journey!</span>   
+    </p>  
+  ) : (  
+    <p>  
+      <span className="no-trips-blue">Your travel options for the dates </span>  
+      <span className="no-trips-orange2">{isstart} </span> 
+      <span className="no-trips-blue2">to</span> 
+      <span className="no-trips-orange2">{isend}</span>  
+    </p>  
+  )
+)}
+
+      </div>  
 
       <div className="tour-list-filter">  
         {resultData.map((item) => (  
