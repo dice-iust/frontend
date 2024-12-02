@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';  
 import "./ProfilePage.scss";  
-import Travelsnav from "../tourspage/categories_nav.jsx";  
+import Travelsnav from "./header.jsx";  
 import Footer from '../tourspage/footer.jsx';  
 import { useNavigate } from 'react-router-dom';  
 import axios from '../../api/axios';  
