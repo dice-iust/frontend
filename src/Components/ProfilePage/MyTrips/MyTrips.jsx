@@ -16,26 +16,35 @@ import Slider from "react-slick";
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom'; 
-
-
-
-const Travels_URL = 'mytravels/';
+import { useNavigate } from 'react-router-dom';  
 
 
 const TourList = () => { 
 
   const [data, setData] = useState(null);
+  const [datapast, setDatapast] = useState(null);
+  const [datafuture, setDatafuture] = useState(null);
+  const navigate = useNavigate();  
+  const getFormData = async () => {  
+    try {  
+      const response = await axios.get("https://triptide.pythonanywhere.com/mytravels/", {  
+        headers: { Authorization: localStorage.getItem("token") },  
+      });  
+      setData(response.data.current); 
+      setDatapast(response.data.past);
+      setDatafuture(response.data.future);
+    } catch (error) {  
+      console.error("Error fetching data:", error);  
+    }  
+  };  
+
   useEffect(() => {  
-      const fetchData = async () => {  
-          try {  
-              const response = await axios.get(Travels_URL);  
-              setData(response.data.past);  
-              console.log(response.data);
-          } catch (error) {  
-              console.error("Error fetching data:", error);  
-          }  
-      };  
-      fetchData();  
+    const token = localStorage.getItem("token");  
+    if (!token) {  
+      navigate("/login");  
+    } else {  
+      getFormData();  
+    }  
   }, []);  
     
   
@@ -110,80 +119,201 @@ const TourList = () => {
       ]  
     };
 
-  return ( 
-    <div className='app-container-main-profile'> 
-    <div className='travelpage-profile'>
-    <div className="tour-list-container-profile"> 
-    
-<br></br>
-<br></br>
-      <h1>Popular Trips</h1> 
-      <br></br> 
-      {data && data.Popular_Trips ? (  
-          <Slider {...settings}>  
-            {data.travel_is.slice(0, 5).map((tour) => (  
-              <div key={tour.id} className="tour-card-profile">  
-                <div className="tour-image-container-profile">  
-                  <img  
-                    src={tour.image_url}  
-                    alt={`Image of ${tour.name}`}  
-                    className="tour-image-profile"  
-                  />  
-                  {tour.admin && (  
-                    <div className="tour-admin-profile">  
+    return (   
+      <div className='app-container-main-profile'>   
+        <div className='travelpage-profile'>  
+          <div className="tour-list-container-profile">   
+            <br />  
+            <br />  
+            <h1>Current Trips</h1>   
+            <br />   
+            {data.length > 0 ? (  
+              <Slider {...settings}>  
+                {data.map((trip) => (  
+                  <div key={trip.id} className="tour-card-profile">  
+                    <div className="tour-image-container-profile">  
                       <img  
-                        src={tour.admin.phrofile_image}  
-                        alt={`Profile of ${tour.admin.user_name}`}  
-                        className="admin-photo-profile"  
+                        src={trip.image_url}  
+                        alt={`Image of ${trip.name}`}  
+                        className="tour-image-profile"  
                       />  
-                      {tour.admin.user_name}  
+                      {trip.admin && (  
+                        <div className="tour-admin-profile">  
+                          <img  
+                            src={trip.admin.profile_image}  
+                            alt={`Profile of ${trip.admin.user_name}`}  
+                            className="admin-photo-profile"  
+                          />  
+                          {trip.admin.user_name}  
+                        </div>  
+                      )}  
                     </div>  
-                  )}  
-                </div>  
-                <div className="tour-info-profile">  
-                  <p className="tour-meta3-profile">  
-                    <span className="tour-name-profile">{tour.name}</span>  
-                    <div className={`trip-type ${tour.mode}`}>  
-                      <GrMoney aria-hidden="true" />  
-                      {tour.mode.charAt(0).toUpperCase() + tour.mode.slice(1)}  
+                    <div className="tour-info-profile">  
+                      <p className="tour-meta3-profile">  
+                        <span className="tour-name-profile">{trip.name}</span>  
+                        <div className={`trip-type ${trip.mode}`}>  
+                          <GrMoney aria-hidden="true" />  
+                          {trip.mode.charAt(0).toUpperCase() + trip.mode.slice(1)}  
+                        </div>  
+                      </p>  
+                      <div className="tour-details-profile">  
+                        <p className="tour-route-profile">  
+                          <span className="tour-text-profile">  
+                            {trip.start_place} {getTransportationIcon(trip.transportation)} {trip.destination}  
+                          </span>  
+                        </p>  
+                      </div>  
+                      <div className="tour-meta-profile">  
+                        <p className="tour-date-profile">  
+                          <FaRegCalendar className='moveicon3-profile' />  
+                          <span>{formatDate(trip.start_date)}</span>  
+                        </p>  
+                        <FaArrowRight className='moveicon4-profile' />  
+                        <p className="tour-length-profile" style={{ textAlign: "center" }}>  
+                          <FaUndoAlt className='moveicon3-profile' />  
+                          {formatDate(trip.end_date)}  
+                        </p>  
+                      </div>  
                     </div>  
-                  </p>  
-                  <div className="tour-details-profile">  
-                    <p className="tour-route-profile">  
-                      <span className="tour-text-profile">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</span>  
-                    </p>  
                   </div>  
-                  <div className="tour-meta-profile">  
-                    <p className="tour-date-profile">  
-                      <FaRegCalendar className='moveicon3-profile' />  
-                      <span>{formatDate(tour.start_date)}</span>  
-                    </p>  
-                    <FaArrowRight className='moveicon4-profile' />  
-                    <p className="tour-length-profile" style={{ textAlign: "center" }}>  
-                      <FaUndoAlt className='moveicon3-profile' />  
-                      {formatDate(tour.end_date)}  
-                    </p>  
+                ))}  
+              </Slider>  
+            ) : (  
+              <p>No current trips available.</p>  
+            )}   
+          </div>   
+          <br />  
+          <br />  
+          <br />  
+          <div className="tour-list-container-profile">   
+            <br />  
+            <br />  
+            <h1>Future Trips</h1>   
+            <br />   
+            {datafuture.length > 0 ? (  
+              <Slider {...settings}>  
+                {datafuture.map((trip) => (  
+                  <div key={trip.id} className="tour-card-profile">  
+                    <div className="tour-image-container-profile">  
+                      <img  
+                        src={trip.image_url}  
+                        alt={`Image of ${trip.name}`}  
+                        className="tour-image-profile"  
+                      />  
+                      {trip.admin && (  
+                        <div className="tour-admin-profile">  
+                          <img  
+                            src={trip.admin.profile_image}  
+                            alt={`Profile of ${trip.admin.user_name}`}  
+                            className="admin-photo-profile"  
+                          />  
+                          {trip.admin.user_name}  
+                        </div>  
+                      )}  
+                    </div>  
+                    <div className="tour-info-profile">  
+                      <p className="tour-meta3-profile">  
+                        <span className="tour-name-profile">{trip.name}</span>  
+                        <div className={`trip-type ${trip.mode}`}>  
+                          <GrMoney aria-hidden="true" />  
+                          {trip.mode.charAt(0).toUpperCase() + trip.mode.slice(1)}  
+                        </div>  
+                      </p>  
+                      <div className="tour-details-profile">  
+                        <p className="tour-route-profile">  
+                          <span className="tour-text-profile">  
+                            {trip.start_place} {getTransportationIcon(trip.transportation)} {trip.destination}  
+                          </span>  
+                        </p>  
+                      </div>  
+                      <div className="tour-meta-profile">  
+                        <p className="tour-date-profile">  
+                          <FaRegCalendar className='moveicon3-profile' />  
+                          <span>{formatDate(trip.start_date)}</span>  
+                        </p>  
+                        <FaArrowRight className='moveicon4-profile' />  
+                        <p className="tour-length-profile" style={{ textAlign: "center" }}>  
+                          <FaUndoAlt className='moveicon3-profile' />  
+                          {formatDate(trip.end_date)}  
+                        </p>  
+                      </div>  
+                    </div>  
                   </div>  
-                </div>  
-              </div>  
-            ))}  
-          </Slider>  
-        ) : (  
-          <p>Loading popular trips...</p>  
-        )} 
-        </div> 
-<br></br>
-<br></br>
-<br></br>
-      
-      
-       
+                ))}  
+              </Slider>  
+            ) : (  
+              <p>No future trips available.</p>  
+            )}   
+          </div>   
+          <br />  
+          <br />  
+          <br />  
+          <div className="tour-list-container-profile">   
+            <br />  
+            <br />  
+            <h1>Past Trips</h1>   
+            <br />   
+            {datapast.length > 0 ? (  
+              <Slider {...settings}>  
+                {datapast.map((trip) => (  
+                  <div key={trip.id} className="tour-card-profile">  
+                    <div className="tour-image-container-profile">  
+                      <img  
+                        src={trip.image_url}  
+                        alt={`Image of ${trip.name}`}  
+                        className="tour-image-profile"  
+                      />  
+                      {trip.admin && (  
+                        <div className="tour-admin-profile">  
+                          <img  
+                            src={trip.admin.profile_image}  
+                            alt={`Profile of ${trip.admin.user_name}`}  
+                            className="admin-photo-profile"  
+                          />  
+                          {trip.admin.user_name}  
+                        </div>  
+                      )}  
+                    </div>  
+                    <div className="tour-info-profile">  
+                      <p className="tour-meta3-profile">  
+                        <span className="tour-name-profile">{trip.name}</span>  
+                        <div className={`trip-type ${trip.mode}`}>  
+                          <GrMoney aria-hidden="true" />  
+                          {trip.mode.charAt(0).toUpperCase() + trip.mode.slice(1)}  
+                        </div>  
+                      </p>  
+                      <div className="tour-details-profile">  
+                        <p className="tour-route-profile">  
+                          <span className="tour-text-profile">  
+                            {trip.start_place} {getTransportationIcon(trip.transportation)} {trip.destination}  
+                          </span>  
+                        </p>  
+                      </div>  
+                      <div className="tour-meta-profile">  
+                        <p className="tour-date-profile">  
+                          <FaRegCalendar className='moveicon3-profile' />  
+                          <span>{formatDate(trip.start_date)}</span>  
+                        </p>  
+                        <FaArrowRight className='moveicon4-profile' />  
+                        <p className="tour-length-profile" style={{ textAlign: "center" }}>  
+                          <FaUndoAlt className='moveicon3-profile' />  
+                          {formatDate(trip.end_date)}  
+                        </p>  
+                      </div>  
+                    </div>  
+                  </div>  
+                ))}  
+              </Slider>  
+            ) : (  
+              <p>No past trips available.</p>  
+            )}   
+          </div>   
+          <br />  
+          <br />  
+          <br />  
+        </div>  
       </div>  
-       </div>
-    
-);  
-};  
-
-
-export default TourList;  
-
+    );  
+  };  
+  
+  export default TourList;  
