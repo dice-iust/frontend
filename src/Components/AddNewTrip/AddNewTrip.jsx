@@ -140,8 +140,8 @@ const AddNewTrip = () => {
                 </div>
 
                 <div className="trip-status-state-wrapper">  
-                <div className="trip-state">  
-                    <FormLabel component="legend">State</FormLabel>  
+                <div className="trip-state"> 
+                    <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>
                     <RadioGroup  
                         aria-label="state"  
                         name="state"  
@@ -164,7 +164,7 @@ const AddNewTrip = () => {
 
 
                 <div className="trip-status">  
-                    <FormLabel component="legend">Status</FormLabel>  
+                    <FormLabel component="legend"  style={{ marginBottom: '0px' }}>Status</FormLabel>  
                     <RadioGroup  
                         aria-label="status"  
                         name="status"  
@@ -186,7 +186,9 @@ const AddNewTrip = () => {
                 </div>
                 </div>
 
-
+                <div className="flex-container">  
+                <FormLabel component="legend">Trip information</FormLabel>
+                </div>
                 <div className="trip-title">
                     <TextField
                         value={tripData.title}
@@ -229,7 +231,9 @@ const AddNewTrip = () => {
                     </TextField>
                 </div>
 
-
+                <div className="flex-container">  
+                <FormLabel component="legend">Location</FormLabel>
+                </div>
                 <div className="trip-location">
                     <TextField
                         value={tripData.startingPoint}
@@ -254,7 +258,9 @@ const AddNewTrip = () => {
                     />
                 </div>
 
-
+                <div className="flex-container">  
+                <FormLabel component="legend">Date</FormLabel>
+                </div>
                 <div className="trip-date">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DatePicker
@@ -289,7 +295,9 @@ const AddNewTrip = () => {
                     </LocalizationProvider>
                 </div>
 
-                
+                <div className="flex-container">  
+                    <FormLabel component="legend">Detail</FormLabel>  
+                </div>  
                 <div className="trip-description">
                     <TextField
                         value={tripData.description}

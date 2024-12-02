@@ -33,7 +33,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     form {  
         display: flex;  
         flex-direction: column;  
-        gap: 20px;  
+        gap: 11px;  
 
         .trip-pic {  
             display: flex;  
@@ -56,7 +56,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         .trip-title, .trip-location, .trip-description,   
         .trip-date, .trip-group, .trip-status   
          {  
-            margin-bottom: 15px;  
+            margin-bottom: 0px;  
             
             TextField {  
                 width: 100%;
@@ -86,11 +86,11 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             display: flex;                       
             justify-content: space-between;      
             align-items: flex-start;               
-            margin-top: 20px;
+            margin-top: 5px;
             padding: 0;                     
         
             .trip-state {  
-                margin-bottom: 10px;             
+                margin-bottom: 2px;             
                 margin-right: 48px; 
                 padding: 0px;             
                 // flex: 1;                        
@@ -120,7 +120,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             }  
             
             .trip-status {  
-                margin-bottom: 10px;              
+                margin-bottom: 2px;              
                 flex: 1; 
                 margin-left: 0px; 
                                          
@@ -153,7 +153,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         .trip-location{
             display: flex;              
             justify-content: space-between; 
-            margin-bottom: 10px;        
+            margin-bottom: 0px;        
         
            
             .MuiTextField-root {  
@@ -172,7 +172,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         .trip-date {  
             display: flex;              
             justify-content: space-between; 
-            margin-bottom: 10px;        
+            margin-bottom: 0px;        
         
            
             .MuiTextField-root {  
@@ -190,7 +190,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         .trip-title {  
             display: flex;                     
             align-items: flex-start;           
-            margin-bottom: 10px;              
+            margin-bottom: 0px;              
         
             .MuiTextField-root {                
                 margin-right: 20px;            
@@ -204,17 +204,18 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         
                 
             }  
-        
-            label {                             
-                color: #333;                      
-                font-weight: 500;                
-            }  
-        
             
         }
 
+        .flex-container {  
+            margin-left: 3px;
+            margin-bottom:0px;
+            margin-top: 0px;
+        }
+
         .trip-description {  
-            margin-bottom: 10px;                
+            margin-bottom: 10px; 
+            margin-top: 0px;               
             .MuiTextField-root {                
                 width: 100%;                      
             }
