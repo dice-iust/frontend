@@ -1,10 +1,19 @@
 import './MyRate.scss';  
 import React, { useEffect, useState } from 'react';  
 import axios from '../../../api/axios.js'; // Adjust the import path as needed  
+import { useNavigate } from 'react-router-dom';  
+import { GrMoney } from "react-icons/gr";  
+import { FaCarSide } from "react-icons/fa6";  
+import { FaPlane } from "react-icons/fa";  
+import { TbTrain } from "react-icons/tb";  
+import { TbBus } from "react-icons/tb";  
+import { FaUndoAlt } from "react-icons/fa";  
+import { FaRegCalendar } from "react-icons/fa6"; 
+const mytravels_URL = 'mytravels';  
 
 const MyRate = () => {  
     const [rating, setRating] = useState(0); // Initialize state for the rating  
-
+    const [datafuture, setDatafuture] = useState(null);
     useEffect(() => {  
         const fetchRating = async () => {  
             try {  
@@ -20,7 +29,42 @@ const MyRate = () => {
     }, []); // Run effect only once when component mounts  
 
     const normalizedRating = Math.min(Math.max(2, 0), 5);  
-
+    useEffect(() => {  
+        const fetchData = async () => {  
+            try {  
+                const response = await axios.get(mytravels_URL, {  
+                  headers: { Authorization: localStorage.getItem("token") },  
+                });   
+                setDatafuture(response.data.future);
+                console.log(response.data);  
+                console.log(datafuture);
+            } catch (error) {  
+                console.error("Error fetching data:", error);  
+            }  
+        };  
+        fetchData();  
+    }, []);  
+  
+    const formatDate = (dateString) => {  
+        const [year, month, day] = dateString.split('-');  
+        return `${year}/${month}/${day}`;  
+    };  
+  
+    const getTransportationIcon = (transportation) => {  
+        switch (transportation.toLowerCase()) {  
+            case 'train':  
+                return <TbTrain className="moveicon2" />;  
+            case 'bus':  
+                return <TbBus className="moveicon2" />;  
+            case 'plane':  
+                return <FaPlane className="moveicon2" />;  
+            case 'car':  
+                return <FaCarSide className="moveicon2"/>;  
+            default:  
+                return null;  
+        }  
+    };  
+  
     return (  
         <div className="rate">
         <div className="container-rate">  
