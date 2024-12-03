@@ -1,4 +1,3 @@
-
 $color-1st: #fff;  
 $color-2nd: #22487a;  
 
@@ -15,15 +14,17 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 .ProfilePage {  
   display: flex;  
   flex-direction: column;  
-  min-height: 100vh;  
-  margin-left: 4px;  
+  min-height: 100vh;
+  margin-left: 4px;
+   // Ensure full vertical height so footer stays at bottom  
 
   .profile-page {  
-    display: flex;  
-    flex: 1;  
+    display: flex;   
+    flex: 1;   
     height: 100%;  
     background: $color-1st;  
     margin-bottom: 6px;  
+    
 
     .menu {  
       background: $color-2nd;  
@@ -32,20 +33,18 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
       position: sticky;  
       top: 0;  
       z-index: 5;  
-      border: 1px solid rgb(234, 110, 12);  
-      border-radius: 4px;  
+      border: 1px solid rgb(234, 110, 12); 
+      border-radius: 4px; 
 
-      // Active link styles  
       .active {  
         background-color: rgb(234, 110, 12);  
         color: #fff;  
-        transform: translateY(-2px);  
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  
-
+        transform: translateY(-2px);   
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
         .iconmove {  
-          color: white;  
+          color: white;
         }  
-      }  
+    }  
 
       .avatar {  
         background: rgba(0, 0, 0, 0.1);  
@@ -68,10 +67,9 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
         }  
       }  
 
-      // Menu items  
       ul {  
-        list-style: none;  
-        line-height: 30px;  
+        list-style: none;   
+        line-height: 30px;   
         font-weight: bold;  
         font-size: large;  
         padding: 0.5em 0;  
@@ -87,54 +85,144 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
           background-size: auto 20px;  
           transition: all 0.15s linear;  
 
+          &.icon {  
+            position: absolute;  
+            right: 20px;  
+            top: 50%;  
+            transform: translateY(-50%);  
+            font-size: 16px;  
+          }  
+          
+          
+            
+          &.icon-settings {   
+            &:hover {  
+              .iconmove {  
+                color: white;
+              }  
+            }  
+          }  
+
           &:hover {  
             background-color: rgb(234, 110, 12);  
             color: #fff;  
-            transform: translateY(-2px);  
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  
+            transform: translateY(-2px);   
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+          }  
+          cus {  
+            outline: none;  
+          }  
+        }  
+      }  
+    }  
+
+    .iconmove {  
+      margin-left:2px;
+      margin-right: 2px;
+      margin-bottom: 4px;   
+      margin-top: 0px; 
+      vertical-align: middle; 
+      color: #ea7d29;
+      
+  }    
+
+    .content {  
+      flex: 1; 
+      padding: 20px;  
+      // background-color: #fff; 
+      border-radius: 5px; 
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    }  
+  }
+  
+}  
+
+// Media queries for responsiveness  
+@media screen and (max-width: 900px) and (min-width: 400px) {  
+  .profile-page {  
+    .menu {  
+      width: $menu-width-tablet;  
+
+      .avatar {  
+        padding: 0.5em;  
+        position: relative;  
+
+        img {  
+          width: calc(#{$menu-width-tablet} - 30px);  // Ensure responsiveness  
+        }  
+
+        h2 {  
+          opacity: 0;  
+          position: absolute;  
+          top: 50%;  
+          left: calc(#{$menu-width-tablet} + 10px);  
+          margin: 0;  
+          min-width: 200px;  
+          border-radius: 4px;  
+          background: rgba(0, 0, 0, 0.4);  
+          transform: translate3d(-20px, -50%, 0);  
+          transition: all 0.15s ease-in-out;  
+        }  
+
+        &:hover {  
+          h2 {  
+            opacity: 1;  
+            transform: translate3d(0px, -50%, 0);  
           }  
         }  
       }  
 
-      .content {  
-        flex: 1;  
-        padding: 20px;  
-        border-radius: 5px;  
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
-      }  
-    }  
-  }  
-}  
+      ul {  
+        li {  
+          height: calc(#{$menu-width-tablet} / 1.5);  
+          background-position: center center;  
+          background-size: 30px auto;  
+          position: relative;  
 
-// Breakpoints for responsiveness  
-@media screen and (max-width: 1400px) {  
-  .profile-page {  
-    .menu {  
-      width: 250px; // Adjust size for larger screens  
-    }  
-  }  
-}  
+          span {  
+            opacity: 0;  
+            position: absolute;  
+            background: rgba(0, 0, 0, 0.5);  
+            padding: 0.2em 0.5em;  
+            border-radius: 4px;  
+            top: 50%;  
+            left: calc(#{$menu-width-tablet} - 10px);  
+            transform: translate3d(-15px, -50%, 0);  
+            transition: all 0.15s ease-in-out;  
 
-@media screen and (max-width: 600px) {  
-  .profile-page {  
-    .menu {  
-      width: $menu-width-tablet; // Previously set tablet width  
+            &:before {  
+              content: '';  
+              width: 0;  
+              height: 0;  
+              position: absolute;  
+              top: 50%;  
+              left: -5px;  
+              border-top: 5px solid transparent;  
+              border-bottom: 5px solid transparent;  
+              border-right: 5px solid rgba(0, 0, 0, 0.5);  
+              transform: translateY(-50%);  
+            }  
+          }  
 
-      .avatar {  
-        padding: 1em;  
-
-        img {  
-          width: calc(90%); // Responsive image  
+          &:hover {  
+            span {  
+              opacity: 1;  
+              transform: translate3d(0px, -50%, 0);  
+            }  
+          }  
         }  
       }  
     }  
   }  
 }  
 
-@media screen and (max-width: 480px) {  
+@media screen and (max-width: 400px) {  
   .profile-page {  
+    padding-left: 0;  
+
     .menu {  
-      width: $menu-width-smartphone; // Smartphone width  
+      width: $menu-width-smartphone;  
+      box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);  
       transform: translate3d(-$menu-width-smartphone, 0, 0);  
       transition: all 0.3s ease-in-out;  
 
@@ -147,7 +235,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
 
         &:before,  
         &:after {  
-          content: "";  
+          content: '';  
           width: 50%;  
           height: 2px;  
           background: #fff;  
@@ -155,12 +243,12 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
           position: absolute;  
           top: 45%;  
           left: 50%;  
-          transform: translate(-50%, -50%);  
+          transform: translate3d(-50%, -50%, 0);  
         }  
 
         &:after {  
           top: 55%;  
-          transform: translate(-50%, -50%);  
+          transform: translate3d(-50%, -50%, 0);  
         }  
       }  
 
@@ -179,24 +267,6 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
           pointer-events: none;  
         }  
       }  
-    }  
-
-    // Adjust main content for small screens  
-    .content {  
-      padding: 15px; // Reduce padding on smaller screens  
-    }  
-  }  
-}  
-
-// Additional styles for larger screens (1400px)  
-@media screen and (max-width: 1400px) {  
-  .profile-page {  
-    .menu {  
-      width: $menu-width-desktop; // Retain desktop menu width for larger tablets  
-    }  
-
-    .content {  
-      padding: 25px; // Increase padding for larger screens  
     }  
   }  
 }
