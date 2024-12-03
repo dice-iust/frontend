@@ -2,26 +2,33 @@ $new-trip-background-color: #f9f9f9;
 $new-trip-title-color: #ea7d29;  
 $new-trip-button-color: #22487a;  
 $new-trip-error-color: #ff4d4d;  
-$new-trip-input-border: #cfcfcf;  
+$new-trip-input-border: #f9f4f4;  
 $new-trip-shadow: rgba(0, 0, 0, 0.1);  
 $new-trip-hover-color: lighten($new-trip-button-color, 5%);  
 $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);  
 
 
 
-
+.addtrip{
+    box-shadow: 0 4px 20px $new-trip-shadow;  
 .newtrip {
-    background-color: $new-trip-background-color;  
+    // background-color: $new-trip-background-color;  
     padding: 30px;  
     border-radius: 15px;  
-    box-shadow: 0 4px 20px $new-trip-shadow;  
-    max-width: 750px;  
+    // box-shadow: 0 4px 20px $new-trip-shadow;  
+    max-width: 1000px;  
     margin-top: 35px;  
     margin-left: auto;
     margin-right: auto;
     position: relative;
 
-    
+    .t-title{
+        color: #22487a;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        font-size: 1.5em;
+    }
     
 
     .image-container {  
@@ -144,7 +151,8 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                 .MuiRadioGroup-root {  
                     display: flex;  
                     flex-direction: row;  
-                    justify-content: flex-start;  
+                    justify-content: flex-start; 
+                    margin-left: 8px;  
                     // align-items: center;  
                 }  
         
@@ -166,6 +174,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                 flex: 1; 
                 margin-left: 0px; 
                 margin-top: 10px;
+                
                                          
         
                 .MuiFormLabel-root {  
@@ -194,43 +203,11 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             }  
         }
         
-        .trip-location{
-            display: flex;              
-            justify-content: space-between; 
-            margin-bottom: 0px;        
-        
-           
-            .MuiTextField-root {  
-                // flex: 1;              
-                // max-width: 213px;      
+            
                    
         
                 
-                &:last-child {  
-                    margin-right: 245px;    
-                }  
-            }
-        }
         
-        
-        .trip-date {  
-            display: flex;              
-            justify-content: space-between; 
-            margin-bottom: 0px;        
-        
-           
-            .MuiTextField-root {  
-                flex: 1;              
-                max-width: 213px;      
-                margin-right: 18px;     
-        
-                
-                &:last-child {  
-                    margin-right: 245px;    
-                }  
-            }  
-        }
-
         .trip-title {  
             display: flex;                     
             align-items: flex-start;           
@@ -251,11 +228,53 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             
         }
 
+       
+
+
         .flex-container {  
+            display: flex;  
+            flex:1;
             margin-left: 3px;
             margin-bottom:0px;
-            margin-top: 0px;
+            margin-top: 2px;
+            
+        }  
+        
+        .label-location {  
+            margin-right: 421px;
+        }  
+        
+        .trip-location-date {  
+            display: flex;  
+            justify-content: space-between; 
+        }  
+        
+        .trip-location, .trip-date {  
+            display: flex;  
+            
+        }  
+        
+        .trip-location {  
+            margin-right: 2px;
+            .MuiTextField-root {  
+                        flex: 1;              
+                        max-width: 220px; 
+                        margin-right: 18px;
+            }
+        }  
+
+        .trip-date{
+            .MuiTextField-root {  
+                        flex: 1;              
+                        max-width: 220px;      
+                        margin-right: 18px;  
+                        &:last-child {  
+                                        margin-right: 0px;    
+                                    }  
+            }
         }
+        
+       
 
         .trip-description {  
             margin-bottom: 10px; 
@@ -299,4 +318,5 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         margin-bottom: 20px;  
         font-family: 'Arial, sans-serif';  
     }  
+}
 }

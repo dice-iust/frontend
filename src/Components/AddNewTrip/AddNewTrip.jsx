@@ -8,6 +8,7 @@ import axios from 'axios';
 import "./AddNewTrip.scss";
 import pic from "./assets/Screenshot 2024-12-02 230554.png";
 import { MdAddPhotoAlternate } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 
 const AddNewTrip = () => {
     const [tripData, setTripData] = useState({
@@ -130,9 +131,10 @@ const AddNewTrip = () => {
     };
 
     return (
-
+        <div className='addtrip'>
         <div className='newtrip'>
                 <form onSubmit={handleAddTrip}>
+                <h1 className="t-title">Create New Trip</h1>
 
                 <div className="trip-status-state-wrapper">  
                 <div className='image-container'>  
@@ -194,113 +196,125 @@ const AddNewTrip = () => {
                     </div>  
                 </div>  
             </div>
+
+            
                 <div className="flex-container">  
-                <FormLabel component="legend">Trip information</FormLabel>
-                </div>
-                <div className="trip-title">
-                    <TextField
-                        value={tripData.title}
-                        label="Title"
-                        variant="outlined"
-                        name="title"
-                        onChange={handleChange}
-                        required
-                        error={!!errors.title}
-                        helperText={errors.title}
-                        style={{ marginRight: '20px' }}
-                    />
-                    <TextField
-                        type="number"
-                        label="Participants"
-                        variant="outlined"
-                        name="groupNo"
-                        value={tripData.groupNo}
-                        onChange={handleChange}
-                        required
-                        error={!!errors.groupNo}
-                        helperText={errors.groupNo}
-                        style={{ marginRight: '20px' }}
-                    />
-                    <TextField
-                        id="transportation"
-                        select
-                        label="Transportation"
-                        value={tripData.transportation}
-                        name="transportation"
-                        onChange={handleChange}
-                        required
-                        error={!!errors.transportation}
-                        helperText={errors.transportation}
-                    >
-                        <MenuItem value="Bus">Bus</MenuItem>
-                        <MenuItem value="Car">Car</MenuItem>
-                        <MenuItem value="Plane">Plane</MenuItem>
-                        <MenuItem value="Train">Train</MenuItem>
-                    </TextField>
-                </div>
+                    <FormLabel component="legend">Trip Information</FormLabel>  
+                </div>  
+                <div className="trip-title">  
+                    <TextField  
+                        value={tripData.title}  
+                        label="Title"  
+                        variant="outlined"  
+                        name="title"  
+                        onChange={handleChange}  
+                        required  
+                        error={!!errors.title}  
+                        helperText={errors.title}  
+                        style={{ marginRight: '20px' }}  
+                    />  
+                    <TextField  
+                        type="number"  
+                        label="Participants"  
+                        variant="outlined"  
+                        name="groupNo"  
+                        value={tripData.groupNo}  
+                        onChange={handleChange}  
+                        required  
+                        error={!!errors.groupNo}  
+                        helperText={errors.groupNo}  
+                        style={{ marginRight: '20px' }}  
+                    />  
+                    <TextField  
+                        id="transportation"  
+                        select  
+                        label="Transportation"  
+                        value={tripData.transportation}  
+                        name="transportation"  
+                        onChange={handleChange}  
+                        required  
+                        error={!!errors.transportation}  
+                        helperText={errors.transportation}  
+                    >  
+                        <MenuItem value="Bus">Bus</MenuItem>  
+                        <MenuItem value="Car">Car</MenuItem>  
+                        <MenuItem value="Plane">Plane</MenuItem>  
+                        <MenuItem value="Train">Train</MenuItem>  
+                    </TextField>  
+                </div>  
+
 
                 <div className="flex-container">  
-                <FormLabel component="legend">Location</FormLabel>
-                </div>
-                <div className="trip-location">
-                    <TextField
-                        value={tripData.startingPoint}
-                        label="Starting Point"
-                        variant="outlined"
-                        name="startingPoint"
-                        onChange={handleChange}
-                        required
-                        error={!!errors.startingPoint}
-                        helperText={errors.startingPoint}
-                        style={{ marginRight: '20px' }}
-                    />
-                    <TextField
-                        value={tripData.destination}
-                        label="Destination"
-                        variant="outlined"
-                        name="destination"
-                        onChange={handleChange}
-                        required
-                        error={!!errors.destination}
-                        helperText={errors.destination}
-                    />
-                </div>
+                    <FormLabel component="legend" className="label-location">Location</FormLabel>  
+                    <FormLabel component="legend">Date</FormLabel> 
+                </div>  
 
-                <div className="flex-container">  
-                <FormLabel component="legend">Date</FormLabel>
-                </div>
-                <div className="trip-date">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            required
-                            value={tripData.startDate}
-                            label="Start from"
-                            slotProps={{
-                                textField: {
-                                error:!!errors.startDate,
-                                required: true,
-                                helperText:errors.startDate
-                                },
-                              }}
-                            onChange={(value) => { setTripData({ ...tripData, startDate: value }); validateField('startDate', value) }}
-                        />
-                    </LocalizationProvider>
-
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            value={tripData.endDate}
-                            label="End at"
-                            slotProps={{
-                                textField: {
-                                error:!!errors.endDate,
-                                required: true,
-                                helperText:errors.endDate
-                                },
-                              }}
-                            onChange={(value) => { setTripData({ ...tripData, endDate: value }); validateField('endDate', value) }}
-    
-                        />
-                    </LocalizationProvider>
+                <div className="trip-location-date">  
+                    <div className="trip-location">  
+                        <TextField  
+                            value={tripData.startingPoint}  
+                            label="Starting Point"  
+                            variant="outlined"  
+                            name="startingPoint"  
+                            onChange={handleChange}  
+                            required  
+                            error={!!errors.startingPoint}  
+                            helperText={errors.startingPoint}  
+                            style={{ marginRight: '20px' }}  
+                        />  
+                        <TextField  
+                            value={tripData.destination}  
+                            label="Destination"  
+                            variant="outlined"  
+                            name="destination"  
+                            onChange={handleChange}  
+                            required  
+                            error={!!errors.destination}  
+                            helperText={errors.destination}  
+                        />  
+                    </div>  
+                     
+                   
+                     
+                
+                    <div className="trip-date">  
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>  
+                            <DatePicker  
+                                required  
+                                value={tripData.startDate}  
+                                label="Start Date"  
+                                slotProps={{  
+                                    textField: {  
+                                        error: !!errors.startDate,  
+                                        required: true,  
+                                        helperText: errors.startDate  
+                                    },  
+                                }}  
+                                onChange={(value) => {   
+                                    setTripData({ ...tripData, startDate: value });   
+                                    validateField('startDate', value);   
+                                }}  
+                            />  
+                        </LocalizationProvider>  
+                        
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>  
+                            <DatePicker  
+                                value={tripData.endDate}  
+                                label="End Date"  
+                                slotProps={{  
+                                    textField: {  
+                                        error: !!errors.endDate,  
+                                        required: true,  
+                                        helperText: errors.endDate  
+                                    },  
+                                }}  
+                                onChange={(value) => {   
+                                    setTripData({ ...tripData, endDate: value });   
+                                    validateField('endDate', value);   
+                                }}  
+                            />  
+                        </LocalizationProvider>  
+                    </div>  
                 </div>
 
                 <div className="flex-container">  
@@ -321,12 +335,9 @@ const AddNewTrip = () => {
                     />
                 </div>
 
-                
-
-                
-
                 <Button type="submit" variant="contained" onClick={handleAddTrip}>Submit</Button>
             </form>
+        </div>
         </div>
     );
 };
