@@ -137,9 +137,10 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
   
 }  
 
-// Media queries for responsiveness  
+
 @media screen and (max-width: 900px) and (min-width: 400px) {  
-  .profile-page {  
+  .ProfilePage {
+    .Profile-Page{ 
     .menu {  
       width: $menu-width-tablet;  
 
@@ -210,63 +211,71 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
               transform: translate3d(0px, -50%, 0);  
             }  
           }  
+        }
         }  
       }  
     }  
   }  
 }  
 
-@media screen and (max-width: 400px) {  
-  .profile-page {  
-    padding-left: 0;  
+@media screen and (max-width: 480px) {  
+  .ProfilePage { 
+    .profile-page {  
+      padding-left: 0;  
 
-    .menu {  
-      width: $menu-width-smartphone;  
-      box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);  
-      transform: translate3d(-$menu-width-smartphone, 0, 0);  
-      transition: all 0.3s ease-in-out;  
-
-      .smartphone-menu-trigger {  
-        width: 40px;  
-        height: 40px;  
-        position: absolute;  
-        left: 100%;  
-        background: $color-2nd;  
-
-        &:before,  
-        &:after {  
-          content: '';  
-          width: 50%;  
-          height: 2px;  
-          background: #fff;  
-          border-radius: 10px;  
-          position: absolute;  
-          top: 45%;  
-          left: 50%;  
-          transform: translate3d(-50%, -50%, 0);  
-        }  
-
-        &:after {  
-          top: 55%;  
-          transform: translate3d(-50%, -50%, 0);  
-        }  
-      }  
-
-      ul {  
-        li {  
-          padding: 1em 1em 1em 3em;  
-          font-size: 1.2em;  
-        }  
-      }  
-
-      &:focus {  
-        transform: translate3d(0, 0, 0);  
-        box-shadow: 0 0 0 100em rgba(0, 0, 0, 0.6);  
+      .menu {  
+        width: $menu-width-smartphone;
+        height: 100vh;  
+        position: fixed;  // Fixed positioning
+        margin-top: 75px;  
+        // right: 0;   // Align to the right  
+        // top: 0;   
+        box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);  
+        transform: translate3d(-$menu-width-smartphone, 0, 0);  
+        transition: all 0.3s ease-in-out;  
 
         .smartphone-menu-trigger {  
-          pointer-events: none;  
+          width: 40px;  
+          height: 40px;  
+          position: absolute;  
+          left: 100%;  
+          background: $color-2nd;  
+
+          &:before,  
+          &:after {  
+            content: '';  
+            width: 50%;  
+            height: 2px;  
+            background: #fff;  
+            border-radius: 10px;  
+            position: absolute;  
+            top: 45%;  
+            left: 50%;  
+            transform: translate3d(-50%, -50%, 0);  
+          }  
+
+          &:after {  
+            top: 55%;  
+            transform: translate3d(-50%, -50%, 0);  
+          }  
+        }  
+
+        ul {  
+          li {  
+            padding: 1em 1em 1em 3em;  
+            font-size: 1.2em;  
+          }  
+        }  
+
+        &:focus {  
+          transform: translate3d(0, 0, 0);  
+          box-shadow: 0 0 0 100em rgba(0, 0, 0, 0.6);  
+
+          .smartphone-menu-trigger {  
+            pointer-events: none;  
+          }  
         }  
       }  
     }  
   }  
-}
+}  
