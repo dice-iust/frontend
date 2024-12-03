@@ -45,8 +45,8 @@ const MyRate = () => {
         fetchData();  
     }, []);  
   
-    const filledStarstrip = Math.min(Math.max(1, 0), 5); 
-  
+    const filledStarstrip_pay = Math.min(Math.max(1, 0), 5); 
+    const filledStarstrip_travel= Math.min(Math.max(1, 0), 5);  
  
   
     return (  
@@ -93,8 +93,9 @@ const MyRate = () => {
         </div>
         <hr width="100%" size="2"/>
         <br/>
-
-        <div className="tour-list-container2">  
+        <h2 style={{color:"#22487a",textAlign:"center"}}>Your rate in each trip</h2>  
+        <br/>    
+        <div className="tour-list-container2-rate">  
                 {datafuture && datafuture.length>=1 ? (  
                     <div className="tour-list2">  
                         {datafuture.map((tour) => (  
@@ -118,23 +119,33 @@ const MyRate = () => {
                                 </div>  
                                 <div className="tour-info2">  
                                     <p className="tour-meta3">  
-                                        <span className="tour-name2">{tour.travel_is.name}</span>  
+                                        <span className="tour-name2" style={{fontSize:"20px",fontWeight:"bold"}}>{tour.travel_is.name}</span>  
                                         {/* <div className={`trip-type2 ${tour.travel_is.mode}`}>  
                                             <GrMoney aria-hidden="true" />{" "}  
                                             {tour.travel_is.mode.charAt(0).toUpperCase() + tour.travel_is.mode.slice(1)}  
                                         </div>   */}
                                     </p>  
                                     <div className="tour-details2">  
-                                        {/* <p className="tour-route2">  
-                                            <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>  
-                                        </p>   */}
+                                        <p className="tour-route2" style={{marginTop:"9px",marginRight:"16px",fontSize:"16px",fontWeight:"bold",color:"#22487a"}}>  
+                                            Well-Travel rate :    
+                                            {/* <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>   */}
+                                        </p>  
                                         <div className="star-rating">  
                                         {[...Array(5)].map((_, index) => (  
-                                            <span key={index} className={`fa fa-star ${index < filledStarstrip ? 'checked' : ''}`}></span>  
+                                            <span key={index} className={`fa fa-star ${index < filledStarstrip_travel ? 'checked' : ''}`}></span>  
                                         ))}  
                                         </div>  
                                     </div>  
-                                    <div className="tour-meta7">  
+                                    <div className="tour-details2">  
+                                        <p className="tour-route2" style={{marginTop:"9px",marginRight:"30px",fontSize:"16px",fontWeight:"bold",color:"#22487a"}}>  
+                                            Good-Pay rate :    
+                                            {/* <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>   */}
+                                        </p>  
+                                        <div className="star-rating">  
+                                        {[...Array(5)].map((_, index) => (  
+                                            <span key={index} className={`fa fa-star ${index < filledStarstrip_pay ? 'checked' : ''}`}></span>  
+                                        ))}  
+                                        </div> 
                                         {/* <p className="tour-dates2">  
                                             <FaRegCalendar className='moveicon3' />  
                                             <span>{formatDate(tour.travel_is.start_date)}</span>  
