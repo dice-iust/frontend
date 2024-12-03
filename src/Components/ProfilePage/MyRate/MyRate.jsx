@@ -19,7 +19,6 @@ const MyRate = () => {
         fetchRating();  
     }, []); // Run effect only once when component mounts  
 
-    // Clamp rating between 0 and 5 (ensure it's valid)  
     const normalizedRating = Math.min(Math.max(2, 0), 5);  
 
     return (  
@@ -65,7 +64,59 @@ const MyRate = () => {
             </div>  
         </div>
         <hr width="100%" size="2"/>
-   
+        <div className="tour-list-container2">  
+                {datafuture && datafuture.length>=1 ? (  
+                    <div className="tour-list2">  
+                        {datafuture.map((tour) => (  
+                            <div key={tour.travel_is.Id} className="tour-card2">  
+                                <div className="tour-image-container2">  
+                                    <img  
+                                        src={tour.travel_is.image_url}  
+                                        alt={`Image of ${tour.name}`}  
+                                        className="tour-image2"  
+                                    />  
+                                    {tour.travel_is.admin && (  
+                                        <div className="tour-admin2">  
+                                            <img  
+                                                src={tour.travel_is.admin.phrofile_image}   
+                                                alt={`Profile of ${tour.travel_is.admin.user_name}`}  
+                                                className="admin-photo2"  
+                                            />  
+                                            {tour.travel_is.admin.user_name}   
+                                        </div>  
+                                    )}  
+                                </div>  
+                                <div className="tour-info2">  
+                                    <p className="tour-meta3">  
+                                        <span className="tour-name2">{tour.travel_is.name}</span>  
+                                        <div className={`trip-type2 ${tour.travel_is.mode}`}>  
+                                            <GrMoney aria-hidden="true" />{" "}  
+                                            {tour.travel_is.mode.charAt(0).toUpperCase() + tour.travel_is.mode.slice(1)}  
+                                        </div>  
+                                    </p>  
+                                    <div className="tour-details2">  
+                                        <p className="tour-route2">  
+                                            <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>  
+                                        </p>  
+                                    </div>  
+                                    <div className="tour-meta7">  
+                                        <p className="tour-dates2">  
+                                            <FaRegCalendar className='moveicon3' />  
+                                            <span>{formatDate(tour.travel_is.start_date)}</span>  
+                                        </p>  
+                                        <p className="tour-length2" style={{ textAlign: "left" }}>  
+                                            <FaUndoAlt className='moveicon3' />  
+                                            {formatDate(tour.travel_is.end_date)}  
+                                        </p>  
+                                    </div>   
+                                </div>  
+                            </div>  
+                        ))}  
+                    </div>  
+                ) : (  
+                    <p>You have no future trips!</p>  
+                )}    
+            </div>       
         </div>
     );  
 };  
