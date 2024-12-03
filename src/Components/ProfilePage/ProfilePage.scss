@@ -27,6 +27,7 @@ $icon-url-settings: "#{$icon-url-base}/tools.svg";
     
 
     .menu {  
+      width: auto;
       background: $color-2nd;  
       height: 100vh;  
       width: $menu-width-desktop;  
