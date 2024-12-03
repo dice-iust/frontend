@@ -16,12 +16,13 @@ const ForgotPassword = () => {
     const [errorMessageVerification, setErrorMessageVerification] = useState('');  
     const [loading, setLoading] = useState(false);  
     const [showFields, setShowFields] = useState(false);  
+    const [successMessage, setSuccessMessage] = useState('');  
 
     const validateEmail = (email) => {  
         const emailRegex = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;  
         return emailRegex.test(email);  
     };  
-    
+
     const validatePassword = (password) => {  
         const minLength = 6;  
         const hasLetter = /[a-zA-Z]/.test(password);  
@@ -32,31 +33,9 @@ const ForgotPassword = () => {
     const handleChangeEmail = (e) => {  
         setEmail(e.target.value);  
         setError('');  
-    };    
+    };  
 
-    const handleResetPassword = async (e) => {  
-        e.preventDefault();  
-        setLoading(true);  
-
-        if (!validateEmail(email)) {  
-            setError('Invalid email. Please enter an email as name@email.com');  
-            setLoading(false);  
-            return;   
-        }  
-    
-        try {  
-            const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-request/', { email });  
-            setShowFields(true);  
-            setSavedEmail(email);    
-            setError('');   
-        } catch (err) {  
-            console.error(err);  
-            setError('There is no account registered with this email. Edit your email.');  
-        } finally {  
-            setLoading(false);  
-        }  
-    };    
-
+    // New handlers added here for verification code, new password and confirm password  
     const handleVerificationCodeChange = (e) => {  
         setVerificationCode(e.target.value);  
         setErrorMessageVerification('');  
@@ -72,64 +51,109 @@ const ForgotPassword = () => {
         setErrorMessageConfirm('');  
     };  
 
+    const handleResetPassword = async (e) => {  
+        e.preventDefault();  
+        setLoading(true);  
+
+        if (!validateEmail(email)) {  
+            setError('Invalid email. Please enter a valid email address.');  
+            setLoading(false);  
+            return;  
+        }  
+
+        try {  
+            const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-request/', { email });  
+            setShowFields(true);  
+            setSavedEmail(email);  
+            setError('');  
+        } catch (err) {  
+            console.error(err);  
+            const errorMessage = err.response && err.response.data && err.response.data.message   
+                ? err.response.data.message   
+                : 'There is no account registered with this email. Edit your email.';  
+            setError(errorMessage);  
+        } finally {  
+            setLoading(false);  
+        }  
+    };  
+
     const handleSubmitVerification = async (e) => {  
         e.preventDefault();  
-
-        // Validate input  
-        if (!validatePassword(newPassword)) {  
-            setErrorMessagePassword('Password must be at least 6 characters long and contain both letters and numbers.');  
-            return;  
-        }  
-
-        if (newPassword !== confirmPassword) {  
-            setErrorMessageConfirm('Passwords do not match.');  
-            return;  
-        }  
-
-        if (verificationCode.length !== 6 || !/^\d+$/.test(verificationCode)) {  
-            setErrorMessageVerification('Please enter a valid 6-digit verification code.');  
-            return;  
-        }  
-
-        setLoading(true);  
-        try {   const verifyResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', { email: savedEmail, verificationCode });  
-
-        if (verifyResponse.data.success) {  
-            // Step 2: If the verification code is valid, proceed to change the password  
-            const resetResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', {  
-                email: savedEmail,  
-                password: newPassword  
-            });  
-
-            if (resetResponse.data.success) {  
-                alert('Password reset successfully!');  
-                window.location.href = '/login';  
-            } else {  
-                alert('Failed to reset password: ' + (resetResponse.data.message || 'Please try again.'));  
-            }  
-        } else {  
-            setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
-        }  
-    } catch (error) {  
-        console.error(error);  
-        alert('Failed to reset password, please try again.');  
-    } finally {  
-        setLoading(false);  
-    }  
-};  
-
-// Handle back to email state  
-const handleBackToEmail = () => {  
-    setShowFields(false);  
-    setEmail('');  
-    setVerificationCode('');  
-    setNewPassword('');  
-    setConfirmPassword('');  
+        setErrorMessageVerification('');  
     setErrorMessagePassword('');  
     setErrorMessageConfirm('');  
-    setErrorMessageVerification('');  
-    setError('');  
-};  
+
+    // Create an array to collect error messages  
+    const errors = [];  
+
+    // Check for valid verification code format  
+    if (verificationCode.length !== 6 || !/^\d+$/.test(verificationCode)) {  
+        errors.push('Please enter a valid 6-digit verification code.');  
+    }  
+
+    // Validate new password  
+    if (!validatePassword(newPassword)) {  
+        errors.push('Password must be at least 6 characters long and contain both letters and numbers.');  
+    }  
+
+    // Confirm passwords match  
+    if (newPassword !== confirmPassword) {  
+        errors.push('Passwords do not match.');  
+    }  
+
+    // If there are any errors, set them as needed and stop further execution  
+    if (errors.length > 0) {  
+        // Set appropriate error messages based on checks  
+        setErrorMessageVerification(errors.filter(error =>   
+            error.includes('verification code')).join(' '));  
+        setErrorMessagePassword(errors.filter(error =>   
+            error.includes('Password must')).join(' '));  
+        setErrorMessageConfirm(errors.filter(error =>   
+            error.includes('Passwords do not match')).join(' '));  
+        return; // Stop further execution if there are errors  
+    } 
+
+        setLoading(true);  
+        try {  
+            const verifyResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', {  
+                email: savedEmail,  
+                reset_code: verificationCode,  
+                new_password: newPassword  
+            });  
+
+            if (verifyResponse.data.success) {  
+                setSuccessMessage('Password reset successfully!\n Wait for a sec.');  
+                setTimeout(() => {  
+                    window.location.href = '/login'; // Redirect after success  
+                }, 2000); // Redirect after success  
+            } else {  
+                setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
+            }  
+        } catch (error) {  
+            console.error(error);  
+            const errorMessage = error.response && error.response.data && error.response.data.message   
+                ? error.response.data.message  
+                : 'Failed to reset password, please try again.';  
+                setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
+                // Display an alert if verification fails  
+        } finally {  
+            setLoading(false); // Reset loading state regardless of success or failure  
+        }  
+    };  
+
+    const handleBackToEmail = () => {  
+        setShowFields(false);  
+        setEmail('');  
+        setVerificationCode('');  
+        setNewPassword('');  
+        setConfirmPassword('');  
+        setErrorMessagePassword('');  
+        setErrorMessageConfirm('');  
+        setErrorMessageVerification('');  
+        setError('');  
+        setSuccessMessage(''); // Clear success message when going back  
+    };  
+
     return (  
         <div className="forgot">  
             <div className="title-forgots">  
@@ -152,7 +176,7 @@ const handleBackToEmail = () => {
                             <br /> send you a link to reset your password.  
                         </div>  
                         <div className="container-forgot">  
-                            {error && <div className="error-message"><FiInfo className="moveaicon-forgot"/> {error}</div>}  
+                            {error && <div className="error-message"><FiInfo className="moveaicon-forgot" /> {error}</div>}  
                             <label className="email-text">Email</label>  
                             <div className="input-box-forgot">  
                                 <input  
@@ -162,79 +186,78 @@ const handleBackToEmail = () => {
                                     aria-label="Email"  
                                     value={email}  
                                     onChange={handleChangeEmail}  
-                                    className="input-forgot"   
+                                    className="input-forgot"  
                                 />  
                             </div>  
                             <button type="button" className="button-forgot" onClick={handleResetPassword} disabled={loading}>  
                                 {loading ? 'Sending...' : 'Reset Password'}  
                             </button>  
-                        </div>    
+                        </div>  
                         <div className="container-forgot2">  
                             <label className="back-text">Back to</label>  
-                            <a href="/login" className="login-link">Login</a>   
+                            <a href="/login" className="login-link">Login</a>  
                         </div>  
                     </>  
                 ) : (  
                     <form onSubmit={handleSubmitVerification}>  
                         <a href="" onClick={handleBackToEmail} className="back-link">&lt; Back</a>  
                         <div className="title-forgot1">Reset your Password</div>  
-
-                        <div className="title-reset-password">We've sent you verification code.Check your inbox.</div>
+                        <div className="title-reset-password">We've sent you a verification code. Check your inbox.</div>  
                         <div className="changepass-image-container"></div>  
-                        
-                            <label className="forgot-text">VERIFICATION CODE</label>  
-                            <div className="input-box-forgot">  
-                                <FaKey className='icon-forgot' />  
-                                <input  
-                                    type="text"  
-                                    placeholder="Enter 6-digit code"  
-                                    value={verificationCode}  
-                                    onChange={handleVerificationCodeChange}  
-                                    className="input-forgot"  
-                                />  
-                            </div>  
-                            {errorMessageVerification && (  
-                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '1px' }}>  
-                                    {errorMessageVerification}  
-                                </span>  
-                            )}  
+                        {successMessage && <div className="success-message">{successMessage}</div>}  
 
-                            <label className="forgot-text">NEW PASSWORD</label>  
-                            <div className="input-box-forgot">  
-                                <FaLock className='icon-forgot' />  
-                                <input  
-                                    type="password"  
-                                    placeholder="New Password"  
-                                    value={newPassword}  
-                                    onChange={handlePasswordChange}  
-                                    className="input-forgot"
-                                    required  
-  
-                                />  
-                            </div>  
-                            {errorMessagePassword && (  
-                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
-                                    {errorMessagePassword}  
-                                </span>  
-                            )}  
+                        <label className="forgot-text">VERIFICATION CODE</label>  
+                        <div className="input-box-forgot">  
+                            <FaKey className='icon-forgot' />  
+                            <input  
+                                type="text"  
+                                placeholder="Enter 6-digit code"  
+                                value={verificationCode}  
+                                onChange={handleVerificationCodeChange}  
+                                className="input-forgot"  
+                            />  
+                        </div>  
+                        {errorMessageVerification && (  
+                            <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                                {errorMessageVerification}  
+                            </span>  
+                        )}  
 
-                            <label className="forgot-text">CONFIRM PASSWORD</label>  
-                            <div className="input-box-forgot">  
-                                <FaLock className='icon-forgot' />  
-                                <input  
-                                    type="password"  
-                                    placeholder="Confirm Password"  
-                                    value={confirmPassword}  
-                                    onChange={handleConfirmPasswordChange}  
-                                    className="input-forgot"   
-                                    required  
-                                />  
-                            </div>  
-                            {errorMessageConfirm && (  
-                                <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '11px' }}>  
-                                    {errorMessageConfirm}  
-                                </span>  
-                            )}  
+                        <label className="forgot-text">NEW PASSWORD</label>  
+                        <div className="input-box-forgot">  
+                            <FaLock className='icon-forgot' />  
+                            <input  
+                                type="password"  
+                                placeholder="New Password"  
+                                value={newPassword}  
+                                onChange={handlePasswordChange}  
+                                className="input-forgot"  
+                                required  
+                            />  
+                        </div>  
+                        {errorMessagePassword && (  
+                            <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                                {errorMessagePassword}  
+                            </span>  
+                        )}  
+
+                        <label className="forgot-text">CONFIRM PASSWORD</label>  
+                        <div className="input-box-forgot">  
+                            <FaLock className='icon-forgot' />  
+                            <input  
+                                type="password"  
+                                placeholder="Confirm Password"  
+                                value={confirmPassword}  
+                                onChange={handleConfirmPasswordChange}  
+                                className="input-forgot"  
+                                required  
+                            />  
+                        </div>  
+                        {errorMessageConfirm && (  
+                            <span style={{ color: 'red', margin: 'px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                                {errorMessageConfirm}  
+                            </span>  
+                        )}  
 
                         {error && <span className="error-message">{error}</span>}  
                         <button type="submit" className="submit-button" disabled={loading}>  
