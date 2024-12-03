@@ -47,16 +47,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for content depth  
   margin-top: -1px; // Overlap the border of tabs  
 }  
-// .app-container-upcoming{  
-//   display: flex;  
-//   flex-direction: column;  
-//   min-height: 100vh;   
-// }  
-
-// .upcoming {  
-//   text-align: center;  
-//   padding: 2px; 
-//   flex: 1;  
 
   .tour-list-container2 {  
     max-width: 2000px;  
@@ -103,10 +93,11 @@
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
+      width: calc(32.5% - 2px);; /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
+      margin-bottom: 5px;
       border: 2px solid rgba(34, 72, 122, 0.5);  
 
       

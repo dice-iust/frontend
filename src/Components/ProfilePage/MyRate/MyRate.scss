@@ -216,10 +216,11 @@ hr.new1 {
     background: white;  
     border-radius: 10px;  
     overflow: hidden;  
-    width: calc(32.7% - 2px);; /* Three cards per row with consistent gap */  
+    width: calc(32.5% - 2px);; /* Three cards per row with consistent gap */  
     height: 300px;   
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
+    margin-bottom: 5px;
     border: 2px solid rgba(34, 72, 122, 0.5);  
 
     
@@ -285,7 +286,16 @@ hr.new1 {
       align-items: center;  
       margin-bottom: 0px;  
       margin-top: 0px;  
-
+      .star-rating {  
+        .fa-star {  
+          color: gray; // Default star color  
+          font-size: 24px; // Adjust the size as needed  
+          margin-right: 5px; // Space between stars  
+          &.checked {  
+            color: orange; // Color for filled stars  
+          }  
+        }  
+      }  
       .tour-route2 {  
         display: flex;  
         align-items: center;  
@@ -407,9 +417,6 @@ hr.new1 {
 }
 
 
-
-}
-
 @media (max-width: 1200px) {  
   .tour-card2 {  
     width: calc(50% - 0px); /* Two cards per row on medium screens */  
@@ -474,3 +481,5 @@ hr.new1 {
   }  
 }
 }  
+
+}

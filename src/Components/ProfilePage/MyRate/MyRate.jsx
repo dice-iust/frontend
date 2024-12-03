@@ -45,25 +45,9 @@ const MyRate = () => {
         fetchData();  
     }, []);  
   
-    const formatDate = (dateString) => {  
-        const [year, month, day] = dateString.split('-');  
-        return `${year}/${month}/${day}`;  
-    };  
+    const filledStarstrip = Math.min(Math.max(1, 0), 5); 
   
-    const getTransportationIcon = (transportation) => {  
-        switch (transportation.toLowerCase()) {  
-            case 'train':  
-                return <TbTrain className="moveicon2" />;  
-            case 'bus':  
-                return <TbBus className="moveicon2" />;  
-            case 'plane':  
-                return <FaPlane className="moveicon2" />;  
-            case 'car':  
-                return <FaCarSide className="moveicon2"/>;  
-            default:  
-                return null;  
-        }  
-    };  
+ 
   
     return (  
         <div className="rate">
@@ -108,6 +92,8 @@ const MyRate = () => {
             </div>  
         </div>
         <hr width="100%" size="2"/>
+        <br/>
+
         <div className="tour-list-container2">  
                 {datafuture && datafuture.length>=1 ? (  
                     <div className="tour-list2">  
@@ -133,32 +119,37 @@ const MyRate = () => {
                                 <div className="tour-info2">  
                                     <p className="tour-meta3">  
                                         <span className="tour-name2">{tour.travel_is.name}</span>  
-                                        <div className={`trip-type2 ${tour.travel_is.mode}`}>  
+                                        {/* <div className={`trip-type2 ${tour.travel_is.mode}`}>  
                                             <GrMoney aria-hidden="true" />{" "}  
                                             {tour.travel_is.mode.charAt(0).toUpperCase() + tour.travel_is.mode.slice(1)}  
-                                        </div>  
+                                        </div>   */}
                                     </p>  
                                     <div className="tour-details2">  
-                                        <p className="tour-route2">  
+                                        {/* <p className="tour-route2">  
                                             <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>  
-                                        </p>  
+                                        </p>   */}
+                                        <div className="star-rating">  
+                                        {[...Array(5)].map((_, index) => (  
+                                            <span key={index} className={`fa fa-star ${index < filledStarstrip ? 'checked' : ''}`}></span>  
+                                        ))}  
+                                        </div>  
                                     </div>  
                                     <div className="tour-meta7">  
-                                        <p className="tour-dates2">  
+                                        {/* <p className="tour-dates2">  
                                             <FaRegCalendar className='moveicon3' />  
                                             <span>{formatDate(tour.travel_is.start_date)}</span>  
                                         </p>  
                                         <p className="tour-length2" style={{ textAlign: "left" }}>  
                                             <FaUndoAlt className='moveicon3' />  
                                             {formatDate(tour.travel_is.end_date)}  
-                                        </p>  
+                                        </p>   */}
                                     </div>   
                                 </div>  
                             </div>  
                         ))}  
                     </div>  
                 ) : (  
-                    <p>You have no future trips!</p>  
+                    <p>You have no trips yet!</p>  
                 )}    
             </div>       
         </div>
