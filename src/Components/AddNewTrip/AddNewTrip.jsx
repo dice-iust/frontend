@@ -10,6 +10,7 @@ import pic from "./assets/Screenshot 2024-12-02 230554.png";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 
+
 const AddNewTrip = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [success, setsuccess] = useState(null);
@@ -155,6 +156,9 @@ const AddNewTrip = () => {
                 setImage(null); 
                 setSelectedImage(null);
                 setErrors({}); 
+                setTimeout(() => {  
+                    setsuccess(null);  
+                }, 3000);
             } 
             if (response.status === 200 ) {  
                 
@@ -204,7 +208,8 @@ const AddNewTrip = () => {
                             style={{ display: 'none' }}  
                         />  
                     </div>  
-                
+
+                                        
                     
                     <div className="trip-state">   
                         <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>  
@@ -251,7 +256,16 @@ const AddNewTrip = () => {
                         </div>  
                     </div>  
                 </div>  
+                <div className="success">   
+                        {success && (   
+                            <p>  
+                                <span className="tripadded">{success}</span>   
+                            </p>  
+                        )}  
+                    </div>  
             </div>
+
+            
 
             
                 <div className="flex-container">  
