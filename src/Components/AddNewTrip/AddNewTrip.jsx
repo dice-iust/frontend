@@ -147,7 +147,7 @@ const AddNewTrip = () => {
         <div className='addtrip'>
         <div className='newtrip'>
                 <form onSubmit={handleAddTrip}>
-                <h1 className="t-name">Create New Trip</h1>
+                <h1 className="t-title">Create New Trip</h1>
 
                 <div className="trip-status-state-wrapper">  
                 <div className='image-container'>  
@@ -190,7 +190,7 @@ const AddNewTrip = () => {
                         </RadioGroup>  
                         {errors.state && <FormHelperText error>{errors.state}</FormHelperText>}  
 
-                        {/* Place the status section here, inside trip-state */}  
+                        
                         <div className="trip-status">  
                             <FormLabel component="legend" style={{ marginBottom: '0px' }}>Status</FormLabel>  
                             <RadioGroup  
@@ -220,10 +220,10 @@ const AddNewTrip = () => {
                 <div className="flex-container">  
                     <FormLabel component="legend">Trip Information</FormLabel>  
                 </div>  
-                <div className="trip-name">  
+                <div className="trip-title">  
                     <TextField  
                         value={tripData.name}  
-                        label="name"  
+                        label="Title"  
                         variant="outlined"  
                         name="name"  
                         onChange={handleChange}  
