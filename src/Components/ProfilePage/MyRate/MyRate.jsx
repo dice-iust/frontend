@@ -61,8 +61,8 @@ const MyRate = () => {
                   headers: { Authorization: localStorage.getItem("token") },  
                 });   
                 setDatafuture(response.data.rates);
-                console.log(response.data);  
-                console.log(datafuture);
+                // console.log(response.data.rates);  
+                // console.log(datafuture.rates);
             } catch (error) {  
                 console.error("Error fetching data:", error);  
             }  
@@ -82,8 +82,7 @@ const MyRate = () => {
         };  
         fetchData_photo();  
     }, []);   
-    const filledStarstrip_pay = Math.min(Math.max(1, 0), 5); 
-    const filledStarstrip_travel= Math.min(Math.max(2, 0), 5);  
+
  
   
     const normalizedRating_overall = Math.min(Math.max(2, 0), 5);   
@@ -176,7 +175,7 @@ const MyRate = () => {
                                 <div className="tour-image-container2">  
                                     <img  
                                         src={tour.travel_is.image_url}  
-                                        alt={`Image of ${tour.name}`}  
+                                        alt={`Image of ${tour.travel_is.name}`}  
                                         className="tour-image2"  
                                     />  
                                     {tour.travel_is.admin && (  
@@ -205,7 +204,7 @@ const MyRate = () => {
                                         </p>  
                                         <div className="star-rating">  
                                         {[...Array(5)].map((_, index) => (  
-                                            <span key={index} className={`fa fa-star ${index < filledStarstrip_travel ? 'checked' : ''}`}></span>  
+                                            <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.sleep_rate, 0), 5) ? 'checked' : ''}`}></span>  
                                         ))}  
                                         </div>  
                                     </div>  
@@ -216,7 +215,7 @@ const MyRate = () => {
                                         </p>  
                                         <div className="star-rating">  
                                         {[...Array(5)].map((_, index) => (  
-                                            <span key={index} className={`fa fa-star ${index < filledStarstrip_pay ? 'checked' : ''}`}></span>  
+                                            <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.money_rate, 0), 5) ? 'checked' : ''}`}></span>  
                                         ))}  
                                         </div> 
                                         {/* <p className="tour-dates2">  
