@@ -9,11 +9,14 @@ import "./AddNewTrip.scss";
 import pic from "./assets/Screenshot 2024-12-02 230554.png";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { GiConfirmed } from "react-icons/gi";
+import dayjs from 'dayjs';
+
 
 
 const AddNewTrip = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [success, setsuccess] = useState("Trip added successfully!");
+    const today = dayjs()
+    const [success, setsuccess] = useState(null); 
     const [tripData, setTripData] = useState({
         picture: '',
         name: '',
@@ -354,6 +357,8 @@ const AddNewTrip = () => {
                                 required  
                                 value={tripData.startDate}  
                                 label="Start Date"  
+                                minDate={today}
+                                maxDate={tripData.endDate? tripData.endDate :  undefined }
                                 slotProps={{  
                                     textField: {  
                                         error: !!errors.startDate,  
@@ -371,6 +376,7 @@ const AddNewTrip = () => {
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
                             <DatePicker  
                                 value={tripData.endDate}  
+                                minDate={tripData.startDate ? tripData.startDate : dayjs()}
                                 label="End Date"  
                                 slotProps={{  
                                     textField: {  
