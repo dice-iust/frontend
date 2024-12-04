@@ -40,11 +40,13 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         width: 100%;   
     
         .smaller-image {  
-            width: 150px;         
+            width: 154px;  
+            height : 136px;       
             border-radius: 10px;  
             object-fit: cover;  
             margin-bottom: 10px;    
-            margin-right: 40px;       
+            margin-right: 40px; 
+            object-fit: contain;      
         }  
     
         .button-container {  

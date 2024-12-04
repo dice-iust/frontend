@@ -11,6 +11,7 @@ import { MdAddPhotoAlternate } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 
 const AddNewTrip = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
     const [tripData, setTripData] = useState({
         picture: '',
         title: '',
@@ -73,19 +74,31 @@ const AddNewTrip = () => {
         validateField(name, value);  // Validate the field on change
     };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setImage(file);
-            setTripData({ ...tripData, picture: URL.createObjectURL(file) });
-        }
-    };
+    const handleFileChange = (event) => {  
+        const file = event.target.files[0];  
+        if (file) {  
+            setImage(file);    
+      
+            setTripData((prevTripData) => ({  
+                ...prevTripData,  
+                picture: URL.createObjectURL(file)   
+            }));  
+    
+            const reader = new FileReader();  
+            reader.onloadend = () => {  
+                setSelectedImage(reader.result);    
+            };  
+    
+            reader.readAsDataURL(file); 
+        }  
+    };  
 
     const validateForm = () => {
         const newErrors = {};
         Object.keys(tripData).forEach((key) => {
             if (!tripData[key] && key !== 'picture') {
                 newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+             
             }
         });
         setErrors(newErrors);
@@ -138,7 +151,11 @@ const AddNewTrip = () => {
 
                 <div className="trip-status-state-wrapper">  
                 <div className='image-container'>  
-                    <img src={pic} alt="Description of Image" className="smaller-image" />  
+                    <img   
+                        src={selectedImage || pic}   
+                        alt="Description of Image"   
+                        className="smaller-image"   
+                    />  
                     <div className="button-container">  
                         <label htmlFor="file-upload" className="file-upload-button">  
                             <MdAddPhotoAlternate className='moveiconpic' />  
@@ -147,8 +164,10 @@ const AddNewTrip = () => {
                             type="file"   
                             id="file-upload"   
                             onChange={handleFileChange}   
+                            style={{ display: 'none' }}  
                         />  
                     </div>  
+                
                     
                     <div className="trip-state">   
                         <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>  
