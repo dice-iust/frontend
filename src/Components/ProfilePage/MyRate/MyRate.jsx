@@ -12,12 +12,13 @@ import { FaRegCalendar } from "react-icons/fa6";
 import goodPayImg from '../Assests/goodpay.png'; // Assuming correct path for the image  
 import OverallImg from '../Assests/overall.png'; // Assuming correct path for the image 
 import wellTraveled from '../Assests/welltravel.png' 
-const mytravels_URL = 'mytravels';  
 
+const myrate_URL = 'travels/myrate/';  
+const mytravels_URL = 'mytravels'; 
 const MyRate = () => {  
     const [rating, setRating] = useState(0); // Initialize state for the rating  
     const [datafuture, setDatafuture] = useState(null);
-
+    const [dataphoto, setDataphoto] = useState(null);
     const [rating_good_payed, setRating_good_payed] = useState(0);  
     const [rating_well_travelled, setRating_well_travelled] = useState(0);  
 
@@ -40,10 +41,10 @@ const MyRate = () => {
     useEffect(() => {  
         const fetchData = async () => {  
             try {  
-                const response = await axios.get(mytravels_URL, {  
+                const response = await axios.get(myrate_URL, {  
                   headers: { Authorization: localStorage.getItem("token") },  
                 });   
-                setDatafuture(response.data.future);
+                setDatafuture(response.data.rates);
                 console.log(response.data);  
                 console.log(datafuture);
             } catch (error) {  
@@ -52,9 +53,21 @@ const MyRate = () => {
         };  
         fetchData();  
     }, []);  
-  
+    useEffect(() => {  
+        const fetchData_photo = async () => {  
+            try {  
+                const response = await axios.get(mytravels_URL, {  
+                  headers: { Authorization: localStorage.getItem("token") },  
+                });   
+                setDataphoto(response.data.photo);
+            } catch (error) {  
+                console.error("Error fetching data:", error);  
+            }  
+        };  
+        fetchData_photo();  
+    }, []);   
     const filledStarstrip_pay = Math.min(Math.max(1, 0), 5); 
-    const filledStarstrip_travel= Math.min(Math.max(1, 0), 5);  
+    const filledStarstrip_travel= Math.min(Math.max(2, 0), 5);  
  
   
     const normalizedRating_overall = Math.min(Math.max(2, 0), 5);   
@@ -204,7 +217,12 @@ const MyRate = () => {
                         ))}  
                     </div>  
                 ) : (  
-                    <p>You have no trips yet!</p>  
+                    <div style={{ textAlign: "center"}}> 
+                    <br/> 
+                    <p style={{ fontWeight: "bold", fontSize: "20px"}}>You have no current trips!</p>  
+                        <img src={dataphoto} alt="No trips" />  
+
+                    </div>
                 )}    
             </div>       
         </div>

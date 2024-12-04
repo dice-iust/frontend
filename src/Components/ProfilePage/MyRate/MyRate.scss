@@ -469,21 +469,7 @@ hr.new1 {
 }
 
 
-@media (max-width: 1200px) {  
-  .tour-card2 {  
-    width: calc(50% - 0px); /* Two cards per row on medium screens */  
-  }  
-  .tour-meta7
-    {
-      font-size:0.9em;
-    } 
 
-    .tour-meta3 
-    {
-      font-size: 0.9em;
-    }
-    
-}  
 
 @media (max-width: 1200px) {  
   .tour-card2 {  
@@ -533,24 +519,9 @@ hr.new1 {
 }  
 
 @media (max-width: 480px) {  
-  
-  .tour-info2 {  
-    .tour-name2 {  
-      font-size: 0.8em;  
-    }   
-
-    .tour-meta3 .trip-type2 {  
-      padding: 2px 6px;  
-      font-size: 0.8em;  
-    }  
-  }  
-}
-}  
-
-}
   .circle {  
-      width: 80%; /* Further adjust size for mobile */  
-  }  
+    width: 80%; /* Further adjust size for mobile */  
+}  
 
   .rate-title,  
   .rating-number {  
@@ -568,5 +539,20 @@ hr.new1 {
   .box {  
       margin: 10px 0; /* Margin for vertical spacing */  
       width: 100%; /* Full width for stacked boxes */  
+  }    
+  .tour-info2 {  
+    .tour-name2 {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta3 .trip-type2 {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
   }  
+}
+}  
+
+}
+
 }  
