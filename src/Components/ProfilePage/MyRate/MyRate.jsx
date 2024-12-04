@@ -60,7 +60,7 @@ const MyRate = () => {
                 const response = await axios.get(myrate_URL, {  
                   headers: { Authorization: localStorage.getItem("token") },  
                 });   
-                setDatafuture(response.data.rates);
+                setDatafuture(Object.values(response.data.rates));
                 // console.log(response.data.rates);  
                 // console.log(datafuture.rates);
             } catch (error) {  
