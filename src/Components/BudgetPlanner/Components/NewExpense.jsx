@@ -1,4 +1,4 @@
-import React from 'react';  
+import React, { useState } from 'react';  
 import './NewExpense.scss'; // Ensure to import your CSS file  
 import BudgetPlanner from '../assets/budget-planner.png';  
 import tripImg from '../assets/trip_iamge.jpg'; // Ensure this path is correct  
@@ -6,6 +6,11 @@ import headerImg from '../assets/photo-back.png';
 import Expenseuserlist from "./ExpenseUserList";
 
 const BudgetPlanner2 = () => {  
+  const [isOpen, setIsOpen] = useState(false);  
+
+    const toggleMenu = () => {  
+        setIsOpen(!isOpen);  
+    }; 
   return (  
     <div className="budget-planner">  
       <div className="planner-box">  
@@ -20,16 +25,18 @@ const BudgetPlanner2 = () => {
             <img src={tripImg} alt="trip" className="trip-planner-image" />  
           </div>  
         </div> 
-        <div class="filter-btn">  
-          <a id="one" href="#"><i class="ion-ios-checkmark-outline"></i> Balance</a>  
-          <a id="two" href="#"><i class="ion-ios-alarm-outline"></i> Expenses</a>  
-          <a id="three" href="#"><i class="ion-ios-heart-outline"></i> Add Item</a>  
-          <a id="all" href="#"><i class="ion-ios-star-outline"></i> All</a>  
-          <span class="toggle-btn ion-android-funnel"></span>  
+        <div className={`filter-btn ${isOpen ? 'open' : ''}`}>  
+            <span className="toggle-btn ion-android-funnel" onClick={toggleMenu}></span>  
+            <a href="#" className="option">Balances</a>  
+            <a href="#" className="option">add</a>  
+            <a href="#" className="option">expense</a>  
         </div> 
       <Expenseuserlist/>
+      
       </div>  
+     
     </div>  
+    
   );  
 };  
 

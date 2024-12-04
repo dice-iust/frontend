@@ -81,92 +81,97 @@
     border-radius: 50%;  
     object-fit: cover; 
   }  
-  .filter-btn {
-    position: absolute;
-    z-index: 2;
-    top: 10%;
-    right: 10%;
-    width: 40px;
-    height: 40px;
-    transition: all 0.4s ease-in-out;
-  }
-  
-  .filter-btn span {
-    width: 40px;
-    height: 40px;
-    background: #FA396B;
-    display: block;
-    position: absolute;
-    right: 25px;
-    top: -46px;
-    text-align: center;
-    color: #fff;
-    line-height: 40px;
-    border-radius: 50%;
-    font-size: 22px;
-    z-index: 999;
-  }
-  
-  span.toggle-btn.ion-android-funnel:hover {
-    cursor: pointer;
-  }
-  
-  .filter-btn a {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    right: 25px;
-    display: block;
-    top: -46px;
-    color: #fff;
-    z-index: 99;
-    font-size: 22px;
-    transition: all 0.4s cubic-bezier(.68, 1, .265, 1);
-  }
-  
-  .filter-btn:after {
-    height: 170px;
-    width: 170px;
-    content: "\f38b";
-    background-color: #FA396B;
-    position: absolute;
-    top: -110px;
-    right: -40px;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .filter-btn.open span.toggle-btn.ion-android-funnel {
-    background-color: #DE3963;
-  }
-  
-  .filter-btn.open .ion-android-funnel:before {
-    content: "\f2d7";
-  }
-  
-  .filter-btn.open:after {
-    transform: scale(1);
-  }
-  
-  .filter-btn.open a:nth-child(1) {
-    transform: translate(9px, -62px);
-  }
-  
-  .filter-btn.open a:nth-child(2) {
-    transform: translate(-50px, -34px);
-  }
-  
-  .filter-btn.open a:nth-child(3) {
-    transform: translate(-56px, 25px);
-  }
-  
-  .filter-btn.open a:nth-child(4) {
-    transform: translate(5px, 61px);
-  }
   
   
 
+
+    // CircleMenu.scss  
+
+
+  .filter-btn {  
+    position: absolute;  
+    z-index: 2;  
+    right: 0; 
+    right: 10%; 
+    top:10%;
+    width: 40px;  
+    height: 40px;  
+    transition: all 0.4s ease-in-out;  
+}  
+
+.filter-btn span {  
+    width: 40px;  
+    height: 40px;  
+    background: #FA396B;  
+    display: block;  
+    position: relative;  
+    margin: 0 auto;
+    right: 25px;  
+    top: -46px;  
+    text-align: center;  
+    color: #fff;  
+    line-height: 40px;  
+    border-radius: 50%;  
+    font-size: 22px;  
+    z-index: 999;  
+    cursor: pointer; /* Show pointer cursor */  
+}  
+
+.filter-btn a {  
+    position: absolute;  
+    width: 40px;  
+    height: 40px;  
+    line-height: 40px;  
+    text-align: center;  
+    right: 25px;  
+    display: block;  
+    top: -46px;  
+    color: #fff;  
+    z-index: 99;  
+    font-size: 22px;  
+    transition: all 0.4s cubic-bezier(.68, 1, .265, 1);  
+    opacity: 0;
+    visibility: hidden;
+}  
+
+.filter-btn:after {  
+    height: 170px;  
+    width: 170px;  
+    content: "";  
+    background-color: #FA396B;  
+    position: absolute;  
+    top: -110px;  
+    right: -40px;  
+    border-radius: 50%;  
+    transform: scale(0);  
+    transition: all 0.3s ease-in-out;  
+}  
+
+.filter-btn.open span {  
+    background-color: #DE3963; /* Change color when open */  
+}  
+
+.filter-btn.open:after {  
+    transform: scale(1);  
+}  
+.filter-btn.open a {  
+  opacity: 1; /* Show the options */  
+  visibility: visible; /* Make options visible */  
+  transition: all 0.4s ease; /* Smooth transition when shown */  
 }
+
+.filter-btn.open a:nth-child(1) {  
+    transform: translate(9px, -62px);  
+}  
+
+.filter-btn.open a:nth-child(2) {  
+    transform: translate(-50px, -34px);  
+}  
+
+.filter-btn.open a:nth-child(3) {  
+    transform: translate(-56px, 25px);  
+}  
+
+.filter-btn.open a:nth-child(4) {  
+    transform: translate(5px, 61px);  
+}  }
