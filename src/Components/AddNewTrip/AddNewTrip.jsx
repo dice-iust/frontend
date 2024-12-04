@@ -12,6 +12,7 @@ import { IoMdAdd } from "react-icons/io";
 
 const AddNewTrip = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [success, setsuccess] = useState(null);
     const [tripData, setTripData] = useState({
         picture: '',
         name: '',
@@ -25,6 +26,21 @@ const AddNewTrip = () => {
         startingPoint: '',
         state: '',
     });
+    const initialTripData = { 
+        picture: '',
+        name: '',
+        description: '',
+        startDate: null,
+        endDate: null,
+        groupNo: '',
+        status: '',
+        transportation: '',
+        destination: '',
+        startingPoint: '',
+        state: '',
+        selectedImage: null 
+       
+    };  
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState({});
 
@@ -71,7 +87,8 @@ const AddNewTrip = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setTripData({ ...tripData, [name]: value });
-        validateField(name, value);  // Validate the field on change
+        validateField(name, value); 
+         // Validate the field on change
     };
 
     const handleFileChange = (event) => {  
@@ -131,10 +148,30 @@ const AddNewTrip = () => {
                 },
             });
             console.log(response);
-        } catch (error) {
+            if (response.status === 201) {  
+                setsuccess("Trip added successfully!");  
+                console.log(response.data); 
+                setTripData(initialTripData); 
+                setImage(null); 
+                setSelectedImage(null);
+                setErrors({}); 
+            } 
+            if (response.status === 200 ) {  
+                
+                setErrors((prevErrors) => ({  
+                    ...prevErrors,  
+                    name: "This name already exists"    
+                }));  
+                
+            }  
+        } 
+        catch (error) {  
             console.error("Error adding new trip:", error);
         }
+        
     };
+
+    
 
     const handleAddTrip = (e) => {
         e.preventDefault();
@@ -223,13 +260,13 @@ const AddNewTrip = () => {
                 <div className="trip-title">  
                     <TextField  
                         value={tripData.name}  
-                        label="Title"  
+                        label="Name"  
                         variant="outlined"  
                         name="name"  
                         onChange={handleChange}  
                         required  
-                        error={!!errors.name}  
-                        helperText={errors.name}  
+                        error={!!errors.name }  
+                        helperText={errors.name}
                         style={{ marginRight: '20px' }}  
                     />  
                     <TextField  
