@@ -18,6 +18,7 @@ import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
 import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
 import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
+import Tst from './Components/BudgetPlanner/Components/NewExpense.jsx'
 
 
 function App() {  
@@ -40,6 +41,8 @@ function App() {
         <Route path="/Main/Winter" element={<Winter />} /> 
         <Route path="/signup/email_verification" element={<EmailVerification/>} />
         <Route path="/budgetplanner" element={<BudgetPlanner/>} />
+        <Route path="/tst" element={<Tst/>} />
+
       </Routes>  
     </Router>  
   );  
