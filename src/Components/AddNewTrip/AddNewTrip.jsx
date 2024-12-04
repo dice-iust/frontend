@@ -8,12 +8,12 @@ import axios from 'axios';
 import "./AddNewTrip.scss";
 import pic from "./assets/Screenshot 2024-12-02 230554.png";
 import { MdAddPhotoAlternate } from "react-icons/md";
-import { IoMdAdd } from "react-icons/io";
+import { GiConfirmed } from "react-icons/gi";
 
 
 const AddNewTrip = () => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [success, setsuccess] = useState(null);
+    const [success, setsuccess] = useState("Trip added successfully!");
     const [tripData, setTripData] = useState({
         picture: '',
         name: '',
@@ -255,14 +255,15 @@ const AddNewTrip = () => {
                             {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
                         </div>  
                     </div>  
-                </div>  
-                <div className="success">   
+                    <div className="success">   
                         {success && (   
                             <p>  
-                                <span className="tripadded">{success}</span>   
+                                <span className="tripadded"><GiConfirmed />{success}</span>   
                             </p>  
                         )}  
                     </div>  
+                </div>  
+                
             </div>
 
             

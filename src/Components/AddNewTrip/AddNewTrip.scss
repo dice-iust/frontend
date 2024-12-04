@@ -322,3 +322,39 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     }  
 }
 }
+
+.success {  
+    display: flex;                     
+    justify-content: center;          
+    align-items: center;               
+    margin: 40px 45px;                   
+    padding: 7px;                    
+    border: 1px solid #4caf50;        
+    border-radius: 5px;              
+    background-color: #e8f5e9;       
+    color: #2e7d32;                   
+    font-weight: bold;                 
+    font-size: 16px;                    
+    transition: background-color 0.3s;  
+
+   
+    &:hover {  
+        background-color: #c8e6c9;      
+    }  
+
+    
+    @media (max-width: 600px) {  
+        font-size: 14px;                
+    }  
+}  
+
+.tripadded {  
+    display: flex;                     
+    align-items: center;                
+    gap: 8px;                         
+    svg {                             
+        width: 20px;                  
+        height: 20px;                 
+        color: #4caf50;                
+    }  
+}
