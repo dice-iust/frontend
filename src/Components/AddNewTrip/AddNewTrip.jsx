@@ -257,14 +257,16 @@ const AddNewTrip = () => {
                             </RadioGroup>  
                             {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
                         </div>  
-                    </div>  
-                    <div className="success">   
-                        {success && (   
+                    </div> 
+                    {success && (   
+                        <div className="success">   
+                         
                             <p>  
                                 <span className="tripadded"><GiConfirmed />{success}</span>   
                             </p>  
-                        )}  
+                        
                     </div>  
+                    )}  
                 </div>  
                 
             </div>
