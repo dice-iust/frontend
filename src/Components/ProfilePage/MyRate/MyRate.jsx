@@ -9,9 +9,7 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb";  
 import { FaUndoAlt } from "react-icons/fa";  
 import { FaRegCalendar } from "react-icons/fa6"; 
-import goodPayImg from '../Assests/goodpay.png'; // Assuming correct path for the image  
-import OverallImg from '../Assests/overall.png'; // Assuming correct path for the image 
-import wellTraveled from '../Assests/welltravel.png' 
+
 
 const myrate_URL = 'travels/myrate/';  
 const mytravels_URL = 'mytravels'; 
@@ -21,6 +19,9 @@ const MyRate = () => {
     const [dataphoto, setDataphoto] = useState(null);
     const [rating_good_payed, setRating_good_payed] = useState(0);  
     const [rating_well_travelled, setRating_well_travelled] = useState(0);  
+    const [Goodpayphoto,setGoodpayphoto]=useState(null);
+    const [Welltravelphoto,setWelltravelphoto]=useState(null);
+    const [Overallphoto,setOverallphoto]=useState(null);
 
     useEffect(() => {  
         const fetchRating = async () => {  
@@ -36,7 +37,22 @@ const MyRate = () => {
 
         fetchRating();  
     }, []);  
+    useEffect(() => {  
+        const fetchRating_photo = async () => {  
+            try {  
+                const response = await axios.get(myrate_URL, {  
+                    headers: { Authorization: localStorage.getItem("token") },  
+                  });   
+                setGoodpayphoto(response.data.Goodpay);  
+                setWelltravelphoto(response.data.Welltravel);  
+                setOverallphoto(response.data.Overall);  
+            } catch (error) {  
+                console.error('Error fetching rating:', error);  
+            }  
+        };  
 
+        fetchRating_photo();  
+    }, []);  
     const normalizedRating = Math.min(Math.max(2, 0), 5);  
     useEffect(() => {  
         const fetchData = async () => {  
@@ -98,7 +114,7 @@ const MyRate = () => {
 
                     {/* Image container moved inside the box div for correct placement */}  
                         <div className="rate-image-container">  
-                        <img src={goodPayImg} alt="Good Payer" className="rate-image" />  
+                        <img src={Goodpayphoto} alt="Good Payer" className="rate-image" />  
                     </div>            
                 </div>  
                 
@@ -121,7 +137,7 @@ const MyRate = () => {
                     </div>  
                     <div className="rate-title">Overall</div>
                     <div className="rate-image-container">  
-                        <img src={OverallImg} alt="Good Payer" className="rate-image" />  
+                        <img src={Overallphoto} alt="Good Payer" className="rate-image" />  
                     </div> 
                 </div>  
                 
@@ -144,7 +160,7 @@ const MyRate = () => {
                     </div>   
                     <div className="rate-title">Well-Traveled</div>
                     <div className="rate-image-container">  
-                        <img src={wellTraveled} alt="Good Payer" className="rate-image" />  
+                        <img src={Welltravelphoto} alt="Good Payer" className="rate-image" />  
                     </div>  
                 </div>  
             </div>  
