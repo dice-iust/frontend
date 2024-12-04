@@ -14,7 +14,7 @@ const AddNewTrip = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [tripData, setTripData] = useState({
         picture: '',
-        title: '',
+        name: '',
         description: '',
         startDate: null,
         endDate: null,
@@ -32,8 +32,8 @@ const AddNewTrip = () => {
         const newErrors = { ...errors };
 
         switch (name) {
-            case 'title':
-                newErrors.title = value ? '' : 'Title is required';
+            case 'name':
+                newErrors.name = value ? '' : 'name is required';
                 break;
             case 'description':
                 newErrors.description = value ? '' : 'Description is required';
@@ -109,22 +109,22 @@ const AddNewTrip = () => {
         const formDataImage = new FormData();
 
         if (image) {
-            formDataImage.append('picture', image);
+            formDataImage.append('photo', image);
         }
 
-        formDataImage.append('title', tripData.title);
+        formDataImage.append('name', tripData.name);
         formDataImage.append('description', tripData.description);
-        formDataImage.append('startDate', tripData.startDate.format('YYYY-MM-DD'));
-        formDataImage.append('endDate', tripData.endDate.format('YYYY-MM-DD'));
-        formDataImage.append('groupNo', tripData.groupNo);
-        formDataImage.append('status', tripData.status);
+        formDataImage.append('start_date', tripData.startDate.format('YYYY-MM-DD'));
+        formDataImage.append('end_date', tripData.endDate.format('YYYY-MM-DD'));
+        formDataImage.append('travellers', tripData.groupNo);
+        formDataImage.append('mode', tripData.status);
         formDataImage.append('transportation', tripData.transportation);
         formDataImage.append('destination', tripData.destination);
-        formDataImage.append('startingPoint', tripData.startingPoint);
-        formDataImage.append('state', tripData.state);
+        formDataImage.append('start_place', tripData.startingPoint);
+        formDataImage.append('status', tripData.state);
 
         try {
-            const response = await axios.post("https://triptide.pythonanywhere.com/editprofile/update_2/", formDataImage, {
+            const response = await axios.post("https://triptide.pythonanywhere.com/travels/add/", formDataImage, {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                     'Content-Type': 'multipart/form-data',
@@ -147,7 +147,7 @@ const AddNewTrip = () => {
         <div className='addtrip'>
         <div className='newtrip'>
                 <form onSubmit={handleAddTrip}>
-                <h1 className="t-title">Create New Trip</h1>
+                <h1 className="t-name">Create New Trip</h1>
 
                 <div className="trip-status-state-wrapper">  
                 <div className='image-container'>  
@@ -220,16 +220,16 @@ const AddNewTrip = () => {
                 <div className="flex-container">  
                     <FormLabel component="legend">Trip Information</FormLabel>  
                 </div>  
-                <div className="trip-title">  
+                <div className="trip-name">  
                     <TextField  
-                        value={tripData.title}  
-                        label="Title"  
+                        value={tripData.name}  
+                        label="name"  
                         variant="outlined"  
-                        name="title"  
+                        name="name"  
                         onChange={handleChange}  
                         required  
-                        error={!!errors.title}  
-                        helperText={errors.title}  
+                        error={!!errors.name}  
+                        helperText={errors.name}  
                         style={{ marginRight: '20px' }}  
                     />  
                     <TextField  
