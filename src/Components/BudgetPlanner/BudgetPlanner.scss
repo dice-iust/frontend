@@ -1,0 +1,135 @@
+:root {  
+    --mainColor: #22487a;  
+    --mainColorLight: #5767aa;  
+    --secondaryColor: #ea7d29;  
+    --textColor: #eee;  
+    --font-family: OpenSans;  
+  }  
+  
+.budget-planner{
+    .planner-box {  
+        display: flex;  
+        flex-direction: column;  
+        width: 100vw;  
+        min-height: 100vh;  
+        border: 1px solid var(--textColor);  
+        padding: 20px;  
+        position: relative;   
+        box-shadow: var(--mainColor) 0px 30px 60px -12px inset,  
+                    var(--mainColor) 0px 18px 36px -18px inset;  
+    }  
+    .filter-btn {  
+        position:absolute;  
+        z-index: 2;  
+        right: 0; 
+        right: 15%; 
+        top:44%;
+        width: 40px;  
+        height: 40px;  
+        transition: all 0.4s ease-in-out;  
+        // display: flex;            /* Use flex to center content */  
+        // align-items: center;      /* Center items vertically */  
+        // justify-content: center;
+    }  
+    .dot {  
+        // transform: rotate(90deg);
+        width: 10px;             /* Size of each dot */  
+        height: 10px;            /* Size of each dot */  
+        background-color: var(--textColor); /* Dot color */  
+        border-radius: 50%;     /* Make dots circular */  
+       
+        margin: 0 2px;         /* Horizontal space between dots */  
+        transition: transform 0.3s ease; /* Smooth transition for transforms */  
+      }  
+      .filter-btn.open .dot {  
+        transform: rotate(90deg); /* or any angle you prefer */  
+    } 
+
+    
+    
+    .filter-btn span {  
+        width: 60px;  
+        height: 60px;  
+        background: var(--mainColor);  
+        display: flex;  
+        align-items: center;
+        justify-content: center;
+        position: relative;  
+        margin: 0 auto;
+        right: 25px;  
+        top: -46px;  
+        text-align: center;  
+        color: #fff;  
+        line-height: 40px;  
+        border-radius: 50%;  
+        font-size: 22px;  
+        z-index: 999;  
+        cursor: pointer; /* Show pointer cursor */  
+    }  
+    
+    .filter-btn a {  
+        position:absolute;  
+        width: 40px;  
+        height: 40px;  
+        line-height: 40px;  
+        text-align: center;  
+        right: 25px;  
+        display: block;  
+        top: -46px;  
+        color: #fff;  
+        z-index: 99;  
+        font-size: 22px;  
+        transition: all 0.4s cubic-bezier(.68, 1, .265, 1);  
+        opacity: 0;
+        visibility: hidden;
+    }  
+    
+    .filter-btn:after {  
+        height: 140px;  
+        width: 140px;  
+        content: "";  
+        background-color: var(--mainColor);  
+        position: absolute;  
+        top: -110px;  
+        right: -40px;  
+        border-radius: 50%;  
+        transform: scale(0);  
+        transition: all 0.3s ease-in-out;  
+    }  
+    
+    .filter-btn.open span {  
+        background-color: var(--mainColorLight); /* Change color when open */  
+        // left: -5%;
+        align-items: center;
+        display: flex;
+        margin-top: -21px;
+        margin-left: 3px;
+    }  
+    
+    .filter-btn.open:after {  
+        transform: scale(1);  
+    }  
+    .filter-btn.open a {  
+        display: flex;
+        flex-direction: column;
+        opacity: 1; /* Show the options */  
+      visibility: visible; /* Make options visible */  
+      transition: all 0.4s ease; /* Smooth transition when shown */  
+    }
+    
+    .filter-btn.open a:nth-child(1) {  
+        transform: translate(91px, -62px);  
+    }  
+    
+    .filter-btn.open a:nth-child(2) {  
+        transform: translate(10px, -50px);  
+    }  
+    
+    .filter-btn.open a:nth-child(3) {  
+        transform: translate(-34px, 1px);  
+    }  
+    
+    .filter-btn.open a:nth-child(4) {  
+        transform: translate(1px, 61px);  
+    }
+}

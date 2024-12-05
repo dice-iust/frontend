@@ -1,48 +1,85 @@
-import React, { useEffect, useState } from "react";
-import ExpenseUserList from "./Components/ExpenseUserList";
-import AddExpense from "./Components/AddExpense";
-import { expenseData } from "../../api/jsondata/planner";
-import pic from "../../public/UserDefaultImage/profile.jpg";
+import React, { useEffect, useState } from "react";  
+import ExpenseUserList from "./Components/ExpenseUserList";  
+import AddExpense from "./Components/AddExpense";  
+import { expenseData } from "../../api/jsondata/planner";  
+import './BudgetPlanner.scss';  
+import PlannerHeader from './Components/PlannerHeader';  
 
-const BudgetPlanner = () => {
-  const [showAddExpense, setShowAddExpense] = useState(false);
-  const [expData, setExpData] = useState([]);
+const BudgetPlanner = () => {  
+  const [showAddExpense, setShowAddExpense] = useState(false);  
+  const [showExpenseList, setShowExpenseList] = useState(true);  
+  const [expData, setExpData] = useState([]);  
+  const [isOpen, setIsOpen] = useState(false);  
 
-  useEffect(() => {
-    setExpData(expenseData);
-  }, []);
+  const toggleMenu = () => {  
+    setIsOpen(prevState => !prevState);  
+  };  
 
-  const handleAddExpense = () => {
-    setShowAddExpense((prev) => !prev);
-  };
+  useEffect(() => {  
+    setExpData(expenseData); // Load the expense data initially  
+  }, []);  
 
-  return (
-    <div>
-      <button onClick={handleAddExpense}>Add Expenses</button>
+  const handleAddExpenseToggle = () => {  
+    setShowAddExpense(true);  
+    setShowExpenseList(false);  
+    setIsOpen(false); // Close the menu when adding an expense  
+  };  
 
-      {showAddExpense ? (
-        <AddExpense
-          setExpData={setExpData}
-          setShowAddExpense={setShowAddExpense}
-        />
-      ) : null}
+  // This toggles back to the expense list  
+  const handleExpenseListToggle = () => {  
+    setShowExpenseList(true);  
+    setShowAddExpense(false);  
+    setIsOpen(false); // Close the menu when showing the expense list  
+  };  
 
-      {expData.map((item) => {
-        return (
-          <ExpenseUserList
-            username={item.username}
-            title={item.title}
-            price={item.amount}
-            id={item.id}
-            date={item.date}
-            description={item.description}
-            key={item.id}
-            setExpData={setExpData}
-          />
-        );
-      })}
-    </div>
-  );
-};
+  const handleClose = () => {  
+    setShowAddExpense(false);  
+    setShowExpenseList(true); // Default to showing the expense list  
+    setIsOpen(false);  
+  };  
+
+  return (  
+    <div className="budget-planner">  
+      <div className="planner-box">  
+        <PlannerHeader />  
+        
+        <div className={`filter-btn ${isOpen ? 'open' : ''}`}>  
+          <span className="toggle-btn ion-android-funnel" onClick={toggleMenu}>  
+            <div className="dot"></div>  
+            <div className="dot"></div>  
+            <div className="dot"></div>  
+          </span>  
+          <a href="#" className="option" onClick={handleAddExpenseToggle}>  
+            <i className="fas fa-pencil-alt"></i>  
+          </a>  
+          <a href="#" className="option" onClick={handleExpenseListToggle}>  
+            <i className="fas fa-wallet"></i>  
+          </a>  
+        </div>  
+
+        {showAddExpense && (  
+          <AddExpense  
+            setExpData={setExpData}  
+            setShowAddExpense={setShowAddExpense}  
+            handleExpenseListToggle={handleExpenseListToggle} // Pass this function down  
+          />  
+        )}  
+
+        {showExpenseList && expData.map((item) => (  
+          <ExpenseUserList  
+            username={item.username}  
+            title={item.title}  
+            price={item.amount}  
+            id={item.id}  
+            date={item.date}  
+            description={item.description}  
+            key={item.id}  
+            setExpData={setExpData}  
+          />  
+        ))}  
+      </div>  
+    </div>  
+  );  
+};  
 
 export default BudgetPlanner;

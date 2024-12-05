@@ -18,7 +18,7 @@ import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
 import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
 import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
-import Tst from './Components/BudgetPlanner/Components/NewExpense.jsx'
+import Tst from './Components/BudgetPlanner/Components/PlannerHeader.jsx'
 
 
 function App() {  
