@@ -1,99 +1,124 @@
-.newExpense-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ded5d5;
-  box-shadow: 0 1px 12px #e5e5e5;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 16px 0;
-  .arrowIcon {
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-  }
-  .profile-expense {
-    display: flex;
-    direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .expense-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    span {
-      font-weight: bold;
-    }
-    .amount {
-      // font-weight: bold;
-    }
-  }
-}
+:root {  
+  --mainColor: #22487a;  
+  --mainColorLight: #5767aa;  
+  --secondaryColor: #ea7d29;  
+  --textColor: #eee;  
+  --font-family: OpenSans;  
+}  
 
-.newExpense-box-showDetails {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ded5d5;
-  border-bottom: 0;
-  box-shadow: none;
-  border-radius: 12px 12px 0 0;
-  padding: 16px 16px 0 16px;
-  margin: 16px 0;
-  .arrowIcon {
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-  }
-  .profile-expense {
-    display: flex;
-    direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+.newExpense-box {  
+  width: 95%;  
+  display: flex;  
+  flex-direction: column;  
+  align-items: flex-start;  
+  justify-content: space-between;  
+  box-shadow: rgba(34, 72, 122, 0.24) 0px 3px 8px;  
+  border-radius: 12px;  
+  padding: 16px;  
+  margin-top: 16px;  
+  margin-left: 30px;  
+  background-color: #fff;  
 
-    img {
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-    }
-  }
-  .expense-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    span {
-      font-weight: bold;
-    }
-    .amount {
-      // font-weight: bold;
-    }
-  }
-}
+  .profile-expense {  
+    display: flex;  
+    justify-content: space-between;  
+    width: 100%;  
+    align-items: center;  
 
-.details-box {
-  display: flex;
-  justify-content: space-between;
-  //   align-items: center;
-  border: 1px solid #ded5d5;
-  border-radius: 0 0 12px 12px;
-  border-top: 0;
-  padding: 16px;
-  .details-list {
-    list-style: none;
-    padding: 0 16px;
-    li {
-      margin-top: 4px;
-      span {
-        font-weight: bold;
-        padding-right: 4px;
-      }
-    }
-  }
+    .title-expense {  
+      font-weight: bold;  
+      color: var(--mainColor);  
+      font-size: 2rem;  
+      margin-bottom: 0;  
+    }  
+
+    .amount {  
+      text-align: right;  
+      font-size: 1.5rem;  
+      color: var(--secondaryColor);  
+    }  
+  }  
+
+  .paid-by {  
+    color: #22487a;  
+    margin-top: 8px;  
+    text-align: left;  
+  }  
+}  
+
+.newExpense-box-showDetails {  
+  margin-left: 30px;  
+  display: flex;  
+  flex-direction: column;  
+  width: 95%;  
+  border: 1px solid var(--mainColor);  
+  border-bottom: 0;  
+  box-shadow: none;  
+  border-radius: 12px 12px 0 0;  
+  padding: 16px 16px 0;  
+  margin-top: 16px;  
+  background-color: #fff;  
+
+  .arrowIcon {  
+    width: 1.5rem;  
+    height: 1.5rem;  
+    cursor: pointer;  
+  }  
+
+  .profile-expense {  
+    display: flex;  
+    justify-content: space-between;  
+    width: 100%;  
+    align-items: center;  
+
+    .title-expense {  
+      font-weight: bold;  
+      color: var(--mainColor);  
+      font-size: 2rem;  
+      margin-bottom: 0;  
+    }  
+
+    .amount {  
+      // margin-top: 40px;
+      text-align: right;  
+      font-size: 1.5rem;  
+      color: var(--secondaryColor);  
+    }  
+  }  
+
+  .paid-by {  
+    color: #22487a;  
+    margin-top: 2px;  
+  }  
+}  
+
+.details-box {  
+  width: 95%;  
+  margin-left: 30px;  
+  display: flex;  
+  flex-direction: column;  
+  border: 1px solid var(--mainColor);  
+  border-radius: 0 0 12px 12px;  
+  border-top: 0;  
+  padding: 16px;  
+  margin-top: 0;  // You can modify or remove this if needed  
+  background-color: #fff;  
+
+  .expense-box { 
+    // margin-left: 30px; 
+    display: flex;  
+    justify-content: space-between;   
+    width: 50%;   
+
+    span {  
+      padding-right: 4px;  
+    }  
+  }  
+  
+  .details-row { 
+    color: #22487a; 
+    // justify-content: space-between;   
+    margin-top: -10px; // Adjust this value to reduce space further  
+    font-size: 1rem;   
+  }  
 }

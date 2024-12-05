@@ -7,7 +7,9 @@ import PlannerHeader from './Components/PlannerHeader';
 
 const BudgetPlanner = () => {  
   const [showAddExpense, setShowAddExpense] = useState(false);  
-  const [showExpenseList, setShowExpenseList] = useState(true);  
+  const [showExpenseList, setShowExpenseList] = useState(true);
+  const [showBalanceList, setShowBalanceList] = useState(false);  
+  
   const [expData, setExpData] = useState([]);  
   const [isOpen, setIsOpen] = useState(false);  
 
@@ -22,6 +24,7 @@ const BudgetPlanner = () => {
   const handleAddExpenseToggle = () => {  
     setShowAddExpense(true);  
     setShowExpenseList(false);  
+    setShowBalanceList(false);
     setIsOpen(false); // Close the menu when adding an expense  
   };  
 
@@ -29,12 +32,15 @@ const BudgetPlanner = () => {
   const handleExpenseListToggle = () => {  
     setShowExpenseList(true);  
     setShowAddExpense(false);  
+    setShowBalanceList(false);
+
     setIsOpen(false); // Close the menu when showing the expense list  
   };  
 
-  const handleClose = () => {  
+  const handleBalancesToggle = () => {  
+    setShowBalanceList(true);
     setShowAddExpense(false);  
-    setShowExpenseList(true); // Default to showing the expense list  
+    setShowExpenseList(false); // Default to showing the expense list  
     setIsOpen(false);  
   };  
 
@@ -48,12 +54,15 @@ const BudgetPlanner = () => {
             <div className="dot"></div>  
             <div className="dot"></div>  
           </span>  
-          <a href="#" className="option" onClick={handleAddExpenseToggle}>  
+          <a  className="option" onClick={handleAddExpenseToggle}>  
             <i className="fas fa-pencil-alt"></i>  
           </a>  
-          <a href="#" className="option" onClick={handleExpenseListToggle}>  
+          <a  className="option" onClick={handleExpenseListToggle}>  
             <i className="fas fa-wallet"></i>  
           </a>  
+          <a  className="option" onClick={handleBalancesToggle}>  
+          <i class="fas fa-clipboard-check"></i>  
+          </a>
         </div>  
 
         {showAddExpense && (  
@@ -76,6 +85,9 @@ const BudgetPlanner = () => {
             setExpData={setExpData}  
           />  
         ))}  
+        {
+          showBalanceList
+        }
       </div>  
     </div>  
   );  

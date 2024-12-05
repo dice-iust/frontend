@@ -1,61 +1,47 @@
-import React, { useState } from "react";
-import "./ExpenseUserList.scss";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import ExpenseDetails from "./ExpenseDetails";
+import React, { useState } from "react";  
+import "./ExpenseUserList.scss";  
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";   
 
-const NewExpense = (props) => {
-  const { username, title, price, id, date, description } = props;
-  const [showDetails, setShowDetails] = useState(false);
+const NewExpense = (props) => {  
+  const { username, title, price, date, description } = props;  
+  const [showDetails, setShowDetails] = useState(false);  
 
-  const handleShowDetails = () => {
-    setShowDetails((prev) => !prev);
-    // const findData = detailsDataJson.find((item) => item.id === id);
-    // setDetailsData(findData);
-  };
+  const handleShowDetails = () => {  
+    setShowDetails((prev) => !prev);  
+  };  
 
-  return (
-    <>
-      <div
-        // className="newExpense-box"
-        className={
-          showDetails ? "newExpense-box-showDetails" : "newExpense-box"
-        }
-      >
-        <div className="expense-box">
-          <span>Username</span>
-          <div className="">{username}</div>
-        </div>
+  return (  
+    
+    <>  
+   
+      <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
+        <div className="expense-box profile-expense">  
+          <span className="title-expense">{title}</span> {/* Title on the left side */}  
+          <div className="amount-container">  
+            <span className="amount">{price} $</span> {/* Amount on the right side */}  
+            {showDetails ? (  
+              <MdKeyboardArrowUp className="arrowIcon" onClick={handleShowDetails} />  
+            ) : (  
+              <MdKeyboardArrowDown className="arrowIcon" onClick={handleShowDetails} />  
+            )}  
+          </div>  
+        </div>  
 
-        <div className="expense-box">
-          <span>Title</span>
-          <div className="">{title}</div>
-        </div>
+        <div className="expense-box">  
+          <span className="paid-by"><strong>Paid by:</strong> {username}</span> {/* "Paid by:" is bold and username is regular */}  
+        </div>  
+      </div>  
 
-        <div className="expense-box">
-          <span>Amount</span>
-          <div className="">{price} $</div>
-        </div>
-
-        <MdKeyboardArrowDown
-          className="arrowIcon"
-          onClick={() => handleShowDetails()}
-        />
-      </div>
-      {/* {showDetails ? <ExpenseDetails data={detailsData} /> : null} */}
-      {showDetails ? (
-        <div className="details-box">
-          <div className="expense-box">
-            <span>Description:</span>
-            <div className="">{description}</div>
-          </div>
-          <div className="expense-box">
-            <span>Date:</span>
-            <div className="">{date}</div>
-          </div>
-        </div>
-      ) : null}
-    </>
-  );
-};
+      {showDetails && (  
+        <div className="details-box">  
+          <div className="expense-box details-row">  
+          <span><strong>Description:</strong> {description}</span> {/* Make "Description:" bold, but not its value */}             
+           <span><strong>Date: </strong>{date}</span>  
+          </div>  
+        </div>  
+      )}  
+    </>  
+  );  
+};  
 
 export default NewExpense;
