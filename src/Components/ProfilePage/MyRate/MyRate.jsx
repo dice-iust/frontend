@@ -13,8 +13,9 @@ import { FaRegCalendar } from "react-icons/fa6";
 
 const myrate_URL = 'travels/myrate/';  
 const mytravels_URL = 'mytravels'; 
+const overall_rate ='rate';
 const MyRate = () => {  
-    const [rating, setRating] = useState(0); // Initialize state for the rating  
+    const [rating, setRating] = useState(0); 
     const [datafuture, setDatafuture] = useState(null);
     const [dataphoto, setDataphoto] = useState(null);
     const [rating_good_payed, setRating_good_payed] = useState(0);  
@@ -26,10 +27,12 @@ const MyRate = () => {
     useEffect(() => {  
         const fetchRating = async () => {  
             try {  
-                const response = await axios.get('/path/to/api/rating');   
-                setRating(response.data.rating);  
-                setRating_good_payed(response.data.rating);  
-                setRating_well_travelled(response.data.rating);  
+                const response = await axios.get(overall_rate, {  
+                    headers: { Authorization: localStorage.getItem("token") },  
+                  });     
+                setRating(response.data.total);  
+                setRating_good_payed(response.data.total_money);  
+                setRating_well_travelled(response.data.total_sleep);  
             } catch (error) {  
                 console.error('Error fetching rating:', error);  
             }  
@@ -85,9 +88,9 @@ const MyRate = () => {
 
  
   
-    const normalizedRating_overall = Math.min(Math.max(2, 0), 5);   
-    const normalizedRating_well_traveled = Math.min(Math.max(1, 0), 5);  
-    const normalizedRating_good_payed = Math.min(Math.max(3, 0), 5);  
+    const normalizedRating_overall = Math.min(Math.max(rating, 0), 5);   
+    const normalizedRating_well_traveled = Math.min(Math.max(rating_well_travelled, 0), 5);  
+    const normalizedRating_good_payed = Math.min(Math.max(rating_good_payed, 0), 5);  
 
     return (  
         <div className="rate">  
