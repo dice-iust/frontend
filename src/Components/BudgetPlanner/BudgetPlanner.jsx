@@ -42,7 +42,6 @@ const BudgetPlanner = () => {
     <div className="budget-planner">  
       <div className="planner-box">  
         <PlannerHeader />  
-        
         <div className={`filter-btn ${isOpen ? 'open' : ''}`}>  
           <span className="toggle-btn ion-android-funnel" onClick={toggleMenu}>  
             <div className="dot"></div>  

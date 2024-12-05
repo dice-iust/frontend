@@ -51,7 +51,6 @@ const AddExpense = (props) => {
       return; // Prevent form submission if there are errors  
     }  
 
-    // If no errors, proceed to add expense  
     setExpData((prev) => [...prev, formValue]);  
     setShowAddExpense(false);  
     handleExpenseListToggle();  
@@ -63,7 +62,7 @@ const AddExpense = (props) => {
         {/* Row for "Paid By" and "Title" */}  
         <div className="row">  
           <div className="form-item">  
-            <label htmlFor="userName" style={{ color: '#22487a' }}>Paid By</label>  
+            <label htmlFor="userName" style={{ color: '#22487a',  }}>Paid By</label>  
             <input  
               type="text"  
               name="userName"  
@@ -75,7 +74,7 @@ const AddExpense = (props) => {
             {errors.userName &&<div className="error-message"> {errors.userName}</div>} {/* Error message */}  
           </div>  
           <div className="form-item">  
-            <label htmlFor="title" style={{ color: '#22487a' }}>Title</label>  
+            <label htmlFor="title" style={{ color: '#22487a', }}>Title</label>  
             <input  
               type="text"  
               name="title"  
@@ -91,7 +90,7 @@ const AddExpense = (props) => {
         {/* Row for "Amount" and "Date" */}  
         <div className="row">  
           <div className="form-item">  
-            <label htmlFor="amount" style={{ color: '#22487a' }}>Amount</label>  
+            <label htmlFor="amount" style={{ color: '#22487a', }}>Amount</label>  
             <input  
               type="text"  
               name="amount"  

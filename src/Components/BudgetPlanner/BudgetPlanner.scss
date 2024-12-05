@@ -23,7 +23,7 @@
         z-index: 2;  
         right: 0; 
         right: 15%; 
-        top:44%;
+        top:460px;
         width: 40px;  
         height: 40px;  
         transition: all 0.4s ease-in-out;  
@@ -117,15 +117,20 @@
       transition: all 0.4s ease; /* Smooth transition when shown */  
     }
     
-    .filter-btn.open a:nth-child(1) {  
+    .filter-btn.open a:nth-child(1) { 
+        margin: auto; 
         transform: translate(91px, -62px);  
     }  
     
     .filter-btn.open a:nth-child(2) {  
+        margin: auto; 
+
         transform: translate(10px, -50px);  
     }  
     
     .filter-btn.open a:nth-child(3) {  
+        margin: auto; 
+
         transform: translate(-34px, 1px);  
     }  
     
