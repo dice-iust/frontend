@@ -1,0 +1,558 @@
+.rate{
+  .container-rate {  
+    margin-top: 110px;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: flex-start;  
+    padding: 20px;  
+    // position: relative;  
+  }  
+
+  .box {  
+    height: 300px;  
+    border-radius: 20px;  
+    border: 3px solid #22487a;  
+    padding: 20px;  
+    text-align: center;  
+    background-color: white;  
+    transition: transform 0.3s ease;  
+    position: relative;  
+    flex: 1;  
+    margin: 0 10px;  
+    box-shadow: rgba(34, 72, 122, 0.25) 0px 54px 55px, rgba(34, 72, 122, 0.12) 0px -12px 30px, rgba(34, 72, 122, 0.12) 0px 4px 6px, rgba(34, 72, 122, 0.17) 0px 12px 13px, rgba(34, 72, 122, 0.09) 0px -3px 5px;  
+    z-index: 0;  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    // Temporary debugging line  
+    // backgrou/nd-color: red; // For visibility testing  
+
+  
+  }  
+
+
+  .box-small {  
+    flex: 1;    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    // background-color: aquamarine;
+    /* Side boxes are smaller */  
+    // box-shadow: rgba(34, 72, 122, 0.4) 5px 5px, rgba(34, 72, 122, 0.3) 10px 10px, rgba(34, 72, 122, 0.2) 15px 15px, rgba(34, 72, 122, 0.1) 20px 20px, rgba(34, 72, 122, 0.05) 25px 25px; /* Ensure side boxes are behind the large box */  
+  }  
+
+  .box-large {  
+    // box-shadow: rgba(34, 72, 122, 0.4) 0px 5px, rgba(34, 72, 122, 0.3) 0px 10px, rgba(34, 72, 122, 0.2) 0px 15px, rgba(34, 72, 122, 0.1) 0px 20px, rgba(34, 72, 122, 0.05) 0px 25px;  
+    flex: 1;    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }  
+
+  /* Hover effect for all boxes */  
+  .box:hover {  
+    transform: scale(1.05);    /* Slightly enlarge the box when hovered over */  
+  }  
+
+  /* Adjust the hover effects for side boxes */  
+  .box-small:hover {  
+    transform: translateX(-5px); /* Move left box right on hover */  
+  }  
+
+  .box-small:hover + .box-large {  
+    transform: translateX(-5px); /* Move center box right */  
+  }  
+
+  .box-large:hover {  
+    transform: scale(1.05); /* Center box scales on hover */  
+  }  
+
+  .box-large:hover + .box-small {  
+    transform: translateX(5px); /* Move right box left on center box hover */  
+  }  
+
+  .circle {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: -123px; /* Adjust as needed */
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #22487a;
+    border-bottom: none;
+    // overflow: hidden; /* Hide the bottom border */
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0px; /* Adjust to cover the bottom border */
+      left: 0;
+      width: 100%;
+      height: 39%;
+      background-color: #fff; /* Same as the circle's background color */
+    }
+  }
+
+
+  .circle-in{
+    width: 160px; /* Adjust size as needed */
+    height: 160px; /* Adjust size as needed */
+    background-color: #22487a; /* Circle color */
+    border-radius: 50%; /* Makes it circular */
+    position: absolute; /* Position it absolutely within the box */
+    top: 15px; /* Adjust to position above the box */
+    z-index: 2; /* Ensure the circle is above the box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 40px; /* Adjust this to move stars higher above the circle */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Star styles (unchanged from previous responses) */  
+  .star {  
+    margin: 0 5px; /* Add side margin between stars */  
+    font-family: "Font Awesome 5 Free";  
+    font-size: 30px; /* Adjust star size for better appearance */  
+    color: #fff; /* Default color for stars - adjust if necessary */  
+    transition: transform 0.3s, color 0.3s;  
+
+    // Position stars in a circular layout  
+    &:nth-child(1) { transform: translate(100%, -40%) rotate(0deg); }  
+    &:nth-child(2) { transform: translate(30%, -120%) rotate(72deg); }  
+    &:nth-child(3) { transform: translate(0%, -170%) rotate(144deg); }  
+    &:nth-child(4) { transform: translate(-30%, -120%) rotate(216deg); }  
+    &:nth-child(5) { transform: translate(-100%, -40%) rotate(360deg); }  
+
+    &.filled {  
+        color: rgb(234, 110, 12); /* Golden color for filled stars */  
+    }  
+
+    &.half-filled {  
+      color: rgb(234, 110, 12); /* Golden color for filled stars */  
+      position: relative;
+        &::after {  
+            content: '\f005'; /* Font Awesome solid star for filled star */  
+            position: absolute;  
+            left:0; 
+            width: 50%; /* Ensure the half star takes full height and width */  
+            overflow: hidden;
+        }  
+    }  
+
+    &:before {  
+        content: '\f005'; /* Font Awesome solid star for the regular star */  
+        font-weight: 900;   
+        line-height: 1; /* Make sure this allows for correct positioning */  
+    }  
+
+    // Star hover effect  
+    &:hover {  
+        color: rgb(234, 110, 12);   
+        cursor: pointer;  
+    }  
+}
+  .rating-number {  
+      position: absolute;  
+      // background-color: red;
+      font-size: 30px;  
+      color: #fff; /* Gold color for visibility */  
+      font-weight: bold;  
+      animation: fadeIn 0.5s; /* Animation when component loads */  
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Soft shadow for the rating number */  
+  }
+  .rate-title{
+    
+    margin-top: 50px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    align-items: center;
+    text-align: center;
+    // align-self: flex-start;
+    color:   #5767aa;  
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: clamp(-1.75px, -0.25vw, -3.5px); 
+    background-color: transparent; 
+    position: relative;
+    display: block;
+    white-space: nowrap; /* Prevent title text from wrapping */ 
+    // margin-left: 10px; 
+    // background-color: #22487a;
+
+
+  }
+  
+
+  .rate-image-container { 
+  
+    color: #22487a;
+    // background-color: #22487a;
+    display: flex;            /* Use Flexbox to center child elements */  
+    justify-content: center;  /* Center horizontally */  
+    align-items: center;  
+    text-align: center;    /* Center vertically */  
+    margin-top: 8px;       /* Adjust as needed */  
+    // margin-left: 60px;
+    //  margin-right: 30px;
+}  
+
+.rate-image {  
+    height: 150px;         
+    width:200px;          
+    // margin: 0;             /* Reset margins for proper centering */  
+    // display: block;        /* Make it a block element for centering */  
+    background-size: contain;  
+    background-repeat: no-repeat;  
+    background-position: center;  
+
+}  
+
+}
+hr.new1 {
+  border-top: 1px solid red;
+}
+.tour-list-container2-rate {  
+  max-width: 2000px;  
+  margin-left: 10px;
+  margin-right: 10px; 
+  height: auto;
+  .tour-list2 {  
+    display: flex;  
+    flex-wrap: wrap;  
+    // justify-content: space-between;  
+    gap: 15px;  
+  }  
+  
+  .moveicon2 {  
+    margin-left: 2px;  
+    margin-right: 2px;  
+    margin-bottom: 0px;  
+    margin-top: 0px;   
+    vertical-align: middle;   
+  }  
+
+  .card-image2 {  
+    width: 100%;  
+    height: 100%;  
+    object-fit: cover;   
+  }  
+
+  .card-title2 {  
+    position: absolute;   
+    bottom: 0;   
+    right: 0;  
+    margin-bottom: 0;  
+    font-size: 1rem;  
+    color: #22487a;  
+    background: #fff;   
+    padding: 5px;  
+    border-radius: 2px;  
+    box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
+  }  
+
+  .tour-card2 {  
+    display: flex;  
+    flex-direction: column;  
+    background: white;  
+    border-radius: 10px;  
+    overflow: hidden;  
+    width: calc(32.5% - 2px);; /* Three cards per row with consistent gap */  
+    height: 330px;   
+    transition: transform 0.3s, box-shadow 0.3s;  
+    position: relative;  
+    margin-bottom: 5px;
+    border: 2px solid rgba(34, 72, 122, 0.5);  
+
+    
+
+    &:hover {  
+      animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
+      box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
+    }  
+  }  
+
+  .tour-image2 {  
+    width: 100%;  
+    height: 168px;   
+    object-fit: cover;   
+    position: relative;   
+  }  
+
+  .tour-image-container2 {  
+    position: relative;  
+  }  
+
+  .tour-admin2 {  
+    position: absolute;  
+    top: 10px;  
+    left: 10px;  
+    display: flex;  
+    align-items: center;  
+    background-color: rgba(255, 255, 255, 0.7);  
+    padding: 2px;  
+    border-radius: 5px;  
+    z-index: 20;  
+  }  
+
+  .admin-photo2 {  
+    width: 30px;  
+    height: 30px;  
+    border-radius: 50%;  
+    margin-right: 5px;  
+  }  
+
+  // Hover effect on the admin photo  
+  .admin-photo:hover {  
+    transform: scale(1.05);  
+  }  
+
+  // Tour Info Styles  
+  .tour-info2 {  
+    display: flex;  
+    flex-direction: column;  
+
+    .tour-name2 {  
+      font-size: 1em;  
+      font-weight: bold;  
+      margin-bottom: 0px;  
+      margin-top: 3px;  
+      margin-left: 10px;  
+      align-self: flex-start;  
+      color: #22487a;    
+    }  
+
+    .tour-details2 {  
+      display: flex;  
+      align-items: center;  
+      margin-bottom: 0px;  
+      margin-top: 0px;  
+      .star-rating {  
+        .fa-star {  
+          color: #22487a; // Default star color  
+          font-size: 24px; // Adjust the size as needed  
+          margin-right: 5px; // Space between stars  
+          &.checked {  
+            color: rgb(234, 110, 12); // Color for filled stars  
+          }  
+        }  
+      }  
+      .tour-route2 {  
+        display: flex;  
+        align-items: center;  
+        margin-left: 10px;   
+        margin-top: 0px;   
+        font-size: 0.9em;  
+        margin-bottom: 10px;  
+      }  
+      
+      .moveicon {  
+        margin-left: 2px;  
+        margin-right: 2px;  
+        margin-bottom: 2px;  
+        margin-top: 0px;   
+        vertical-align: middle;  
+      }  
+    }  
+
+    .tour-meta3 {  
+      display: flex;   
+      align-items: center;   
+      margin-top: 12px;   
+      .trip-type2 {  
+        font-weight: bold;   
+        margin-right: 7px;  
+        margin-left: auto;  
+        font-size: 1em;   
+        padding: 4px 8px;   
+        border-radius: 5px;   
+        display: inline-block;  
+      }  
+      .trip-type2.Budget-friendly {  
+        background-color: #c8e6c9;   
+        color: #388e3c;  
+      }  
+      .trip-type2.Fancy {  
+        background-color: #f59e9e;  
+        color: #e9362c;   
+      }   
+    }  
+
+    .tour-name {  
+      font-size: 1em;  
+      font-weight: bold;  
+      margin-bottom: 0px;  
+      margin-top: 3px;  
+      margin-left: 10px;  
+      align-self: flex-start;  
+      color: #22487a;    
+    }  
+
+    .tour-meta7 {  
+      display: flex;  
+      justify-content: space-between;  
+
+      .tour-dates2, .tour-length2 {  
+        font-size: 0.9em;  
+      }        .tour-dates2 {  
+        margin-bottom: 7px;  
+        margin-left: 10px;  
+        margin-top: 0px;  
+        margin-right: 20px;  
+      }  
+
+      .tour-length2 {  
+        margin-right: 15px;  
+        margin-bottom: 10px;  
+        margin-top: 0px;  
+      }   
+      
+      .moveicon3 {  
+        margin-left: 2px;  
+        margin-right: 4px;  
+        margin-bottom: 4px;  
+        margin-top: 0px;   
+        vertical-align: middle;   
+      }  
+
+      .moveicon4 {  
+        margin-left: 4px;  
+        margin-right: 4px;  
+        margin-bottom: 3px;  
+        margin-top: 3px;   
+        vertical-align: middle;   
+      }  
+    }  
+
+    .tour-admin {  
+      display: flex;  
+      align-items: center;  
+      justify-content: flex-start;  
+
+      .admin-photo {   
+        margin-left: 10px;  
+        margin-bottom: 2px;   
+        width: 25px;  
+        height: 25px;  
+        border-radius: 50%;  
+        margin-right: 5px;  
+      }  
+
+      span {  
+        font-weight: bold;  
+      }  
+    }  
+  }  
+// }  
+// Circular Animation Keyframes  
+@keyframes circular-animation {  
+  0% {  
+    transform: rotate(0deg) scale(1);  
+  }  
+  50% {  
+    transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
+  }  
+  100% {  
+    transform: rotate(0deg) scale(1); /* Returning to original state */  
+  }  
+}
+
+
+
+
+@media (max-width: 1200px) {  
+  .tour-card2 {  
+    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+  }  
+  
+  .tour-meta7 {  
+    font-size: 0.9em;  
+  }   
+  
+  .tour-meta3 {  
+    font-size: 0.9em;  
+
+@media (max-width: 1110px) {  
+  .circle {  
+      width: 60%; /* Reduce size on smaller screens */  
+  }  
+
+  .rate-title,  
+  .rating-number {  
+      font-size: 1.2rem; /* Smaller font size on tablets */  
+  }  
+
+  .rate-image {  
+      max-width: 150px; /* Smaller max width for images on tablets */  
+  }  
+}  
+
+@media (max-width: 768px) {  
+  .tour-card2 {  
+    width: calc(100% - 0px); /* One card per row on small screens */  
+  }  
+
+  .admin-photo2 {  
+    width: 20px;  
+    height: 20px;  
+  }  
+
+  .tour-meta7 {  
+    font-size: 0.8em;  
+  }   
+
+  .tour-name2,   
+  .tour-meta3 .trip-type2 {  
+    font-size: 0.8em;  
+  }  
+}  
+
+@media (max-width: 480px) {  
+  .circle {  
+    width: 80%; /* Further adjust size for mobile */  
+}  
+
+  .rate-title,  
+  .rating-number {  
+      font-size: 1rem; /* Smaller font size on mobile devices */  
+  }  
+
+  .rate-image {  
+      max-width: 120px; /* Smaller max width for images on mobile */  
+  }  
+
+  .container-rate {  
+      flex-direction: column; /* Stack boxes vertically */  
+  }  
+
+  .box {  
+      margin: 10px 0; /* Margin for vertical spacing */  
+      width: 100%; /* Full width for stacked boxes */  
+  }    
+  .tour-info2 {  
+    .tour-name2 {  
+      font-size: 0.8em;  
+    }   
+
+    .tour-meta3 .trip-type2 {  
+      padding: 2px 6px;  
+      font-size: 0.8em;  
+    }  
+  }  
+}
+}  
+
+}
+
+}  

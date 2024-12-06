@@ -8,6 +8,7 @@ import { IoAddCircleSharp } from "react-icons/io5";
 import EditProfile from '../EditProfile/EditProfile.jsx';  
 import AddNewTrip from '../AddNewTrip/AddNewTrip.jsx';  
 import MyTrips from './MyTrips/MyTrips.jsx';   
+import MyRate from './MyRate/MyRate.jsx';
 import { BsFillSuitcaseFill } from "react-icons/bs";  
 import { RxStarFilled } from "react-icons/rx";  
 import { FaEdit } from "react-icons/fa";  
@@ -18,6 +19,7 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);  
   const [showMyTrips, setShowMyTrips] = useState(true);  
   const [showAddTrip, setShowAddTrip] =useState(false);
+  const[showrate,setshowrate]=useState(false); 
   const navigate = useNavigate();  
 
   const getFormData = async () => {  
@@ -44,12 +46,16 @@ const Profile = () => {
     setIsEditing(true);  
     setShowMyTrips(false);
     setShowAddTrip(false);    
+    setShowMyTrips(false); 
+    setshowrate(false)  ;
   };  
 
   const handleSave = (updatedData) => {  
     setData(updatedData);  
     setIsEditing(false);  
     setShowAddTrip(false); 
+    setshowrate(false)  ;
+
       
   };  
 
@@ -57,6 +63,9 @@ const Profile = () => {
     setIsEditing(false);   
     setShowMyTrips(true); 
     setShowAddTrip(false);  
+    setShowMyTrips(true);  
+    setshowrate(false)  ;
+
   };  
 
   const handleMyTrips = () => {  
@@ -69,6 +78,15 @@ const Profile = () => {
     setShowMyTrips(false);   
     setIsEditing(false);  
     setShowAddTrip(true); 
+    setIsEditing(false);   
+    setshowrate(false)  ;
+
+  };  
+
+  const handleMyRate = () => {  
+    setshowrate(true);   
+    setIsEditing(false);
+    setShowMyTrips(false);   
   };  
 
   return (  
@@ -94,6 +112,9 @@ const Profile = () => {
             </li>  
             <li tabIndex="0" className="icon-settings "><span><RxStarFilled className='iconmove'/> My rate</span></li>  
             <li tabIndex="0" className={`icon-settings ${showAddTrip ? 'active' : ''}`} onClick={handleAddTrips}><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+            <li tabIndex="0" className={`icon-settings ${showrate ? 'active' : ''}`} onClick={handleMyRate}> 
+              <span><RxStarFilled className='iconmove'/> My rate</span></li>  
+            <li tabIndex="0" className="icon-settings"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
             <span onClick={handleEdit}><li tabIndex="0" className={`icon-settings ${isEditing ? 'active' : ''}`}><FaEdit className='iconmove' /> Edit profile</li> </span>  
           </ul>  
         </nav>   
@@ -106,6 +127,8 @@ const Profile = () => {
           ) 
           : showAddTrip ? (  
             <AddNewTrip data={data}  onCancel={handleCancel} />   
+          ) : showrate ?(  
+            <MyRate data={data} onCancel={handleCancel} />   
           ) : (  
             <div className="helper">  
               <h1>Profile Overview</h1>  
