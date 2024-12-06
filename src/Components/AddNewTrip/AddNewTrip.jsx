@@ -8,12 +8,18 @@ import axios from 'axios';
 import "./AddNewTrip.scss";
 import pic from "./assets/Screenshot 2024-12-02 230554.png";
 import { MdAddPhotoAlternate } from "react-icons/md";
-import { IoMdAdd } from "react-icons/io";
+import { GiConfirmed } from "react-icons/gi";
+import dayjs from 'dayjs';
+
+
 
 const AddNewTrip = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const today = dayjs()
+    const [success, setsuccess] = useState(null); 
     const [tripData, setTripData] = useState({
         picture: '',
-        title: '',
+        name: '',
         description: '',
         startDate: null,
         endDate: null,
@@ -24,6 +30,21 @@ const AddNewTrip = () => {
         startingPoint: '',
         state: '',
     });
+    const initialTripData = { 
+        picture: '',
+        name: '',
+        description: '',
+        startDate: null,
+        endDate: null,
+        groupNo: '',
+        status: '',
+        transportation: '',
+        destination: '',
+        startingPoint: '',
+        state: '',
+        selectedImage: null 
+       
+    };  
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState({});
 
@@ -31,8 +52,8 @@ const AddNewTrip = () => {
         const newErrors = { ...errors };
 
         switch (name) {
-            case 'title':
-                newErrors.title = value ? '' : 'Title is required';
+            case 'name':
+                newErrors.name = value ? '' : 'name is required';
                 break;
             case 'description':
                 newErrors.description = value ? '' : 'Description is required';
@@ -70,22 +91,35 @@ const AddNewTrip = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setTripData({ ...tripData, [name]: value });
-        validateField(name, value);  // Validate the field on change
+        validateField(name, value); 
+         // Validate the field on change
     };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setImage(file);
-            setTripData({ ...tripData, picture: URL.createObjectURL(file) });
-        }
-    };
+    const handleFileChange = (event) => {  
+        const file = event.target.files[0];  
+        if (file) {  
+            setImage(file);    
+      
+            setTripData((prevTripData) => ({  
+                ...prevTripData,  
+                picture: URL.createObjectURL(file)   
+            }));  
+    
+            const reader = new FileReader();  
+            reader.onloadend = () => {  
+                setSelectedImage(reader.result);    
+            };  
+    
+            reader.readAsDataURL(file); 
+        }  
+    };  
 
     const validateForm = () => {
         const newErrors = {};
         Object.keys(tripData).forEach((key) => {
             if (!tripData[key] && key !== 'picture') {
                 newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+             
             }
         });
         setErrors(newErrors);
@@ -96,32 +130,55 @@ const AddNewTrip = () => {
         const formDataImage = new FormData();
 
         if (image) {
-            formDataImage.append('picture', image);
+            formDataImage.append('photo', image);
         }
 
-        formDataImage.append('title', tripData.title);
+        formDataImage.append('name', tripData.name);
         formDataImage.append('description', tripData.description);
-        formDataImage.append('startDate', tripData.startDate.format('YYYY-MM-DD'));
-        formDataImage.append('endDate', tripData.endDate.format('YYYY-MM-DD'));
-        formDataImage.append('groupNo', tripData.groupNo);
-        formDataImage.append('status', tripData.status);
+        formDataImage.append('start_date', tripData.startDate.format('YYYY-MM-DD'));
+        formDataImage.append('end_date', tripData.endDate.format('YYYY-MM-DD'));
+        formDataImage.append('travellers', tripData.groupNo);
+        formDataImage.append('mode', tripData.status);
         formDataImage.append('transportation', tripData.transportation);
         formDataImage.append('destination', tripData.destination);
-        formDataImage.append('startingPoint', tripData.startingPoint);
-        formDataImage.append('state', tripData.state);
+        formDataImage.append('start_place', tripData.startingPoint);
+        formDataImage.append('status', tripData.state);
 
         try {
-            const response = await axios.post("https://triptide.pythonanywhere.com/editprofile/update_2/", formDataImage, {
+            const response = await axios.post("https://triptide.pythonanywhere.com/travels/add/", formDataImage, {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                     'Content-Type': 'multipart/form-data',
                 },
             });
             console.log(response);
-        } catch (error) {
+            if (response.status === 201) {  
+                setsuccess("Trip added successfully!");  
+                console.log(response.data); 
+                setTripData(initialTripData); 
+                setImage(null); 
+                setSelectedImage(null);
+                setErrors({}); 
+                setTimeout(() => {  
+                    setsuccess(null);  
+                }, 3000);
+            } 
+            if (response.status === 200 ) {  
+                
+                setErrors((prevErrors) => ({  
+                    ...prevErrors,  
+                    name: "This name already exists"    
+                }));  
+                
+            }  
+        } 
+        catch (error) {  
             console.error("Error adding new trip:", error);
         }
+        
     };
+
+    
 
     const handleAddTrip = (e) => {
         e.preventDefault();
@@ -138,7 +195,11 @@ const AddNewTrip = () => {
 
                 <div className="trip-status-state-wrapper">  
                 <div className='image-container'>  
-                    <img src={pic} alt="Description of Image" className="smaller-image" />  
+                    <img   
+                        src={selectedImage || pic}   
+                        alt="Description of Image"   
+                        className="smaller-image"   
+                    />  
                     <div className="button-container">  
                         <label htmlFor="file-upload" className="file-upload-button">  
                             <MdAddPhotoAlternate className='moveiconpic' />  
@@ -147,8 +208,11 @@ const AddNewTrip = () => {
                             type="file"   
                             id="file-upload"   
                             onChange={handleFileChange}   
+                            style={{ display: 'none' }}  
                         />  
                     </div>  
+
+                                        
                     
                     <div className="trip-state">   
                         <FormLabel component="legend" style={{ marginBottom: '0px' }}>State</FormLabel>  
@@ -171,7 +235,7 @@ const AddNewTrip = () => {
                         </RadioGroup>  
                         {errors.state && <FormHelperText error>{errors.state}</FormHelperText>}  
 
-                        {/* Place the status section here, inside trip-state */}  
+                        
                         <div className="trip-status">  
                             <FormLabel component="legend" style={{ marginBottom: '0px' }}>Status</FormLabel>  
                             <RadioGroup  
@@ -193,9 +257,21 @@ const AddNewTrip = () => {
                             </RadioGroup>  
                             {errors.status && <FormHelperText error>{errors.status}</FormHelperText>}  
                         </div>  
+                    </div> 
+                    {success && (   
+                        <div className="success">   
+                         
+                            <p>  
+                                <span className="tripadded"><GiConfirmed />{success}</span>   
+                            </p>  
+                        
                     </div>  
+                    )}  
                 </div>  
+                
             </div>
+
+            
 
             
                 <div className="flex-container">  
@@ -203,14 +279,14 @@ const AddNewTrip = () => {
                 </div>  
                 <div className="trip-title">  
                     <TextField  
-                        value={tripData.title}  
-                        label="Title"  
+                        value={tripData.name}  
+                        label="Name"  
                         variant="outlined"  
-                        name="title"  
+                        name="name"  
                         onChange={handleChange}  
                         required  
-                        error={!!errors.title}  
-                        helperText={errors.title}  
+                        error={!!errors.name }  
+                        helperText={errors.name}
                         style={{ marginRight: '20px' }}  
                     />  
                     <TextField  
@@ -283,6 +359,8 @@ const AddNewTrip = () => {
                                 required  
                                 value={tripData.startDate}  
                                 label="Start Date"  
+                                minDate={today}
+                                maxDate={tripData.endDate? tripData.endDate :  undefined }
                                 slotProps={{  
                                     textField: {  
                                         error: !!errors.startDate,  
@@ -300,6 +378,7 @@ const AddNewTrip = () => {
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
                             <DatePicker  
                                 value={tripData.endDate}  
+                                minDate={tripData.startDate ? tripData.startDate : dayjs()}
                                 label="End Date"  
                                 slotProps={{  
                                     textField: {  
