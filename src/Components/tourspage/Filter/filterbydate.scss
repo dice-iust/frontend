@@ -112,14 +112,22 @@ $hover-bg-color: #f0f0f0;
       text-decoration: underline;  
       font-weight: bold; // Makes the orange text bold  
       font-size: 1.1em; // Matches the blue text size for continuity  
+      
+    } 
+    .no-trips-orange:hover {  
+      
+      text-decoration: none; /* Optional: removes underline on hover */
+      cursor: pointer;    
     }  
+
     .no-trips-orange2 {  
       color: #ff6f20;
       margin-left: 0px;
       margin-right: 0px; // Vibrant orange for emphasis  
       text-decoration: underline;  
       font-weight: bold; // Makes the orange text bold  
-      font-size: 0.9em; // Matches the blue text size for continuity  
+      font-size: 0.9em; // Matches the blue text size for continuity
+      
     }  
     .no-trips-blue2 {  
       color: #22487a; // Cleaner blue color  
