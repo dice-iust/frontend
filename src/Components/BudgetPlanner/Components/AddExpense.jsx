@@ -51,10 +51,20 @@ const AddExpense = (props) => {
       return; // Prevent form submission if there are errors  
     }  
 
-    setExpData((prev) => [...prev, formValue]);  
+    // Structure new expense object to match the expected format  
+    const newExpense = {  
+        username: formValue.userName,  // or whatever property name is expected  
+        title: formValue.title,  
+        amount: Number(formValue.amount),  // Ensure it's stored as a number  
+        date: formValue.date,  
+        description: formValue.description,  
+        id: Date.now() // Use timestamp as ID (replace this with a proper unique ID generator if needed)  
+    };  
+
+    setExpData((prev) => [...prev, newExpense]);  
     setShowAddExpense(false);  
     handleExpenseListToggle();  
-  };  
+}; 
 
   return (  
     <div className="main-add-div">  

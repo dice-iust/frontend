@@ -31,6 +31,10 @@
     left: 50%;   
     transform: translateX(-50%); /* Center the planner image */  
     z-index: 1; /* Layering on top of header */  
+    @media (max-width: 768px) {  
+      height: 30%; /* Adjusted height for smaller screens */  
+      max-width: 90%; /* Adjusted width for better fit on mobile */  
+    }  
   }  
 
   .trip-title-planner {  
@@ -45,6 +49,9 @@
     padding: 10px;  
     border-radius: 5px;   
     z-index: 2;  
+    @media (max-width: 768px) {  
+      font-size: 1.5rem; /* Smaller font size on smaller screens */  
+    } 
   }  
 
   .trip-planner-image-container {  
@@ -63,6 +70,10 @@
     z-index: 3; /* On top of other images */
     margin: 0;  
     padding: 0;
+    @media (max-width: 768px) {  
+      width: 25vw; // Adjusted for smaller screen size  
+      height: 12.5vw; // Adjusted for maintaining aspect ratio  
+    }
   }  
 
   .trip-planner-image {  

@@ -1,0 +1,59 @@
+:root {  
+    --mainColor: #22487a;  
+    --mainColorLight: #5767aa;  
+    --secondaryColor: #ea7d29;  
+    --textColor: #eee;  
+    --font-family: OpenSans;  
+}  
+
+.balance-list {  
+    margin-top: 20px;  
+    padding: 20px;  
+    border: 1px solid #ddd;  
+    border-radius: 8px;  
+    background-color: #ffffff;  
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Add subtle shadow for depth  
+    font-family: var(--font-family); // Use the defined font  
+    
+    h2 {  
+        color: var(--mainColor); //Heading color  
+        margin-bottom: 15px; //Space below heading  
+        font-weight: bold; // Make heading bold  
+    }  
+
+    .balance-item {  
+        display: flex;  
+        justify-content: space-between;  
+        align-items: center;  
+        padding: 15px;  
+        margin: 10px 0;  
+        border: 1px solid #ececec;  
+        border-radius: 6px;  
+        background-color: #f7f7f7; // Lighter background for each item  
+        transition: background-color 0.3s; // Smooth transition effect  
+
+        &:hover { // Add hover effect for balance items  
+            background-color: #f0f0f0; // Light gray on hover  
+        }  
+    }  
+
+    button {  
+        padding: 8px 12px;  
+        font-size: 14px;  
+        font-weight: bold; // Make button text bold  
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 4px;  
+        cursor: pointer;  
+        transition: background-color 0.3s; // Smooth transition for button hover  
+
+        &:hover {  
+            background-color: var(--secondaryColor); // Darker on hover  
+        }  
+    }  
+
+    p {  
+        margin: 0; // Reset margin for p  
+    }  
+}
