@@ -1,6 +1,6 @@
 import React, { useRef } from "react";  
 import { FaBars, FaTimes } from "react-icons/fa";  
-import "./categories_nav.scss";  
+import "./header.scss";  
 import LogoImg from "../tourspage/Assests/logo.png";
 import { Link } from 'react-router-dom'; 
 import { CgProfile } from "react-icons/cg";
@@ -31,7 +31,6 @@ function Navbar_category() {
               <div className="contents">
               <Link to="/Main"><a href="/"><IoHomeOutline className="movepicon"/> Home</a></Link>
               <Link to="/about"><a href="/"><FiInfo className="movepicon"/> About</a></Link>
-              <Link to="/Profile"><a href="/"><CgProfile className="movepicon"/> Profile</a> </Link> 
               <Link to="/"><a href="/"><BiLogOutCircle  className="movepicon"/>Logout</a> </Link> 
               </div> 
             </nav>  

@@ -207,7 +207,7 @@ const validateEmail = (email) => {
       <div className="edit-profile-container">
     
         <form className="profile-form">
-          <button onClick={handleBack} className='p-btn'>< FaArrowLeft className='ep-la-icon'/></button>
+          {/* <button onClick={handleBack} className='p-btn'>< FaArrowLeft className='ep-la-icon'/></button> */}
 
           <h1 className="ep-title">Edit Profile</h1>
       
