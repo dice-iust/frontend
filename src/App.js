@@ -1,6 +1,6 @@
 
 import React from 'react';  
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Router components  
+import { BrowserRouter as Router, Route, Routes ,Switch} from 'react-router-dom'; // Import Router components  
 // import './App.css';  
 import LoginForm from "./Components/LoginForm/loginform.jsx";  
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
@@ -18,6 +18,7 @@ import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
 import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
 import Profile from "./Components/ProfilePage/ProfilePage.jsx";
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
 
 
 function App() {  
@@ -41,9 +42,13 @@ function App() {
         <Route path="/signup/email_verification" element={<EmailVerification/>} />
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/Profile" element={<Profile />} /> 
+        <Route path="/login/forgot" element={<ForgotPassword/>}/>
+
       </Routes>  
     </Router>  
   );  
 }  
+
+
 
 export default App;
