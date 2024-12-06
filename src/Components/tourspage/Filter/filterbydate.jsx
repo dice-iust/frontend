@@ -9,8 +9,11 @@ import axios from 'axios';
 import { GrMoney } from "react-icons/gr";  
 import { FaCarSide, FaPlane, FaUndoAlt, FaRegCalendar } from "react-icons/fa";  
 import { TbTrain, TbBus } from "react-icons/tb";  
+import { useNavigate } from 'react-router-dom';  
+import { Button } from '@mui/material';
 
 const DateRangePicker = () => {  
+
   const [startDate, setStartDate] = useState(null);  
   const [endDate, setEndDate] = useState(null);  
   const [isEndDateOpen, setIsEndDateOpen] = useState(false);  
@@ -20,7 +23,13 @@ const DateRangePicker = () => {
   const [resultData, setResultData] = useState([]);  
   const [isend, setend] = useState(null); 
   const [istrip, setIstrip] = useState(null);  
-  const today = new Date();  
+  const today = new Date(); 
+  
+  const navigate = useNavigate();  
+
+  const handleCreateNewTrip = () => {  
+    navigate('/Profile', { state: { showAddTrip: true ,  showMyTrips: false} });  
+  };  
 
   const formatDate = (dateString) => {  
     const [year, month, day] = dateString.split('-');  
@@ -187,7 +196,7 @@ const DateRangePicker = () => {
   !istrip ? (  
     <p>  
       <span className="no-trips-blue">No trips available for the selected dates. </span>  
-      <span className="no-trips-orange">Create your own unique journey!</span>   
+      <span className="no-trips-orange" onClick={handleCreateNewTrip}>Create your own unique journey!</span>
     </p>  
   ) : (  
     <p>  

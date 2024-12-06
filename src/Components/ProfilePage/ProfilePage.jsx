@@ -2,25 +2,30 @@ import React, { useState, useEffect } from 'react';
 import "./ProfilePage.scss";  
 import Travelsnav from "./header.jsx";  
 import Footer from '../tourspage/footer.jsx';  
-import { useNavigate } from 'react-router-dom';  
 import axios from '../../api/axios';  
 import { IoAddCircleSharp } from "react-icons/io5";  
 import EditProfile from '../EditProfile/EditProfile.jsx';  
 import AddNewTrip from '../AddNewTrip/AddNewTrip.jsx';  
 import MyTrips from './MyTrips/MyTrips.jsx';   
-import MyRate from './MyRate/MyRate.jsx';
+import MyRate from './MyRate/MyRate.jsx';  
 import { BsFillSuitcaseFill } from "react-icons/bs";  
 import { RxStarFilled } from "react-icons/rx";  
 import { FaEdit } from "react-icons/fa";  
+import { useNavigate, useLocation } from 'react-router-dom';   
 
-
-const Profile = () => {  
+const Profile = () => {   
+  const location = useLocation();  
+  const navigate = useNavigate();  
   const [data, setData] = useState(null);  
   const [isEditing, setIsEditing] = useState(false);  
-  const [showMyTrips, setShowMyTrips] = useState(true);  
-  const [showAddTrip, setShowAddTrip] =useState(false);
-  const[showrate,setshowrate]=useState(false); 
-  const navigate = useNavigate();  
+  const [showMyTrips, setShowMyTrips] = useState(() => {  
+    if (location.state && location.state.showMyTrips !== undefined) {  
+      return location.state.showMyTrips;  
+    }  
+    return true; 
+  });    
+  const [showAddTrip, setShowAddTrip] = useState(location.state?.showAddTrip || false);  
+  const [showRate, setShowRate] = useState(false);   
 
   const getFormData = async () => {  
     try {  
@@ -40,50 +45,46 @@ const Profile = () => {
     } else {  
       getFormData();  
     }  
-  }, []);  
+  }, [navigate]); // Added navigate to dependency array  
 
   const handleEdit = () => {  
     setIsEditing(true);  
-    setShowMyTrips(false);
+    setShowMyTrips(false);  
     setShowAddTrip(false);    
-    setShowMyTrips(false); 
-    setshowrate(false)  ;
+    setShowRate(false);  // This was corrected to ensure all states are reset correctly  
   };  
 
   const handleSave = (updatedData) => {  
     setData(updatedData);  
     setIsEditing(false);  
-    setShowAddTrip(false); 
-    setshowrate(false)  ;
-   
+    setShowAddTrip(false);   
+    setShowRate(false);  
   };  
 
   const handleCancel = () => {  
     setIsEditing(false);   
-    setShowMyTrips(true); 
+    setShowMyTrips(true);   
     setShowAddTrip(false);  
-    setshowrate(false)  ;
-
+    setShowRate(false);  
   };  
 
   const handleMyTrips = () => {  
     setShowMyTrips(true);   
-    setIsEditing(false); 
+    setIsEditing(false);   
     setShowAddTrip(false);  
-    setshowrate(false);
+    setShowRate(false);  
   };  
 
   const handleAddTrips = () => {  
     setShowMyTrips(false);   
     setIsEditing(false);  
     setShowAddTrip(true);  
-    setshowrate(false)  ;
-
+    setShowRate(false);  
   };  
 
   const handleMyRate = () => {  
-    setshowrate(true);   
-    setIsEditing(false);
+    setShowRate(true);   
+    setIsEditing(false);  
     setShowMyTrips(false);  
     setShowAddTrip(false);  
   };  
@@ -98,7 +99,7 @@ const Profile = () => {
             {data && data.profilePicture && (  
               <img  
                 src={data.profilePicture}  
-                alt="Profilepic"  
+                alt="Profile picture"  
                 className="avatar-image"  
               />  
             )}  
@@ -106,26 +107,45 @@ const Profile = () => {
             <p>{data ? data.bio : ''}</p>  
           </header>  
           <ul>  
-            <li tabIndex="0" className={`icon-settings ${showMyTrips ? 'active' : ''}`} onClick={handleMyTrips}>   
+            <li   
+              tabIndex="0"   
+              className={`icon-settings ${showMyTrips ? 'active' : ''}`}   
+              onClick={handleMyTrips}  
+            >   
               <span><BsFillSuitcaseFill className='iconmove'/> My trips</span>  
             </li>  
-            <li tabIndex="0" className={`icon-settings ${showrate ? 'active' : ''}`} onClick={handleMyRate}> 
-              <span><RxStarFilled className='iconmove'/> My rate</span></li>  
-            <li tabIndex="0" className={`icon-settings ${showAddTrip ? 'active' : ''}`} onClick={handleAddTrips}><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
-
-            <span onClick={handleEdit}><li tabIndex="0" className={`icon-settings ${isEditing ? 'active' : ''}`}><FaEdit className='iconmove' /> Edit profile</li> </span>  
+            <li   
+              tabIndex="0"   
+              className={`icon-settings ${showRate ? 'active' : ''}`}   
+              onClick={handleMyRate}   
+            >  
+              <span><RxStarFilled className='iconmove'/> My rate</span>  
+            </li>  
+            <li   
+              tabIndex="0"   
+              className={`icon-settings ${showAddTrip ? 'active' : ''}`}   
+              onClick={handleAddTrips}  
+            >  
+              <span><IoAddCircleSharp className='iconmove' /> Create new trip</span>  
+            </li>  
+            <li   
+              tabIndex="0"   
+              className={`icon-settings ${isEditing ? 'active' : ''}`}   
+              onClick={handleEdit}  
+            >  
+              <FaEdit className='iconmove' /> Edit profile  
+            </li>  
           </ul>  
         </nav>   
-         
+
         <main className="content">  
           {showMyTrips ? (  
             <MyTrips data={data} onCancel={handleCancel} />   
           ) : isEditing ? (  
             <EditProfile data={data} onSave={handleSave} onCancel={handleCancel} />   
-          ) 
-          : showAddTrip ? (  
-            <AddNewTrip data={data}  onCancel={handleCancel} />   
-          ) : showrate ?(  
+          ) : showAddTrip ? (  
+            <AddNewTrip data={data} onCancel={handleCancel} />   
+          ) : showRate ? (  
             <MyRate data={data} onCancel={handleCancel} />   
           ) : (  
             <div className="helper">  
@@ -135,7 +155,6 @@ const Profile = () => {
             </div>  
           )}   
         </main>  
-        
       </div>  
       <Footer />  
     </div>  
