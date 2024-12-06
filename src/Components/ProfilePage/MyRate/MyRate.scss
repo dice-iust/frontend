@@ -498,7 +498,41 @@ hr.new1 {
   }  
 }  
 
-@media (max-width: 768px) {  
+@media (max-width: 768px) {
+  .container-rate {  
+    flex-direction: column; /* Stack boxes vertically on smaller screens */  
+    align-items: center; /* Center align boxes */  
+    padding: 10px; /* Less padding for mobile */  
+  }  
+
+  .box {  
+    margin: 10px 0; /* Add vertical margin between boxes */  
+    width: 90%; /* Make boxes take up most of the screen width */  
+  }  
+
+  .circle {  
+    width: 150px; /* Adjust circle size */  
+    height: 150px; /* Adjust circle size */  
+  }  
+
+  .circle-in {  
+    width: 120px; /* Adjust inner circle size */  
+    height: 120px; /* Adjust inner circle size */  
+  }  
+
+  .rating-number {  
+    font-size: 24px; /* Smaller font size for mobile */  
+  }  
+
+  .rate-title {  
+    font-size: 24px; /* Smaller title size */  
+    margin-top: 20px; /* Adjust margins */  
+  }  
+
+  .rate-image {  
+    height: 100px; /* Adjust image size */  
+    width: 150px; /* Adjust image size */  
+  }    
   .tour-card2 {  
     width: calc(100% - 0px); /* One card per row on small screens */  
   }  
@@ -519,21 +553,48 @@ hr.new1 {
 }  
 
 @media (max-width: 480px) {  
-  .circle {  
-    width: 80%; /* Further adjust size for mobile */  
-}  
+  .container-rate {  
+    flex-direction: column; /* Stack boxes vertically */  
+    align-items: center;    /* Center align boxes */  
+    padding: 10px;          /* Less padding for mobile */  
+  }  
 
-  .rate-title,  
+  .box {  
+    width: 95%;             /* Make boxes take up most of the screen width */  
+    margin: 10px 0;        /* Add vertical margin between boxes */  
+    height: auto;          /* Allow height to adjust based on content */  
+  }  
+
+  .circle {  
+    width: 120px;          /* Adjust circle size */  
+    height: 120px;         /* Adjust circle size */  
+    top: -100px;           /* Adjust position if necessary */  
+  }  
+
+  .circle-in {  
+    width: 80px;           /* Adjust inner circle size */  
+    height: 80px;          /* Adjust inner circle size */  
+  }  
+
   .rating-number {  
-      font-size: 1rem; /* Smaller font size on mobile devices */  
+    font-size: 20px;       /* Smaller font size for mobile */  
+  }  
+
+  .rate-title {  
+    font-size: 20px;       /* Smaller title size */  
+    margin-top: 15px;      /* Adjust margins */  
+    line-height: 1.2;      /* Improve readability */  
   }  
 
   .rate-image {  
-      max-width: 120px; /* Smaller max width for images on mobile */  
+    height: 100px;         /* Adjust image size */  
+    width: 150px;          /* Adjust image size */  
+    background-size: cover; /* Ensures the image covers the box */  
   }  
-
-  .container-rate {  
-      flex-direction: column; /* Stack boxes vertically */  
+  
+  .star {  
+    font-size: 20px;       /* Smaller stars for mobile */  
+    margin: 0 3px;         /* Adjust side margin between stars */  
   }  
 
   .box {  
