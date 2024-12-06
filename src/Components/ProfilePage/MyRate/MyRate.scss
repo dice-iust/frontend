@@ -268,7 +268,7 @@ hr.new1 {
     background: white;  
     border-radius: 10px;  
     overflow: hidden;  
-    width: calc(32.5% - 2px);; /* Three cards per row with consistent gap */  
+    width: calc(32.5% - 2px);/* Three cards per row with consistent gap */  
     height: 330px;   
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
@@ -405,7 +405,7 @@ hr.new1 {
 
       .tour-dates2, .tour-length2 {  
         font-size: 0.9em;  
-      }        .tour-dates2 {  
+      } .tour-dates2 {  
         margin-bottom: 7px;  
         margin-left: 10px;  
         margin-top: 0px;  

@@ -55,15 +55,13 @@ const Profile = () => {
     setIsEditing(false);  
     setShowAddTrip(false); 
     setshowrate(false)  ;
-
-      
+   
   };  
 
   const handleCancel = () => {  
     setIsEditing(false);   
     setShowMyTrips(true); 
     setShowAddTrip(false);  
-    setShowMyTrips(true);  
     setshowrate(false)  ;
 
   };  
@@ -72,13 +70,13 @@ const Profile = () => {
     setShowMyTrips(true);   
     setIsEditing(false); 
     setShowAddTrip(false);  
+    setshowrate(false);
   };  
 
   const handleAddTrips = () => {  
     setShowMyTrips(false);   
     setIsEditing(false);  
-    setShowAddTrip(true); 
-    setIsEditing(false);   
+    setShowAddTrip(true);  
     setshowrate(false)  ;
 
   };  
@@ -86,7 +84,8 @@ const Profile = () => {
   const handleMyRate = () => {  
     setshowrate(true);   
     setIsEditing(false);
-    setShowMyTrips(false);   
+    setShowMyTrips(false);  
+    setShowAddTrip(false);  
   };  
 
   return (  
@@ -110,11 +109,10 @@ const Profile = () => {
             <li tabIndex="0" className={`icon-settings ${showMyTrips ? 'active' : ''}`} onClick={handleMyTrips}>   
               <span><BsFillSuitcaseFill className='iconmove'/> My trips</span>  
             </li>  
-            <li tabIndex="0" className="icon-settings "><span><RxStarFilled className='iconmove'/> My rate</span></li>  
-            <li tabIndex="0" className={`icon-settings ${showAddTrip ? 'active' : ''}`} onClick={handleAddTrips}><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
             <li tabIndex="0" className={`icon-settings ${showrate ? 'active' : ''}`} onClick={handleMyRate}> 
               <span><RxStarFilled className='iconmove'/> My rate</span></li>  
-            <li tabIndex="0" className="icon-settings"><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+            <li tabIndex="0" className={`icon-settings ${showAddTrip ? 'active' : ''}`} onClick={handleAddTrips}><span><IoAddCircleSharp className='iconmove' /> Create new trip</span></li>  
+
             <span onClick={handleEdit}><li tabIndex="0" className={`icon-settings ${isEditing ? 'active' : ''}`}><FaEdit className='iconmove' /> Edit profile</li> </span>  
           </ul>  
         </nav>   
