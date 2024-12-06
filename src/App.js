@@ -17,9 +17,7 @@ import Economical from "./Components/tourspage/Economicaltrips.jsx";
 import Fancy from "./Components/tourspage/Fancytrips.jsx";
 import Winter from './Components/tourspage/Wintertrips.jsx';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
-import ChangePass from './Components/ForgotPassword/change-pass.jsx';
-import EmailSent from './Components/ForgotPassword/send_email.jsx';
-import new_forgot from './Components/ForgotPassword/new-forgot.jsx'
+
 
 
 function App() {  
@@ -41,10 +39,7 @@ function App() {
         <Route path="/Main/Fancy" element={<Fancy />} /> 
         <Route path="/Main/Winter" element={<Winter />} />
         <Route path="/login/forgot" element={<ForgotPassword/>}/>
-        <Route path="/login/forgot/email_sent" element={<EmailSent/>}/>
-        <Route path="/login/forgot/email-sent/changepass" element={<ChangePass/>}/>
-        <Route path="/new-forgot" element={<new_forgot/>}/>
-        
+       
       </Routes>  
     </Router>  
   );  
