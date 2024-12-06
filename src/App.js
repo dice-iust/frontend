@@ -20,6 +20,7 @@ import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
 import Profile from "./Components/ProfilePage/ProfilePage.jsx";
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
 import AddNewTrip from './Components/AddNewTrip/AddNewTrip.jsx';
+import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
 
 
 function App() {  
@@ -44,6 +45,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} /> 
         <Route path="/Profile" element={<Profile />} /> 
         <Route path="/login/forgot" element={<ForgotPassword/>}/>
+        <Route path="/budgetplanner" element={<BudgetPlanner/>} />
 
         <Route path="/addTrip" element={<AddNewTrip />}/>
       </Routes>  
