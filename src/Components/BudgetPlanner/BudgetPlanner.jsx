@@ -19,14 +19,62 @@ const BudgetPlanner = () => {
         setIsOpen(prevState => !prevState);  
     };  
 
+  //   const fetchExpenses = async () => {  
+  //     try {  
+  //         const response = await axios.get("https://pythonanywhere.com/planner/allpay/", {  
+  //             headers: {  
+  //                 'Content-Type': 'application/json',  
+  //                 'Authorization': localStorage.getItem("token"), // Set your token here  
+  //                 'travel_name': travelName // Send travel_name  
+  //             },  
+  //         });  
+
+  //         const expenses = response.data.pays.map(pay => ({  
+  //             title: pay.title,  
+  //             username: pay.created_by.username,  
+  //             description: pay.description,  
+  //             amount: pay.amount,  
+  //             date: new Date().toISOString(),   
+  //             id: Math.random() // or another unique ID logic  
+  //         }));  
+  //         setExpData(expenses);  
+  //     } catch (error) {  
+  //         console.error('Error fetching expenses:', error);  
+  //     }  
+  // };  
+
+  // // Function to post a new expense  
+  // const postExpense = async (newExpense) => {  
+  //     try {  
+  //         await axios.post("https://pythonanywhere.com/planner/addpay/", newExpense, {  
+  //             headers: {  
+  //                 'Content-Type': 'application/json',  
+  //                 'Authorization': localStorage.getItem("token"),  
+  //                 'travel_name': travelName, // Pass travel name again if needed  
+  //             },  
+  //         });  
+
+  //         // After posting, fetch updated expenses  
+  //         fetchExpenses(); // Retrieve the updated expense list  
+  //         setShowAddExpense(false); // Close add expense form  
+  //     } catch (error) {  
+  //         console.error('Error posting expense:', error);  
+  //     }  
+  // };  
+
     useEffect(() => {  
         setExpData(expenseData); // Load the expense data initially  
-        // Initialize example balances  
+        
+      
         setBalances([  
             { id: 1, name: 'John Doe', amount: 50, type: 'owing' }, // Owed to  
             { id: 2, name: 'Jane Smith', amount: 30, type: 'toReceive' } // Should receive  
         ]);  
     }, []);  
+    useEffect(() => {  
+      // Save expData to local storage whenever it changes  
+      localStorage.setItem('expenses', JSON.stringify(expData));  
+  }, [expData]);  
 
     const handleAddExpenseToggle = () => {  
         setShowAddExpense(true);  

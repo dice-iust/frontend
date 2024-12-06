@@ -14,7 +14,7 @@ const BalanceList = ({ balances, setBalances }) => {
             ) : (  
                 balances.map((item) => (  
                     <div key={item.id} className="balance-item" style={{ color: item.type === 'owing' ? 'red' : 'green' }}>  
-                        <p>{item.name}: ${item.amount}</p>  
+                        <p><strong style={{ color: '#5767aa' }}>{item.name}:</strong> ${item.amount}</p>  
                         <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
                     </div>  
                 ))  

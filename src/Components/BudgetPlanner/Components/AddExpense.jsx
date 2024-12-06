@@ -61,9 +61,11 @@ const AddExpense = (props) => {
         id: Date.now() // Use timestamp as ID (replace this with a proper unique ID generator if needed)  
     };  
 
-    setExpData((prev) => [...prev, newExpense]);  
-    setShowAddExpense(false);  
-    handleExpenseListToggle();  
+    setExpData((prev) => [...prev, newExpense]); // Update the state  
+        setShowAddExpense(false); // Close the add expense form  
+        handleExpenseListToggle(); // Show the expense list  
+        setFormValue({ userName: '', title: '', amount: '', date: '', description: '' }); // Clear form  
+        setErrors({}); // Clear errors 
 }; 
 
   return (  
