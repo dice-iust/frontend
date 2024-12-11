@@ -1,5 +1,9 @@
 import React from 'react';  
 import './Trips_MainPage.scss';  
+import { GiCash } from "react-icons/gi";
+import { BsFillChatFill } from "react-icons/bs";
+import { IoMdPersonAdd } from "react-icons/io";
+import { TbHomeFilled } from "react-icons/tb";
 
 const Trips_MainPage = () => {   
     const user = {  
@@ -18,12 +22,15 @@ const Trips_MainPage = () => {
     return (  
         <div className="main-page">  
             <div className="sidebar">  
-                <ul className="menu">  
-                    <li className="menu-item">Main</li>  
-                    {isAdmin && <li className="menu-item">Requests</li>}   
-                    <li className="menu-item">Q&A</li>  
-                    <li className="menu-item">Planner</li>  
-                </ul>  
+            <ul className="menu">  
+                <li className="menu-item">  
+                    <TbHomeFilled size={25} className='moveiconMain'/>  
+                    Main  
+                </li>  
+                {isAdmin && <li className="menu-item"><IoMdPersonAdd size={25} className='moveiconadd'/> Requests</li>}   
+                <li className="menu-item"><BsFillChatFill size={22} className='moveiconchat'/> Q&A</li>  
+                <li className="menu-item"><GiCash size={25}/> Planner</li>  
+            </ul>  
                 <div className="profile">  
                     <img src={user.profilePicture} alt="Profile" className="profile-pic" />  
                     <span className="profile-name">{user.name}</span>  

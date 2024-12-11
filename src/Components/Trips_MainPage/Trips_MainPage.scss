@@ -23,11 +23,37 @@ $transition-duration: 0.3s;
         margin-top: 20px;
 
         .menu-item {  
-            margin-top: 4px;
+            // margin-top: 4px;
             padding: 15px;  
             cursor: pointer;  
             transition: background-color $transition-duration ease, transform $transition-duration ease;  
             border-radius: 4px; 
+            
+
+            &:last-child {  
+                margin-bottom: 0; 
+            }  
+
+            .moveiconMain
+            {
+                margin-top: 20px;
+                margin-bottom: 0px;
+                margin-right: 3px;
+                padding: 0;
+            }
+
+            .moveiconadd {  
+                margin-top: 16px; 
+                margin-bottom: 0; 
+                padding: 0;  
+                transform: rotateY(180deg);   
+            }  
+        
+            .moveiconchat {  
+                margin-top: 10px; 
+                transform: rotateY(180deg); 
+            }  
+
 
 
             &:hover,   
@@ -84,3 +110,5 @@ $transition-duration: 0.3s;
     background-color: #ecf0f1;  
     border-left: 1px solid #bdc3c7; 
 }
+
+
