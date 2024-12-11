@@ -29,15 +29,15 @@ $transition-duration: 0.3s;
             transition: background-color $transition-duration ease, transform $transition-duration ease;  
             border-radius: 4px; 
 
-            
+
             &:hover,   
             &:focus {  
-                background-color: #ea7d29;  
+                background-color: rgb(234, 110, 12);  
                 transform: scale(1.02); 
                 outline: none; 
             }  
 
-           
+
             &:focus {  
                 outline: 2px solid #ecf0f1; 
                 outline-offset: 2px; 
@@ -50,9 +50,9 @@ $transition-duration: 0.3s;
         align-items: center;  
         padding: 15px;  
         margin-top: auto; 
-        
-        
-        background-color: #ea7d29; 
+
+
+        background-color: rgb(234, 110, 12); 
         border-radius: 5px; 
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  
         margin: 15px; 
