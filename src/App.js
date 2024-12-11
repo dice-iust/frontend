@@ -21,6 +21,7 @@ import Profile from "./Components/ProfilePage/ProfilePage.jsx";
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
 import AddNewTrip from './Components/AddNewTrip/AddNewTrip.jsx';
 import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
+import Trips_MainPage from './Components/Trips_MainPage/Trips_MainPage.jsx';
 
 
 function App() {  
@@ -46,8 +47,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} /> 
         <Route path="/login/forgot" element={<ForgotPassword/>}/>
         <Route path="/budgetplanner" element={<BudgetPlanner/>} />
-
-        <Route path="/addTrip" element={<AddNewTrip />}/>
+        <Route path="/TripsPage" element={<Trips_MainPage/>} />
       </Routes>  
     </Router>  
   );  
