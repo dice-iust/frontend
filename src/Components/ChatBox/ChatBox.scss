@@ -1,0 +1,17 @@
+.chat-container {
+  position: relative;
+  background-color: whitesmoke;
+  height: 100vh;
+  .chat-messages {
+    padding-top: 20px;
+  }
+
+  .send-box {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+.message-container {
+  display: flex;
+  align-items: top;
+  margin: 8px;
+  border-radius: 4px;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-top: 4px;
+  }
+  .textMessage {
+    margin: 8px;
+    padding: 8px;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 4px;
+    background-color: rgba(211, 211, 211, 0.326);
+    min-width: 200px;
+  }
+}

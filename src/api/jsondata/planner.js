@@ -1,3 +1,5 @@
+import pic from "../../../src/Components/AddNewTrip/assets/IMG_20241202_223506_045.jpg";
+
 export const expenseData = [
   {
     id: "1",
@@ -22,5 +24,30 @@ export const expenseData = [
     title: "bazar",
     description: "Bought souvenir",
     date: "12-01-2024",
+  },
+];
+
+export const messageData = [
+  {
+    id: "1",
+    profilePic: pic,
+    textMessage: "text message 1",
+    date: "12-01-2024",
+    isAdmin: false,
+  },
+  {
+    id: "2",
+    profilePic: pic,
+    textMessage: "text message 2",
+    date: "12-01-2024",
+    isAdmin: false,
+  },
+  {
+    id: "3",
+    profilePic: pic,
+    textMessage:
+      "text message 3 text message 3 text message 3 text message 3 text message 3 text message 3",
+    date: "12-01-2024",
+    isAdmin: true,
   },
 ];
