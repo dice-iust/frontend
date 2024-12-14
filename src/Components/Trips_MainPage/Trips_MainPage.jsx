@@ -12,9 +12,43 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb"; 
 import { FaArrowRight } from "react-icons/fa";
 import Travelsnav from "../ProfilePage/header.jsx"; 
-import Footer from '../tourspage/footer.jsx';  
+import Footer from '../tourspage/footer.jsx'; 
+import RequestPage from "./requests/requests.jsx" 
 
 const Trips_MainPage = () => {
+    const [showmain, setshowmain] = useState(true);
+    const [showplanner, setShowplanner] = useState(false);
+    const [showQA, setShowQA] = useState(false);   
+    const [showrequests, setShowrequests] = useState(false);         
+
+    const handlemain = () => {  
+        setshowmain(true);   
+        setShowplanner(false);   
+        setShowQA(false);  
+        setShowrequests(false);  
+      };  
+
+      const handleplanner = () => {  
+        setshowmain(false);   
+        setShowplanner(true);   
+        setShowQA(false);  
+        setShowrequests(false);  
+      };  
+
+      const handleQA = () => {  
+        setshowmain(false);   
+        setShowplanner(false);   
+        setShowQA(true);  
+        setShowrequests(false);  
+      };  
+
+      const handlerequests = () => {  
+        setshowmain(false);   
+        setShowplanner(false);   
+        setShowQA(false);  
+        setShowrequests(true);  
+      };  
+
     const tour = {  
           
             id: 1,  
@@ -97,11 +131,11 @@ const Trips_MainPage = () => {
         <div className="main-page">
             <div className="sidebar">  
                 <ul className="menu">  
-                    <li className="menu-item">  
+                    <li className={`menu-item  ${showmain ? 'active' : ''}`} onClick={handlemain}>  
                         <TbHomeFilled size={25} className='moveiconMain' />  
                         Main  
                     </li>  
-                    {isAdmin && <li className="menu-item"><IoMdPersonAdd size={25} className='moveiconadd' /> Requests</li>}  
+                    {isAdmin && <li className={`menu-item  ${showrequests ? 'active' : ''}`} onClick={handlerequests}><IoMdPersonAdd size={25} className='moveiconadd' /> Requests</li>}  
                     <li className="menu-item"><BsFillChatFill size={22} className='moveiconchat' /> Q&A</li>  
                     <li className="menu-item"><GiCash size={25} /> Planner</li>  
                 </ul>  
@@ -110,24 +144,37 @@ const Trips_MainPage = () => {
                     <span className="profile-name">{user.name}</span>  
                 </div>  
             </div>  
-            <div className="trip-container">  
-            <div className="trip-header">  
-                <img className="trip-photo" src={tour.image_url} alt={`Photo of ${tour.name}`} />  
-                
-                <div className="trip-info">  
-                    <h2 className="tour-name">{tour.name}</h2>  
-                    <p className="capacity">{tour.travellers} participants</p>  
-                    <p className="locations">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</p>  
-                    <p className="dates">{tour.start_date} <FaArrowRight className='moveicon-transport'/> {tour.end_date}</p> 
-                     
+             
+        {showrequests ? (  
+            <RequestPage />  
+        ) : (  
+            showmain && ( 
+                <div className="trip-container">  
+                <div className="trip-header">  
+                    <img   
+                        className="trip-photo"   
+                        src={tour.image_url}   
+                        alt={`Photo of ${tour.name}`}   
+                    />  
+                    <div className="trip-info">  
+                        <h2 className="tour-name">{tourname}</h2>  
+                        <p className="capacity">{tour.travellers} participants</p>  
+                        <p className="locations">  
+                            {tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}  
+                        </p>  
+                        <p className="dates">  
+                            {tour.start_date} <FaArrowRight className='moveicon-transport' /> {tour.end_date}  
+                        </p>  
+                    </div>  
                 </div>  
-            </div>  
 
-            <p className="trip-description">{tour.description}</p> 
-            {/* <h1 className="trip-title">Welcome to the Trips Page {tourname}!</h1>    */}
+        <p className="trip-description">{tour.description}</p>  
+        </div>  
+        )  
+    )}  
+        
         </div>
-        </div>
-        <br></br>
+        <br />  
         <Footer/>
         </div>  
     );  

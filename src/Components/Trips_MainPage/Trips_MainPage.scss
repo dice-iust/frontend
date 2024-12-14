@@ -29,12 +29,22 @@ $transition-duration: 0.3s;
         margin: 0; 
         margin-top: 20px;
 
+        .active {  
+            background-color: rgb(234, 110, 12);  
+            color: #fff;  
+            transform: translateY(-2px);   
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+           
+        }  
+
         .menu-item {  
             // margin-top: 4px;
             padding: 15px;  
             cursor: pointer;  
             transition: background-color $transition-duration ease, transform $transition-duration ease;  
-            border-radius: 4px; 
+            border-radius: 4px;
+
+            
             
 
             &:last-child {  
@@ -43,14 +53,14 @@ $transition-duration: 0.3s;
 
             .moveiconMain
             {
-                margin-top: 20px;
+                margin-top: 10px;
                 margin-bottom: 0px;
                 margin-right: 3px;
                 padding: 0;
             }
 
             .moveiconadd {  
-                margin-top: 16px; 
+                margin-top: 10px; 
                 margin-bottom: 0; 
                 padding: 0;  
                 transform: rotateY(180deg);   
@@ -139,16 +149,16 @@ $transition-duration: 0.3s;
     margin-bottom: 0px; 
     padding-bottom: 0px; 
     
-    // background-color: rgb(234, 110, 12);
+   
 }  
 
 .trip-photo {  
-    width: 200px; 
-    height: 130px;
-    border-radius: 8px;
-    margin-top: 9px;
-    margin-right: 20px; 
-}  
+    width: 90px;
+    height: 90px;  
+    border-radius: 50%;
+    margin-right: 15px; 
+    object-fit: cover;  
+  }  
 
 .trip-info {  
     flex-grow: 1;
@@ -156,7 +166,7 @@ $transition-duration: 0.3s;
 
 .tour-name {  
     color: #22487a;
-    font-size: 2rem; 
+    font-size: 1.5rem; 
     // padding-top: 0px;
     // margin-top: 5px;
     // margin-bottom: 2px;
