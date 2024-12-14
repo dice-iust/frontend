@@ -11,7 +11,7 @@ import { FaPlane } from "react-icons/fa";
 import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb"; 
 import { FaArrowRight } from "react-icons/fa";
-import Travelsnav from "../ProfilePage/header.jsx"; 
+import Travelsnav from '../tourspage/categories_nav.jsx'; 
 import Footer from '../tourspage/footer.jsx'; 
 import RequestPage from "./requests/requests.jsx" 
 
