@@ -14,28 +14,12 @@ const BalanceList = ({ balances, setBalances }) => {
         const [dataphoto, setDataphoto] = useState(null);  
         const [datapast, setDatapast] = useState(null);  
         const [datafuture, setDatafuture] = useState(null);  
-        
+        setDatacurrent("sja");
         const openCity = (cityName) => {  
             setActiveTab(cityName);  
         };  
 
-        const renderBalanceList = () => {  
-            return (  
-                <div className="balance-list">  
-                    <h2>Balance List</h2>  
-                    {balances.length === 0 ? (  
-                        <p>No outstanding balances.</p>  
-                    ) : (  
-                        balances.map((item) => (  
-                            <div key={item.id} className="balance-item" style={{ color: item.type === 'owing' ? 'red' : 'green' }}>  
-                                <p><strong style={{ color: '#5767aa' }}>{item.name}:</strong> ${item.amount}</p>  
-                                <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
-                            </div>  
-                        ))  
-                    )}  
-                </div>  
-            );  
-        };  
+ 
 
         return (  
             <div className="w3-container">  
@@ -56,9 +40,15 @@ const BalanceList = ({ balances, setBalances }) => {
                 <div className="city">  
                     <h2 style={{ color: "#22487a" }}>My {activeTab}</h2>  
                     <br/>     
-                    <div className="tour-list-container2">  
-                        {datacurrent && datacurrent.length >= 1 ? (  
-                            renderBalanceList()  
+                    <div className="balance-list">  
+
+                        {balances.length >=1 ? (  
+                          balances.map((item) => (  
+                            <div key={item.id} className="balance-item" style={{ color: item.type === 'owing' ? 'red' : 'green' }}>  
+                                <p><strong style={{ color: '#5767aa' }}>{item.name}:</strong> ${item.amount}</p>  
+                                <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
+                            </div>  
+                        )) 
                         ) : (  
                             <div style={{ textAlign: "center" }}>   
                                 <br/>   
