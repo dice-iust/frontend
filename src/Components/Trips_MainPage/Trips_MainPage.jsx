@@ -6,6 +6,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { TbHomeFilled } from "react-icons/tb";
 import React, { useEffect, useState } from 'react';  
 import axios  from "../../api/axios.js";
+import { useParams } from 'react-router-dom';  
 
 const Trips_MainPage = () => {   
     const user = {  
@@ -20,7 +21,7 @@ const Trips_MainPage = () => {
     };  
 
     
-
+    const { tourname } = useParams();
     const isAdmin = user?.role === 'admin';   
 
     return (  
@@ -41,7 +42,7 @@ const Trips_MainPage = () => {
                 </div>  
             </div>  
             <div className="content">  
-                <h1>Welcome to the Trips Page!</h1>  
+                <h1>Welcome to the Trips Page {tourname}!</h1>  
             </div>  
         </div>  
     );  

@@ -26,7 +26,7 @@ import Trips_MainPage from './Components/Trips_MainPage/Trips_MainPage.jsx';
 
 function App() {  
   return (  
-    <Router>  
+    <Router >  
       <Routes>  
         <Route path="/" element={<Home />} /> 
         <Route path="/login" element={<LoginForm />} /> 
