@@ -103,7 +103,8 @@ const EmailVerification = () => {
         
       if (response.data.success) {  
           setIsSuccess(true);  
-          setSuccessMsg('Thanks! Verified successfully. Please wait a few seconds.');  
+          setSuccessMsg('Thanks! Verified successfully. Please wait a few seconds.'); 
+          setErrMsg(null) ;
           clearTimeout(timerRef.current); 
           clearInterval(); 
           setTimeout(() => {  
