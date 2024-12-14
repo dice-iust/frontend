@@ -9,12 +9,8 @@ const BalanceList = ({ balances, setBalances }) => {
 
     const TourList = () => {   
         const [activeTab, setActiveTab] = useState("Debts");  
-        const navigate = useNavigate();  
-        const [datacurrent, setDatacurrent] = useState(null);  
+        const navigate = useNavigate();   
         const [dataphoto, setDataphoto] = useState(null);  
-        const [datapast, setDatapast] = useState(null);  
-        const [datafuture, setDatafuture] = useState(null);  
-        setDatacurrent("sja");
         const openCity = (cityName) => {  
             setActiveTab(cityName);  
         };  
@@ -41,7 +37,6 @@ const BalanceList = ({ balances, setBalances }) => {
                     <h2 style={{ color: "#22487a" }}>My {activeTab}</h2>  
                     <br/>     
                     <div className="balance-list">  
-
                         {balances.length >=1 ? (  
                           balances.map((item) => (  
                             <div key={item.id} className="balance-item" style={{ color: item.type === 'owing' ? 'red' : 'green' }}>  
