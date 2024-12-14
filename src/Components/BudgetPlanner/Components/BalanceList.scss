@@ -5,6 +5,56 @@
     --textColor: #eee;  
     --font-family: OpenSans;  
 }  
+.w3-container {  
+    padding: 16px;  
+    font-family: 'Arial', sans-serif; // Consider using a modern font  
+    background-color: #f9f9f9; // Light background for better contrast  
+    border-radius: 8px; // Rounded corners for a softer look  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth  
+  }  
+  
+  .w3-row {  
+    display: flex;  
+    margin-bottom: 16px;  
+  }  
+  
+  .tablink {  
+    flex: 1; // Allow tabs to grow equally  
+    cursor: pointer;  
+    text-align: center;  
+    padding: 12px 0; // Vertical padding  
+    background-color: #ffffff; // White background for tabs  
+    color: #333; // Dark text color for better readability  
+    border-top-left-radius: 8px; // Rounded top-left corners  
+    border-top-right-radius: 8px; // Rounded top-right corners  
+    transition: background-color 0.3s, color 0.3s; // Smooth transition for hover  
+    position: relative; // For pseudo-element positioning  
+  }  
+  
+  .tablink:hover {  
+    // background-color: #e0e0e0; // Slightly darker gray on hover  
+    // color: #000; // Dark text on hover  
+    background-color: #22487a; 
+    color: #fbfafa; 
+  }  
+  
+  .w3-bottombar {  
+    border-bottom: 3px solid transparent;  
+  }  
+  
+  .w3-border-red {  
+    border-bottom: 3px solid rgb(234, 110, 12); // Using a vibrant color for the active tab  
+    transition: border-color 0.3s ease-in-out; // Smooth border change  
+  }  
+  
+  .city {  
+    background-color: #fff; // White background for the content  
+    padding: 16px; // Padding for content  
+    border-radius: 4px; // Rounded corners for content blocks  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for content depth  
+    margin-top: -1px; // Overlap the border of tabs  
+  }  
+  
 
 .balance-list {  
     width: 95%;
