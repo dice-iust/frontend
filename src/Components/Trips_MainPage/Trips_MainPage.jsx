@@ -4,34 +4,83 @@ import { GiCash } from "react-icons/gi";
 import { BsFillChatFill } from "react-icons/bs";  
 import { IoMdPersonAdd } from "react-icons/io";  
 import { TbHomeFilled } from "react-icons/tb";  
-import axios from "../../api/axios.js";  // Import your Axios instance  
-import { useParams } from 'react-router-dom';  
+import axios from "../../api/axios.js";  
+import { useParams, useLocation } from 'react-router-dom'; 
+import { FaCarSide } from "react-icons/fa6";
+import { FaPlane } from "react-icons/fa";
+import { TbTrain } from "react-icons/tb";
+import { TbBus } from "react-icons/tb"; 
+import { FaArrowRight } from "react-icons/fa";
+import Travelsnav from "../ProfilePage/header.jsx"; 
+import Footer from '../tourspage/footer.jsx';  
 
-const Trips_MainPage = () => {   
+const Trips_MainPage = () => {
+    const tour = {  
+          
+            id: 1,  
+            name: "Adventure in the Alps",  
+            image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixcmQsARbTtwpySN--xqSmWg_p2yTCYv80A&s",  
+            description: "Join us for an exhilarating adventure in the breathtaking Alps",  
+            travellers: 10,  
+            participants: 20,  
+            start_place: "Zurich",  
+            destination: "Zermatt",  
+            start_date: "2024-01-10",  
+            end_date: "2024-01-20", 
+            transportation : "Plane" 
+    }
+
+    const location = useLocation();   
     const user = {  
         profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToiRnzzyrDtkmRzlAvPPbh77E-Mvsk3brlxQ&s',  
         name: 'John Doe',  
-        role: 'admin'   
+        role: 'admin'  
     };  
+
+    const getTransportationIcon = (transportation) => {  
+        switch (transportation.toLowerCase()) {  
+          case 'train':  
+            return <TbTrain className="moveicon-transport"/>;  
+          case 'bus':  
+            return <TbBus className="moveicon-transport" />;  
+          case 'plane':  
+            return <FaPlane className="moveicon-transport" />;  
+          case 'car':  
+            return <FaCarSide className="moveicon-transport"/>;  
+          default:  
+            return null;  
+        }  
+      };
+     
+    
    
     const { tourname } = useParams();  
-    const isAdmin = user?.role === 'admin';   
-    
+    const isAdmin = user?.role === 'admin';  
+
     const [tripData, setTripData] = useState(null);  
     const [loading, setLoading] = useState(true);  
     const [error, setError] = useState(null);  
 
     useEffect(() => {  
         const fetchTripData = async () => {  
+            if (!tourname) {  
+                setError('Tour name is required.');  
+                setLoading(false);  
+                return;  
+            }  
             try {  
                 const response = await axios.get(`https://triptide.pythonanywhere.com/travels/travelname/`, {  
-                    headers: {
-                        Authorization: localStorage.getItem("token"),
-                    }
+                    headers: {  
+                        Authorization: localStorage.getItem("token"),  
+                    },  
+                    params: {  
+                        travel_name: tourname   
+                    },  
                 });  
-                setTripData(response.data);   
+
+                setTripData(response.data);  
             } catch (err) {  
-                setError(err.response.data.detail || 'An error occurred while fetching trip data.');  
+                setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
             } finally {  
                 setLoading(false);  
             }  
@@ -40,35 +89,46 @@ const Trips_MainPage = () => {
         fetchTripData();  
     }, [tourname]);  
 
+    
     return (  
-        <div className="main-page">  
+        <div className='trippage'>
+                        <Travelsnav/>  
+
+        <div className="main-page">
             <div className="sidebar">  
                 <ul className="menu">  
                     <li className="menu-item">  
-                        <TbHomeFilled size={25} className='moveiconMain'/>  
+                        <TbHomeFilled size={25} className='moveiconMain' />  
                         Main  
                     </li>  
-                    {isAdmin && <li className="menu-item"><IoMdPersonAdd size={25} className='moveiconadd'/> Requests</li>}   
-                    <li className="menu-item"><BsFillChatFill size={22} className='moveiconchat'/> Q&A</li>  
-                    <li className="menu-item"><GiCash size={25}/> Planner</li>  
+                    {isAdmin && <li className="menu-item"><IoMdPersonAdd size={25} className='moveiconadd' /> Requests</li>}  
+                    <li className="menu-item"><BsFillChatFill size={22} className='moveiconchat' /> Q&A</li>  
+                    <li className="menu-item"><GiCash size={25} /> Planner</li>  
                 </ul>  
                 <div className="profile">  
                     <img src={user.profilePicture} alt="Profile" className="profile-pic" />  
                     <span className="profile-name">{user.name}</span>  
                 </div>  
             </div>  
-            <div className="content">  
-                {loading && <p>Loading trip information...</p>}  
-                {error && <p className="error">{error}</p>}  
-                {tripData && (  
-                    <div>  
-                        <h1>Welcome to the Trips Page {tripData.name}!</h1>  
-                        <p>{tripData.description}</p> {/* assuming tripData contains a description field */}  
-                        {/* Render more trip details as needed */}  
-                    </div>  
-                )}  
-                {!loading && !error && !tripData && <p>No trip found.</p>}  
+            <div className="trip-container">  
+            <div className="trip-header">  
+                <img className="trip-photo" src={tour.image_url} alt={`Photo of ${tour.name}`} />  
+                
+                <div className="trip-info">  
+                    <h2 className="tour-name">{tour.name}</h2>  
+                    <p className="capacity">{tour.travellers} participants</p>  
+                    <p className="locations">{tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}</p>  
+                    <p className="dates">{tour.start_date} <FaArrowRight className='moveicon-transport'/> {tour.end_date}</p> 
+                     
+                </div>  
             </div>  
+
+            <p className="trip-description">{tour.description}</p> 
+            {/* <h1 className="trip-title">Welcome to the Trips Page {tourname}!</h1>    */}
+        </div>
+        </div>
+        <br></br>
+        <Footer/>
         </div>  
     );  
 };  
