@@ -160,7 +160,7 @@ const TourList = () => {
       {data && data.Popular_Trips ? (  
           <Slider {...settings}>  
             {data.Popular_Trips.slice(0, 5).map((tour) => (  
-              <div key={tour.id} className="tour-card">  
+              <Link to={`/TripsPage/${tour.name}`} className="tour-card">  
                 <div className="tour-image-container">  
                   <img  
                     src={tour.image_url}  
@@ -203,7 +203,7 @@ const TourList = () => {
                     </p>  
                   </div>  
                 </div>  
-              </div>  
+              </Link>  
             ))}  
           </Slider>  
         ) : (  

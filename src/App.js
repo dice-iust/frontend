@@ -47,7 +47,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} /> 
         <Route path="/login/forgot" element={<ForgotPassword/>}/>
         <Route path="/budgetplanner" element={<BudgetPlanner/>} />
-        <Route path="/TripsPage" element={<Trips_MainPage/>} />
+        <Route path="/TripsPage/:tourname" element={<Trips_MainPage/>} />
       </Routes>  
     </Router>  
   );  

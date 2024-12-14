@@ -1,9 +1,11 @@
-import React from 'react';  
+// import React from 'react';  
 import './Trips_MainPage.scss';  
 import { GiCash } from "react-icons/gi";
 import { BsFillChatFill } from "react-icons/bs";
 import { IoMdPersonAdd } from "react-icons/io";
 import { TbHomeFilled } from "react-icons/tb";
+import React, { useEffect, useState } from 'react';  
+import axios  from "../../api/axios.js";
 
 const Trips_MainPage = () => {   
     const user = {  
@@ -16,6 +18,8 @@ const Trips_MainPage = () => {
         name: 'John Doe',  
         role: 'member'   
     };  
+
+    
 
     const isAdmin = user?.role === 'admin';   
 
