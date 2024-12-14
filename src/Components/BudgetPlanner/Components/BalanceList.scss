@@ -5,76 +5,70 @@
     --textColor: #eee;  
     --font-family: OpenSans;  
 }  
+
 .w3-container {  
+    display: flex; /* Use flex to allow sidebar and content to sit side by side */  
     padding: 16px;  
-    font-family: 'Arial', sans-serif; // Consider using a modern font  
-    background-color: #f9f9f9; // Light background for better contrast  
-    border-radius: 8px; // Rounded corners for a softer look  
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth  
-  }  
-  
-  .w3-row {  
-    display: flex;  
-    margin-bottom: 16px;  
-  }  
-  
-  .tablink {  
-    flex: 1; // Allow tabs to grow equally  
+    font-family: 'Arial', sans-serif;  
+    background-color: #f9f9f9;  
+    border-radius: 8px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}  
+
+.sidebar {  
+    width: 200px; /* Fixed width for the sidebar */  
+    margin-right: 20px; /* Space between the sidebar and content */  
+}  
+
+.content {  
+    flex: 1; /* Allow content to fill the remaining space */  
+}  
+
+.tablink {  
+    display: block; /* Make each tab a block element */  
     cursor: pointer;  
-    text-align: center;  
-    padding: 12px 0; // Vertical padding  
-    background-color: #ffffff; // White background for tabs  
-    color: #333; // Dark text color for better readability  
-    border-top-left-radius: 8px; // Rounded top-left corners  
-    border-top-right-radius: 8px; // Rounded top-right corners  
-    transition: background-color 0.3s, color 0.3s; // Smooth transition for hover  
-    position: relative; // For pseudo-element positioning  
-  }  
-  
-  .tablink:hover {  
-    // background-color: #e0e0e0; // Slightly darker gray on hover  
-    // color: #000; // Dark text on hover  
-    background-color: #22487a; 
-    color: #fbfafa; 
-  }  
-  
-  .w3-bottombar {  
-    border-bottom: 3px solid transparent;  
-  }  
-  
-  .w3-border-red {  
-    border-bottom: 3px solid rgb(234, 110, 12); // Using a vibrant color for the active tab  
-    transition: border-color 0.3s ease-in-out; // Smooth border change  
-  }  
-  
-  .city {  
-    background-color: #fff; // White background for the content  
-    padding: 16px; // Padding for content  
-    border-radius: 4px; // Rounded corners for content blocks  
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for content depth  
-    margin-top: -1px; // Overlap the border of tabs  
-  }  
-  
+    text-align: left;  
+    padding: 12px; /* Vertical padding */  
+    background-color: #ffffff;  
+    color: #333;  
+    border: none; /* Remove border for cleaner look */  
+    border-radius: 4px; /* Rounded corners for tabs */  
+    transition: background-color 0.3s, color 0.3s;  
+    margin-bottom: 8px; /* Space between tabs */  
+}  
+
+.tablink:hover {  
+    background-color: #22487a;   
+    color: #fbfafa;   
+}  
+
+.w3-border-red {  
+    border-left: 4px solid rgb(234, 110, 12); /* Add a left border for active tab */  
+    background-color: #f0f0f0; /* Slightly different background for active tab */  
+}  
+
+.city {  
+    background-color: #fff;  
+    padding: 16px;  
+    border-radius: 4px;  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+}  
 
 .balance-list {  
-    width: 95%;
-    margin-left: 30px;
-    margin-top: 20px;  
     padding: 20px;  
     border: 1px solid #ddd;  
     border-radius: 12px;  
     background-color: #ffffff;  
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Add subtle shadow for depth  
-    font-family: var(--font-family); // Use the defined font  
-    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+
     h2 {  
-        color: var(--mainColor); //Heading color  
-        margin-bottom: 15px; //Space below heading  
-        font-weight: bold; // Make heading bold  
+        color: var(--mainColor);  
+        margin-bottom: 15px;  
+        font-weight: bold;  
     }  
 
     .balance-item {  
-        font-size: 20px;
+        font-size: 20px;  
         display: flex;  
         justify-content: space-between;  
         align-items: center;  
@@ -82,31 +76,31 @@
         margin: 10px 0;  
         border: 1px solid #ececec;  
         border-radius: 8px;  
-        background-color: #f7f7f7; // Lighter background for each item  
-        transition: background-color 0.3s; // Smooth transition effect  
+        background-color: #f7f7f7;  
+        transition: background-color 0.3s;  
 
-        &:hover { // Add hover effect for balance items  
-            background-color: #f0f0f0; // Light gray on hover  
+        &:hover {  
+            background-color: #f0f0f0;  
         }  
     }  
 
     button {  
         padding: 8px 12px;  
         font-size: 14px;  
-        font-weight: bold; // Make button text bold  
+        font-weight: bold;  
         background-color: var(--mainColor);  
         color: white;  
         border: none;  
         border-radius: 4px;  
         cursor: pointer;  
-        transition: background-color 0.3s; // Smooth transition for button hover  
+        transition: background-color 0.3s;  
 
         &:hover {  
-            background-color: var(--secondaryColor); // Darker on hover  
+            background-color: var(--secondaryColor);  
         }  
     }  
 
     p {  
-        margin: 0; // Reset margin for p  
+        margin: 0;  
     }  
 }

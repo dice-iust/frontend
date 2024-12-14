@@ -1,6 +1,6 @@
 import React, { useState } from 'react';  
-import { useNavigate } from 'react-router-dom'; // Import useNavigate  
-import './BalanceList.scss'; // Optional: Style your component  
+import { useNavigate } from 'react-router-dom';  
+import './BalanceList.scss';  
 
 const BalanceList = ({ balances, setBalances }) => {  
     const handleMarkAsPaid = (id) => {  
@@ -8,20 +8,20 @@ const BalanceList = ({ balances, setBalances }) => {
     };  
 
     const TourList = () => {   
-        const [activeTab, setActiveTab] = useState("Debts");  
+        const [activeTab, setActiveTab] = useState("Debts"); 
+        const[dataphoto,setdataphoto] =useState("");
         const navigate = useNavigate();   
-        const [dataphoto, setDataphoto] = useState(null);  
+        
         const openCity = (cityName) => {  
             setActiveTab(cityName);  
         };  
 
- 
-
         return (  
-            <div className="w3-container">  
-                <h2 style={{color:"#22487a"}}>Balances</h2>  
 
-                <div className="w3-row">  
+            <div className="w3-container balance-container">  
+
+                <br/>
+                <div className="sidebar"> {/* Sidebar for tabs */}  
                     <div className={`tablink ${activeTab === 'Debts' ? 'w3-border-red' : ''}`} onClick={() => openCity('Debts')}>  
                         Debts  
                     </div>  
@@ -29,21 +29,21 @@ const BalanceList = ({ balances, setBalances }) => {
                         Receivables  
                     </div>  
                     <div className={`tablink ${activeTab === 'Payments' ? 'w3-border-red' : ''}`} onClick={() => openCity('Payments')}>  
-                        Past Payments 
+                        Past Payments   
                     </div>  
                 </div>  
   
-                <div className="city">  
+                <div className="content"> {/* Content for selected tab */}  
                     <h2 style={{ color: "#22487a" }}>My {activeTab}</h2>  
                     <br/>     
                     <div className="balance-list">  
-                        {balances.length >=1 ? (  
+                        {balances.length >= 1 ? (  
                           balances.map((item) => (  
                             <div key={item.id} className="balance-item" style={{ color: item.type === 'owing' ? 'red' : 'green' }}>  
                                 <p><strong style={{ color: '#5767aa' }}>{item.name}:</strong> ${item.amount}</p>  
                                 <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
                             </div>  
-                        )) 
+                        ))   
                         ) : (  
                             <div style={{ textAlign: "center" }}>   
                                 <br/>   
