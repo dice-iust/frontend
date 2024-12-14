@@ -16,12 +16,16 @@
 }  
 
 .sidebar {  
-    width: 200px; /* Fixed width for the sidebar */  
-    margin-right: 20px; /* Space between the sidebar and content */  
+    width: 250px; /* Increased width for the sidebar */  
+    background-color: #22487a; /* Set sidebar background to main color */  
+    padding: 20px; /* Add padding for better spacing */  
+    border-radius: 8px; /* Rounded corners for the sidebar */  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */  
 }  
 
 .content {  
     flex: 1; /* Allow content to fill the remaining space */  
+    padding: 20px; /* Add padding for nice spacing */  
 }  
 
 .tablink {  
@@ -29,8 +33,9 @@
     cursor: pointer;  
     text-align: left;  
     padding: 12px; /* Vertical padding */  
-    background-color: #ffffff;  
-    color: #333;  
+    background-color: transparent; /* Transparent to let sidebar color show through */  
+    color: #fff; /* Change text color to white */  
+    font-weight: bold; /* Make text bold */  
     border: none; /* Remove border for cleaner look */  
     border-radius: 4px; /* Rounded corners for tabs */  
     transition: background-color 0.3s, color 0.3s;  
@@ -38,20 +43,13 @@
 }  
 
 .tablink:hover {  
-    background-color: #22487a;   
-    color: #fbfafa;   
+    background-color: #fff; /* Lighter hover effect to maintain visibility */  
+    color: #22487a;
 }  
 
 .w3-border-red {  
     border-left: 4px solid rgb(234, 110, 12); /* Add a left border for active tab */  
-    background-color: #f0f0f0; /* Slightly different background for active tab */  
-}  
-
-.city {  
-    background-color: #fff;  
-    padding: 16px;  
-    border-radius: 4px;  
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for active tab */  
 }  
 
 .balance-list {  
