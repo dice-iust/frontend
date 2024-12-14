@@ -96,6 +96,7 @@ const Trips_MainPage = () => {
     const [error, setError] = useState(null);  
 
     useEffect(() => {  
+        let isMounted = true; // We keep track of mounted component  
         const fetchTripData = async () => {  
             if (!tourname) {  
                 setError('Tour name is required.');  
@@ -103,26 +104,43 @@ const Trips_MainPage = () => {
                 return;  
             }  
             try {  
-                const response = await axios.get(`https://triptide.pythonanywhere.com/travels/travelname/`, {  
+                const response = await axios.get(`https://triptide.pythonanywhere.com/travels/single/`, {  
                     headers: {  
                         Authorization: localStorage.getItem("token"),  
-                    },  
-                    params: {  
-                        travel_name: tourname   
-                    },  
+                    },   
+                    params: { travel_name: tourname }   
                 });  
-
-                setTripData(response.data);  
-            } catch (err) {  
-                setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
-            } finally {  
-                setLoading(false);  
+        
+                // Only set data if the component is still mounted  
+                if (isMounted) {  
+                    setTripData(response.data);  
+                }  
+            }   
+            catch (err) {  
+                if (isMounted) {  
+                    // Check for 403 error  
+                    if (err.response?.status === 403) {  
+                        const is_part = err.response.data.is_part; // Assuming `is_part` is a boolean  
+                        setError(`Access forbidden. Is part: ${is_part}`);  
+                    } else {  
+                        setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
+                    }  
+                }  
+            }   
+            finally {  
+                if (isMounted) {  
+                    setLoading(false);  
+                }  
             }  
         };  
-
+    
         fetchTripData();  
-    }, [tourname]);  
-
+    
+        // Cleanup function to set isMounted to false when unmounted  
+        return () => {  
+            isMounted = false;   
+        };  
+    }, [tourname]);
     
     return (  
         <div className='trippage'>
@@ -168,7 +186,8 @@ const Trips_MainPage = () => {
                     </div>  
                 </div>  
 
-        <p className="trip-description">{tour.description}</p>  
+        <p className="trip-description">{tour.description} </p>  
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>  
         )  
     )}  
