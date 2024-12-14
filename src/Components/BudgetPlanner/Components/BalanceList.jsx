@@ -8,7 +8,7 @@ const BalanceList = ({ balances, setBalances }) => {
     };  
 
     const TourList = () => {   
-        const [activeTab, setActiveTab] = useState("London");  
+        const [activeTab, setActiveTab] = useState("Debts");  
         const navigate = useNavigate();  
         const [datacurrent, setDatacurrent] = useState(null);  
         const [dataphoto, setDataphoto] = useState(null);  
@@ -42,19 +42,19 @@ const BalanceList = ({ balances, setBalances }) => {
                 <h2 style={{color:"#22487a"}}>Balances</h2>  
 
                 <div className="w3-row">  
-                    <div className={`tablink ${activeTab === 'London' ? 'w3-border-red' : ''}`} onClick={() => openCity('London')}>  
-                        My Debts  
+                    <div className={`tablink ${activeTab === 'Debts' ? 'w3-border-red' : ''}`} onClick={() => openCity('Debts')}>  
+                        Debts  
                     </div>  
-                    <div className={`tablink ${activeTab === 'Paris' ? 'w3-border-red' : ''}`} onClick={() => openCity('Paris')}>  
-                        Future  
+                    <div className={`tablink ${activeTab === 'Receivables' ? 'w3-border-red' : ''}`} onClick={() => openCity('Receivables')}>  
+                        Receivables  
                     </div>  
-                    <div className={`tablink ${activeTab === 'Tokyo' ? 'w3-border-red' : ''}`} onClick={() => openCity('Tokyo')}>  
+                    <div className={`tablink ${activeTab === 'Payments' ? 'w3-border-red' : ''}`} onClick={() => openCity('Payments')}>  
                         Past Payments 
                     </div>  
                 </div>  
   
                 <div className="city">  
-                    <h2 style={{ color: "#22487a" }}>{activeTab} Trips</h2>  
+                    <h2 style={{ color: "#22487a" }}>My {activeTab}</h2>  
                     <br/>     
                     <div className="tour-list-container2">  
                         {datacurrent && datacurrent.length >= 1 ? (  
@@ -62,7 +62,7 @@ const BalanceList = ({ balances, setBalances }) => {
                         ) : (  
                             <div style={{ textAlign: "center" }}>   
                                 <br/>   
-                                <p style={{ fontWeight: "bold", fontSize: "20px" }}>You have no current trips!</p>  
+                                <p style={{ fontWeight: "bold", fontSize: "20px" }}>You have no {activeTab}!</p>  
                                 <img src={dataphoto} alt="No trips" />  
                             </div>  
                         )}    
