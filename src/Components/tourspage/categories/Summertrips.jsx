@@ -21,6 +21,7 @@ import Footer from '../footer.jsx';
 // import { FaArrowRight } from "react-icons/fa";
 // import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
+import { Link } from 'react-router-dom'; 
 
 
  
@@ -78,7 +79,7 @@ const Summer = () => {
               {data && data.Summer_Trips? (  
                   <div className="tour-list-summer">  
                       {data.Summer_Trips.map((tour) => (  
-                          <div key={tour.Id} className="tour-card-summer">  
+                          <Link to={`/TripsPage/${tour.name}`} className="tour-card-summer"> 
                               <div className="tour-image-container-summer">  
                                   <img  
                                       src={tour.image_url}  
@@ -120,7 +121,7 @@ const Summer = () => {
                                       </p>  
                                   </div>   
                               </div>  
-                          </div>  
+                          </Link>  
                       ))}  
                   </div>  
               ) : (  

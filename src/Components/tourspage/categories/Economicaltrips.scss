@@ -62,6 +62,7 @@
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
         border: 2px solid rgba(34, 72, 122, 0.5);  
+        text-decoration: none;
         
         &:hover {  
           animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
@@ -92,9 +93,11 @@
         padding: 2px;  
         border-radius: 5px;  
         z-index: 20;  
+        color:black;
       }  
   
       .admin-photo-economical {  
+        color:black;
         width: 30px;  
       height: 30px;  
       border-radius: 50%;  
@@ -107,7 +110,7 @@
       
     
     .tour-info-economical {  
-        
+      color:black;
         display: flex;  
         flex-direction: column;  
     
@@ -122,6 +125,7 @@
         }  
     
         .tour-details-economical{  
+          
           display: flex;  
           align-items: center;  
           margin-bottom: 0px;  

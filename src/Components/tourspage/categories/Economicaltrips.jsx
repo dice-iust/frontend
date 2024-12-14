@@ -21,6 +21,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
 import Travelsnav from "../categories_nav.jsx";  
+import { Link } from 'react-router-dom'; 
 
 
 const EconomicalTravels_URL = 'travels/economy/';  
@@ -79,7 +80,7 @@ const Economical = () => {
           {data && data.economical_Trips ? (  
               <div className="tour-list-economical">  
                   {data.economical_Trips.map((tour) => (  
-                      <div key={tour.Id} className="tour-card-economical">  
+                      <Link to={`/TripsPage/${tour.name}`} className="tour-card-economical"> 
                           <div className="tour-image-container-economical">  
                               <img  
                                   src={tour.image_url}  
@@ -121,7 +122,7 @@ const Economical = () => {
                                   </p>  
                               </div>   
                           </div>  
-                      </div>  
+                      </Link>  
                   ))}  
               </div>  
           ) : (  
