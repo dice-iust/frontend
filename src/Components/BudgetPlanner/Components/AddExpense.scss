@@ -1,88 +1,127 @@
-
 :root {  
-  --mainColor: #22487a;  
-  --mainColorLight: #5767aa;  
-  --secondaryColor: #ea7d29;  
-  --textColor: #eee;  
-  --font-family: OpenSans;  
+    --mainColor: #22487a;  
+    --mainColorLight: #5767aa;  
+    --secondaryColor: #ea7d29;  
+    --textColor: #eee;  
+    --font-family: OpenSans;  
 }  
+
 .main-add-div {  
-    background-color: #ffffff; /* Keep the background white for clarity */  
+    background-color: #ffffff;  
     border-radius: 12px;  
     border: 1px solid #e0e0e0;  
     width: 99%;  
-    padding: 20px; /* Increased padding for better spacing */  
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */  
-    transition: box-shadow 0.3s ease; /* Transition for hover effect */   
-    margin-top: 15px;   
+    padding: 20px;  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+    transition: box-shadow 0.3s ease;  
+    margin-top: 15px;  
 
     &:hover {  
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */  
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
     }  
 
     form {  
         display: flex;  
-        flex-direction: column; /* Layout for vertical stacking */  
-        gap: 15px; /* Space between different form items */  
+        flex-direction: column;  
+        gap: 20px;   
 
-        /* Adding rows for specific items */  
+        /* Adding a title for better UX */  
+        h2 {  
+            color: var(--mainColor);  
+            margin-bottom: 10px;  
+            font-size: 24px;  
+        }  
+
+        /* Image upload styling */  
+        .upload-image-section {  
+            border: 2px dashed var(--mainColor);  
+            border-radius: 6px;  
+            padding: 20px;  
+            text-align: center;  
+            background-color: #f9f9f9;  
+
+            label {  
+                cursor: pointer;  
+                color: var(--mainColor);  
+                font-size: 16px;  
+            }  
+
+            input[type="file"] {  
+                display: none;  
+            }  
+
+            img {  
+                margin-top: 10px;  
+                width: 100px;  
+                height: auto;  
+                border-radius: 6px;  
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+            }  
+        }  
+
+        .split-selection-row {  
+            display: flex;  
+            justify-content: space-between;  
+        }  
+
         .row {  
-            display: flex;   
-            flex-wrap: wrap;
-            justify-content: space-between; /* Space items out evenly */  
-            gap: 15px; /* Space between items in the row */  
-            width: 100%; /* Ensure full width for row items */  
+            display: flex;  
+            flex-wrap: wrap;  
+            justify-content: space-between;  
+            gap: 15px;  
         }  
-        
-        input[type="text"], /* Apply styles to text inputs */  
+
+        input[type="text"],  
         input[type="number"],  
-        input[type="date"],   
-        textarea {  
-            width: 100%; /* Allow input fields to take full width within their container */  
-            padding: 10px; /* Padding for better touchability */  
-            border: 1px solid var(--mainColor); /* Light border */  
-            border-radius: 6px; /* Rounder corners */  
-            font-size: 16px; /* Improve readability */  
-            transition: border-color 0.3s ease; /* Transition for border color */  
+        input[type="date"],  
+        textarea,  
+        select {  
+            width: 100%;  
+            padding: 10px;  
+            border: 1px solid var(--mainColor);  
+            border-radius: 6px;  
+            font-size: 16px;  
+            transition: border-color 0.3s ease;  
         }  
 
-        /* Resize inputs to take half the width in their row */  
         .row .form-item {  
-            flex: 1; /* Allow items to expand and fill available space */  
-            min-width: 0; /* Prevent overflow on small screens */  
+            flex: 1;  
+            min-width: 0;  
         }  
 
-        /* Description box styles */  
-        textarea { 
-            height: 50px; /* Set a fixed height */  
-            resize: none; /* Disable resizing by the user */  
+        textarea {   
+            height: 80px; /* Increased height for better usability */  
+            resize: none;  
         }  
 
         input[type="text"]:focus,  
         input[type="number"]:focus,  
         input[type="date"]:focus,  
-        textarea:focus {  
-            border-color: #4a90e2; /* Change border color on focus */  
-            outline: none; /* Remove default outline */  
+        textarea:focus,  
+        select:focus {  
+            border-color: #4a90e2;   
+            outline: none;  
         }  
+
         .error-message {  
-            color: red; /* Customize the color of your error message */  
-            min-height: 20px; /* Reserve space to prevent layout shifts */  
-            margin-top: 5px; /* Add a little space above the error message */
+            color: red;  
+            min-height: 20px;  
+            margin-top: 5px;  
             font-size: 13px;  
-            font-family: var(--font-family);
+            font-family: var(--font-family);  
         }  
+
         button {  
-            padding: 10px 20px; /* Add padding for buttons */  
-            background-color: var(--mainColor); /* Primary button color */  
-            color: white; /* Text color */  
-            border: none; /* Remove default button border */  
-            border-radius: 6px; /* Round corners for buttons */  
-            cursor: pointer; /* Pointer cursor for buttons */  
-            transition: background-color 0.3s ease; /* Transition for background color */  
+            padding: 10px 20px;  
+            background-color: var(--mainColor);  
+            color: white;  
+            border: none;  
+            border-radius: 6px;  
+            cursor: pointer;  
+            transition: background-color 0.3s ease;  
 
             &:hover {  
-                background-color: var(--secondaryColor); /* Darker shade on hover */  
+                background-color: var(--secondaryColor);  
             }  
         }  
     }  
