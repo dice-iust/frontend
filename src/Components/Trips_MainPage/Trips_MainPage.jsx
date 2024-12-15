@@ -14,6 +14,7 @@ import { FaArrowRight } from "react-icons/fa";
 import Travelsnav from '../tourspage/categories_nav.jsx'; 
 import Footer from '../tourspage/footer.jsx'; 
 import RequestPage from "./requests/requests.jsx" 
+import Userspage from "./Users/users.jsx";
 
 const Trips_MainPage = () => {
     const [showmain, setshowmain] = useState(true);
@@ -148,8 +149,8 @@ const Trips_MainPage = () => {
                     <li className="menu-item"><GiCash size={25} /> Planner</li>  
                 </ul>  
                 <div className="profile">  
-                    <img src={user.profilePicture} alt="Profile" className="profile-pic" />  
-                    <span className="profile-name">{user.name}</span>  
+                    {tripData&&<img src={tripData.profile} alt="Profile" className="profile-pic" />  }
+                    {tripData&&<span className="profile-name">{tripData.name}</span>  }
                 </div>  
             </div>  
              
@@ -170,22 +171,27 @@ const Trips_MainPage = () => {
                                     />  
                                     <div className="trip-info">  
                                         <h2 className="tour-name">{tripData.travels.travel_is.name}</h2>  
-                                        <p className="location">{tripData.travels.travel_is.mode}</p>  
-                                        <p className="capacity">{tripData.travels.travel_is.travellers} participants</p>  
-                                        <p className="locations">  
-                                            {tripData.travels.travel_is.start_place} {getTransportationIcon(tripData.travels.travel_is.transportation)} {tripData.travels.travel_is.destination}  
-                                        </p>  
-                                        <p className="dates">  
-                                            {tripData.travels.travel_is.start_date} <FaArrowRight className='moveicon-transport' /> {tripData.travels.travel_is.end_date}  
-                                        </p>  
+                                        <div className="trip-meta">   
+                                            <p className={`mode ${tripData.travels.travel_is.mode}`}>{tripData.travels.travel_is.mode}</p> 
+                                            <p className={`status ${tripData.travels.travel_is.status}`}>{tripData.travels.travel_is.status}</p> 
+                                            <p className="capacity">{tripData.travels.travel_is.travellers} participants</p>  
+                                            <p className="locations">  
+                                                {tripData.travels.travel_is.start_place} {getTransportationIcon(tripData.travels.travel_is.transportation)} {tripData.travels.travel_is.destination}  
+                                            </p>  
+                                            <p className="dates">  
+                                                {tripData.travels.travel_is.start_date} <FaArrowRight className='moveicon-arrow' /> {tripData.travels.travel_is.end_date}  
+                                            </p>  
+                                        </div>  
                                     </div>  
-                                </div>  
-                                <p className="trip-description-class">{tripData.travels.travel_is.description} </p>  
+                                </div>
+                                
                             </>  
                         ) : (  
                             <p>Loading...</p> // Optional loading state  
-                        )}  
-                    </div>  
+                        )} 
+                         <Userspage /> 
+                    </div> 
+                    
         )  
     )}  
         

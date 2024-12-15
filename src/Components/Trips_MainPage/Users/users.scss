@@ -1,0 +1,65 @@
+// styles.scss  
+
+$background-color: #f6f9fc;  
+$card-color: #ffffff;  
+$primary-color: rgb(234, 110, 12);  
+$hover-color: lighten($primary-color, 20%);  
+$border-radius: 8px;  
+
+.members-container {  
+    padding: 20px;  
+    background-color: $background-color;  
+    max-width: 1600px;  // Updated for wider display  
+    margin-top: 5px;  
+    margin-right: 15px;
+    border-radius: $border-radius;  
+
+    h1 {  
+        text-align: center;  
+        margin-left: 4px;
+        color: #22487a;  
+        margin-bottom: 20px;  
+    }  
+
+    .members-list { 
+        margin-top: 20px; 
+        display: flex;  
+        flex-wrap: wrap;  // Allows wrapping to the next line  
+        gap: 20px;  // Space between member cards  
+
+        .member-card {  
+            display: flex;  
+            align-items: center;  
+            background-color: $card-color;  
+            border-radius: $border-radius;  
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+            padding: 10px;  
+            width: calc(50% - 10px); // 50% width for two cards per row minus the gap  
+            transition: background-color 0.3s;  
+
+            &:hover {  
+                background-color: $hover-color;  
+            }  
+
+            .member-photo {  
+                width: 50px; // Icon size  
+                height: 50px;  
+                border-radius: 50%;  
+                margin-right: 15px;  
+            }  
+
+            .member-info {  
+                h2 {  
+                    margin: 0;  
+                    font-size: 1.2em;  
+                    color: #22487a;  
+                }  
+
+                p {  
+                    margin: 0;  
+                    color: #555;  // A softer color for the description  
+                }  
+            }  
+        }  
+    }  
+}
