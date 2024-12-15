@@ -96,7 +96,7 @@ const Trips_MainPage = () => {
     const [error, setError] = useState(null);  
 
     useEffect(() => {  
-        let isMounted = true; // We keep track of mounted component  
+        // let isMounted = true; // We keep track of mounted component  
         const fetchTripData = async () => {  
             if (!tourname) {  
                 setError('Tour name is required.');  
@@ -112,34 +112,33 @@ const Trips_MainPage = () => {
                 });  
         
                 // Only set data if the component is still mounted  
-                if (isMounted) {  
+                // if (isMounted) {  
                     setTripData(response.data);  
-                }  
+                // }  
             }   
             catch (err) {  
-                if (isMounted) {  
-                    // Check for 403 error  
+                
                     if (err.response?.status === 403) {  
-                        const is_part = err.response.data.is_part; // Assuming `is_part` is a boolean  
+                        const is_part = err.response.data.is_part; 
                         setError(`Access forbidden. Is part: ${is_part}`);  
                     } else {  
                         setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
                     }  
-                }  
+                 
             }   
             finally {  
-                if (isMounted) {  
+                // if (isMounted) {  
                     setLoading(false);  
-                }  
+                // }  
             }  
         };  
     
         fetchTripData();  
     
         // Cleanup function to set isMounted to false when unmounted  
-        return () => {  
-            isMounted = false;   
-        };  
+        // return () => {  
+        //     isMounted = false;   
+        // };  
     }, [tourname]);
     
     return (  
@@ -168,27 +167,34 @@ const Trips_MainPage = () => {
         ) : (  
             showmain && ( 
                 <div className="trip-container">  
-                <div className="trip-header">  
-                    <img   
-                        className="trip-photo"   
-                        src={tour.image_url}   
-                        alt={`Photo of ${tour.name}`}   
-                    />  
-                    <div className="trip-info">  
-                        <h2 className="tour-name">{tourname}</h2>  
-                        <p className="capacity">{tour.travellers} participants</p>  
-                        <p className="locations">  
-                            {tour.start_place} {getTransportationIcon(tour.transportation)} {tour.destination}  
-                        </p>  
-                        <p className="dates">  
-                            {tour.start_date} <FaArrowRight className='moveicon-transport' /> {tour.end_date}  
-                        </p>  
+                        {error && tripData === null ? (  // Display error if tripData is null  
+                            <p style={{ color: 'red' }}>{error}</p>  
+                        ) : tripData ? ( // Check if tripData is available to render  
+                            <> 
+                                <div className="trip-header">  
+                                    <img   
+                                        className="trip-photo"   
+                                        src={tripData.travels.travel_is.image_url}   
+                                        alt={`Photo of ${tripData.travels.travel_is.name}`}   
+                                    />  
+                                    <div className="trip-info">  
+                                        <h2 className="tour-name">{tripData.travels.travel_is.name}</h2>  
+                                        <p className="location">{tripData.travels.travel_is.mode}</p>  
+                                        <p className="capacity">{tripData.travels.travel_is.travellers} participants</p>  
+                                        <p className="locations">  
+                                            {tripData.travels.travel_is.start_place} {getTransportationIcon(tripData.travels.travel_is.transportation)} {tripData.travels.travel_is.destination}  
+                                        </p>  
+                                        <p className="dates">  
+                                            {tripData.travels.travel_is.start_date} <FaArrowRight className='moveicon-transport' /> {tripData.travels.travel_is.end_date}  
+                                        </p>  
+                                    </div>  
+                                </div>  
+                                <p className="trip-description-class">{tripData.travels.travel_is.description} </p>  
+                            </>  
+                        ) : (  
+                            <p>Loading...</p> // Optional loading state  
+                        )}  
                     </div>  
-                </div>  
-
-        <p className="trip-description">{tour.description} </p>  
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        </div>  
         )  
     )}  
         
