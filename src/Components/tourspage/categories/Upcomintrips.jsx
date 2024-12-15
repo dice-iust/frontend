@@ -12,6 +12,7 @@ import { FaRegCalendar } from "react-icons/fa6";
 import Travelsnav from "../categories_nav.jsx";  
 import Footer from '../footer.jsx';  
 import { IoIosTimer } from "react-icons/io";  
+import { Link } from 'react-router-dom'; 
 
 const UpcominTravels_URL = 'travels/upcoming/';  
 
@@ -64,7 +65,7 @@ const Upcoming = () => {
                 {data && data.Up_comingTrips ? (  
                     <div className="tour-list2">  
                         {data.Up_comingTrips.map((tour) => (  
-                            <div key={tour.Id} className="tour-card2">  
+                            <Link to={`/TripsPage/${tour.name}`} className="tour-card2"> 
                                 <div className="tour-image-container2">  
                                     <img  
                                         src={tour.image_url}  
@@ -106,7 +107,7 @@ const Upcoming = () => {
                                         </p>  
                                     </div>   
                                 </div>  
-                            </div>  
+                            </Link>  
                         ))}  
                     </div>  
                 ) : (  

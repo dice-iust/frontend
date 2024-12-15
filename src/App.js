@@ -1,6 +1,6 @@
 
 import React from 'react';  
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Router components  
+import { BrowserRouter as Router, Route, Routes ,Switch} from 'react-router-dom'; // Import Router components  
 // import './App.css';  
 import LoginForm from "./Components/LoginForm/loginform.jsx";  
 import SignupForm from "./Components/SignupForm/SignupForm.jsx";  
@@ -17,13 +17,16 @@ import Economical from "./Components/tourspage/categories/Economicaltrips.jsx";
 import Fancy from "./Components/tourspage/categories/Fancytrips.jsx";
 import Winter from './Components/tourspage/categories/Wintertrips.jsx';
 import EmailVerification from './Components/SignupForm/EmailVerification.jsx';
+import Profile from "./Components/ProfilePage/ProfilePage.jsx";
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
+import AddNewTrip from './Components/AddNewTrip/AddNewTrip.jsx';
 import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
-import Tst from './Components/BudgetPlanner/Components/PlannerHeader.jsx'
+import Trips_MainPage from './Components/Trips_MainPage/Trips_MainPage.jsx';
 
 
 function App() {  
   return (  
-    <Router>  
+    <Router >  
       <Routes>  
         <Route path="/" element={<Home />} /> 
         <Route path="/login" element={<LoginForm />} /> 
@@ -40,12 +43,16 @@ function App() {
         <Route path="/Main/Fancy" element={<Fancy />} /> 
         <Route path="/Main/Winter" element={<Winter />} /> 
         <Route path="/signup/email_verification" element={<EmailVerification/>} />
+        <Route path="/login" element={<LoginForm />} /> 
+        <Route path="/Profile" element={<Profile />} /> 
+        <Route path="/login/forgot" element={<ForgotPassword/>}/>
         <Route path="/budgetplanner" element={<BudgetPlanner/>} />
-        <Route path="/tst" element={<Tst/>} />
-
+        <Route path="/TripsPage/:tourname" element={<Trips_MainPage/>} />
       </Routes>  
     </Router>  
   );  
 }  
+
+
 
 export default App;

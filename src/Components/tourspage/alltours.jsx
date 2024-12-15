@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick"; 
 import Travelsnav from "./Nav.jsx";
 import Footer from './footer.jsx';
+import DateRangePicker from "./Filter/filterbydate.jsx";
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom'; 
@@ -83,46 +84,52 @@ const TourList = () => {
     const currentYear = currentDate.getFullYear();  
     const currentMonth = currentDate.getMonth();   
 
-  const settings = {  
-    dots: true,  
-    infinite: true,  
-    speed: 500,  
-    slidesToShow: 3,  
-    slidesToScroll: 1, 
-    centerMode: true, 
-               
-    centerPadding: '236px', 
-    
-    
-    
-   
-    
-    responsive: [ 
-      {  
-        breakpoint: 1200,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          // centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 1024,  
-        settings: {  
-          slidesToShow: 2,  
-          slidesToScroll: 1,
-          centerPadding: '0px'  
-        }  
-      },  
-      {  
-        breakpoint: 600,  
-        settings: {  
-          slidesToShow: 1,  
-          slidesToScroll: 1,  
-        }  
-      }  
-    ]  
-  };  
+    const settings = {  
+      dots: true,  
+      infinite: true,  
+      speed: 500,  
+      slidesToShow: 3,  
+      slidesToScroll: 1,  
+      centerMode: true,  
+      centerPadding: '236px', 
+      swipe: true, 
+      swipeToSlide: true, 
+      touchMove: true,   
+      responsive: [  
+        {  
+          breakpoint: 1200,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '20px', // Adjusted for better visibility  
+          }  
+        },  
+        {  
+          breakpoint: 1024,  
+          settings: {  
+            slidesToShow: 2,  
+            slidesToScroll: 1,  
+            centerPadding: '10px',  
+          }  
+        },  
+        {  
+          breakpoint: 600,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '30px', // No padding for better fit  
+          }  
+        },  
+        {  
+          breakpoint: 480,  
+          settings: {  
+            slidesToShow: 1,  
+            slidesToScroll: 1,  
+            centerPadding: '5px', // No padding for better fit  
+          }  
+        },  
+      ]  
+    };
 
   return ( 
     <div className='app-container-main'> 
@@ -130,6 +137,8 @@ const TourList = () => {
       <Travelsnav/>
     <div className="tour-list-container"> 
     
+      <br></br>
+      <DateRangePicker />
       <br></br>
       <h1>Categories</h1>  
       <br></br>
@@ -151,7 +160,14 @@ const TourList = () => {
       {data && data.Popular_Trips ? (  
           <Slider {...settings}>  
             {data.Popular_Trips.slice(0, 5).map((tour) => (  
-              <div key={tour.id} className="tour-card">  
+               <Link   
+               key={tour.name}   
+               to={{  
+                 pathname: `/TripsPage/${tour.name}`,  
+                 state: { tour}
+               }}   
+               className="tour-card"  
+             >   
                 <div className="tour-image-container">  
                   <img  
                     src={tour.image_url}  
@@ -194,7 +210,7 @@ const TourList = () => {
                     </p>  
                   </div>  
                 </div>  
-              </div>  
+              </Link>  
             ))}  
           </Slider>  
         ) : (  

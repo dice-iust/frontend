@@ -68,7 +68,8 @@
         height: 300px;   
         transition: transform 0.3s, box-shadow 0.3s;  
         position: relative;  
-        border: 2px solid rgba(34, 72, 122, 0.5);  
+        border: 2px solid rgba(34, 72, 122, 0.5); 
+        text-decoration: none; 
         
         &:hover {  
           animation: circular-animation 0.4s ease forwards;
@@ -96,7 +97,8 @@
         background-color: rgba(255, 255, 255, 0.7);  
         padding: 2px;  
         border-radius: 5px;  
-        z-index: 20;  
+        z-index: 20; 
+        color: black; 
       }  
   
       .admin-photo-summer {  
@@ -115,6 +117,7 @@
       .tour-info-summer {  
         display: flex;  
         flex-direction: column;  
+        color: black;
   
         .tour-name-summer {  
           font-size: 1em;  
@@ -163,11 +166,11 @@
             border-radius: 5px;   
             display: inline-block;  
           }  
-          .trip-type2.Budget-friendly {  
+          .trip-type-summer.Budget-friendly {  
             background-color: #c8e6c9;   
             color: #388e3c;  
           }  
-          .trip-type2.Fancy {  
+          .trip-type-summer.Fancy {  
             background-color: #f59e9e;  
             color: #e9362c;   
           }   

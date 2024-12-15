@@ -1,27 +1,66 @@
-.app-container-fancy {  
-  display: flex;  
-  flex-direction: column;  
-  min-height: 100vh;   
+.w3-container {  
+  padding: 16px;  
+  font-family: 'Arial', sans-serif; // Consider using a modern font  
+  background-color: #f9f9f9; // Light background for better contrast  
+  border-radius: 8px; // Rounded corners for a softer look  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth  
 }  
 
-.fancy {  
-  text-align: center;  
-  padding: 2px; 
-  flex: 1;  
+.w3-row {  
+  display: flex;  
+  margin-bottom: 16px;  
+}  
 
-  .tour-list-container-fancy {  
+.tablink {  
+  flex: 1; // Allow tabs to grow equally  
+  cursor: pointer;  
+  text-align: center;  
+  padding: 12px 0; // Vertical padding  
+  background-color: #ffffff; // White background for tabs  
+  color: #333; // Dark text color for better readability  
+  border-top-left-radius: 8px; // Rounded top-left corners  
+  border-top-right-radius: 8px; // Rounded top-right corners  
+  transition: background-color 0.3s, color 0.3s; // Smooth transition for hover  
+  position: relative; // For pseudo-element positioning  
+}  
+
+.tablink:hover {  
+  // background-color: #e0e0e0; // Slightly darker gray on hover  
+  // color: #000; // Dark text on hover  
+  background-color: #22487a; 
+  color: #fbfafa; 
+}  
+
+.w3-bottombar {  
+  border-bottom: 3px solid transparent;  
+}  
+
+.w3-border-red {  
+  border-bottom: 3px solid rgb(234, 110, 12); // Using a vibrant color for the active tab  
+  transition: border-color 0.3s ease-in-out; // Smooth border change  
+}  
+
+.city {  
+  background-color: #fff; // White background for the content  
+  padding: 16px; // Padding for content  
+  border-radius: 4px; // Rounded corners for content blocks  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for content depth  
+  margin-top: -1px; // Overlap the border of tabs  
+}  
+
+  .tour-list-container2 {  
     max-width: 2000px;  
     margin-left: 10px;
-    margin-right: 10px;
-
-    .tour-list-fancy {  
+    margin-right: 10px; 
+    height: auto;
+    .tour-list2 {  
       display: flex;  
       flex-wrap: wrap;  
       // justify-content: space-between;  
       gap: 15px;  
     }  
     
-    .moveicon-fancy2 {  
+    .moveicon2 {  
       margin-left: 2px;  
       margin-right: 2px;  
       margin-bottom: 0px;  
@@ -29,13 +68,13 @@
       vertical-align: middle;   
     }  
 
-    .card-image-fancy {  
+    .card-image2 {  
       width: 100%;  
       height: 100%;  
       object-fit: cover;   
     }  
 
-    .card-title-fancy {  
+    .card-title2 {  
       position: absolute;   
       bottom: 0;   
       right: 0;  
@@ -48,38 +87,41 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-fancy {  
+    .tour-card2 { 
+      text-decoration: none; 
       display: flex;  
       flex-direction: column;  
       background: white;  
       border-radius: 10px;  
       overflow: hidden;  
-      width: calc(32.7% - 2px); /* Three cards per row with consistent gap */  
+      width: calc(32.5% - 2px); /* Three cards per row with consistent gap */  
       height: 300px;   
       transition: transform 0.3s, box-shadow 0.3s;  
       position: relative;  
+      margin-bottom: 5px;
       border: 2px solid rgba(34, 72, 122, 0.5);  
-      text-decoration: none;
+
       
+
       &:hover {  
         animation: circular-animation 0.4s ease forwards; /* Apply circular animation on hover */  
         box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
       }  
     }  
 
-    .tour-image-fancy {  
+    .tour-image2 {  
       width: 100%;  
       height: 168px;   
       object-fit: cover;   
       position: relative;   
     }  
 
-    .tour-image-container-fancy {  
+    .tour-image-container2 {  
       position: relative;  
     }  
 
-    .tour-admin-fancy { 
-      color:black; 
+    .tour-admin2 {
+      color: black;  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -91,7 +133,7 @@
       z-index: 20;  
     }  
 
-    .admin-photo-fancy {  
+    .admin-photo2 {  
       width: 30px;  
       height: 30px;  
       border-radius: 50%;  
@@ -104,12 +146,12 @@
     }  
 
     // Tour Info Styles  
-    .tour-info-fancy { 
-      color:black; 
+    .tour-info2 {  
+      color : black;
       display: flex;  
       flex-direction: column;  
 
-      .tour-name-fancy {  
+      .tour-name2 {  
         font-size: 1em;  
         font-weight: bold;  
         margin-bottom: 0px;  
@@ -119,13 +161,13 @@
         color: #22487a;    
       }  
 
-      .tour-details-fancy{  
+      .tour-details2 {  
         display: flex;  
         align-items: center;  
         margin-bottom: 0px;  
         margin-top: 0px;  
 
-        .tour-route-fancy {  
+        .tour-route2 {  
           display: flex;  
           align-items: center;  
           margin-left: 10px;   
@@ -143,11 +185,11 @@
         }  
       }  
 
-      .tour-meta-fancy3 {  
+      .tour-meta3 {  
         display: flex;   
         align-items: center;   
         margin-top: 12px;   
-        .trip-type-fancy {  
+        .trip-type2 {  
           font-weight: bold;   
           margin-right: 7px;  
           margin-left: auto;  
@@ -156,11 +198,11 @@
           border-radius: 5px;   
           display: inline-block;  
         }  
-        .trip-type-fancy.Budget-friendly {  
+        .trip-type2.Budget-friendly {  
           background-color: #c8e6c9;   
           color: #388e3c;  
         }  
-        .trip-type-fancy.Fancy {  
+        .trip-type2.Fancy {  
           background-color: #f59e9e;  
           color: #e9362c;   
         }   
@@ -176,26 +218,26 @@
         color: #22487a;    
       }  
 
-      .tour-meta-fancy7 {  
+      .tour-meta7 {  
         display: flex;  
         justify-content: space-between;  
 
-        .tour-dates-fancy, .tour-length-fancy {  
+        .tour-dates2, .tour-length2 {  
           font-size: 0.9em;  
-        }        .tour-dates-fancy {  
+        }        .tour-dates2 {  
           margin-bottom: 7px;  
           margin-left: 10px;  
           margin-top: 0px;  
           margin-right: 20px;  
         }  
 
-        .tour-length-fancy {  
+        .tour-length2 {  
           margin-right: 15px;  
           margin-bottom: 10px;  
           margin-top: 0px;  
         }   
         
-        .moveicon-fancy3 {  
+        .moveicon3 {  
           margin-left: 2px;  
           margin-right: 4px;  
           margin-bottom: 4px;  
@@ -203,7 +245,7 @@
           vertical-align: middle;   
         }  
 
-        .moveicon-fancy4 {  
+        .moveicon4 {  
           margin-left: 4px;  
           margin-right: 4px;  
           margin-bottom: 3px;  
@@ -231,81 +273,102 @@
         }  
       }  
     }  
+  // }  
+  // Circular Animation Keyframes  
+  @keyframes circular-animation {  
+    0% {  
+      transform: rotate(0deg) scale(1);  
+    }  
+    50% {  
+      transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
+    }  
+    100% {  
+      transform: rotate(0deg) scale(1); /* Returning to original state */  
+    }  
+  }
+  
+  
+  @media (max-width: 1200px) {  
+    .tour-card2 {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
+    .tour-meta7
+      {
+        font-size:0.9em;
+      } 
+  
+      .tour-meta3 
+      {
+        font-size: 0.9em;
+      }
+      
   }  
-}  
-
-// Circular Animation Keyframes  
-@keyframes circular-animation {  
-  0% {  
-    transform: rotate(0deg) scale(1);  
-  }  
-  50% {  
-    transform: rotate(15deg) scale(1.05); /* Slightly scaling and rotating*/  
-  }  
-  100% {  
-    transform: rotate(0deg) scale(1); /* Returning to original state */  
-  }  
-}
-
-@media (max-width: 1200px) {  
-  .tour-card-fancy {  
-    width: calc(50% - 0px); /* Two cards per row on medium screens */  
-  }  
-  .tour-meta-fancy7
-    {
-      font-size:0.9em;
-    } 
-
-    .tour-meta-fancy3 
-    {
-      font-size: 0.9em;
-    }
+  
+  @media (max-width: 1200px) {  
+    .tour-card2 {  
+      width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    }  
     
-}  
-
-@media (max-width: 1200px) {  
-  .tour-card-fancy {  
-    width: calc(50% - 0px); /* Two cards per row on medium screens */  
+    .tour-meta7 {  
+      font-size: 0.9em;  
+    }   
+    
+    .tour-meta3 {  
+      font-size: 0.9em;  
+    }  
   }  
   
-  .tour-meta-fancy7 {  
-    font-size: 0.9em;  
-  }   
+  @media (max-width: 768px) {  
+    .tour-card2 {  
+      width: calc(100% - 0px); /* One card per row on small screens */  
+    }  
   
-  .tour-meta-fancy3 {  
-    font-size: 0.9em;  
-  }  
-}  
-
-@media (max-width: 768px) {  
-  .tour-card-fancy {  
-    width: calc(100% - 0px); /* One card per row on small screens */  
-  }  
-
-  .admin-photo {  
-    width: 20px;  
-    height: 20px;  
-  }  
-
-  .tour-meta-fancy7 {  
-    font-size: 0.8em;  
-  }   
-
-  .tour-name-fancy,   
-  .tour-meta-fancy3 .trip-type-fancy {  
-    font-size: 0.8em;  
-  }  
-}  
-
-@media (max-width: 576px) {  
-  .tour-info-fancy {  
-    .tour-name-fancy {  
+    .admin-photo2 {  
+      width: 20px;  
+      height: 20px;  
+    }  
+  
+    .tour-meta7 {  
       font-size: 0.8em;  
     }   
-
-    .tour-meta-fancy3 .trip-type-fancy {  
-      padding: 2px 6px;  
+  
+    .tour-name2,   
+    .tour-meta3 .trip-type2 {  
       font-size: 0.8em;  
     }  
+  }  
+  
+  @media (max-width: 480px) {  
+    
+    .tour-info2 {  
+      .tour-name2 {  
+        font-size: 0.8em;  
+      }   
+  
+      .tour-meta3 .trip-type2 {  
+        padding: 2px 6px;  
+        font-size: 0.8em;  
+      }  
+    }  
+  }
+}  
+
+.city h2 {  
+  margin-top: 0; // Remove default margin for heading  
+  color: #333; // Dark color for headings  
+}  
+
+.city p {  
+  color: #555; // Slightly lighter text for paragraphs  
+  line-height: 1.6; // Improve the readability of the text  
+}  
+
+@media (max-width: 600px) {  
+  .tablink {  
+    font-size: 14px; // Smaller font size for small screens  
+  }  
+
+  .w3-container {  
+    padding: 12px; // Smaller padding on mobile  
   }  
 }

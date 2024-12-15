@@ -1,0 +1,514 @@
+$new-trip-background-color: #f9f9f9;  
+$new-trip-title-color: #ea7d29;  
+$new-trip-button-color: #22487a;  
+$new-trip-error-color: #ff4d4d;  
+$new-trip-input-border: #f9f4f4;  
+$new-trip-shadow: rgba(0, 0, 0, 0.1);  
+$new-trip-hover-color: lighten($new-trip-button-color, 5%);  
+$new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);  
+
+
+
+.addtrip{
+    box-shadow: 0 4px 20px $new-trip-shadow;  
+.newtrip {
+    // background-color: $new-trip-background-color;  
+    padding: 30px;  
+    border-radius: 15px;  
+    // box-shadow: 0 4px 20px $new-trip-shadow;  
+    max-width: 1000px;  
+    margin-top: 35px;  
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    @media (max-width: 768px) {  
+        padding: 20px;   
+        max-width: 90%;  
+    }  
+    
+    @media (max-width: 520px) {  
+        padding: 15px;  
+        max-width: 400px; 
+    }  
+
+    .t-title{
+        color: #22487a;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        font-size: 1.5em;
+    }
+    
+
+    .image-container {  
+        display: flex;              
+        align-items: flex-start;    
+        justify-content: flex-start; 
+        margin: 0;                 
+        padding: 0;              
+        width: 100%; 
+        flex-wrap: wrap;  
+
+        
+    
+    
+        .smaller-image {  
+            width: 154px;  
+            height : 136px;       
+            border-radius: 10px;  
+            object-fit: cover;  
+            margin-bottom: 10px;    
+            margin-right: 40px; 
+            object-fit: contain;  
+            
+            @media (max-width: 768px) {  
+                width: 120px; 
+                height: auto; 
+                margin-right: 10px;   
+            }  
+    
+            @media (max-width: 520px) {  
+                width: 130px;  
+                height: auto; 
+                // margin-bottom: 5px;
+            }  
+        }  
+    
+        .button-container {  
+            position: relative; 
+            display: flex; 
+    
+            .file-upload-button {  
+                position: absolute;  
+                bottom: -137px; 
+                right: 10px;   
+                padding: 10px 20px;          
+                color: white;                
+                background-color: #22487a;    
+                border: none;                
+                border-radius: 5px;           
+                cursor: pointer;               
+                transition: background-color 0.3s;  
+                &:hover {  
+                    background-color: #ea7d29;   
+                }  
+
+                .moveiconpic {  
+                    font-size:20px; 
+                 }  
+                 
+            }  
+    
+            input[type='file'] {  
+                display: none;  
+            }  
+            @media (max-width: 768px) {
+                bottom : 20px;  
+                padding: 8px 15px; 
+                font-size: 14px; 
+            }  
+
+            @media (max-width: 520px) { 
+                bottom: 30px; 
+                padding: 6px 12px;  
+                font-size: 12px;  
+            }  
+
+            
+        }  
+    }
+
+
+    &:before {  
+        content: '';  
+        position: absolute;  
+        top: -20px;  
+        left: -20px;  
+        right: -20px;  
+        bottom: -20px;  
+        background: $new-trip-gradient;  
+        border-radius: 20px;  
+        z-index: -1;   
+    }  
+
+    form {  
+        display: flex;  
+        flex-direction: column;  
+        gap: 11px;  
+
+        
+
+        .trip-title, .trip-location, .trip-description,   
+        .trip-date, .trip-group, .trip-status   
+         {  
+            margin-bottom: 0px;  
+            
+            TextField {  
+                width: 100%;
+                  
+                border-radius: 8px;  
+                box-shadow: 0 2px 5px $new-trip-shadow;  
+                transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;  
+
+                
+                &:hover {  
+                    background-color: rgba(234, 125, 41, 0.05);  
+                    box-shadow: 0 3px 8px $new-trip-shadow; 
+                }  
+
+                &.Mui-focused {  
+                    box-shadow: 0 0 5px $new-trip-title-color;  
+                }  
+
+                &.Mui-error {  
+                    border-color: $new-trip-error-color;  
+                    
+                }  
+            }  
+        }  
+
+        .trip-status-state-wrapper {  
+            display: flex;                       
+            justify-content: space-between;      
+            align-items: flex-start; 
+               
+                    
+            margin-top: 5px;
+            
+            padding: 0;                     
+        
+            .trip-state {  
+                margin-top: 3px;
+                margin-bottom: 2px;             
+                margin-right: 48px; 
+                margin-left: 50px;
+                padding: 0px;             
+                // flex: 1;                        
+                
+                .MuiFormLabel-root {  
+                    margin-bottom: 10px;  
+                }  
+        
+                .MuiRadioGroup-root {  
+                    display: flex;  
+                    flex-direction: row;  
+                    justify-content: flex-start; 
+                    margin-left: 8px;  
+                    // align-items: center;  
+                }  
+        
+                .MuiRadio-root {  
+                    &.Mui-checked {  
+                        color: #ea7d29;   
+                    }  
+        
+                    &:hover {  
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
+                        border-radius: 50%;  
+                    }  
+                }  
+            }  
+            
+            .trip-status {  
+                margin-bottom: 2px;              
+                flex: 1; 
+                margin-left: 0px; 
+                margin-top: 10px;
+                
+                                         
+        
+                .MuiFormLabel-root {  
+                    margin-bottom: 10px;  
+                }  
+        
+                .MuiRadioGroup-root {  
+                    display: flex;  
+                    flex-direction: row;  
+                    justify-content: flex-start;  
+                    align-items: center; 
+                    margin-left: 8px; 
+                }  
+        
+                .MuiRadio-root {  
+                    &.Mui-checked {  
+                        color: #ea7d29;   
+                    }  
+        
+                    &:hover {  
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
+                        border-radius: 50%;  
+                    }  
+                }  
+            }  
+        }
+        
+            
+                   
+        
+                
+        
+        .trip-title {  
+            display: flex;                     
+            align-items: flex-start;           
+            margin-bottom: 0px;              
+        
+            .MuiTextField-root {                
+                margin-right: 20px;            
+        
+                &:last-child {                  
+                    margin-right: 0;            
+                }  
+        
+                 
+                width: 100%;                     
+        
+                
+            }  
+            
+        }
+
+       
+
+
+        .flex-container {  
+            display: flex;  
+            flex:1;
+            margin-left: 3px;
+            margin-bottom:0px;
+            margin-top: 2px;
+
+            
+
+            @media (max-width: 520px) {  
+                margin-left: 0px; 
+            }  
+
+            
+        }  
+        
+        .label-location {  
+            margin-right: 421px;
+            @media (max-width: 520px) {  
+                margin-right: 145px; 
+            }  
+        }  
+        
+        .trip-location-date {  
+            display: flex;  
+            justify-content: space-between; 
+        }  
+        
+        .trip-location, .trip-date {  
+            display: flex;  
+            
+        }  
+        
+        .trip-location {  
+            margin-right: 2px;
+            .MuiTextField-root {  
+                        flex: 1;              
+                        max-width: 220px; 
+                        margin-right: 18px;
+            }
+
+            @media (max-width: 520px) {  
+                .MuiTextField-root {  
+                    max-width: 150px;
+                   margin-right: 6px;
+                };
+            }
+        }  
+
+        .trip-date{
+            .MuiTextField-root {  
+                        flex: 1;              
+                        max-width: 220px;      
+                        margin-right: 18px;  
+                        &:last-child {  
+                                        margin-right: 0px;    
+                                    }  
+            }
+
+            @media (max-width: 520px) {  
+                .MuiTextField-root {  
+                             
+                    max-width: 150px;  
+                   
+                    
+                    
+            }
+            }  
+        }
+        
+       
+
+        .trip-description {  
+            margin-bottom: 10px; 
+            margin-top: 0px;               
+            .MuiTextField-root {                
+                width: 100%;                      
+            }
+        }
+
+        Button {  
+            background-color: $new-trip-button-color;  
+            color: white;  
+            padding: 12px 20px;  
+            border-radius: 5px;  
+            transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;  
+            // width: 100%;  
+            max-width: 1002px;   
+            font-size: 16px;  
+        
+            &:hover {  
+                background-color: $new-trip-hover-color;
+                background-color: #ea7d29;  
+                transform: translateY(-2px);  
+                box-shadow: 0 4px 15px $new-trip-shadow;   
+            }  
+        
+            // &:active {  
+            //     transform: translateY(0);  
+            //     box-shadow: 0 2px 10px $new-trip-shadow;  
+            // }  
+            
+            
+            @media (max-width: 768px) {  
+                padding: 10px 16px; 
+                font-size: 14px; 
+            }  
+        
+            @media (max-width: 520px) {  
+                padding: 8px 14px;
+                font-size: 12px; 
+                max-width: 70px; 
+            }  
+        }  
+    }  
+
+    .MuiFormHelperText-root {  
+        font-size: 0.85rem;  
+        color: $new-trip-error-color;  
+        margin-top: 2px;  
+        margin-left:2px;
+    }  
+
+    h2 {  
+        color: $new-trip-title-color;  
+        text-align: center;  
+        margin-bottom: 20px;  
+        font-family: 'Arial, sans-serif';  
+    }  
+}
+}
+
+.success {  
+    display: flex;                     
+    justify-content: center;          
+    align-items: center;               
+    margin: 30px 30px;                   
+    padding: 7px;                    
+    border: 1px solid #4caf50;        
+    border-radius: 5px;              
+    background-color: #e8f5e9;       
+    color: #2e7d32;                   
+    font-weight: bold;                 
+    font-size: 16px;                    
+    transition: background-color 0.3s;  
+
+   
+    &:hover {  
+        background-color: #c8e6c9;      
+    }  
+
+    
+    @media (max-width: 520px) {  
+        font-size: 14px;                
+    }  
+}  
+
+.tripadded {  
+    display: flex;                     
+    align-items: center;                
+    gap: 8px;                         
+    svg {                             
+        width: 20px;                  
+        height: 20px;                 
+        color: #4caf50;                
+    }  
+}
+
+@media (max-width: 520px) {  
+    .newtrip {  
+        padding: 15px;   
+
+        .trip-status-state-wrapper {  
+            display: flex;  
+            flex-direction: column;   
+            gap: 2px;  
+            margin-bottom: 2px;
+            margin-left: 0px;
+            margin-right: 0px;
+        
+            .trip-state, .trip-status {  
+                
+                margin-bottom: 2px; 
+                margin-left: 0px;
+                margin-right: 0px;
+                
+                .MuiFormLabel-root {
+                    display: block;  
+                    margin-bottom: 5px; 
+                    margin-left: 0px;
+                    margin-right: 0px;
+                }  
+        
+                .MuiRadioGroup-root {  
+                    display: flex;  
+                    flex-direction: column; 
+                    justify-content: flex-start;   
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    align-items: flex-start;  
+                    gap: 8px;   
+        
+                    .MuiFormControlLabel-root {  
+                        margin: 0; 
+                        padding-left: 0;
+                        padding-left: 0;  
+                        padding-right: 0;
+                        display: flex;
+                    }  
+                }  
+            }  
+        }  
+
+        .trip-title,  
+        .trip-location,  
+        .trip-description,  
+        .trip-date,  
+        .trip-group,  
+        .trip-status {  
+            margin-bottom: 10px;
+            flex-direction: column; 
+            .MuiTextField-root {  
+                flex: 1;              
+                max-width: 150px;      
+                margin-right: 18px;  
+                &:last-child {  
+                                margin-right: 0px;    
+                            }  
+                    }
+        }  
+
+        h2 {  
+            font-size: 1.2em;   
+            margin-bottom: 15px;  
+        }  
+    }  
+}  
+
+
