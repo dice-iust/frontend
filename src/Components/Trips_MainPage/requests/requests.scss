@@ -1,37 +1,59 @@
 .requests-page {  
-  max-width: 1500px;
-  margin-right: 10px; 
-  flex: 1;
+  max-width: 1500px;  
+  margin: 0 auto;  // Center the entire page content  
   padding-top: 20px;  
-  padding-left: 20px;
   background-color: #f9f9f9ee;   
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  flex-direction: column;  
-  margin-bottom: 2px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
-  border-radius: 10px; 
-  margin-right: 5px;
-  margin-left: 5px;
-  border: 2px solid  #e1d9d9ee;
-    .box {   
-      margin-top: 20px;  
-      margin-bottom: 0px;  
-      margin-left: 30px;   
-      border: 1px solid #ccc; 
-      padding: 10px; 
-      border-radius: 10px; 
-      background-color: #22487a;
-      color: white;
-      display: inline-block; 
-      align-items: center;  
-  }  
+  border-radius: 10px;  
+  padding-bottom: 20px; // Added padding for bottom spacing  
 
+  .header-container {  
+    display: flex;  
+    justify-content: space-between;   
+    align-items: center;  
+    margin-bottom: 20px; // Space below header and code box  
+
+    h1 {  
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-right: 0;
+      margin-left: 35px;  // Remove default margin  
+      font-size: 2em;  
+      color: #22487a;  
+    }  
+
+    .trip-code-container {  
+      .box {   
+        margin-top: 20px;
+        border: 1px solid #ccc;  
+        margin-right: 50px; 
+        padding: 10px;   
+        border-radius: 10px;   
+        background-color: #22487a;  
+        color: white;  
+        display: inline-block; 
+        align-items: center;  
+      } 
       .trip-code {
-        margin-left: 5px;  
+        margin-top: 5px;
+        margin-right: 5px;
+        margin-left: 5px; 
         font-weight: bold;  
-        margin: 0 5px;  
+        // margin: 0 5px;  
+        color: rgb(234, 110, 12);
         }  
-
+      
+        .errorcode
+        {
+          font-weight: bold;   
+                margin-right: 7px;  
+                margin-left: auto;  
+                font-size: 1em;   
+                padding: 4px 8px;   
+                border-radius: 5px;   
+                display: inline-block; 
+                background-color: #d32f2f;
+        }
     .eye-button {  
         background: none; 
         border: none;  
@@ -43,30 +65,16 @@
 
     .eye-button:hover {  
         color: rgb(234, 110, 12); 
+    }   
     }  
-  
-    h1 {  
-      text-align: center;  
-      margin-bottom: 30px;  
-      font-size: 2em;  
-      color: #22487a;  
-    }  
-    
   }  
-  
+
   .requests-container {  
     display: flex;  
     flex-wrap: wrap;  
-    justify-content: space-between;
-    margin-right: 30px;
-    margin-bottom: 30px;
-    margin-left:15px ; 
+    justify-content: space-between;  
+    margin: 0 15px; // Side margins for request cards  
 
-    
-    // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    // border: 2px solid  #e1d9d9ee;
-    // background-color: #f9f9f9ee;    
-  
     .request-card {  
       background-color: #ffffff;  
       border: 1px solid #e0e0e0;  
@@ -77,7 +85,7 @@
       margin-right: 15px;
       margin-left: 15px;    
       padding: 10px;  
-      width: calc(50% - 40px); 
+      width: calc(33% - 40px); 
       text-align: left;  
       transition: transform 0.2s, box-shadow 0.2s;  
   
@@ -151,4 +159,5 @@
         }  
       }  
     }  
-  }
+  }  
+}

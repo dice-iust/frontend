@@ -1,5 +1,5 @@
 import React, { useState } from 'react';  
-import './requests.scss';  // Ensure this file includes necessary styles  
+import './requests.scss';  
 import { FaRegEye } from "react-icons/fa";  
 import { FaRegEyeSlash } from "react-icons/fa";  
 
@@ -28,9 +28,23 @@ const RequestsPage = () => {
 
   return (  
     <div className="requests-page">  
-      
+      <div className="header-container">  
+        <h1>User Requests</h1>  
+        <div className="trip-code-container">   
+          <div className="box">   
+            <p> Trip code:  
+              <span className="trip-code">  
+                {showCode ? tripCode : '******'}  
+              </span>  
+              <button className="eye-button" onClick={toggleShowCode}>  
+                {showCode ? <FaRegEye /> : <FaRegEyeSlash />}  
+              </button>  
+            </p>  
+            {showCode && <p className='errorcode'>Anyone with this code can join this trip.</p>}   
+          </div>  
+        </div>  
+      </div>  
 
-      <h1 >User Requests</h1>   
       <div className="requests-container">  
         {mockRequests.map((request) => (  
           <div className="request-card" key={request.id}>  
