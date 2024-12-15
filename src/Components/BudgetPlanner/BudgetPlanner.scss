@@ -7,12 +7,13 @@
   }  
   
 .budget-planner{
-    border-radius: 5px;
+    
     .planner-box {  
         display: flex;  
         flex-direction: column;  
         max-width: 1250px;  
-
+        border-radius: 10px;
+        padding-left: 20px;
         min-height: 100vh; 
         margin-right: 0; 
         border: 1px solid var(--textColor);  

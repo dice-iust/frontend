@@ -6,7 +6,7 @@
     --font-family: OpenSans;  
 }  
 
-.w3-container {  
+.w3-container-b {  
     display: flex; /* Use flex to allow sidebar and content to sit side by side */  
     padding: 16px;  
     font-family: 'Arial', sans-serif;  
@@ -15,7 +15,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
 }  
 
-.sidebar {  
+.sidebar-b {  
     width: 250px; /* Increased width for the sidebar */  
     background-color: #22487a; /* Set sidebar background to main color */  
     padding: 20px; /* Add padding for better spacing */  
@@ -23,12 +23,12 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */  
 }  
 
-.content {  
+.content-b {  
     flex: 1; /* Allow content to fill the remaining space */  
     padding: 20px; /* Add padding for nice spacing */  
 }  
 
-.tablink {  
+.tablink-b {  
     display: block; /* Make each tab a block element */  
     cursor: pointer;  
     text-align: left;  
@@ -42,17 +42,17 @@
     margin-bottom: 8px; /* Space between tabs */  
 }  
 
-.tablink:hover {  
+.tablink-b:hover {  
     background-color: #fff; /* Lighter hover effect to maintain visibility */  
     color: #22487a;
 }  
 
-.w3-border-red {  
+.w3-border-red-b {  
     border-left: 4px solid rgb(234, 110, 12); /* Add a left border for active tab */  
     background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for active tab */  
 }  
 
-.balance-list {  
+.balance-list-b {  
     padding: 20px;  
     border: 1px solid #ddd;  
     border-radius: 12px;  
