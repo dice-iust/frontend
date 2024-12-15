@@ -7,16 +7,19 @@
   }  
   
 .budget-planner{
+    border-radius: 5px;
     .planner-box {  
         display: flex;  
         flex-direction: column;  
-        width: 100vw;  
-        min-height: 100vh;  
+        max-width: 1250px;  
+
+        min-height: 100vh; 
+        margin-right: 0; 
         border: 1px solid var(--textColor);  
         padding: 20px;  
         position: relative;   
-        box-shadow: var(--mainColor) 0px 30px 60px -12px inset,  
-                    var(--mainColor) 0px 18px 36px -18px inset;  
+        // box-shadow: var(--mainColor) 0px 30px 60px -12px inset,  
+        //             var(--mainColor) 0px 18px 36px -18px inset;  
     }  
     .filter-btn {  
         position:absolute;  
