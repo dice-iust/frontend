@@ -11,10 +11,14 @@
     border-radius: 12px;  
     border: 1px solid #e0e0e0;  
     width: 99%;  
-    padding: 20px;  
+    padding-left: 60px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
     transition: box-shadow 0.3s ease;  
     margin-top: 15px;  
+    // margin-left: 20px;
 
     &:hover {  
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
@@ -80,8 +84,8 @@
                 display: flex;  
                 // gap: 5px;  
                 flex-direction: column;
-                margin-right: 30px;
-                margin-left: 100px;
+                margin-right: 20px;
+                margin-left: 80px;
 
                 .split-button {  
                     flex: 1;  
@@ -104,7 +108,11 @@
                 }  
             }  
         }  
-
+        .category-item {  
+            // flex: 0 0 70px; // A fixed width for the category dropdown, adjust as necessary  
+            margin-right: 20px; // Space between fields  
+            min-width: 10px;
+        }  
         .user-selection {  
             // margin-top: 10px;  
 
@@ -115,7 +123,7 @@
                 // color: #ea7d29;
                 // margin-left: 10px;
                 .user-checkbox {  
-                    flex: 0 0 calc(20% - 10px); // Adjust for spacing 
+                    flex: 0 0 calc(20% - 30px); // Adjust for spacing 
                     // background-color: #ea7d29; 
                     label {  
                         display: flex;  
@@ -132,7 +140,7 @@
 
             .form-item {  
                 flex: 1;  
-                min-width: 500px; 
+                min-width: 250px; 
             }  
         }  
 
@@ -143,7 +151,7 @@
         select {  
             width: 100%;  
             padding: 10px;  
-            border: 1px solid var(--mainColor);  
+            // border: 1px solid var(--mainColor);  
             border-radius: 6px;  
             font-size: 16px;  
             transition: border-color 0.3s ease;  
@@ -153,7 +161,16 @@
                 outline: none;  
             }  
         }  
-
+        .bill-date{
+            .MuiTextField-root {  
+                        flex: 1; 
+                        // height: 250px;             
+                        max-width: 220px;      
+                        margin-right: 18px;  
+                        &:last-child {  
+                                        margin-right: 0px;    
+                                    }  
+            }}
         .error-message {  
             color: red;  
             min-height: 20px;  

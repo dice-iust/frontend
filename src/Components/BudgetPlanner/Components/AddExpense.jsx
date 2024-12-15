@@ -120,7 +120,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
 
     return (  
         <div className="main-add-div">  
-                        <form onSubmit={handleAddExpense}>  
+            <form onSubmit={handleAddExpense}>  
                 <div className="upload-image-section">  
                     <img  
                         src={uploadedImage || addBill}  
@@ -129,7 +129,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                     />  
                     <div className="button-container-planner">  
                         <label htmlFor="file-upload" className="file-upload-button-planner">  
-                            <MdAddPhotoAlternate className='moveiconpic-planner' />  
+                            <MdAddPhotoAlternate className="moveiconpic-planner" />  
                         </label>  
                         <input  
                             type="file"  
@@ -138,7 +138,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                             style={{ display: 'none' }}  
                         />  
                     </div>  
-
+    
                     <div className="split-selection-row">  
                         <Button  
                             type="button"  
@@ -155,7 +155,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                             Select Users  
                         </Button>  
                     </div>  
-
+    
                     {splitType === 'specificUser' && (  
                         <div className="user-selection">  
                             <h3>Select Users:</h3>  
@@ -176,7 +176,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                         </div>  
                     )}  
                 </div>  
-
+    
                 <div className="row">  
                     <div className="form-item">  
                         <TextField  
@@ -204,8 +204,33 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                             helperText={errors.title}  
                         />  
                     </div>  
+                    <div className="form-item category-item">  
+                        <FormControl variant="outlined" fullWidth>  
+                            <InputLabel id="category-label" style={{ color: '#22487a' }}>  
+                                Category  
+                            </InputLabel>  
+                            <Select  
+                                name="category"  
+                                labelId="category-label"  
+                                label="Category"  
+                                value={formValue.category}  
+                                onChange={handleChange}  
+                                error={!!errors.category}  
+                            >  
+                                <MenuItem value="">  
+                                    <em>Select a category</em>  
+                                </MenuItem>  
+                                {categories.map((category) => (  
+                                    <MenuItem key={category} value={category}>  
+                                        {category}  
+                                    </MenuItem>  
+                                ))}  
+                            </Select>  
+                            {errors.category && <div className="error-message">{errors.category}</div>}  
+                        </FormControl>  
+                    </div>  
                 </div>  
-
+    
                 <div className="row">  
                     <div className="form-item">  
                         <TextField  
@@ -220,7 +245,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                             helperText={errors.amount}  
                         />  
                     </div>  
-                    <div className="form-item">  
+                    <div className="form-item bill-date">  
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
                             <DatePicker  
                                 required  
@@ -234,29 +259,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                         </LocalizationProvider>  
                     </div>  
                 </div>  
-
-                <div className="form-item">  
-                    <FormControl variant="outlined" fullWidth>  
-                        <InputLabel id="category-label" style={{ color: '#22487a' }}>Category</InputLabel>  
-                        <Select  
-                            name="category"  
-                            labelId="category-label"  
-                            label="Category"  
-                            value={formValue.category}  
-                            onChange={handleChange}  
-                            error={!!errors.category}  
-                        >  
-                            <MenuItem value=""><em>Select a category</em></MenuItem>  
-                            {categories.map(category => (  
-                                <MenuItem key={category} value={category}>  
-                                    {category}  
-                                </MenuItem>  
-                            ))}  
-                        </Select>  
-                        {errors.category && <div className="error-message">{errors.category}</div>}  
-                    </FormControl>  
-                </div>  
-
+    
                 <div className="form-item">  
                     <TextField  
                         type="text"  
@@ -268,13 +271,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                         onChange={handleChange}  
                     />  
                 </div>  
-
+    
                 <Button className="btn" type="submit" variant="contained">  
                     Add  
                 </Button>  
             </form>  
         </div>  
-    );  
+    ); 
 };  
 
 export default AddExpense;
