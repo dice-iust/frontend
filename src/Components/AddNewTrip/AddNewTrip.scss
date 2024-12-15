@@ -22,15 +22,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     margin-right: auto;
     position: relative;
 
-    @media (max-width: 768px) {  
-        padding: 20px;   
-        max-width: 90%;  
-    }  
-    
-    @media (max-width: 520px) {  
-        padding: 15px;  
-        max-width: 400px; 
-    }  
+     
 
     .t-title{
         color: #22487a;
@@ -62,17 +54,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             margin-right: 40px; 
             object-fit: contain;  
             
-            @media (max-width: 768px) {  
-                width: 120px; 
-                height: auto; 
-                margin-right: 10px;   
-            }  
-    
-            @media (max-width: 520px) {  
-                width: 130px;  
-                height: auto; 
-                // margin-bottom: 5px;
-            }  
+          
         }  
     
         .button-container {  
@@ -103,19 +85,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             input[type='file'] {  
                 display: none;  
             }  
-            @media (max-width: 768px) {
-                bottom : 20px;  
-                padding: 8px 15px; 
-                font-size: 14px; 
-            }  
-
-            @media (max-width: 520px) { 
-                bottom: 30px; 
-                padding: 6px 12px;  
-                font-size: 12px;  
-            }  
-
-            
+          
         }  
     }
 
@@ -166,89 +136,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                     
                 }  
             }  
-        }  
-
-        .trip-status-state-wrapper {  
-            display: flex;                       
-            justify-content: space-between;      
-            align-items: flex-start; 
-               
-                    
-            margin-top: 5px;
-            
-            padding: 0;                     
-        
-            .trip-state {  
-                margin-top: 3px;
-                margin-bottom: 2px;             
-                margin-right: 48px; 
-                margin-left: 50px;
-                padding: 0px;             
-                // flex: 1;                        
-                
-                .MuiFormLabel-root {  
-                    margin-bottom: 10px;  
-                }  
-        
-                .MuiRadioGroup-root {  
-                    display: flex;  
-                    flex-direction: row;  
-                    justify-content: flex-start; 
-                    margin-left: 8px;  
-                    // align-items: center;  
-                }  
-        
-                .MuiRadio-root {  
-                    &.Mui-checked {  
-                        color: #ea7d29;   
-                    }  
-        
-                    &:hover {  
-                        background-color: #ebc7ac;   
-                        color: #ea7d29;  
-                        border-radius: 50%;  
-                    }  
-                }  
-            }  
-            
-            .trip-status {  
-                margin-bottom: 2px;              
-                flex: 1; 
-                margin-left: 0px; 
-                margin-top: 10px;
-                
-                                         
-        
-                .MuiFormLabel-root {  
-                    margin-bottom: 10px;  
-                }  
-        
-                .MuiRadioGroup-root {  
-                    display: flex;  
-                    flex-direction: row;  
-                    justify-content: flex-start;  
-                    align-items: center; 
-                    margin-left: 8px; 
-                }  
-        
-                .MuiRadio-root {  
-                    &.Mui-checked {  
-                        color: #ea7d29;   
-                    }  
-        
-                    &:hover {  
-                        background-color: #ebc7ac;   
-                        color: #ea7d29;  
-                        border-radius: 50%;  
-                    }  
-                }  
-            }  
-        }
-        
-            
-                   
-        
-                
+        }     
         
         .trip-title {  
             display: flex;                     
@@ -279,21 +167,10 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             margin-left: 3px;
             margin-bottom:0px;
             margin-top: 2px;
-
-            
-
-            @media (max-width: 520px) {  
-                margin-left: 0px; 
-            }  
-
-            
         }  
         
         .label-location {  
             margin-right: 421px;
-            @media (max-width: 520px) {  
-                margin-right: 145px; 
-            }  
         }  
         
         .trip-location-date {  
@@ -314,12 +191,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                         margin-right: 18px;
             }
 
-            @media (max-width: 520px) {  
-                .MuiTextField-root {  
-                    max-width: 150px;
-                   margin-right: 6px;
-                };
-            }
+          
         }  
 
         .trip-date{
@@ -332,14 +204,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                                     }  
             }
 
-            @media (max-width: 520px) {  
-                .MuiTextField-root {  
-                             
-                    max-width: 150px;  
-                   
-                    
-                    
-            }
             }  
         }
         
@@ -359,7 +223,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             padding: 12px 20px;  
             border-radius: 5px;  
             transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;  
-            // width: 100%;  
             max-width: 1002px;   
             font-size: 16px;  
         
@@ -370,22 +233,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                 box-shadow: 0 4px 15px $new-trip-shadow;   
             }  
         
-            // &:active {  
-            //     transform: translateY(0);  
-            //     box-shadow: 0 2px 10px $new-trip-shadow;  
-            // }  
-            
-            
-            @media (max-width: 768px) {  
-                padding: 10px 16px; 
-                font-size: 14px; 
-            }  
-        
-            @media (max-width: 520px) {  
-                padding: 8px 14px;
-                font-size: 12px; 
-                max-width: 70px; 
-            }  
         }  
     }  
 
@@ -403,112 +250,3 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         font-family: 'Arial, sans-serif';  
     }  
 }
-}
-
-.success {  
-    display: flex;                     
-    justify-content: center;          
-    align-items: center;               
-    margin: 30px 30px;                   
-    padding: 7px;                    
-    border: 1px solid #4caf50;        
-    border-radius: 5px;              
-    background-color: #e8f5e9;       
-    color: #2e7d32;                   
-    font-weight: bold;                 
-    font-size: 16px;                    
-    transition: background-color 0.3s;  
-
-   
-    &:hover {  
-        background-color: #c8e6c9;      
-    }  
-
-    
-    @media (max-width: 520px) {  
-        font-size: 14px;                
-    }  
-}  
-
-.tripadded {  
-    display: flex;                     
-    align-items: center;                
-    gap: 8px;                         
-    svg {                             
-        width: 20px;                  
-        height: 20px;                 
-        color: #4caf50;                
-    }  
-}
-
-@media (max-width: 520px) {  
-    .newtrip {  
-        padding: 15px;   
-
-        .trip-status-state-wrapper {  
-            display: flex;  
-            flex-direction: column;   
-            gap: 2px;  
-            margin-bottom: 2px;
-            margin-left: 0px;
-            margin-right: 0px;
-        
-            .trip-state, .trip-status {  
-                
-                margin-bottom: 2px; 
-                margin-left: 0px;
-                margin-right: 0px;
-                
-                .MuiFormLabel-root {
-                    display: block;  
-                    margin-bottom: 5px; 
-                    margin-left: 0px;
-                    margin-right: 0px;
-                }  
-        
-                .MuiRadioGroup-root {  
-                    display: flex;  
-                    flex-direction: column; 
-                    justify-content: flex-start;   
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    align-items: flex-start;  
-                    gap: 8px;   
-        
-                    .MuiFormControlLabel-root {  
-                        margin: 0; 
-                        padding-left: 0;
-                        padding-left: 0;  
-                        padding-right: 0;
-                        display: flex;
-                    }  
-                }  
-            }  
-        }  
-
-        .trip-title,  
-        .trip-location,  
-        .trip-description,  
-        .trip-date,  
-        .trip-group,  
-        .trip-status {  
-            margin-bottom: 10px;
-            flex-direction: column; 
-            .MuiTextField-root {  
-                flex: 1;              
-                max-width: 150px;      
-                margin-right: 18px;  
-                &:last-child {  
-                                margin-right: 0px;    
-                            }  
-                    }
-        }  
-
-        h2 {  
-            font-size: 1.2em;   
-            margin-bottom: 15px;  
-        }  
-    }  
-}  
-
-
