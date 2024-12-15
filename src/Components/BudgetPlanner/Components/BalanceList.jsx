@@ -8,8 +8,8 @@ const BalanceList = ({ balances, setBalances }) => {
     };  
 
     const TourList = () => {   
-        const [activeTab, setActiveTab] = useState("Debts"); 
-        const[dataphoto,setdataphoto] =useState("");
+        const [activeTab, setActiveTab] = useState("Debts");   
+        const [dataphoto, setdataphoto] = useState("");  
         const navigate = useNavigate();   
         
         const openCity = (cityName) => {  
@@ -17,18 +17,16 @@ const BalanceList = ({ balances, setBalances }) => {
         };  
 
         return (  
-
             <div className="w3-container-b balance-container">  
-
-                <br/>
+                <br/>  
                 <div className="sidebar-b"> {/* Sidebar for tabs */}  
-                    <div className={`tablink-b ${activeTab === 'Debts' ? 'w3-border-red' : ''}`} onClick={() => openCity('Debts')}>  
+                    <div className={`tablink-b ${activeTab === 'Debts' ? 'active' : ''}`} onClick={() => openCity('Debts')}>  
                         Debts  
                     </div>  
-                    <div className={`tablink-b ${activeTab === 'Receivables' ? 'w3-border-red' : ''}`} onClick={() => openCity('Receivables')}>  
+                    <div className={`tablink-b ${activeTab === 'Receivables' ? 'active' : ''}`} onClick={() => openCity('Receivables')}>  
                         Receivables  
                     </div>  
-                    <div className={`tablink-b ${activeTab === 'Payments' ? 'w3-border-red' : ''}`} onClick={() => openCity('Payments')}>  
+                    <div className={`tablink-b ${activeTab === 'Payments' ? 'active' : ''}`} onClick={() => openCity('Payments')}>  
                         Past Payments   
                     </div>  
                 </div>  
