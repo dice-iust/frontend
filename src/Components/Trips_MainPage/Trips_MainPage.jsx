@@ -49,20 +49,7 @@ const Trips_MainPage = () => {
         setShowrequests(true);  
       };  
 
-    const tour = {  
-          
-            id: 1,  
-            name: "Adventure in the Alps",  
-            image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSixcmQsARbTtwpySN--xqSmWg_p2yTCYv80A&s",  
-            description: "Join us for an exhilarating adventure in the breathtaking Alps",  
-            travellers: 10,  
-            participants: 20,  
-            start_place: "Zurich",  
-            destination: "Zermatt",  
-            start_date: "2024-01-10",  
-            end_date: "2024-01-20", 
-            transportation : "Plane" 
-    }
+   
 
     const location = useLocation();   
     const user = {  
@@ -89,7 +76,8 @@ const Trips_MainPage = () => {
     
    
     const { tourname } = useParams();  
-    const isAdmin = user?.role === 'admin';  
+    const [isAdmin, setIsAdmin] = useState(false); 
+    const [iscode, setcode] = useState(null); 
 
     const [tripData, setTripData] = useState(null);  
     const [loading, setLoading] = useState(true);  
@@ -110,11 +98,14 @@ const Trips_MainPage = () => {
                     },   
                     params: { travel_name: tourname }   
                 });  
-        
-                // Only set data if the component is still mounted  
-                // if (isMounted) {  
-                    setTripData(response.data);  
-                // }  
+                if (response.data.travels.travel_is.start_date) 
+                { 
+                    setIsAdmin(true);  
+                    setcode(response.data.code); 
+                }
+                
+                setTripData(response.data);  
+                
             }   
             catch (err) {  
                 
