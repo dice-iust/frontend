@@ -26,7 +26,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const [loading, setLoading] = useState(true);  
     const [error, setError] = useState(null);  
     const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent & Charges", "Restaurant & Bars", "Shopping", "Transport", "Other"];  
-    const [data, setData] = useState([]);  // Initialize data for participants  
+    const [data, setData] = useState([]);  // Initialize data for participants 
+    const[imgcategory,setimgcategory] =useState("");
 
     useEffect(() => {  
         const fetchTripData = async () => {  
@@ -139,10 +140,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             // Handle error as needed (e.g., show an error message)  
         }  
     
-        setExpData(prev => [...prev, { ...formValue, participants }]);  // Update the state with the new expense  
-        resetForm();  
-        setShowAddExpense(false);  
-        handleExpenseListToggle();  
+        // setExpData(prev => [...prev, { ...formValue, participants }]);  // Update the state with the new expense  
+        // resetForm();  
+        // setShowAddExpense(false);  
+        // handleExpenseListToggle();  
     };
 
     const resetForm = () => {  
@@ -301,7 +302,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         </FormControl>  
                     </div>  
                 </div>  
-
+                            
                 <div className="row">  
                     <div className="form-item">  
                         <TextField  
@@ -342,7 +343,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         onChange={handleChange}  
                     />  
                 </div>  
-
+                <div>
+                    <img src={imgcategory}></img>
+                </div>
                 <Button className="btn" type="submit" variant="contained">  
                     Add  
                 </Button>  
