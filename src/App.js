@@ -26,9 +26,6 @@ import ForgotPassword from "./Components/ForgotPassword/ForgotPassword.jsx";
 import AddNewTrip from "./Components/AddNewTrip/AddNewTrip.jsx";
 import BudgetPlanner from "./Components/BudgetPlanner/BudgetPlanner.jsx";
 import ChatBox from "./Components/ChatBox/ChatBox.jsx";
-import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
-import AddNewTrip from './Components/AddNewTrip/AddNewTrip.jsx';
-import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
 import Trips_MainPage from './Components/Trips_MainPage/Trips_MainPage.jsx';
 
 function App() {
