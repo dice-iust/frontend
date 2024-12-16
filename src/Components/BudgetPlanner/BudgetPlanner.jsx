@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";  
-import ExpenseUserList from "./Components/ExpenseUserList";  
+import ExpenseUserList from "./Components/ExpenseUserList";
+import axios from "../../../api/axios.js";    
 import AddExpense from "./Components/AddExpense";  
 import BalanceList from "./Components/BalanceList"; // Import the new component  
 import { expenseData } from "../../api/jsondata/planner";  
@@ -61,21 +62,41 @@ const BudgetPlanner = ({tourname}) => {
   //         console.error('Error posting expense:', error);  
   //     }  
   // };  
-
+ 
+  const [loading, setLoading] = useState(true);  
+  const [error, setError] = useState(null);   
+  const [data, setData] = useState([]);  
     useEffect(() => {  
-        setExpData(expenseData); // Load the expense data initially  
-        
-      
-        setBalances([  
-            { id: 1, name: 'John Doe', amount: 50, type: 'owing' }, // Owed to  
-            { id: 2, name: 'Jane Smith', amount: 30, type: 'toReceive' } // Should receive  
-        ]);  
-    }, []);  
-    useEffect(() => {  
-      // Save expData to local storage whenever it changes  
-      localStorage.setItem('expenses', JSON.stringify(expData));  
-  }, [expData]);  
-
+        const fetchTripData = async () => {  
+            if (!tourname) {  
+                setError('Tour name is required.');  
+                setLoading(false);  
+                return;  
+            }  
+            try {  
+                const response = await axios.get(`https://triptide.pythonanywhere.com/planner/allpay/`, {  
+                    headers: {  
+                        Authorization: localStorage.getItem("token"),  
+                    },   
+                    params: { travel_name: tourname }   
+                });  
+                setData(response.data.pays || []);  // Ensure valid participants are set  
+                setLoading(false);  // Stop loading after fetching data
+                setError("") ; 
+            } catch (err) {  
+                console.error(err);  
+                setLoading(false);  // Stop loading on error  
+                if (err.response?.status === 403) {  
+                    const is_part = err.response.data.is_part;   
+                    setError(`Access forbidden. Is part: ${is_part}`);  
+                } else {  
+                    setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
+                }  
+            }    
+        };  
+    
+        fetchTripData();   
+    }, [tourname]); 
     const handleAddExpenseToggle = () => {  
         setShowAddExpense(true);  
         setShowExpenseList(false);  
@@ -127,16 +148,19 @@ const BudgetPlanner = ({tourname}) => {
                     />  
                 )}  
 
-                {showExpenseList && expData.map((item) => (  
+                {showExpenseList && data.map((item) => (  
                     <ExpenseUserList  
-                        username={item.username}  
+                        payer={item.payer}  
                         title={item.title}  
                         price={item.amount}  
                         id={item.id}  
-                        date={item.date}  
+                        date={item.created_at}  
                         description={item.description}  
-                        key={item.id}  
-                        setExpData={setExpData} 
+                        key={item.id} 
+                        cat={item.category_icon} 
+                        factorImage={item.receipt_image}
+                        setExpData={setExpData}
+                        users={item.participants} 
                         tourname={tourname} 
                     />  
                 ))}  
