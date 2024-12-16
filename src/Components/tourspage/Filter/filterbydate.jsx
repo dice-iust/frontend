@@ -11,7 +11,11 @@ import { FaCarSide, FaPlane, FaUndoAlt, FaRegCalendar } from "react-icons/fa";
 import { TbTrain, TbBus } from "react-icons/tb";  
 import { useNavigate } from 'react-router-dom';  
 import { Button } from '@mui/material';
-import Dropdown from "./Dropdown.jsx";
+import './Dropdown.scss';  
+import { FiCalendar } from "react-icons/fi";
+import { PiNotePencil } from "react-icons/pi";
+import { BiSolidCar } from "react-icons/bi";
+import { FiFilter } from "react-icons/fi";
 
 const DateRangePicker = () => {  
 
@@ -26,6 +30,22 @@ const DateRangePicker = () => {
   const [isend, setend] = useState(null); 
   const [istrip, setIstrip] = useState(null);  
   const today = new Date(); 
+
+  const [isOpen, setIsOpen] = useState(false);  
+    const [selectedFilter, setSelectedFilter] = useState(null);  
+  
+    const filters = [  
+      { id: 1, label: 'Date', icon: <FiCalendar /> },  
+      { id: 2, label: 'Name', icon: <PiNotePencil /> },  
+      { id: 3, label: 'Transportation', icon: <BiSolidCar /> },  
+    ];  
+  
+    const toggleDropdown = () => setIsOpen(!isOpen);  
+  
+    const handleFilterSelect = (filter) => {  
+      setSelectedFilter(filter);  
+      setIsOpen(false);  
+    };  
   
   const navigate = useNavigate();  
 
@@ -153,7 +173,25 @@ const DateRangePicker = () => {
     <div className="date-range-picker"> 
       <div className="date-range-picker2">  
       <div className="header-container">
-        <Dropdown />  
+        <div className="filter-dropdown">  
+              <button className="filter-button" onClick={toggleDropdown}>  
+              <FiFilter /> Filter   
+              </button>  
+              {isOpen && (  
+                <div className="dropdown-menu">  
+                  {/* <div className="dropdown-header">Select</div>   */}
+                  {filters.map((filter) => (  
+                    <div  
+                      key={filter.id}  
+                      className="dropdown-item"  
+                      onClick={() => handleFilterSelect(filter)}  
+                    >  
+                      <span>{filter.icon}</span> {filter.label}  
+                    </div>  
+                  ))}  
+                </div>  
+              )}  
+            </div>   
         <h2>  
           <MdEditCalendar className='movecalicon' /> Choose Trip Date  
         </h2>  
