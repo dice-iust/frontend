@@ -25,7 +25,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const [selectedUsers, setSelectedUsers] = useState([]);  
     const [loading, setLoading] = useState(true);  
     const [error, setError] = useState(null);  
-    const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent/Charges", "Restaurant/Bars", "Shopping", "Transport", "Other"];  
+    const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent & Charges", "Restaurant & Bars", "Shopping", "Transport", "Other"];  
     const [data, setData] = useState([]);  // Initialize data for participants  
 
     useEffect(() => {  
@@ -77,15 +77,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         }  
     };  
 
-    const handleAddExpense = (e) => {  
+    const handleAddExpense = async (e) => {  
         e.preventDefault();  
         setErrors({});   
-
+    
         const newErrors = {};  
-
+    
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
             newErrors.userName = "At least one user must be selected.";  
         }  
+        // Other validations...  
         if (!formValue.title) {  
             newErrors.title = "Title field cannot be empty.";  
         }  
@@ -100,27 +101,49 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         if (!formValue.category) {  
             newErrors.category = "Category field cannot be empty.";  
         }  
-
+    
         if (Object.keys(newErrors).length > 0) {  
             setErrors(newErrors);  
             return;  
         }  
-
-        const newExpense = {  
-            users: splitType === "specificUser" ? selectedUsers : [formValue.userName],  
-            title: formValue.title,  
-            amount: Number(formValue.amount),  
-            date: formValue.date.format("YYYY-MM-DD"), // Format the date for storage or API  
-            description: formValue.description,  
-            category: formValue.category,  
-            uploadedImage  
-        };  
-
-        setExpData(prev => [...prev, newExpense]);  
+        
+        const formDataImage = new FormData();  
+        if (uploadedImage) {  
+            formDataImage.append('photo', uploadedImage);  
+        }  
+    
+        formDataImage.append('title', formValue.title);  
+        formDataImage.append('amount', Number(formValue.amount));  
+        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));  
+        formDataImage.append('description', formValue.description);  
+        formDataImage.append('category', formValue.category);  
+        formDataImage.append('payer', formValue.userName); // Payer is the selected user  
+    
+        // Determine participants based on split type  
+        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant => participant.user_name);  
+        formDataImage.append('participants', JSON.stringify(participants)); // Send the list of participants  
+        console.log(formDataImage);
+        try {  
+            const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
+                headers: {  
+                    Authorization: localStorage.getItem("token"),  
+                    'Content-Type': 'multipart/form-data',  
+                },  
+                params: { travel_name: tourname }  
+            });  
+            console.log(response);  
+            // Handle success as needed (e.g., update state or show success message)  
+        }   
+        catch (error) {  
+            console.error("Error adding new trip:", error);  
+            // Handle error as needed (e.g., show an error message)  
+        }  
+    
+        setExpData(prev => [...prev, { ...formValue, participants }]);  // Update the state with the new expense  
         resetForm();  
         setShowAddExpense(false);  
         handleExpenseListToggle();  
-    };  
+    };
 
     const resetForm = () => {  
         setFormValue({  
