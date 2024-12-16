@@ -179,7 +179,6 @@ const DateRangePicker = () => {
               </button>  
               {isOpen && (  
                 <div className="dropdown-menu">  
-                  {/* <div className="dropdown-header">Select</div>   */}
                   {filters.map((filter) => (  
                     <div  
                       key={filter.id}  
@@ -192,7 +191,7 @@ const DateRangePicker = () => {
                 </div>  
               )}  
             </div>   
-        <h2>  
+        <h2 className='h2class'>  
           <MdEditCalendar className='movecalicon' /> Choose Trip Date  
         </h2>  
       </div>  
@@ -230,7 +229,7 @@ const DateRangePicker = () => {
               open={startDate ? (!endDate ? isEndDateOpen : undefined) : undefined}
               openToDate={startDate? startDate: undefined}
               showMonthDropdown 
-              showYearDropdown 
+              showYearDropdown
             />  
             {endDateError && <p className="error-message">{endDateError}</p>}   
           </div>  
