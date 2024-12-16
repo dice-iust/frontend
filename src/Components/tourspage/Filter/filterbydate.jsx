@@ -198,9 +198,11 @@ const DateRangePicker = () => {
     setResultData([]);
   }  
   
-  return (  
+  return (
+    <div className='firstdiv'>
+      {showbydate ? (    
     <div className="date-range-picker">  
-      {showbydate ? (  
+      
         <div className="date-range-picker2">  
           <div className="header-container">  
             <div className="filter-dropdown">  
@@ -335,11 +337,13 @@ const DateRangePicker = () => {
               </div>  
             ))}  
           </div>  
-        </div>  
+        </div> 
+        </div>   
       ) : showbyname ? (  
         <FilterByName />  
       ) : null}  
-    </div>  
+    </div>
+    
   );  
 };  
 
