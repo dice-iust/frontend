@@ -10,6 +10,7 @@ import { TbTrain } from "react-icons/tb";
 import { TbBus } from "react-icons/tb";  
 import { FaUndoAlt } from "react-icons/fa";  
 import { FaRegCalendar } from "react-icons/fa6"; 
+import { Link } from 'react-router-dom'; 
 
 
 const mytravels_URL = 'mytravels';  
@@ -89,7 +90,14 @@ const TourList = () => {
                 {datacurrent && datacurrent.length >=1 ? (  
                     <div className="tour-list2">  
                         {datacurrent.map((tour) => (  
-                            <div key={tour.travel_is.Id} className="tour-card2">  
+                             <Link   
+                                           key={tour.travel_is.name}   
+                                           to={{  
+                                             pathname: `/TripsPage/${tour.travel_is.name}`,  
+                                             state: { tour}
+                                           }}   
+                                           className="tour-card2"  
+                                         >   
                                 <div className="tour-image-container2">  
                                     <img  
                                         src={tour.travel_is.image_url}  
@@ -131,7 +139,7 @@ const TourList = () => {
                                         </p>  
                                     </div>   
                                 </div>  
-                            </div>  
+                            </Link>  
                         ))}  
                     </div>  
                 ) : (  
@@ -154,7 +162,14 @@ const TourList = () => {
                 {datafuture && datafuture.length>=1 ? (  
                     <div className="tour-list2">  
                         {datafuture.map((tour) => (  
-                            <div key={tour.travel_is.Id} className="tour-card2">  
+                             <Link   
+                                           key={tour.travel_is.name}   
+                                           to={{  
+                                             pathname: `/TripsPage/${tour.travel_is.name}`,  
+                                             state: { tour}
+                                           }}   
+                                           className="tour-card2"  
+                                         >   
                                 <div className="tour-image-container2">  
                                     <img  
                                         src={tour.travel_is.image_url}  
@@ -196,7 +211,7 @@ const TourList = () => {
                                         </p>  
                                     </div>   
                                 </div>  
-                            </div>  
+                            </Link>  
                         ))}  
                     </div>  
                 ) : (  
@@ -219,7 +234,14 @@ const TourList = () => {
                 {datapast && datapast.length>=1 ? (  
                     <div className="tour-list2">  
                         {datapast.map((tour) => (  
-                            <div key={tour.travel_is.Id} className="tour-card2">  
+                             <Link   
+                                           key={tour.travel_is.name}   
+                                           to={{  
+                                             pathname: `/TripsPage/${tour.travel_is.name}`,  
+                                             state: { tour}
+                                           }}   
+                                           className="tour-card2"  
+                                         >    
                                 <div className="tour-image-container2">  
                                     <img  
                                         src={tour.travel_is.image_url}  
@@ -261,7 +283,7 @@ const TourList = () => {
                                         </p>  
                                     </div>   
                                 </div>  
-                            </div>  
+                            </Link>  
                         ))}  
                     </div>  
                 ) : (  

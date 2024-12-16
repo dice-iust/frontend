@@ -20,8 +20,10 @@ import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
-import Travelsnav from "../categories_nav.jsx";  
+import Travelsnav from "../categories_nav.jsx";
+import { Link } from 'react-router-dom';   
 const FancylTravels_URL = 'travels/fancy/';
+
  
 
 
@@ -75,7 +77,7 @@ const Fancy = () => {
             {data && data.Fancy_Trips ? (  
                 <div className="tour-list-fancy">  
                     {data.Fancy_Trips.map((tour) => (  
-                        <div key={tour.Id} className="tour-card-fancy">  
+                        <Link to={`/TripsPage/${tour.name}`} className="tour-card-fancy"> 
                             <div className="tour-image-container-fancy">  
                                 <img  
                                     src={tour.image_url}  
@@ -117,7 +119,7 @@ const Fancy = () => {
                                     </p>  
                                 </div>   
                             </div>  
-                        </div>  
+                        </Link>  
                     ))}  
                 </div>  
             ) : (  

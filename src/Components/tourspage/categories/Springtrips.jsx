@@ -12,7 +12,8 @@ import { FaRegCalendar } from "react-icons/fa6";
 // import Travelsnav from "../Nav.jsx";  
 import Footer from '../footer.jsx';  
 import Travelsnav from "../categories_nav.jsx";  
-import { IoIosTimer } from "react-icons/io";  
+import { IoIosTimer } from "react-icons/io"; 
+import { Link } from 'react-router-dom';  
 
 const SpringTravels_URL = 'travels/spring/';  
 
@@ -65,7 +66,7 @@ return (
       {data && data.Spring_Trips ? (  
           <div className="tour-list-spring">  
               {data.Spring_Trips.map((tour) => (  
-                  <div key={tour.Id} className="tour-card-spring">  
+                  <Link to={`/TripsPage/${tour.name}`} className="tour-card-spring"> 
                       <div className="tour-image-container-spring">  
                           <img  
                               src={tour.image_url}  
@@ -107,7 +108,7 @@ return (
                               </p>  
                           </div>   
                       </div>  
-                  </div>  
+                  </Link>  
               ))}  
           </div>  
       ) : (  

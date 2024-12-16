@@ -19,7 +19,8 @@ import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
-import Travelsnav from "../categories_nav.jsx";  
+import Travelsnav from "../categories_nav.jsx"; 
+import { Link } from 'react-router-dom';  
 
 
  
@@ -74,7 +75,7 @@ const Short = () => {
           {data && data.Short_Trips ? (  
               <div className="tour-list-short">  
                   {data.Short_Trips.map((tour) => (  
-                      <div key={tour.Id} className="tour-card-short">  
+                      <Link to={`/TripsPage/${tour.name}`} className="tour-card-short"> 
                           <div className="tour-image-container-short">  
                               <img  
                                   src={tour.image_url}  
@@ -116,7 +117,7 @@ const Short = () => {
                                   </p>  
                               </div>   
                           </div>  
-                      </div>  
+                      </Link>  
                   ))}  
               </div>  
           ) : (  
