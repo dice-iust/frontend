@@ -178,6 +178,36 @@ $hover-bg-color: #f0f0f0;
         background-color: $hover-bg-color;  
       }  
     }  
+
+    .select-transport {  
+      margin-top: 10px; 
+      width: 100%;  
+      padding: 10px;  
+      border: 1px solid #dcdcdc;  
+      border-radius: $border-radius;  
+      transition: border-color 0.3s ease, background-color 0.3s ease;  
+
+      &:focus {  
+        border-color: #ea7d29;  
+        outline: none;  
+        box-shadow: 0 0 8px #ea7d29;  
+        background-color: #fbcfab;
+        option{
+          
+            background-color: white;
+            color: #22487a;
+            
+      }   
+
+      &:hover {  
+        background-color: $hover-bg-color;
+        
+      }  
+
+      
+      }
+    }  
+    
   }  
 
   .selected-dates {  

@@ -15,21 +15,21 @@ import { FiCalendar } from "react-icons/fi";
 import { PiNotePencil } from "react-icons/pi";
 import { BiSolidCar } from "react-icons/bi";
 import { FiFilter } from "react-icons/fi";
-import FilterByDate from './filterbydate.jsx';  
-import FilterByTransport from './filterbytransportation.jsx';  
+import FilterByDate from './filterbydate.jsx'; 
+import FilterByName from './filterbydate.jsx';  
 
 
 
-const NamePicker = () => {  
+const TransportPicker = () => {  
 
-  const [Namedata, setName] = useState(null);  
-  const [NameError, setNameError] = useState('');   
-  const [isname, setisname] = useState(null);  
+  const [Transportdata, setTransport] = useState(null);  
+  const [TransportError, setTransportError] = useState('');   
+  const [istransport, setistransport] = useState(null);  
   const [resultData, setResultData] = useState([]);  
   const [istrip, setIstrip] = useState(null); 
   const [showbydate, setshowbydate] = useState(false);  
-  const [showbyname, setshowbyname] = useState(true);  
-  const [showbytransport, setshowbytransport] = useState(false);   
+  const [showbyname, setshowbyname] = useState(false);  
+  const [showbytransport, setshowbytransport] = useState(true);   
 
   const [isOpen, setIsOpen] = useState(false);  
   const [selectedFilter, setSelectedFilter] = useState(null);  
@@ -98,10 +98,10 @@ const NamePicker = () => {
     }  
   };  
   
-  const handleNameChange = (tripname) => {  
+  const handleTransportChange = (transport) => {  
   
-    setName(tripname);   
-    setNameError('');  
+    setTransport(transport);   
+    setTransportError('');  
     resetErrors();  
   };  
 
@@ -109,16 +109,16 @@ const NamePicker = () => {
   const handleButtonClick = async () => {   
     let hasError = false;   
    
-    if (!Namedata) {  
-      setNameError('Name is required');  
+    if (!Transportdata) {  
+      setTransportError('Please select an option');  
       hasError = true;  
     } else {  
-      setNameError('');   
+      setTransportError('');   
     }   
     if (!hasError) {    
     //   await fetchTravelData(Namedata);  
     } 
-    resetNamePickers();  
+    resetTransportPickers();  
   };  
 
 //   const fetchTravelData = async (tname) => {  
@@ -150,19 +150,19 @@ const NamePicker = () => {
     
 //   };  
 
-  const resetNamePickers = () => {  
-    setName(null);  
+  const resetTransportPickers = () => {  
+    setTransport(null);  
   };  
 
   const resetErrors = () => {     
     setIstrip(null);
-    setisname(null);
+    setistransport(null);
     setResultData([]);
   }  
   
   return (  
     <div className='firstdiv'>
-          {showbyname ? (    
+          {showbytransport ? (    
         <div className="date-range-picker">  
           
             <div className="date-range-picker2">  
@@ -186,19 +186,21 @@ const NamePicker = () => {
                   )}  
                 </div>  
                 <h2 className='h2class'>  
-                  <PiNotePencil  className='movecalicon' /> Enter Trip Name
+                  <BiSolidCar  className='movecalicon' /> Select Transportation Option
                 </h2>  
               </div>  
               <div className="date-picker-container">  
               <div className="name-picker">  
-                    <label>Trip Name</label>  
-                    <input  
-                    type="text"  
-                    value={Namedata}  
-                    onChange={(e) => setName(e.target.value)}  
-                    placeholder="Trip Name"  
-                    />  
-                    {NameError && <p className="error-message-name">{NameError}</p>}   
+                    <label>Transportation</label>  
+                    <select className="select-transport" value={Transportdata || ""} onChange={(e) => setTransport(e.target.value)} placeholder="Transportation">  
+                        <option value="" disabled>Select Transportation</option>  
+                        <option value="Car">Car</option>  
+                        <option value="Bus">Bus</option>  
+                        <option value="Train">Train</option>  
+                        <option value="Plane">Plane</option>  
+                    </select>  
+                    
+                    {TransportError && <p className="error-message-name">{TransportError}</p>}   
                 </div>  
                 <button onClick={handleButtonClick} className="submit-button">  
                   <FaSearch className='moveiconsearch' />  
@@ -209,15 +211,15 @@ const NamePicker = () => {
                 {istrip != null && (  
                   !istrip ? (  
                     <p>  
-                      <span className="no-trips-blue">No trips available with this name. </span>  
+                      <span className="no-trips-blue">No trips available with this Transportation option. </span>  
                       <span className="no-trips-orange" onClick={handleCreateNewTrip}>  
                         Create your own unique journey!  
                       </span>  
                     </p>  
                   ) : (  
                     <p>  
-                    <span className="no-trips-blue">Your travel options named </span>  
-                    <span className="no-trips-orange2">{isname} </span> 
+                    <span className="no-trips-blue">Your travel options with </span>  
+                    <span className="no-trips-orange2">{istransport} </span> 
                     
                   </p>  
                   )  
@@ -275,12 +277,11 @@ const NamePicker = () => {
             </div>   
           ) : showbydate ? (  
             <FilterByDate />  
-          ) :
-          showbytransport?(<FilterByTransport/>):
-           null}  
+          ) : showbyname? ( <FilterByName/>
+        ):null}  
         </div>
         
       );  
 };  
 
-export default NamePicker;
+export default TransportPicker;

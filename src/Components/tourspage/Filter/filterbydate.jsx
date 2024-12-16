@@ -17,6 +17,7 @@ import { FiCalendar } from "react-icons/fi";
 import { PiNotePencil } from "react-icons/pi";
 import { BiSolidCar } from "react-icons/bi";
 import { FiFilter } from "react-icons/fi";
+import FilterByTransport from './filterbytransportation.jsx';
 
 const DateRangePicker = () => {  
 
@@ -32,7 +33,7 @@ const DateRangePicker = () => {
   const [istrip, setIstrip] = useState(null);  
   const [showbydate, setshowbydate] = useState(true);  
   const [showbyname, setshowbyname] = useState(false);  
-  const [showbytransport, setshowbytransport] = useState(true);    
+  const [showbytransport, setshowbytransport] = useState(false);    
   const today = new Date();   
 
   const [isOpen, setIsOpen] = useState(false);  
@@ -341,7 +342,9 @@ const DateRangePicker = () => {
         </div>   
       ) : showbyname ? (  
         <FilterByName />  
-      ) : null}  
+      ) :
+      showbytransport?(<FilterByTransport/>):
+       null}   
     </div>
     
   );  
