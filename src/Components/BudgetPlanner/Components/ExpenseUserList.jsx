@@ -1,10 +1,20 @@
 import React, { useEffect,useState } from "react";  
 import "./ExpenseUserList.scss";  
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";   
-import axios from "../../../api/axios.js";  
 
-const NewExpense = ({tourname,props} ) => {  
-  const { users,payer, title, price, date, description, cat, factorImage } = props;  
+const NewExpense = (props ) => {  
+  const {                         payer,  
+  title,
+  price ,
+  id, 
+  date,  
+  description,  
+  key,
+  cat, 
+  factorImage,
+  setExpData,
+  users,
+  tourname } = props;  
   const [showDetails, setShowDetails] = useState(false);  
 
   const handleShowDetails = () => {  

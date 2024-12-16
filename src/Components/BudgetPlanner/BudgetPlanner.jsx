@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";  
 import ExpenseUserList from "./Components/ExpenseUserList";
-import axios from "../../../api/axios.js";    
+import axios from "axios";  
 import AddExpense from "./Components/AddExpense";  
 import BalanceList from "./Components/BalanceList"; // Import the new component  
-import { expenseData } from "../../api/jsondata/planner";  
 import './BudgetPlanner.scss';  
 import PlannerHeader from './Components/PlannerHeader';  
 
@@ -81,7 +80,7 @@ const BudgetPlanner = ({tourname}) => {
                     params: { travel_name: tourname }   
                 });  
                 setData(response.data.pays || []);  // Ensure valid participants are set  
-                setLoading(false);  // Stop loading after fetching data
+                // setLoading(false);  // Stop loading after fetching data
                 setError("") ; 
             } catch (err) {  
                 console.error(err);  
