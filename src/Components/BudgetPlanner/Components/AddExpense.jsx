@@ -270,15 +270,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 </div>  
                 <div className="row">  
 
-                <div className="form-item category-label" onClick={handleCategoryClick} >  
+                <div className="category-label" onClick={handleCategoryClick} >  
                     {categoryImage ? (  
                         <img src={categoryImage} alt="Category" className="selected-category-image" />  
                     ) : (  
-                        <MdArrowDropDown size={24} style={{marginTop :10}} />  
+                        <MdArrowDropDown size={24} style={{marginTop :15}} />  
                     )}  
                 </div>  
 
-                <Menu  
+                <Menu 
+                    
                     anchorEl={anchorEl}  
                     open={Boolean(anchorEl)}  
                     onClose={() => setAnchorEl(null)}  
@@ -293,7 +294,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 
     
 
-                    <div className="form-item"> 
+                    <div className="paid-item"> 
                     <FormControl variant="outlined" fullWidth>  
                             <InputLabel id="category-label">  
                                 Paid by  
@@ -319,8 +320,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             {errors.category && <div className="error-message">{errors.category}</div>}  
                         </FormControl>     
                     </div>  
-
-                        <TextField  
+                           <div className="tilte-item">     
+                        <TextField 
                             type="text"  
                             name="title"  
                             label="Title"  
@@ -331,6 +332,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             error={!!errors.title}  
                             helperText={errors.title}  
                         />  
+                        </div>
                    </div>
                             
                 <div className="row">  

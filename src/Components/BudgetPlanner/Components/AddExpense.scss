@@ -140,13 +140,15 @@
             display: flex;  
             flex-wrap: wrap;  
             gap: 20px;  
-            // width: 100px;
-            // flex-direction: column;
+            // width: 10px;
+            flex-direction: row;
+            padding: auto;
+            max-width: 500;
 
-            .form-item {  
-                flex: 1;  
-                width: 150px; 
-            }  
+            // .form-item {  
+            //     // flex: 1;  
+            //     min-width: 150px; 
+            // }  
         }  
 
         input[type="text"],  
@@ -165,7 +167,14 @@
                 border-color: #4a90e2;  
                 outline: none;  
             }  
-        }  
+        } 
+        
+        .paid-item{
+            width: 500px;
+        }
+        .title-item{
+            width: 1000px;
+        }
         .bill-date{
             .MuiTextField-root {  
                         flex: 1; 
@@ -181,7 +190,7 @@
                 background-color: #ea7d29; /* Yellow background for the clickable label */  
                 // padding: 10px;  
                 width: 50px;
-                height: 50px;
+                height: 58px;
                 // margin-top: 20px;
                 text-align: center;  
                 border-radius: 4px;  
@@ -200,7 +209,7 @@
             }  
             
             .menu-item img {  
-                width: 60px; /* Icon size */  
+                width: 70px; /* Icon size */  
                 margin-left: 10px;  
             }  
             
@@ -208,10 +217,8 @@
                 // margin-top: 10px;  
                 padding: -10px;
                 display: flex;  
-                width: 100px;
-                object-fit: contain;  
-                object-fit: cover;  
-                
+                width: 50px;
+                height: 60px;
                 // justify-content: center;   
             }  
         .error-message {  
