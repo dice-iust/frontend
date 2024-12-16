@@ -15,7 +15,7 @@ $hover-bg-color: #f0f0f0;
   border-radius: $border-radius;  
   box-shadow: $shadow;  
   background-color: $date-picker-bg;  
-  transition: box-shadow 0.3s ease;  
+  transition: box-shadow 0.3s ease; 
   .date-range-picker2 { 
     display: flex; 
     flex-direction: column;  
@@ -153,19 +153,19 @@ $hover-bg-color: #f0f0f0;
 
   .tour-list-filter {  
     display: flex;  
-    flex-direction: column; // Stack the trips vertically  
-    align-items: flex-start; // Align items to the start (left)  
-    width: 100%;
-    // Optional: Set width to full to avoid centering  
+    flex-wrap: nowrap;  // Change this to nowrap  
+    overflow-x: auto; // Allow horizontal scrolling if the cards overflow  
+    gap: 15px;  // Maintain spacing between cards  
   }  
 
-  .tour-card-filter {  
+  .tour-card-filter { 
+    flex: 0 0 auto; 
     display: flex;  
     flex-direction: column;  
     background: white;  
     border-radius: 10px;  
     overflow: hidden;  
-    width: calc(32.7% - 10px); // Three cards per row with gap  
+    width: calc(25% - 10px); // Three cards per row with gap  
     height: 300px;  
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
