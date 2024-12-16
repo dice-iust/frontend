@@ -87,7 +87,8 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card2 {  
+    .tour-card2 { 
+      text-decoration: none; 
       display: flex;  
       flex-direction: column;  
       background: white;  
@@ -119,7 +120,8 @@
       position: relative;  
     }  
 
-    .tour-admin2 {  
+    .tour-admin2 {
+      color: black;  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -145,6 +147,7 @@
 
     // Tour Info Styles  
     .tour-info2 {  
+      color : black;
       display: flex;  
       flex-direction: column;  
 

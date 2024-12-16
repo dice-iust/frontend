@@ -26,6 +26,10 @@ import ForgotPassword from "./Components/ForgotPassword/ForgotPassword.jsx";
 import AddNewTrip from "./Components/AddNewTrip/AddNewTrip.jsx";
 import BudgetPlanner from "./Components/BudgetPlanner/BudgetPlanner.jsx";
 import ChatBox from "./Components/ChatBox/ChatBox.jsx";
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword.jsx';
+import AddNewTrip from './Components/AddNewTrip/AddNewTrip.jsx';
+import BudgetPlanner from './Components/BudgetPlanner/BudgetPlanner.jsx';
+import Trips_MainPage from './Components/Trips_MainPage/Trips_MainPage.jsx';
 
 function App() {
   return (
@@ -53,6 +57,7 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/login/forgot" element={<ForgotPassword />} />
         <Route path="/budgetplanner" element={<BudgetPlanner />} />
+        <Route path="/TripsPage/:tourname" element={<Trips_MainPage/>} />
 
         <Route path="/ChatBox" element={<ChatBox />} />
 

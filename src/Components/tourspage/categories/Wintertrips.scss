@@ -49,7 +49,8 @@
       box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
     }  
 
-    .tour-card-winter {  
+    .tour-card-winter { 
+      text-decoration: none; 
       display: flex;  
       flex-direction: column;  
       background: white;  
@@ -78,7 +79,8 @@
       position: relative;  
     }  
 
-    .tour-admin-winter {  
+    .tour-admin-winter {
+      color: black;  
       position: absolute;  
       top: 10px;  
       left: 10px;  
@@ -103,7 +105,8 @@
     }  
 
     // Tour Info Styles  
-    .tour-info-winter {  
+    .tour-info-winter {
+      color: black;  
       display: flex;  
       flex-direction: column;  
 

@@ -48,6 +48,7 @@
     }  
 
     .tour-card-spring {
+      text-decoration: none;
       display: flex;   
       flex-wrap: wrap;   
       display: flex;  
@@ -88,6 +89,7 @@
       padding: 2px;  
       border-radius: 5px;  
       z-index: 20;  
+      color: black;
     }  
 
     .admin-photo-spring {  
@@ -101,7 +103,8 @@
       transform: scale(1.05);  
     }  
 
-    .tour-info-spring {  
+    .tour-info-spring { 
+      color: black; 
       display: flex;  
       flex-direction: column;  
 
