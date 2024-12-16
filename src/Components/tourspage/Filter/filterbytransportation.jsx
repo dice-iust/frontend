@@ -35,9 +35,9 @@ const TransportPicker = () => {
   const [selectedFilter, setSelectedFilter] = useState(null);  
     
     const filters = [  
-            { id: 1, label: 'Date', icon: <FiCalendar /> },  
-            { id: 2, label: 'Name', icon: <PiNotePencil /> },  
-            { id: 3, label: 'Transportation', icon: <BiSolidCar /> },  
+            { id: 1, label: 'Date', icon: <FiCalendar className="moveicons-filter"/> },  
+            { id: 2, label: 'Name', icon: <PiNotePencil className="moveicons-filter"/> },  
+            { id: 3, label: 'Transportation', icon: <BiSolidCar className="moveicons-filter"/> },  
     ];  
         
     const toggleDropdown = () => setIsOpen(!isOpen);  
@@ -169,7 +169,7 @@ const TransportPicker = () => {
               <div className="header-container">  
                 <div className="filter-dropdown">  
                   <button className="filter-button" onClick={toggleDropdown}>  
-                    <FiFilter /> Filter  
+                    <FiFilter className="moveicons-filters"/> Filter  
                   </button>  
                   {isOpen && (  
                     <div className="dropdown-menu">  
