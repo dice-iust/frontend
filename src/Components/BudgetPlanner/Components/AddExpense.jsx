@@ -212,7 +212,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         <div className="main-add-div">  
             {loading && <div>Loading...</div>}  
             {error && <div className="error-message">{error}</div>}  
-            <form onSubmit={handleAddExpense}>  
+            <form onSubmit={handleAddExpense} className="form-planner">  
                 <div className="upload-image-section">  
                     <img  
                         src={uploadedImage || addBill}  
@@ -269,31 +269,27 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                     )}  
                 </div>  
                 <div className="row">  
+                    <div className="category-label" onClick={handleCategoryClick} >  
+                        {categoryImage ? (  
+                            <img src={categoryImage} alt="Category" className="selected-category-image" />  
+                        ) : (  
+                            <MdArrowDropDown size={24} style={{marginTop :15}} />  
+                        )}  
+                    </div>  
 
-                <div className="category-label" onClick={handleCategoryClick} >  
-                    {categoryImage ? (  
-                        <img src={categoryImage} alt="Category" className="selected-category-image" />  
-                    ) : (  
-                        <MdArrowDropDown size={24} style={{marginTop :15}} />  
-                    )}  
-                </div>  
-
-                <Menu 
-                    
-                    anchorEl={anchorEl}  
-                    open={Boolean(anchorEl)}  
-                    onClose={() => setAnchorEl(null)}  
-                >  
-                    {categories.map((category) => (  
-                        <MenuItem key={category.name} onClick={() => handleCategorySelect(category)}>  
-                            <span>{category.name}</span>  
-                            <img src={category.thumbnail} alt={category.name} style={{ width: 30, marginLeft: 10 }} />  
-                        </MenuItem>  
-                    ))}  
-                </Menu>  
+                    <Menu  
+                        anchorEl={anchorEl}  
+                        open={Boolean(anchorEl)}  
+                        onClose={() => setAnchorEl(null)}  
+                    >  
+                        {categories.map((category) => (  
+                            <MenuItem key={category.name} onClick={() => handleCategorySelect(category)}>  
+                                <span>{category.name}</span>  
+                                <img src={category.thumbnail} alt={category.name} style={{ width: 30, marginLeft: 10 }} />  
+                            </MenuItem>  
+                        ))}  
+                    </Menu>  
                 
-    
-
                     <div className="paid-item"> 
                         <FormControl variant="outlined" fullWidth>  
                             <InputLabel id="category-label">  
@@ -320,8 +316,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             {errors.category && <div className="error-message">{errors.category}</div>}  
                         </FormControl>     
                     </div>  
-                    <div className="tilte-item">     
-                        <TextField 
+                    <div className="formitem">
+                        <TextField fullWidth
                             type="text"  
                             name="title"  
                             label="Title"  
@@ -330,10 +326,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             value={formValue.title}  
                             onChange={handleChange}  
                             error={!!errors.title}  
-                            helperText={errors.title}  
+                            helperText={errors.title}
+                            className="title-item"                       
+                            // style={{ marginRight: '20px',padding:"10px", textAlign:"center"}}  
+
                         />  
                         </div>
-                   </div>
+                </div>
                             
                 <div className="row">  
                     <div className="form-item">  
@@ -347,6 +346,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             onChange={handleChange}  
                             error={!!errors.amount}  
                             helperText={errors.amount}  
+                            className="amount-item"                       
+
                         />  
                     </div>  
                     <div className="form-item bill-date">  
@@ -357,14 +358,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
                                 renderInput={(params) => (  
-                                    <TextField {...params} error={!!errors.date} helperText={errors.date} />  
+                                    <TextField {...params} error={!!errors.date} helperText={errors.date} className="date-item"  />  
+                                                     
                                 )}  
                             />  
                         </LocalizationProvider>  
-                    </div>  
-                </div>  
-
-                <div className="form-item">  
+                    </div> 
+                    <div className="form-item">  
                     <TextField  
                         type="text"  
                         name="description"  
@@ -373,8 +373,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         required  
                         value={formValue.description}  
                         onChange={handleChange}  
+                        className="title-item"                       
+
                     />  
                 </div>  
+                </div>  
+
+                
                 <div>
                     <img src={imgcategory}></img>
                 </div>
