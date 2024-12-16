@@ -265,7 +265,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         </div>  
                     )}  
                 </div>  
-    
+                <div className="row">  
+
                 <div className="form-item category-label" onClick={handleCategoryClick} >  
                     {categoryImage ? (  
                         <img src={categoryImage} alt="Category" className="selected-category-image" />  
@@ -289,13 +290,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 
     
 
-                <div className="row">  
                     <div className="form-item"> 
                     <FormControl variant="outlined" fullWidth>  
                             <InputLabel id="category-label">  
                                 Paid by  
                             </InputLabel>  
                             <Select  
+                            reqiu
                                 name="userName"  
                                 labelId="category-label"  
                                 label="Category"  
@@ -317,7 +318,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         </FormControl>     
                     </div>  
 
-                    <div className="form-item">  
                         <TextField  
                             type="text"  
                             name="title"  
@@ -329,7 +329,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             error={!!errors.title}  
                             helperText={errors.title}  
                         />  
-                    </div>  
                    </div>
                             
                 <div className="row">  

@@ -137,10 +137,12 @@
             display: flex;  
             flex-wrap: wrap;  
             gap: 20px;  
+            // width: 100px;
+            // flex-direction: column;
 
             .form-item {  
                 flex: 1;  
-                min-width: 250px; 
+                width: 150px; 
             }  
         }  
 
