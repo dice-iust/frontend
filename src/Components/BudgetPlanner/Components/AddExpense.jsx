@@ -26,7 +26,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const [loading, setLoading] = useState(true);  
     const [error, setError] = useState(null);  
     const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent & Charges", "Restaurant & Bars", "Shopping", "Transport", "Other"];  
-    const [data, setData] = useState([]);  // Initialize data for participants 
+    const [data, setData] = useState([]);  
     const[imgcategory,setimgcategory] =useState("");
 
     useEffect(() => {  
