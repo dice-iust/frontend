@@ -136,7 +136,8 @@ const BudgetPlanner = ({tourname}) => {
                         date={item.date}  
                         description={item.description}  
                         key={item.id}  
-                        setExpData={setExpData}  
+                        setExpData={setExpData} 
+                        tourname={tourname} 
                     />  
                 ))}  
 
