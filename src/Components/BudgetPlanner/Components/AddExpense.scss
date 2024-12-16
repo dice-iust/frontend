@@ -3,18 +3,22 @@
     --mainColorLight: #5767aa;  
     --secondaryColor: #ea7d29;  
     --textColor: #eee;  
-    --font-family: OpenSans;  
+    --font-family: 'Open Sans', sans-serif;  
 }  
 
 .main-add-div {  
-    background-color: #ffffff;  
+    background-color: #fff;  
     border-radius: 12px;  
     border: 1px solid #e0e0e0;  
     width: 99%;  
-    padding: 20px;  
+    padding-left: 60px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
     transition: box-shadow 0.3s ease;  
     margin-top: 15px;  
+    // margin-left: 20px;
 
     &:hover {  
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
@@ -23,52 +27,121 @@
     form {  
         display: flex;  
         flex-direction: column;  
-        gap: 20px;   
+        gap: 20px;  
 
-        /* Adding a title for better UX */  
         h2 {  
             color: var(--mainColor);  
             margin-bottom: 10px;  
             font-size: 24px;  
         }  
 
-        /* Image upload styling */  
         .upload-image-section {  
-            border: 2px dashed var(--mainColor);  
-            border-radius: 6px;  
-            padding: 20px;  
-            text-align: center;  
-            background-color: #f9f9f9;  
+            display: flex;  
+            flex-direction: row;  
+            align-items: flex-start;  
+            justify-content: flex-start; 
 
-            label {  
-                cursor: pointer;  
-                color: var(--mainColor);  
-                font-size: 16px;  
+            flex-wrap: wrap;  
+            padding: 0;  
+            margin: 0;
+            .smaller-image-planner {  
+                object-fit: cover;  
+                margin-bottom: 10px;    
+                margin-right: 40px; 
+                width: 154px;  
+                height: 136px;  
+                border-radius: 10px;  
+                object-fit: cover;  
+                object-fit: contain;  
             }  
 
-            input[type="file"] {  
-                display: none;  
+            .button-container-planner {  
+                position: relative;  
+
+                .file-upload-button-planner {  
+                    position: absolute;  
+                    bottom: -137px;  
+                    right: 10px;  
+                    padding: 10px 20px;  
+                    color: white;  
+                    background-color: var(--mainColor);  
+                    border: none;  
+                    border-radius: 5px;  
+                    cursor: pointer;  
+                    transition: background-color 0.3s;  
+
+                    &:hover {  
+                        background-color: var(--secondaryColor);  
+                    }  
+                }  
+
+                input[type='file'] {  
+                    display: none;  
+                }  
             }  
 
-            img {  
-                margin-top: 10px;  
-                width: 100px;  
-                height: auto;  
-                border-radius: 6px;  
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+            .split-selection-row {  
+                display: flex;  
+                // gap: 5px;  
+                flex-direction: column;
+                margin-right: 20px;
+                margin-left: 80px;
+
+                .split-button {  
+                    flex: 1;  
+                    margin-top: 20px;  
+                    padding: 10px;  
+                    background-color: var(--mainColor);  
+                    color: white;  
+                    border: none;  
+                    border-radius: 6px;  
+                    cursor: pointer;  
+                    transition: background-color 0.3s;  
+
+                    &.active {  
+                        background-color: var(--secondaryColor);  
+                    }  
+
+                    &:hover {  
+                        background-color: var(--secondaryColor);  
+                    }  
+                }  
             }  
         }  
+        .category-item {  
+            // flex: 0 0 70px; // A fixed width for the category dropdown, adjust as necessary  
+            margin-right: 20px; // Space between fields  
+            min-width: 10px;
+        }  
+        .user-selection {  
+            // margin-top: 10px;  
 
-        .split-selection-row {  
-            display: flex;  
-            justify-content: space-between;  
+            .user-checkboxes {  
+                display: flex;  
+                flex-wrap: wrap;  
+                gap: 10px;  
+                // color: #ea7d29;
+                // margin-left: 10px;
+                .user-checkbox {  
+                    flex: 0 0 calc(20% - 30px); // Adjust for spacing 
+                    // background-color: #ea7d29; 
+                    label {  
+                        display: flex;  
+                        align-items: center;  
+                    }  
+                }  
+            }  
         }  
 
         .row {  
             display: flex;  
             flex-wrap: wrap;  
-            justify-content: space-between;  
-            gap: 15px;  
+            gap: 20px;  
+
+            .form-item {  
+                flex: 1;  
+                min-width: 250px; 
+            }  
         }  
 
         input[type="text"],  
@@ -78,31 +151,26 @@
         select {  
             width: 100%;  
             padding: 10px;  
-            border: 1px solid var(--mainColor);  
+            // border: 1px solid var(--mainColor);  
             border-radius: 6px;  
             font-size: 16px;  
             transition: border-color 0.3s ease;  
-        }  
 
-        .row .form-item {  
-            flex: 1;  
-            min-width: 0;  
+            &:focus {  
+                border-color: #4a90e2;  
+                outline: none;  
+            }  
         }  
-
-        textarea {   
-            height: 80px; /* Increased height for better usability */  
-            resize: none;  
-        }  
-
-        input[type="text"]:focus,  
-        input[type="number"]:focus,  
-        input[type="date"]:focus,  
-        textarea:focus,  
-        select:focus {  
-            border-color: #4a90e2;   
-            outline: none;  
-        }  
-
+        .bill-date{
+            .MuiTextField-root {  
+                        flex: 1; 
+                        // height: 250px;             
+                        max-width: 220px;      
+                        margin-right: 18px;  
+                        &:last-child {  
+                                        margin-right: 0px;    
+                                    }  
+            }}
         .error-message {  
             color: red;  
             min-height: 20px;  
@@ -118,7 +186,7 @@
             border: none;  
             border-radius: 6px;  
             cursor: pointer;  
-            transition: background-color 0.3s ease;  
+            transition: background-color 0.3s;  
 
             &:hover {  
                 background-color: var(--secondaryColor);  
