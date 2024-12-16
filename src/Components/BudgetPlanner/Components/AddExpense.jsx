@@ -18,7 +18,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         description: "",  
         category: "",  
     });  
-
+    const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
     const [splitType, setSplitType] = useState("equal");  
@@ -80,14 +80,14 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
 
     const handleAddExpense = async (e) => {  
         e.preventDefault();  
-        setErrors({});   
+        setErrors({});  
     
         const newErrors = {};  
     
+        // Validate inputs  
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
             newErrors.userName = "At least one user must be selected.";  
         }  
-        // Other validations...  
         if (!formValue.title) {  
             newErrors.title = "Title field cannot be empty.";  
         }  
@@ -107,12 +107,11 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             setErrors(newErrors);  
             return;  
         }  
-        
-        const formDataImage = new FormData();  
-        if (uploadedImage) {  
-            formDataImage.append('photo', uploadedImage);  
-        }  
     
+        const formDataImage = new FormData();  
+    
+        // Prepare data to send in the correct format  
+        formDataImage.append('travel_name', tourname);  // Add travel name  
         formDataImage.append('title', formValue.title);  
         formDataImage.append('amount', Number(formValue.amount));  
         formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));  
@@ -121,9 +120,12 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         formDataImage.append('payer', formValue.userName); // Payer is the selected user  
     
         // Determine participants based on split type  
-        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant => participant.user_name);  
-        formDataImage.append('participants', JSON.stringify(participants)); // Send the list of participants  
-        console.log(formDataImage);
+
+        setparticipants( splitType === "specificUser" ? selectedUsers : data.map(participant => participant.user_name));  
+        formDataImage.append('participants', participants); // Send the list of participants  
+    
+        console.log(formDataImage);  
+    
         try {  
             const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
                 headers: {  
@@ -133,19 +135,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 params: { travel_name: tourname }  
             });  
             console.log(response);  
-            // Handle success as needed (e.g., update state or show success message)  
-        }   
-        catch (error) {  
+            // Handle success as needed (e.g., update state or show a success message)  
+            resetForm();  // Reset form after successful submission  
+            setShowAddExpense(false);  // Close the add expense form  
+            handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
+            
+        } catch (error) {  
             console.error("Error adding new trip:", error);  
             // Handle error as needed (e.g., show an error message)  
         }  
-    
-        // setExpData(prev => [...prev, { ...formValue, participants }]);  // Update the state with the new expense  
-        // resetForm();  
-        // setShowAddExpense(false);  
-        // handleExpenseListToggle();  
     };
-
     const resetForm = () => {  
         setFormValue({  
             userName: "",  
