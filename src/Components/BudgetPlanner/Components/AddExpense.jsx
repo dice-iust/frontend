@@ -1,7 +1,7 @@
-import React, { useState } from "react";  
+import React, { useEffect,useState } from "react";  
 import "./AddExpense.scss";  
-
-const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) => {  
+import axios from "../../../api/axios.js";  
+const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle,tourname }) => {  
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
@@ -16,10 +16,44 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
     const [errors, setErrors] = useState({});  
     const [splitType, setSplitType] = useState("equal");  
     const [selectedUsers, setSelectedUsers] = useState([]);  
-
+    const [loading, setLoading] = useState(true);  
+    const [error, setError] = useState(null);  
     const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent_Charges", "Restaurunt_Bars", "Shopping", "Transport", "Other"];  
+    const users = ["Alice", "Bob", "Charlie", "David", "Eva"]; 
+    const [data,setdata] =useState([]);
 
-    const users = ["Alice", "Bob", "Charlie", "David", "Eva"];  
+    useEffect(() => {  
+        const fetchTripData = async () => {  
+            if (!tourname) {  
+                setError('Tour name is required.');  
+                setLoading(false);  
+                return;  
+            }  
+            try {  
+                const response = await axios.get(`https://triptide.pythonanywhere.com/planner/travels/expenses/`, {  
+                    headers: {  
+                        Authorization: localStorage.getItem("token"),  
+                    },   
+                    params: { travel_name: tourname }   
+                });  
+                console.log(response.data) ;
+                setdata(response.data);
+                
+            }   
+            catch (err) {  
+                    console.log(err);
+                    if (err.response?.status === 403) {  
+                        const is_part = err.response.data.is_part; 
+                        setError(`Access forbidden. Is part: ${is_part}`);  
+                    } else {  
+                        setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
+                    }  
+                 
+            }    
+        };  
+    
+        fetchTripData();   
+    }, [tourname]);
 
     const categoryImages = {  
         Accommodation: "https://example.com/accommodation.jpg",  
@@ -167,15 +201,15 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) 
                     {splitType === 'specificUser' && (  
                         <div className="user-selection">  
                             <h3>Select Users:</h3>  
-                            {users.map(user => (  
-                                <div key={user}>  
+                            {data.valid_participants.map(user => (  
+                                <div key={user.user_name}>  
                                     <label>  
                                         <input  
                                             type="checkbox"  
-                                            checked={selectedUsers.includes(user)}  
-                                            onChange={() => handleUserSelection(user)}  
+                                            checked={selectedUsers.includes(user.user_name)}  
+                                            onChange={() => handleUserSelection(user.user_name)}  
                                         />  
-                                        {user}  
+                                        {user.user_name}  
                                     </label>  
                                 </div>  
                             ))}  
