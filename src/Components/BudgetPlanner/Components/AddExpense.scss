@@ -106,6 +106,9 @@
                         background-color: var(--secondaryColor);  
                     }  
                 }  
+            }  .user-checkbox input[type="checkbox"]:checked + label::before {  
+                background: orange; /* Change to orange when checked */  
+                border-color: orange; /* Border color when checked */  
             }  
         }  
         .category-item {  

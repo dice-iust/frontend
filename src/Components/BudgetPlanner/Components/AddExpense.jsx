@@ -250,8 +250,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                     {splitType === 'specificUser' && (  
                         <div className="user-selection">  
                             <h3>Select Users:</h3>  
+                            <div className="user-checkboxes">  
                             {data.map(user => (  
-                                <div key={user.id}>  
+                                <div className="user-checkbox" key={user.id}>  
                                     <label>  
                                         <input  
                                             type="checkbox"  
@@ -262,6 +263,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                     </label>  
                                 </div>  
                             ))}  
+                            </div>
                         </div>  
                     )}  
                 </div>  
@@ -296,7 +298,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 Paid by  
                             </InputLabel>  
                             <Select  
-                            reqiu
                                 name="userName"  
                                 labelId="category-label"  
                                 label="Category"  
