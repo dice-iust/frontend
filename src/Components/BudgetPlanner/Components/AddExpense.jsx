@@ -27,7 +27,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         description: "",  
         category: "",  
     });  
-    
+
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
@@ -150,6 +150,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         participants.forEach(participant => {  
             formDataImage.append('participants[]', participant); 
         }); 
+        console.log(formValue.category);
         console.log(participants);
         for (const pair of formDataImage.entries()) {  
             console.log(`${pair[0]}: ${pair[1]}`);  
