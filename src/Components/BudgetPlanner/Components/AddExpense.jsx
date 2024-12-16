@@ -112,19 +112,21 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     
         // Prepare data to send in the correct format  
         formDataImage.append('travel_name', tourname);  // Add travel name  
-        formDataImage.append('title', formValue.title);  
         formDataImage.append('amount', Number(formValue.amount));  
-        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));  
-        formDataImage.append('description', formValue.description);  
+        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));  // Ensure date is formatted  
+        formDataImage.append('title', formValue.title);  
         formDataImage.append('category', formValue.category);  
-        formDataImage.append('payer', formValue.userName); // Payer is the selected user  
+        formDataImage.append('payer', formValue.userName);  
+        formDataImage.append('description', formValue.description);  
     
-        // Determine participants based on split type  
-
-        setparticipants( splitType === "specificUser" ? selectedUsers : data.map(participant => participant.user_name));  
-        formDataImage.append('participants', participants); // Send the list of participants  
+        // Determine participants based on split type and stringify the array  
+        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant =>participant.user_name);  
+        participants.forEach(participant => {  
+            formDataImage.append('participants[]', participant); // Use array notation if backend expects it this way  
+        }); 
+        console.log(participants);
     
-        console.log(formDataImage);  
+        console.log('Form Data being sent:', formDataImage); // Log for debug  
     
         try {  
             const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
@@ -134,15 +136,17 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 },  
                 params: { travel_name: tourname }  
             });  
-            console.log(response);  
-            // Handle success as needed (e.g., update state or show a success message)  
+            console.log('Response from API:', response.data);  
+            
+            // Handle success as needed (e.g., update state or show success message)  
             resetForm();  // Reset form after successful submission  
             setShowAddExpense(false);  // Close the add expense form  
             handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
-            console.error("Error adding new trip:", error);  
+            console.error("Error adding new trip:", error.response ? error.response.data : error.message);  
             // Handle error as needed (e.g., show an error message)  
+            setError(error.response?.data.detail || 'An error occurred. Please try again.');  
         }  
     };
     const resetForm = () => {  
@@ -170,7 +174,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const handleUserSelection = (user) => {  
         setSelectedUsers(prevSelected =>  
             prevSelected.includes(user)  
-                ? prevSelected.filter(u => u !== user)  
+                ? prevSelected.filter(u => u !== user) 
                 : [...prevSelected, user]  
         );  
     };  
@@ -219,7 +223,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         <div className="user-selection">  
                             <h3>Select Users:</h3>  
                             {data.map(user => (  
-                                <div key={user.user_name}>  
+                                <div key={user.id}>  
                                     <label>  
                                         <input  
                                             type="checkbox"  
@@ -253,7 +257,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                     <em>Select Who has payed</em>  
                                 </MenuItem>  
                                 {data.map((category) => (  
-                                    <MenuItem key={category.user_name} value={category.user_name}>  
+                                    <MenuItem key={category.id} value={category.user_name}>  
                                         {category.user_name}  
                                     </MenuItem>  
                                 ))}  
@@ -345,7 +349,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 <div>
                     <img src={imgcategory}></img>
                 </div>
-                <Button className="btn" type="submit" variant="contained">  
+                <Button className="btn" type="submit" variant="contained" onClick={handleAddExpense}>  
                     Add  
                 </Button>  
             </form>  
