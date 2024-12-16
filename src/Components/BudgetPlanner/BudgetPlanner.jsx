@@ -6,7 +6,7 @@ import { expenseData } from "../../api/jsondata/planner";
 import './BudgetPlanner.scss';  
 import PlannerHeader from './Components/PlannerHeader';  
 
-const BudgetPlanner = () => {  
+const BudgetPlanner = ({tourname}) => {  
     const [showAddExpense, setShowAddExpense] = useState(false);  
     const [showExpenseList, setShowExpenseList] = useState(true);  
     const [showBalanceList, setShowBalanceList] = useState(false);  
@@ -123,6 +123,7 @@ const BudgetPlanner = () => {
                         setExpData={setExpData}  
                         setShowAddExpense={setShowAddExpense}  
                         handleExpenseListToggle={handleExpenseListToggle}  
+                        tourname={tourname}
                     />  
                 )}  
 
