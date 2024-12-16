@@ -27,6 +27,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         description: "",  
         category: "",  
     });  
+
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
@@ -137,19 +138,19 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     
         const formDataImage = new FormData();  
     
-        formDataImage.append('travel_name', tourname);  // Add travel name  
+        formDataImage.append('travel_name', tourname); 
         formDataImage.append('amount', Number(formValue.amount));  
-        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));  // Ensure date is formatted  
+        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));   
         formDataImage.append('title', formValue.title);  
         formDataImage.append('category', formValue.category);  
         formDataImage.append('payer', formValue.userName);  
         formDataImage.append('description', formValue.description);  
     
-        // Determine participants based on split type and stringify the array  
         const participants = splitType === "specificUser" ? selectedUsers : data.map(participant =>participant.user_name);  
         participants.forEach(participant => {  
-            formDataImage.append('participants[]', participant); // Use array notation if backend expects it this way  
+            formDataImage.append('participants[]', participant); 
         }); 
+        console.log(formValue.category);
         console.log(participants);
         for (const pair of formDataImage.entries()) {  
             console.log(`${pair[0]}: ${pair[1]}`);  
