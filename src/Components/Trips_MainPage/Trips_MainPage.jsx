@@ -160,7 +160,7 @@ const Trips_MainPage = () => {
         ) 
         :
         showplanner? (
-            <PlannerPage/>
+            <PlannerPage tourname={tourname} />
         )
         :
          (  

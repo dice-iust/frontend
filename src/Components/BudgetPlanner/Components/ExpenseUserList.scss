@@ -29,7 +29,8 @@
       font-weight: bold;  
       color: var(--mainColor);  
       font-size: 2rem;  
-      margin-bottom: 0;  
+      margin-bottom: 0;
+      margin-left: 0;  
     }  
 
     .amount {  
@@ -122,3 +123,37 @@
     font-size: 1rem;   
   }  
 }
+.user-image {  
+  width: 40px; /* Size of the circular image */  
+  height: 40px;   
+  border-radius: 50%; /* Makes the image circular */  
+  margin-left: 8px; /* Spacing between image and text */  
+}  
+
+.rectangle-image {  
+  width: 40%; /* Or specific width/height */ 
+  height: 40%; 
+  height: auto;   
+  margin-top: 8px; /* Space above the rectangle image */  
+}  
+
+.users-container {  
+  display: flex;  
+  flex-wrap: wrap; /* Allow wrapping of users */  
+  margin-top: 8px; /* Space above the user list */  
+}  
+
+.user-box {  
+  display: flex;  
+  align-items: center;   
+  margin-right: 10px; /* Spacing between user boxes */  
+}  
+
+.small-rectangle-image {  
+  width: 30px; /* Adjust size as needed */  
+  height: 30px; /* Adjust size as needed */  
+  margin-right: 0px; /* Spacing between the image and the title */  
+  vertical-align: middle; /* Align the image vertically */  
+}  
+
+/* Other existing styles */

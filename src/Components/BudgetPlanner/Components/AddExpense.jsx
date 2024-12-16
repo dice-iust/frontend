@@ -1,276 +1,395 @@
-import React, { useState } from "react";  
+import React, { useEffect, useState } from "react";  
 import "./AddExpense.scss";  
-
-const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle }) => {  
+import axios from "../../../api/axios.js";  
+import addBill from "../assets/addbill.png";  
+import { MdAddPhotoAlternate, MdArrowDropDown } from "react-icons/md";  
+import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu } from "@mui/material";  
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';  
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';  
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';  
+import dayjs from 'dayjs';  
+import accommodation from "../assets/accomodation.jpg";  
+import entertainment from "../assets/entertainment.jpg";  
+import groceries from "../assets/groceries.jpg";  
+import healthcare from "../assets/healthcare.jpg";  
+import insurance from "../assets/insurance.jpg";  
+import rent from "../assets/rent.jpg";  
+import restaurant from "../assets/restaurant.jpg";  
+import shopping from "../assets/shopping.jpg";  
+import transport from "../assets/transport.jpg";  
+import other from "../assets/other.jpg";  
+const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
         amount: "",  
-        date: "",  
+        date: null,  
         description: "",  
-        category: ""  
+        category: "",  
     });  
 
-    const [selectedImage, setSelectedImage] = useState("");  
+    const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
     const [splitType, setSplitType] = useState("equal");  
     const [selectedUsers, setSelectedUsers] = useState([]);  
+    const [categoryImage, setCategoryImage] = useState(null); 
+    const [anchorEl, setAnchorEl] = useState(null);  
+    const [loading, setLoading] = useState(true);  
+    const [error, setError] = useState(null);  
+    const [data, setData] = useState([]);  // Initialize data for participants 
+    const[imgcategory,setimgcategory] =useState(""); 
 
-    const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent_Charges", "Restaurunt_Bars", "Shopping", "Transport", "Other"];  
+    const categories = [  
+        { name: "Accommodation", thumbnail: accommodation },  
+        { name: "Entertainment", thumbnail: entertainment },  
+        { name: "Groceries", thumbnail: groceries },  
+        { name: "Healthcare", thumbnail: healthcare },  
+        { name: "Insurance", thumbnail: insurance },  
+        { name: "Rent & Charges", thumbnail: rent },  
+        { name: "Restaurant & Bars", thumbnail: restaurant },  
+        { name: "Shopping", thumbnail: shopping },  
+        { name: "Transport", thumbnail: transport },  
+        { name: "Other", thumbnail: other },  
+    ];   
+    
 
-    const users = ["Alice", "Bob", "Charlie", "David", "Eva"];  
-
-    const categoryImages = {  
-        Accommodation: "https://example.com/accommodation.jpg",  
-        Entertainment: "https://example.com/entertainment.jpg",  
-        Groceries: "https://example.com/groceries.jpg",  
-        Healthcare: "https://example.com/healthcare.jpg",  
-        Insurance: "https://example.com/insurance.jpg",  
-        Rent_Charges: "https://example.com/Rent_Charges.jpg",  
-        Restaurunt_Bars: "https://example.com/Restaurunt_Bars.jpg",  
-        Shopping: "https://example.com/shopping.jpg",  
-        Transport: "https://example.com/transport.jpg",  
-        Other: "https://example.com/other.jpg"  
-    };  
+    useEffect(() => {  
+        const fetchTripData = async () => {  
+            if (!tourname) {  
+                setError('Tour name is required.');  
+                setLoading(false);  
+                return;  
+            }  
+            try {  
+                const response = await axios.get(`https://triptide.pythonanywhere.com/planner/travels/expenses/`, {  
+                    headers: {  
+                        Authorization: localStorage.getItem("token"),  
+                    },   
+                    params: { travel_name: tourname }   
+                });  
+                setData(response.data.valid_participants || []);  // Ensure valid participants are set  
+                setLoading(false);  // Stop loading after fetching data
+                setError("") ; 
+            } catch (err) {  
+                console.error(err);  
+                setLoading(false);  // Stop loading on error  
+                if (err.response?.status === 403) {  
+                    const is_part = err.response.data.is_part;   
+                    setError(`Access forbidden. Is part: ${is_part}`);  
+                } else {  
+                    setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
+                }  
+            }    
+        };  
+    
+        fetchTripData();   
+    }, [tourname]);  
 
     const handleChange = (e) => {  
         const { name, value, type, files } = e.target;  
         if (type === "file" && files.length) {  
             const file = files[0];  
-            setUploadedImage(URL.createObjectURL(file));  
+            const reader = new FileReader();  
+            reader.onloadend = () => {  
+                setUploadedImage(reader.result);  
+            };  
+            reader.readAsDataURL(file);  
         } else {  
-            setFormValue(prev => ({ ...prev, [name]: value }));  
-
             if (name === "category") {  
-                setSelectedImage(categoryImages[value] || "");  
-            }  
-
+                const selectedCategory = categories.find(category => category.name === value);  
+                setCategoryImage(selectedCategory ? selectedCategory.thumbnail : null);  
+            } 
+            setFormValue(prev => ({ ...prev, [name]: value }));  
             if (errors[name]) {  
                 setErrors(prev => ({ ...prev, [name]: "" }));  
             }  
         }  
     };  
 
-    const handleAddExpense = (e) => {  
+    const handleAddExpense = async (e) => {  
         e.preventDefault();  
-        setErrors({});   
-
+        setErrors({});  
+    
         const newErrors = {};  
-
+    
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
-            newErrors.userName = "At least one user must be selected.";        }  
-            if (!formValue.title) {  
-                newErrors.title = "Title field cannot be empty.";  
-            }  
-            if (!formValue.amount || isNaN(formValue.amount) || Number(formValue.amount) <= 0) {  
-                newErrors.amount = "Amount must be a positive number.";  
-            }  
-            if (!formValue.date) {  
-                newErrors.date = "Date field cannot be empty.";  
-            } else if (new Date(formValue.date) > new Date()) {  
-                newErrors.date = "Date cannot be in the future.";  
-            }  
-            if (!formValue.category) {  
-                newErrors.category = "Category field cannot be empty.";  
-            }  
+            newErrors.userName = "At least one user must be selected.";  
+        }  
+        if (!formValue.title) {  
+            newErrors.title = "Title field cannot be empty.";  
+        }  
+        if (!formValue.amount || isNaN(formValue.amount) || Number(formValue.amount) <= 0) {  
+            newErrors.amount = "Amount must be a positive number.";  
+        }  
+        if (!formValue.date) {  
+            newErrors.date = "Date field cannot be empty.";  
+        } else if (formValue.date.isAfter(dayjs())) {  
+            newErrors.date = "Date cannot be in the future.";  
+        }  
+        if (!formValue.category) {  
+            newErrors.category = "Category field cannot be empty.";  
+        }  
     
-            if (Object.keys(newErrors).length > 0) {  
-                setErrors(newErrors);  
-                return;  
-            }  
+        if (Object.keys(newErrors).length > 0) {  
+            setErrors(newErrors);  
+            return;  
+        }  
     
-            const newExpense = {  
-                users: splitType === "specificUser" ? selectedUsers : [formValue.userName], // Use selected users or the single user  
-                title: formValue.title,  
-                amount: Number(formValue.amount),  
-                date: formValue.date,  
-                description: formValue.description,  
-                category: formValue.category,  
-                id: Date.now(),  
-                uploadedImage: uploadedImage  
-            };  
+        const formDataImage = new FormData();  
     
-            setExpData(prev => [...prev, newExpense]);  
-            setShowAddExpense(false);  
-            handleExpenseListToggle();  
-            resetForm();  
-        };  
+        formDataImage.append('travel_name', tourname); 
+        formDataImage.append('amount', Number(formValue.amount));  
+        formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));   
+        formDataImage.append('title', formValue.title);  
+        formDataImage.append('category', formValue.category);  
+        formDataImage.append('payer', formValue.userName);  
+        formDataImage.append('description', formValue.description);  
     
-        const resetForm = () => {  
-            setFormValue({  
-                userName: "",  
-                title: "",  
-                amount: "",  
-                date: "",  
-                description: "",  
-                category: ""  
+        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant =>participant.user_name);  
+        participants.forEach(participant => {  
+            formDataImage.append('participants[]', participant); 
+        }); 
+        console.log(formValue.category);
+        console.log(participants);
+        for (const pair of formDataImage.entries()) {  
+            console.log(`${pair[0]}: ${pair[1]}`);  
+        }     
+        console.log('Form Data being sent:', formDataImage); // Log for debug  
+    
+        try {  
+            const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
+                headers: {  
+                    Authorization: localStorage.getItem("token"),  
+                    'Content-Type': 'multipart/form-data',  
+                },  
+                params: { travel_name: tourname }  
             });  
-            setSelectedImage("");  
-            setUploadedImage(null);  
-            setErrors({});  
-            setSplitType("equal");  
+            console.log('Response from API:', response.data);
+
+            setimgcategory(response.data.receipt_image );
+            resetForm();  // Reset form after successful submission  
+            handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
+            
+        } catch (error) {  
+            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              setError(error.response?.data.detail || 'An error occurred. Please try again.');  
+        }  
+    };
+    const resetForm = () => {  
+        setFormValue({ userName: "", title: "", amount: "", date: null, description: "", category: "" });  
+        setUploadedImage(null);  
+        setErrors({});  
+        setSplitType("equal");  
+        setSelectedUsers([]);  
+        setCategoryImage(null);   
+    };  
+
+    const handleSplitSelection = (type) => {  
+        setSplitType(type);  
+        if (type === "equal") {  
             setSelectedUsers([]);  
-        };  
-    
-        const handleSplitSelection = (type) => {  
-            setSplitType(type);  
-            if (type === "equal") {  
-                setSelectedUsers([]);  
-            }  
-        };  
-    
-        const handleUserSelection = (user) => {  
-            setSelectedUsers(prevSelected => prevSelected.includes(user)  
-                ? prevSelected.filter(u => u !== user)  
-                : [...prevSelected, user]  
-            );  
-        };  
-    
-        return  (  
-            <div className="main-add-div">  
-                <form onSubmit={handleAddExpense}>  
-                    <h2>Add Expense</h2>  {/* Title for the form */}  
+        }  
+    };  
+    const handleCategoryClick = (event) => {  
+        setAnchorEl(event.currentTarget);  
+    };  
+
+    const handleCategorySelect = (category) => {  
         
-                    {/* Image Upload Section */}  
-                    <div className="upload-image-section">  
-                        <label htmlFor="uploadedImage">Upload Image of Bill</label>  
+        setCategoryImage(category.thumbnail);  
+        setFormValue(prev => ({ ...prev, category: category.name }));  
+        setAnchorEl(null);  
+    };  
+    const handleUserSelection = (user) => {  
+        setSelectedUsers(prevSelected =>  
+            prevSelected.includes(user)  
+                ? prevSelected.filter(u => u !== user) 
+                : [...prevSelected, user]  
+        );  
+    };  
+
+    return (  
+        <div className="main-add-div">  
+            {loading && <div>Loading...</div>}  
+            {error && <div className="error-message">{error}</div>}  
+            <form onSubmit={handleAddExpense} className="form-planner">  
+                <div className="upload-image-section">  
+                    <img  
+                        src={uploadedImage || addBill}  
+                        alt="Uploaded"  
+                        className="smaller-image-planner"  
+                    />  
+                    <div className="button-container-planner">  
+                        <label htmlFor="file-upload" className="file-upload-button-planner">  
+                            <MdAddPhotoAlternate className="moveiconpic-planner" />  
+                        </label>  
                         <input  
                             type="file"  
-                            name="uploadedImage"  
-                            id="uploadedImage"  
-                            accept="image/*"  
+                            id="file-upload"  
                             onChange={handleChange}  
+                            style={{ display: 'none' }}  
                         />  
-                        {uploadedImage && (  
-                            <img src={uploadedImage} alt="Uploaded bill" />  
-                        )}  
                     </div>  
-        
-                    {/* Split Selection Row */}  
+
                     <div className="split-selection-row">  
-                        <button  
+                        <Button  
                             type="button"  
                             className={`split-button ${splitType === 'equal' ? 'active' : ''}`}  
-                            onClick={() => handleSplitSelection('equal')}>  
+                            onClick={() => handleSplitSelection('equal')}  
+                        >  
                             Split Equally  
-                        </button>  
-                        <button  
+                        </Button>  
+                        <Button  
                             type="button"  
                             className={`split-button ${splitType === 'specificUser' ? 'active' : ''}`}  
-                            onClick={() => handleSplitSelection('specificUser')}>  
+                            onClick={() => handleSplitSelection('specificUser')}  
+                        >  
                             Select Users  
-                        </button>  
+                        </Button>  
                     </div>  
-        
-                    {/* User Selection for Specific Splitting */}  
+
                     {splitType === 'specificUser' && (  
                         <div className="user-selection">  
                             <h3>Select Users:</h3>  
-                            {users.map(user => (  
-                                <div key={user}>  
+                            <div className="user-checkboxes">  
+                            {data.map(user => (  
+                                <div className="user-checkbox" key={user.id}>  
                                     <label>  
                                         <input  
                                             type="checkbox"  
-                                            checked={selectedUsers.includes(user)}  
-                                            onChange={() => handleUserSelection(user)}  
+                                            checked={selectedUsers.includes(user.user_name)}  
+                                            onChange={() => handleUserSelection(user.user_name)}  
                                         />  
-                                        {user}  
+                                        {user.user_name}  
                                     </label>  
                                 </div>  
                             ))}  
+                            </div>
                         </div>  
-                    )}   
-        
-                    <div className="row">  
-                        <div className="form-item">  
-                            <label htmlFor="userName" style={{ color: '#22487a' }}>Paid By</label>  
-                            <input  
-                                type="text"  
+                    )}  
+                </div>  
+                <div className="row">  
+                    <div className="category-label" onClick={handleCategoryClick} >  
+                        {categoryImage ? (  
+                            <img src={categoryImage} alt="Category" className="selected-category-image" />  
+                        ) : (  
+                            <MdArrowDropDown size={24} style={{marginTop :15}} />  
+                        )}  
+                    </div>  
+
+                    <Menu  
+                        anchorEl={anchorEl}  
+                        open={Boolean(anchorEl)}  
+                        onClose={() => setAnchorEl(null)}  
+                    >  
+                        {categories.map((category) => (  
+                            <MenuItem key={category.name} onClick={() => handleCategorySelect(category)}>  
+                                <span>{category.name}</span>  
+                                <img src={category.thumbnail} alt={category.name} style={{ width: 30, marginLeft: 10 }} />  
+                            </MenuItem>  
+                        ))}  
+                    </Menu>  
+                
+                    <div className="paid-item"> 
+                        <FormControl variant="outlined" fullWidth>  
+                            <InputLabel id="category-label">  
+                                Paid by  
+                            </InputLabel>  
+                            <Select  
                                 name="userName"  
-                                id="userName"  
+                                labelId="category-label"  
+                                label="Category"  
                                 value={formValue.userName}  
-                                placeholder="Username"  
                                 onChange={handleChange}  
-                            />  
-                            {errors.userName && <div className="error-message">{errors.userName}</div>}  
-                        </div>  
-                        <div className="form-item">  
-                            <label htmlFor="title" style={{ color: '#22487a' }}>Title</label>  
-                            <input  
-                                type="text"  
-                                name="title"  
-                                id="title"  
-                                value={formValue.title}  
-                                placeholder="Title"  
-                                onChange={handleChange}  
-                            />  
-                            {errors.title && <div className="error-message">{errors.title}</div>}  
-                        </div>  
+                                error={!!errors.category} 
+                                helperText={errors.userName}  
+                            >  
+                                <MenuItem value="">  
+                                    <em>Select Who has payed</em>  
+                                </MenuItem>  
+                                {data.map((category) => (  
+                                    <MenuItem key={category.id} value={category.user_name}>  
+                                        {category.user_name}  
+                                    </MenuItem>  
+                                ))}  
+                            </Select>  
+                            {errors.category && <div className="error-message">{errors.category}</div>}  
+                        </FormControl>     
                     </div>  
-        
-                    <div className="row">  
-                        <div className="form-item">  
-                            <label htmlFor="amount" style={{ color: '#22487a' }}>Amount</label>  
-                            <input  
-                                type="text"  
-                                name="amount"  
-                                id="amount"  
-                                value={formValue.amount}  
-                                placeholder="Amount"  
-                                onChange={handleChange}  
-                            />  
-                            {errors.amount && <div className="error-message">{errors.amount}</div>}  
-                        </div>  
-                        <div className="form-item">  
-                            <label htmlFor="date" style={{ color: '#22487a' }}>Date</label>  
-                            <input  
-                                type="date"  
-                                name="date"  
-                                id="date"  
-                                value={formValue.date}  
-                                onChange={handleChange}  
-                            />  
-                            {errors.date && <div className="error-message">{errors.date}</div>}  
-                        </div>  
-                    </div>  
-        
-                    {/* Category Select Input */}  
-                    <div className="form-item">  
-                        <label htmlFor="category" style={{ color: '#22487a' }}>Category</label>  
-                        <select  
-                            name="category"  
-                            id="category"  
-                            value={formValue.category}  
+                    <div className="formitem">
+                        <TextField fullWidth
+                            type="text"  
+                            name="title"  
+                            label="Title"  
+                            variant="outlined"  
+                            required  
+                            value={formValue.title}  
                             onChange={handleChange}  
-                        >  
-                            <option value="">Select a category</option>  
-                            {categories.map(category => (  
-                                <option key={category} value={category}>  
-                                    {category}  
-                                </option>  
-                            ))}  
-                        </select>  
-                        {errors.category && <div className="error-message">{errors.category}</div>}  
-                    </div>  
-        
+                            error={!!errors.title}  
+                            helperText={errors.title}
+                            className="title-item"                       
+                            // style={{ marginRight: '20px',padding:"10px", textAlign:"center"}}  
+
+                        />  
+                        </div>
+                </div>
+                            
+                <div className="row">  
                     <div className="form-item">  
-                        <label htmlFor="description" style={{ color: "#22487a" }}>Description</label>  
-                        <textarea  
-                            name="description"  
-                            id="description"  
-                            value={formValue.description}  
-                            placeholder="Description"  
+                        <TextField  
+                            type="text"  
+                            name="amount"  
+                            label="Amount"  
+                            variant="outlined"  
+                            required  
+                            value={formValue.amount}  
                             onChange={handleChange}  
+                            error={!!errors.amount}  
+                            helperText={errors.amount}  
+                            className="amount-item"                       
+
                         />  
                     </div>  
-        
-                    <button className="btn" type="submit">  
-                        Add  
-                    </button>  
-                </form>  
-            </div>  
-        );  
-    };  
-    
-    export default AddExpense;
+                    <div className="bill-date">  
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>  
+                            <DatePicker 
+                                className="date-item" 
+                                required  
+                                label="Date"  
+                                value={formValue.date}  
+                                onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
+                                renderInput={(params) => (  
+                                    <TextField {...params} error={!!errors.date} helperText={errors.date}   />  
+                                                     
+                                )}  
+                            />  
+                        </LocalizationProvider>  
+                    </div> 
+                    <div className="form-item">  
+                    <TextField  
+                        type="text"  
+                        name="description"  
+                        label="Description"  
+                        variant="outlined"  
+                        required  
+                        value={formValue.description}  
+                        onChange={handleChange}  
+                        className="discription-item"                       
+
+                    />  
+                </div>  
+                </div>  
+
+                
+                <div>
+                    <img src={imgcategory}></img>
+                </div>
+                <Button className="btn" type="submit" variant="contained" onClick={handleAddExpense}>  
+                    Add  
+                </Button>  
+            </form>  
+        </div>  
+    );  
+};  
+
+export default AddExpense;
