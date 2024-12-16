@@ -24,10 +24,10 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
     }  
 
-    form {  
+    .form-planner {  
         display: flex;  
         flex-direction: column;  
-        gap: 20px;  
+        gap: 10px;  
 
         h2 {  
             color: var(--mainColor);  
@@ -79,40 +79,39 @@
                     display: none;  
                 }  
             }  
+        }
+        .split-selection-row {  
+            display: flex;  
+            // gap: 5px;  
+            flex-direction: column;
+            margin-right: 20px;
+            margin-left: 80px;
 
-            .split-selection-row {  
-                display: flex;  
-                // gap: 5px;  
-                flex-direction: column;
-                margin-right: 20px;
-                margin-left: 80px;
+            .split-button {  
+                flex: 1;  
+                margin-top: 20px;  
+                padding: 10px;  
+                background-color: var(--mainColor);  
+                color: white;  
+                border: none;  
+                border-radius: 6px;  
+                cursor: pointer;  
+                transition: background-color 0.3s;  
 
-                .split-button {  
-                    flex: 1;  
-                    margin-top: 20px;  
-                    padding: 10px;  
-                    background-color: var(--mainColor);  
-                    color: white;  
-                    border: none;  
-                    border-radius: 6px;  
-                    cursor: pointer;  
-                    transition: background-color 0.3s;  
-
-                    &.active {  
-                        background-color: var(--secondaryColor);  
-                    }  
-
-                    &:hover {  
-                        background-color: var(--secondaryColor);  
-                    }  
+                &.active {  
+                    background-color: var(--secondaryColor);  
                 }  
-            }  .user-checkbox input[type="checkbox"]:checked + label::before {  
-                background: orange; /* Change to orange when checked */  
-                border-color: orange; /* Border color when checked */  
+
+                &:hover {  
+                    background-color: var(--secondaryColor);  
+                }  
+            }  
+            .user-checkbox input[type="checkbox"]:checked + label::before {  
+            background: orange; /* Change to orange when checked */  
+            border-color: orange; /* Border color when checked */  
             }  
         }  
         .category-item {  
-            // flex: 0 0 70px; // A fixed width for the category dropdown, adjust as necessary  
             margin-right: 20px; // Space between fields  
             min-width: 10px;
         }  
@@ -138,40 +137,75 @@
 
         .row {  
             display: flex;  
-            flex-wrap: wrap;  
             gap: 20px;  
-            // width: 100px;
-            // flex-direction: column;
-
+            flex-direction: row;  
+            // margin-top: -0px;
+            // min-width: 1150px;
+            width: 100%; /* Ensure full width */  
+            // flex-wrap: wrap; /* Allow items to wrap if necessary */  
             .form-item {  
+                padding-right: 20px;  
+
+                max-width: 1500px;
                 flex: 1;  
-                width: 150px; 
+                margin-left: 10px;
+                // margin-top: -10px;
+                // min-width: 150px; 
             }  
-        }  
+          
 
         input[type="text"],  
         input[type="number"],  
         input[type="date"],  
         textarea,  
         select {  
-            width: 100%;  
-            padding: 10px;  
+            // width: 100%;  
+            // padding: 10px;  
             // border: 1px solid var(--mainColor);  
             border-radius: 6px;  
             font-size: 16px;  
             transition: border-color 0.3s ease;  
 
             &:focus {  
-                border-color: #4a90e2;  
+                border-color: #22487a;  
                 outline: none;  
             }  
-        }  
+        } 
+    
+        .paid-item{
+            width: 500px;
+        }
+        .title-item{
+            // min-width: 200px; /* Minimum width */  
+            width: 500px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -1px; /* Maintain the margin */  
+        }
+        .amount-item{
+            width: 350px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -35px; /* Maintain the margin */ 
+            margin-left: -10px;
+            // margin-right: -40px;
+            // margin-bottom: -50px;
+        }
+       
+        .discription-item{
+            width: 350px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -35px; /* Maintain the margin */ 
+            margin-left: -10px;
+        }
         .bill-date{
             .MuiTextField-root {  
                         flex: 1; 
+                        margin-top: -35px;
                         // height: 250px;             
-                        max-width: 220px;      
-                        margin-right: 18px;  
+                        width: 350px;      
+                        margin-left: -35px;  
                         &:last-child {  
                                         margin-right: 0px;    
                                     }  
@@ -181,7 +215,7 @@
                 background-color: #ea7d29; /* Yellow background for the clickable label */  
                 // padding: 10px;  
                 width: 50px;
-                height: 50px;
+                height: 58px;
                 // margin-top: 20px;
                 text-align: center;  
                 border-radius: 4px;  
@@ -200,7 +234,7 @@
             }  
             
             .menu-item img {  
-                width: 60px; /* Icon size */  
+                width: 70px; /* Icon size */  
                 margin-left: 10px;  
             }  
             
@@ -208,10 +242,8 @@
                 // margin-top: 10px;  
                 padding: -10px;
                 display: flex;  
-                width: 100px;
-                object-fit: contain;  
-                object-fit: cover;  
-                
+                width: 50px;
+                height: 60px;
                 // justify-content: center;   
             }  
         .error-message {  
@@ -222,18 +254,40 @@
             font-family: var(--font-family);  
         }  
 
-        button {  
-            padding: 10px 20px;  
-            background-color: var(--mainColor);  
-            color: white;  
-            border: none;  
-            border-radius: 6px;  
-            cursor: pointer;  
-            transition: background-color 0.3s;  
-
-            &:hover {  
-                background-color: var(--secondaryColor);  
-            }  
+       
+    }  
+    button {  
+        padding: 10px 20px;  
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 6px;  
+        cursor: pointer;  
+        transition: background-color 0.3s;  
+        // margin-top: -50px;
+        // width: 50px;
+        &:hover {  
+            background-color: var(--secondaryColor);  
         }  
     }  
+    .btn {  
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding: 10px 20px;  
+        margin-left: 300px;
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 6px;  
+        cursor: pointer;  
+        transition: background-color 0.3s;  
+        margin-top: -50px;
+        width: 500px;
+        &:hover {  
+            background-color: var(--secondaryColor);  
+        }  
+    }  
+}
 }
