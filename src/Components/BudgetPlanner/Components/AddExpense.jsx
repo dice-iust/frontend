@@ -295,7 +295,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     
 
                     <div className="paid-item"> 
-                    <FormControl variant="outlined" fullWidth>  
+                        <FormControl variant="outlined" fullWidth>  
                             <InputLabel id="category-label">  
                                 Paid by  
                             </InputLabel>  
@@ -320,7 +320,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             {errors.category && <div className="error-message">{errors.category}</div>}  
                         </FormControl>     
                     </div>  
-                           <div className="tilte-item">     
+                    <div className="tilte-item">     
                         <TextField 
                             type="text"  
                             name="title"  

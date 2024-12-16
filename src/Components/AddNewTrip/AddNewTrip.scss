@@ -22,8 +22,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
     margin-right: auto;
     position: relative;
 
-     
-
     .t-title{
         color: #22487a;
         margin-top: 2px;
@@ -39,11 +37,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         justify-content: flex-start; 
         margin: 0;                 
         padding: 0;              
-        width: 100%; 
-        flex-wrap: wrap;  
-
-        
-    
+        width: 100%;   
     
         .smaller-image {  
             width: 154px;  
@@ -52,9 +46,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             object-fit: cover;  
             margin-bottom: 10px;    
             margin-right: 40px; 
-            object-fit: contain;  
-            
-          
+            object-fit: contain;      
         }  
     
         .button-container {  
@@ -85,7 +77,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             input[type='file'] {  
                 display: none;  
             }  
-          
         }  
     }
 
@@ -136,7 +127,88 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                     
                 }  
             }  
-        }     
+        }  
+
+        .trip-status-state-wrapper {  
+            display: flex;                       
+            justify-content: space-between;      
+            align-items: flex-start;    
+                    
+            margin-top: 5px;
+            
+            padding: 0;                     
+        
+            .trip-state {  
+                margin-top: 3px;
+                margin-bottom: 2px;             
+                margin-right: 48px; 
+                margin-left: 50px;
+                padding: 0px;             
+                // flex: 1;                        
+                
+                .MuiFormLabel-root {  
+                    margin-bottom: 10px;  
+                }  
+        
+                .MuiRadioGroup-root {  
+                    display: flex;  
+                    flex-direction: row;  
+                    justify-content: flex-start; 
+                    margin-left: 8px;  
+                    // align-items: center;  
+                }  
+        
+                .MuiRadio-root {  
+                    &.Mui-checked {  
+                        color: #ea7d29;   
+                    }  
+        
+                    &:hover {  
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
+                        border-radius: 50%;  
+                    }  
+                }  
+            }  
+            
+            .trip-status {  
+                margin-bottom: 2px;              
+                flex: 1; 
+                margin-left: 0px; 
+                margin-top: 10px;
+                
+                                         
+        
+                .MuiFormLabel-root {  
+                    margin-bottom: 10px;  
+                }  
+        
+                .MuiRadioGroup-root {  
+                    display: flex;  
+                    flex-direction: row;  
+                    justify-content: flex-start;  
+                    align-items: center; 
+                    margin-left: 8px; 
+                }  
+        
+                .MuiRadio-root {  
+                    &.Mui-checked {  
+                        color: #ea7d29;   
+                    }  
+        
+                    &:hover {  
+                        background-color: #ebc7ac;   
+                        color: #ea7d29;  
+                        border-radius: 50%;  
+                    }  
+                }  
+            }  
+        }
+        
+            
+                   
+        
+                
         
         .trip-title {  
             display: flex;                     
@@ -167,6 +239,7 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             margin-left: 3px;
             margin-bottom:0px;
             margin-top: 2px;
+            
         }  
         
         .label-location {  
@@ -190,8 +263,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                         max-width: 220px; 
                         margin-right: 18px;
             }
-
-          
         }  
 
         .trip-date{
@@ -203,8 +274,6 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
                                         margin-right: 0px;    
                                     }  
             }
-
-            }  
         }
         
        
@@ -223,16 +292,18 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
             padding: 12px 20px;  
             border-radius: 5px;  
             transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;  
-            max-width: 1002px;   
-            font-size: 16px;  
-        
+
             &:hover {  
-                background-color: $new-trip-hover-color;
-                background-color: #ea7d29;  
+                background-color: $new-trip-hover-color;  
                 transform: translateY(-2px);  
-                box-shadow: 0 4px 15px $new-trip-shadow;   
+                box-shadow: 0 4px 15px $new-trip-shadow; 
+                background-color: #ea7d29;
             }  
-        
+
+            &:active {  
+                transform: translateY(0);  
+                box-shadow: 0 2px 10px $new-trip-shadow;  
+            }  
         }  
     }  
 
@@ -248,5 +319,42 @@ $new-trip-gradient: linear-gradient(135deg, #e0e4e8 0%, #f9f9f9 100%);
         text-align: center;  
         margin-bottom: 20px;  
         font-family: 'Arial, sans-serif';  
+    }  
+}
+}
+
+.success {  
+    display: flex;                     
+    justify-content: center;          
+    align-items: center;               
+    margin: 30px 30px;                   
+    padding: 7px;                    
+    border: 1px solid #4caf50;        
+    border-radius: 5px;              
+    background-color: #e8f5e9;       
+    color: #2e7d32;                   
+    font-weight: bold;                 
+    font-size: 16px;                    
+    transition: background-color 0.3s;  
+
+   
+    &:hover {  
+        background-color: #c8e6c9;      
+    }  
+
+    
+    @media (max-width: 600px) {  
+        font-size: 14px;                
+    }  
+}  
+
+.tripadded {  
+    display: flex;                     
+    align-items: center;                
+    gap: 8px;                         
+    svg {                             
+        width: 20px;                  
+        height: 20px;                 
+        color: #4caf50;                
     }  
 }

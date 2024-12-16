@@ -144,12 +144,12 @@
             flex-direction: row;
             padding: auto;
             max-width: 500;
-
+            margin-bottom: 100px;
             // .form-item {  
             //     // flex: 1;  
             //     min-width: 150px; 
             // }  
-        }  
+          
 
         input[type="text"],  
         input[type="number"],  
@@ -168,12 +168,12 @@
                 outline: none;  
             }  
         } 
-        
+    }
         .paid-item{
             width: 500px;
         }
         .title-item{
-            width: 1000px;
+            height: 1000px;
         }
         .bill-date{
             .MuiTextField-root {  
