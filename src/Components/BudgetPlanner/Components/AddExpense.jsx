@@ -27,6 +27,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         description: "",  
         category: "",  
     });  
+    
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
