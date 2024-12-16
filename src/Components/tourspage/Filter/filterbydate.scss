@@ -6,8 +6,22 @@ $shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 $font-color: #333;  
 $hover-bg-color: #f0f0f0;   
 
-.date-range-picker {  
-  // display: flex;  
+.date-range-picker { 
+  .header-container {  
+    display: flex;                   
+    align-items: center;              
+    justify-content: flex-start; 
+    width: 100%;   
+    margin-top: 7px;  
+}  
+
+h2 {  
+    flex-grow: 1;                    
+    text-align: center;           
+    margin-left: 50px;            
+    margin-right: 390px;              
+}  
+  
   flex-direction: column;  
   align-items: center;  
   margin: 40px auto;  

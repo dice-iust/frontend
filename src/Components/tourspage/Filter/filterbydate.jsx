@@ -11,6 +11,7 @@ import { FaCarSide, FaPlane, FaUndoAlt, FaRegCalendar } from "react-icons/fa";
 import { TbTrain, TbBus } from "react-icons/tb";  
 import { useNavigate } from 'react-router-dom';  
 import { Button } from '@mui/material';
+import Dropdown from "./Dropdown.jsx";
 
 const DateRangePicker = () => {  
 
@@ -149,9 +150,14 @@ const DateRangePicker = () => {
   }  
   
   return (  
-    <div className="date-range-picker">  
+    <div className="date-range-picker"> 
       <div className="date-range-picker2">  
-        <h2><MdEditCalendar className='movecalicon'/> Choose Trip Date</h2>  
+      <div className="header-container">
+        <Dropdown />  
+        <h2>  
+          <MdEditCalendar className='movecalicon' /> Choose Trip Date  
+        </h2>  
+      </div>  
         <div className="date-picker-container">  
           <div className="date-picker">  
             <label>Trip Start Date</label>  

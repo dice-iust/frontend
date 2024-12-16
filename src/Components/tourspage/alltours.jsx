@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick"; 
 import Travelsnav from "./Nav.jsx";
 import Footer from './footer.jsx';
-import DateRangePicker from "./Filter/filterbyname.jsx";
+import DateRangePicker from "./Filter/filterbydate.jsx";
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom'; 
