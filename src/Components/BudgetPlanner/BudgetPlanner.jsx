@@ -165,7 +165,7 @@ const BudgetPlanner = ({tourname}) => {
                 ))}  
 
                 {/* Render Balance List when toggled */}  
-                {showBalanceList && <BalanceList balances={balances} setBalances={setBalances} />}  
+                {showBalanceList && <BalanceList tourname={tourname}  balances={balances} setBalances={setBalances} />}  
             </div>  
         </div>  
     );  
