@@ -16,7 +16,8 @@ const DateRangePicker = () => {
 
   const [startDate, setStartDate] = useState(null);  
   const [endDate, setEndDate] = useState(null);  
-  const [isEndDateOpen, setIsEndDateOpen] = useState(false);  
+  const [isEndDateOpen, setIsEndDateOpen] = useState(false); 
+  const [isStartDateOpen, setIsStartDateOpen] = useState(false);  
   const [startDateError, setStartDateError] = useState('');   
   const [endDateError, setEndDateError] = useState('');  
   const [isstart, setstart] = useState(null);  
@@ -69,6 +70,7 @@ const DateRangePicker = () => {
     const endOfDayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));  
     setEndDate(endOfDayUTC);  
     setEndDateError('');   
+    setIsStartDateOpen(true);
     setIsEndDateOpen(false);  
   };  
 
@@ -133,6 +135,7 @@ const DateRangePicker = () => {
   const resetDatePickers = () => {  
     setStartDate(null);  
     setEndDate(null);  
+    setIsStartDateOpen(false);
     setIsEndDateOpen(false);  
   };  
 
@@ -161,6 +164,9 @@ const DateRangePicker = () => {
               dateFormat="MMMM d, yyyy"  
               placeholderText="Select a start date"  
               minDate={today}   
+              maxDate={endDate? endDate :  undefined }
+              open={endDate ? (!startDate ? isStartDateOpen : undefined) : undefined}  
+              openToDate={endDate? endDate: undefined}
               showMonthDropdown 
               showYearDropdown 
             />  
@@ -174,11 +180,11 @@ const DateRangePicker = () => {
               selectsEnd  
               startDate={startDate}  
               endDate={endDate}  
-              minDate={startDate}  
+              minDate={startDate? startDate : undefined}  
               dateFormat="MMMM d, yyyy"  
               placeholderText="Select an end date"  
-              open={isEndDateOpen} 
-              openToDate={startDate}
+              open={startDate ? (!endDate ? isEndDateOpen : undefined) : undefined}
+              openToDate={startDate? startDate: undefined}
               showMonthDropdown 
               showYearDropdown 
             />  
