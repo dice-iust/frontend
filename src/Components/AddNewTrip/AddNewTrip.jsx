@@ -291,7 +291,7 @@ const AddNewTrip = () => {
               variant="outlined"
               name="name"
               onChange={handleChange}
-              // required
+              required
               error={!!errors.name}
               helperText={errors.name}
               style={{ marginRight: "20px" }}
@@ -303,7 +303,7 @@ const AddNewTrip = () => {
               name="groupNo"
               value={tripData.groupNo}
               onChange={handleChange}
-              // required
+              required
               error={!!errors.groupNo}
               helperText={errors.groupNo}
               style={{ marginRight: "20px" }}
@@ -315,7 +315,7 @@ const AddNewTrip = () => {
               value={tripData.transportation}
               name="transportation"
               onChange={handleChange}
-              // required
+              required
               error={!!errors.transportation}
               helperText={errors.transportation}
             >
@@ -341,7 +341,7 @@ const AddNewTrip = () => {
                 variant="outlined"
                 name="startingPoint"
                 onChange={handleChange}
-                // required
+                required
                 error={!!errors.startingPoint}
                 helperText={errors.startingPoint}
                 style={{ marginRight: "20px" }}
@@ -352,7 +352,7 @@ const AddNewTrip = () => {
                 variant="outlined"
                 name="destination"
                 onChange={handleChange}
-                // required
+                required
                 error={!!errors.destination}
                 helperText={errors.destination}
               />
@@ -361,7 +361,7 @@ const AddNewTrip = () => {
             <div className="trip-date">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  // required
+                  required
                   value={tripData.startDate}
                   label="Start Date"
                   minDate={today}
@@ -369,7 +369,7 @@ const AddNewTrip = () => {
                   slotProps={{
                     textField: {
                       error: !!errors.startDate,
-                      // required: true,
+                      required: true,
                       helperText: errors.startDate,
                     },
                   }}
@@ -384,11 +384,11 @@ const AddNewTrip = () => {
                 <DatePicker
                   value={tripData.endDate}
                   minDate={tripData.startDate ? tripData.startDate : dayjs()}
-                  label="End Date"
+                  label="End date"
                   slotProps={{
                     textField: {
                       error: !!errors.endDate,
-                      // required: true,
+                      required: true,
                       helperText: errors.endDate,
                     },
                   }}
@@ -413,7 +413,7 @@ const AddNewTrip = () => {
               onChange={handleChange}
               multiline
               rows={2}
-              // required
+              required
               error={!!errors.description}
               helperText={errors.description}
             />

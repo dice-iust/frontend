@@ -48,7 +48,8 @@
         box-shadow: 0 2px 4px rgba(34, 72, 122, 0.5);   
       }  
   
-      .tour-card-autumn {  
+      .tour-card-autumn {
+        text-decoration: none;  
         display: flex;  
         flex-direction: column;  
         background: white;  
@@ -78,6 +79,7 @@
       }  
   
       .tour-admin-autumn {  
+        color:black;
         position: absolute;  
         top: 10px;  
         left: 10px;  
@@ -102,7 +104,8 @@
       }  
   
       // Tour Info Styles  
-      .tour-info-autumn {  
+      .tour-info-autumn { 
+        color:black; 
         display: flex;  
         flex-direction: column;  
   

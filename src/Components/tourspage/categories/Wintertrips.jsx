@@ -19,6 +19,7 @@ import Footer from '../footer.jsx';
 import { FaArrowRight } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosTimer } from "react-icons/io";
+import { Link } from 'react-router-dom'; 
 
 
  
@@ -74,7 +75,7 @@ const Winter = () => {
           {data && data.Winter_Trips ? (  
               <div className="tour-list-winter">  
                   {data.Winter_Trips.map((tour) => (  
-                      <div key={tour.Id} className="tour-card-winter">  
+                      <Link to={`/TripsPage/${tour.name}`} className="tour-card-winter"> 
                           <div className="tour-image-container-winter">  
                               <img  
                                   src={tour.image_url}  
@@ -116,7 +117,7 @@ const Winter = () => {
                                   </p>  
                               </div>   
                           </div>  
-                      </div>  
+                      </Link>  
                   ))}  
               </div>  
           ) : (  
