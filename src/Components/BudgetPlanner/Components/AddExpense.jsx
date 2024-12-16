@@ -125,7 +125,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             formDataImage.append('participants[]', participant); // Use array notation if backend expects it this way  
         }); 
         console.log(participants);
-    
+        for (const pair of formDataImage.entries()) {  
+            console.log(`${pair[0]}: ${pair[1]}`);  
+        }     
         console.log('Form Data being sent:', formDataImage); // Log for debug  
     
         try {  
@@ -136,11 +138,12 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 },  
                 params: { travel_name: tourname }  
             });  
-            console.log('Response from API:', response.data);  
-            
+            console.log('Response from API:', response.data);
+
+            setimgcategory(response.data.receipt_image );
             // Handle success as needed (e.g., update state or show success message)  
             resetForm();  // Reset form after successful submission  
-            setShowAddExpense(false);  // Close the add expense form  
+            // setShowAddExpense(false);  // Close the add expense form  
             handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
