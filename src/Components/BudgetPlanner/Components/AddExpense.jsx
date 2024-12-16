@@ -43,7 +43,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                     params: { travel_name: tourname }   
                 });  
                 setData(response.data.valid_participants || []);  // Ensure valid participants are set  
-                setLoading(false);  // Stop loading after fetching data  
+                setLoading(false);  // Stop loading after fetching data
+                setError("") ; 
             } catch (err) {  
                 console.error(err);  
                 setLoading(false);  // Stop loading on error  
@@ -211,18 +212,33 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 </div>  
 
                 <div className="row">  
-                    <div className="form-item">  
-                        <TextField  
-                            type="text"  
-                            name="userName"  
-                            label="Paid By"  
-                            variant="outlined"  
-                            value={formValue.userName}  
-                            onChange={handleChange}  
-                            error={!!errors.userName}  
-                            helperText={errors.userName}  
-                        />  
+                    <div className="form-item"> 
+                    <FormControl variant="outlined" fullWidth>  
+                            <InputLabel id="category-label">  
+                                Paid by  
+                            </InputLabel>  
+                            <Select  
+                                name="userName"  
+                                labelId="category-label"  
+                                label="Category"  
+                                value={formValue.userName}  
+                                onChange={handleChange}  
+                                error={!!errors.category} 
+                                helperText={errors.userName}  
+                            >  
+                                <MenuItem value="">  
+                                    <em>Select Who has payed</em>  
+                                </MenuItem>  
+                                {data.map((category) => (  
+                                    <MenuItem key={category.user_name} value={category.user_name}>  
+                                        {category.user_name}  
+                                    </MenuItem>  
+                                ))}  
+                            </Select>  
+                            {errors.category && <div className="error-message">{errors.category}</div>}  
+                        </FormControl>     
                     </div>  
+
                     <div className="form-item">  
                         <TextField  
                             type="text"  
