@@ -2,13 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./AddExpense.scss";  
 import axios from "../../../api/axios.js";  
 import addBill from "../assets/addbill.png";  
-import { MdAddPhotoAlternate } from "react-icons/md";  
-import { TextField, Select, MenuItem, FormControl, InputLabel, Button } from "@mui/material";  
+import { MdAddPhotoAlternate, MdArrowDropDown } from "react-icons/md";  
+import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu } from "@mui/material";  
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';  
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';  
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';  
 import dayjs from 'dayjs';  
-
+import accommodation from "../assets/accomodation.jpg";  
+import entertainment from "../assets/entertainment.jpg";  
+import groceries from "../assets/groceries.jpg";  
+import healthcare from "../assets/healthcare.jpg";  
+import insurance from "../assets/insurance.jpg";  
+import rent from "../assets/rent.jpg";  
+import restaurant from "../assets/restaurant.jpg";  
+import shopping from "../assets/shopping.jpg";  
+import transport from "../assets/transport.jpg";  
+import other from "../assets/other.jpg";  
 const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
     const [formValue, setFormValue] = useState({  
         userName: "",  
@@ -23,11 +32,26 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const [errors, setErrors] = useState({});  
     const [splitType, setSplitType] = useState("equal");  
     const [selectedUsers, setSelectedUsers] = useState([]);  
+    const [categoryImage, setCategoryImage] = useState(null); 
+    const [anchorEl, setAnchorEl] = useState(null);  
     const [loading, setLoading] = useState(true);  
     const [error, setError] = useState(null);  
-    const categories = ["Accommodation", "Entertainment", "Groceries", "Healthcare", "Insurance", "Rent & Charges", "Restaurant & Bars", "Shopping", "Transport", "Other"];  
-    const [data, setData] = useState([]);  
-    const[imgcategory,setimgcategory] =useState("");
+    const [data, setData] = useState([]);  // Initialize data for participants 
+    const[imgcategory,setimgcategory] =useState(""); 
+
+    const categories = [  
+        { name: "Accommodation", thumbnail: accommodation },  
+        { name: "Entertainment", thumbnail: entertainment },  
+        { name: "Groceries", thumbnail: groceries },  
+        { name: "Healthcare", thumbnail: healthcare },  
+        { name: "Insurance", thumbnail: insurance },  
+        { name: "Rent & Charges", thumbnail: rent },  
+        { name: "Restaurant & Bars", thumbnail: restaurant },  
+        { name: "Shopping", thumbnail: shopping },  
+        { name: "Transport", thumbnail: transport },  
+        { name: "Other", thumbnail: other },  
+    ];   
+    
 
     useEffect(() => {  
         const fetchTripData = async () => {  
@@ -71,6 +95,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             };  
             reader.readAsDataURL(file);  
         } else {  
+            if (name === "category") {  
+                const selectedCategory = categories.find(category => category.name === value);  
+                setCategoryImage(selectedCategory ? selectedCategory.thumbnail : null);  
+            } 
             setFormValue(prev => ({ ...prev, [name]: value }));  
             if (errors[name]) {  
                 setErrors(prev => ({ ...prev, [name]: "" }));  
@@ -84,7 +112,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     
         const newErrors = {};  
     
-        // Validate inputs  
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
             newErrors.userName = "At least one user must be selected.";  
         }  
@@ -139,30 +166,20 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             console.log('Response from API:', response.data);
 
             setimgcategory(response.data.receipt_image );
-            // Handle success as needed (e.g., update state or show success message)  
             resetForm();  // Reset form after successful submission  
-            // setShowAddExpense(false);  // Close the add expense form  
             handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
-            console.error("Error adding new trip:", error.response ? error.response.data : error.message);  
-            // Handle error as needed (e.g., show an error message)  
-            setError(error.response?.data.detail || 'An error occurred. Please try again.');  
+            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              setError(error.response?.data.detail || 'An error occurred. Please try again.');  
         }  
     };
     const resetForm = () => {  
-        setFormValue({  
-            userName: "",  
-            title: "",  
-            amount: "",  
-            date: null,  
-            description: "",  
-            category: "",  
-        });  
+        setFormValue({ userName: "", title: "", amount: "", date: null, description: "", category: "" });  
         setUploadedImage(null);  
         setErrors({});  
         setSplitType("equal");  
         setSelectedUsers([]);  
+        setCategoryImage(null);   
     };  
 
     const handleSplitSelection = (type) => {  
@@ -171,7 +188,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             setSelectedUsers([]);  
         }  
     };  
+    const handleCategoryClick = (event) => {  
+        setAnchorEl(event.currentTarget);  
+    };  
 
+    const handleCategorySelect = (category) => {  
+        
+        setCategoryImage(category.thumbnail);  
+        setFormValue(prev => ({ ...prev, category: category.name }));  
+        setAnchorEl(null);  
+    };  
     const handleUserSelection = (user) => {  
         setSelectedUsers(prevSelected =>  
             prevSelected.includes(user)  
@@ -238,14 +264,38 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         </div>  
                     )}  
                 </div>  
-
                 <div className="row">  
+
+                <div className="form-item category-label" onClick={handleCategoryClick} >  
+                    {categoryImage ? (  
+                        <img src={categoryImage} alt="Category" className="selected-category-image" />  
+                    ) : (  
+                        <MdArrowDropDown size={24} style={{marginTop :10}} />  
+                    )}  
+                </div>  
+
+                <Menu  
+                    anchorEl={anchorEl}  
+                    open={Boolean(anchorEl)}  
+                    onClose={() => setAnchorEl(null)}  
+                >  
+                    {categories.map((category) => (  
+                        <MenuItem key={category.name} onClick={() => handleCategorySelect(category)}>  
+                            <span>{category.name}</span>  
+                            <img src={category.thumbnail} alt={category.name} style={{ width: 30, marginLeft: 10 }} />  
+                        </MenuItem>  
+                    ))}  
+                </Menu>  
+                
+    
+
                     <div className="form-item"> 
                     <FormControl variant="outlined" fullWidth>  
                             <InputLabel id="category-label">  
                                 Paid by  
                             </InputLabel>  
                             <Select  
+                            reqiu
                                 name="userName"  
                                 labelId="category-label"  
                                 label="Category"  
@@ -267,7 +317,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         </FormControl>     
                     </div>  
 
-                    <div className="form-item">  
                         <TextField  
                             type="text"  
                             name="title"  
@@ -279,33 +328,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             error={!!errors.title}  
                             helperText={errors.title}  
                         />  
-                    </div>  
-                    <div className="form-item category-item">  
-                        <FormControl variant="outlined" fullWidth>  
-                            <InputLabel id="category-label">  
-                                Category  
-                            </InputLabel>  
-                            <Select  
-                                name="category"  
-                                labelId="category-label"  
-                                label="Category"  
-                                value={formValue.category}  
-                                onChange={handleChange}  
-                                error={!!errors.category}  
-                            >  
-                                <MenuItem value="">  
-                                    <em>Select a category</em>  
-                                </MenuItem>  
-                                {categories.map((category) => (  
-                                    <MenuItem key={category} value={category}>  
-                                        {category}  
-                                    </MenuItem>  
-                                ))}  
-                            </Select>  
-                            {errors.category && <div className="error-message">{errors.category}</div>}  
-                        </FormControl>  
-                    </div>  
-                </div>  
+                   </div>
                             
                 <div className="row">  
                     <div className="form-item">  
