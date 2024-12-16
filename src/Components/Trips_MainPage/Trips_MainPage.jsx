@@ -15,6 +15,7 @@ import Travelsnav from '../tourspage/categories_nav.jsx';
 import Footer from '../tourspage/footer.jsx'; 
 import RequestPage from "./requests/requests.jsx" 
 import Userspage from "./Users/users.jsx";
+import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
 
 const Trips_MainPage = () => {
     const [showmain, setshowmain] = useState(true);
@@ -146,7 +147,7 @@ const Trips_MainPage = () => {
                     </li>  
                     {isAdmin && <li className={`menu-item  ${showrequests ? 'active' : ''}`} onClick={handlerequests}><IoMdPersonAdd size={25} className='moveiconadd' /> Requests</li>}  
                     <li className="menu-item"><BsFillChatFill size={22} className='moveiconchat' /> Q&A</li>  
-                    <li className="menu-item"><GiCash size={25} /> Planner</li>  
+                    <li className={`menu-item  ${showplanner ? 'active' : ''}`} onClick={handleplanner}><GiCash size={25} /> Planner</li>  
                 </ul>  
                 <div className="profile">  
                     {tripData&&<img src={tripData.profile} alt="Profile" className="profile-pic" />  }
@@ -156,12 +157,18 @@ const Trips_MainPage = () => {
              
         {showrequests ? (  
             <RequestPage />  
-        ) : (  
+        ) 
+        :
+        showplanner? (
+            <PlannerPage/>
+        )
+        :
+         (  
             showmain && ( 
                 <div className="trip-container">  
-                        {error && tripData === null ? (  // Display error if tripData is null  
+                        {error && tripData === null ? ( 
                             <p style={{ color: 'red' }}>{error}</p>  
-                        ) : tripData ? ( // Check if tripData is available to render  
+                        ) : tripData ? ( 
                             <> 
                                 <div className="trip-header">  
                                     <img   

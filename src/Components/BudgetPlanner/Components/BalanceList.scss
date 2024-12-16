@@ -6,25 +6,67 @@
     --font-family: OpenSans;  
 }  
 
+.w3-container {  
+    display: flex; /* Use flex to allow sidebar and content to sit side by side */  
+    padding: 16px;  
+    font-family: 'Arial', sans-serif;  
+    background-color: #f9f9f9;  
+    border-radius: 8px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}  
+
+.sidebar {  
+    width: 250px; /* Increased width for the sidebar */  
+    background-color: #22487a; /* Set sidebar background to main color */  
+    padding: 20px; /* Add padding for better spacing */  
+    border-radius: 8px; /* Rounded corners for the sidebar */  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */  
+}  
+
+.content {  
+    flex: 1; /* Allow content to fill the remaining space */  
+    padding: 20px; /* Add padding for nice spacing */  
+}  
+
+.tablink {  
+    display: block; /* Make each tab a block element */  
+    cursor: pointer;  
+    text-align: left;  
+    padding: 12px; /* Vertical padding */  
+    background-color: transparent; /* Transparent to let sidebar color show through */  
+    color: #fff; /* Change text color to white */  
+    font-weight: bold; /* Make text bold */  
+    border: none; /* Remove border for cleaner look */  
+    border-radius: 4px; /* Rounded corners for tabs */  
+    transition: background-color 0.3s, color 0.3s;  
+    margin-bottom: 8px; /* Space between tabs */  
+}  
+
+.tablink:hover {  
+    background-color: #fff; /* Lighter hover effect to maintain visibility */  
+    color: #22487a;
+}  
+
+.w3-border-red {  
+    border-left: 4px solid rgb(234, 110, 12); /* Add a left border for active tab */  
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for active tab */  
+}  
+
 .balance-list {  
-    width: 95%;
-    margin-left: 30px;
-    margin-top: 20px;  
     padding: 20px;  
     border: 1px solid #ddd;  
     border-radius: 12px;  
     background-color: #ffffff;  
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Add subtle shadow for depth  
-    font-family: var(--font-family); // Use the defined font  
-    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+
     h2 {  
-        color: var(--mainColor); //Heading color  
-        margin-bottom: 15px; //Space below heading  
-        font-weight: bold; // Make heading bold  
+        color: var(--mainColor);  
+        margin-bottom: 15px;  
+        font-weight: bold;  
     }  
 
     .balance-item {  
-        font-size: 20px;
+        font-size: 20px;  
         display: flex;  
         justify-content: space-between;  
         align-items: center;  
@@ -32,31 +74,31 @@
         margin: 10px 0;  
         border: 1px solid #ececec;  
         border-radius: 8px;  
-        background-color: #f7f7f7; // Lighter background for each item  
-        transition: background-color 0.3s; // Smooth transition effect  
+        background-color: #f7f7f7;  
+        transition: background-color 0.3s;  
 
-        &:hover { // Add hover effect for balance items  
-            background-color: #f0f0f0; // Light gray on hover  
+        &:hover {  
+            background-color: #f0f0f0;  
         }  
     }  
 
     button {  
         padding: 8px 12px;  
         font-size: 14px;  
-        font-weight: bold; // Make button text bold  
+        font-weight: bold;  
         background-color: var(--mainColor);  
         color: white;  
         border: none;  
         border-radius: 4px;  
         cursor: pointer;  
-        transition: background-color 0.3s; // Smooth transition for button hover  
+        transition: background-color 0.3s;  
 
         &:hover {  
-            background-color: var(--secondaryColor); // Darker on hover  
+            background-color: var(--secondaryColor);  
         }  
     }  
 
     p {  
-        margin: 0; // Reset margin for p  
+        margin: 0;  
     }  
 }
