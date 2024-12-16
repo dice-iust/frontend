@@ -350,15 +350,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
 
                         />  
                     </div>  
-                    <div className="form-item bill-date">  
+                    <div className="bill-date">  
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
-                            <DatePicker  
+                            <DatePicker 
+                                className="date-item" 
                                 required  
                                 label="Date"  
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
                                 renderInput={(params) => (  
-                                    <TextField {...params} error={!!errors.date} helperText={errors.date} className="date-item"  />  
+                                    <TextField {...params} error={!!errors.date} helperText={errors.date}   />  
                                                      
                                 )}  
                             />  
@@ -373,7 +374,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         required  
                         value={formValue.description}  
                         onChange={handleChange}  
-                        className="title-item"                       
+                        className="discription-item"                       
 
                     />  
                 </div>  

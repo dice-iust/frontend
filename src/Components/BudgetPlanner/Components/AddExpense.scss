@@ -27,7 +27,7 @@
     .form-planner {  
         display: flex;  
         flex-direction: column;  
-        gap: 20px;  
+        gap: 10px;  
 
         h2 {  
             color: var(--mainColor);  
@@ -142,7 +142,7 @@
             // margin-top: -0px;
             // min-width: 1150px;
             width: 100%; /* Ensure full width */  
-            flex-wrap: wrap; /* Allow items to wrap if necessary */  
+            // flex-wrap: wrap; /* Allow items to wrap if necessary */  
             .form-item {  
                 padding-right: 20px;  
 
@@ -183,26 +183,29 @@
             margin-top: -1px; /* Maintain the margin */  
         }
         .amount-item{
-            width: 400px; /* Maximum width, adjust as needed */  
+            width: 350px; /* Maximum width, adjust as needed */  
             flex: 1;          /* Allow it to grow in flex container */  
             height: 100px;    /* Set a specific height if necessary */  
             margin-top: -35px; /* Maintain the margin */ 
             margin-left: -10px;
+            // margin-right: -40px;
             // margin-bottom: -50px;
         }
-        .date-item{
-            width: 500px; /* Maximum width, adjust as needed */  
+       
+        .discription-item{
+            width: 350px; /* Maximum width, adjust as needed */  
             flex: 1;          /* Allow it to grow in flex container */  
             height: 100px;    /* Set a specific height if necessary */  
-            margin-top: -105px; /* Maintain the margin */ 
+            margin-top: -35px; /* Maintain the margin */ 
             margin-left: -10px;
         }
         .bill-date{
             .MuiTextField-root {  
                         flex: 1; 
+                        margin-top: -35px;
                         // height: 250px;             
-                        max-width: 220px;      
-                        margin-right: 18px;  
+                        width: 350px;      
+                        margin-left: -35px;  
                         &:last-child {  
                                         margin-right: 0px;    
                                     }  
@@ -262,7 +265,26 @@
         cursor: pointer;  
         transition: background-color 0.3s;  
         // margin-top: -50px;
-
+        // width: 50px;
+        &:hover {  
+            background-color: var(--secondaryColor);  
+        }  
+    }  
+    .btn {  
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding: 10px 20px;  
+        margin-left: 300px;
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 6px;  
+        cursor: pointer;  
+        transition: background-color 0.3s;  
+        margin-top: -50px;
+        width: 500px;
         &:hover {  
             background-color: var(--secondaryColor);  
         }  
