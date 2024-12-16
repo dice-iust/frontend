@@ -47,7 +47,8 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
                     const recievearray = Object.entries(response.data.others_debt_to_user || {}).map(([name, amount]) => ({  
                         name,     
                         amount: parseFloat(amount).toFixed(2) 
-                    }));          
+                    }));   
+                    console.log(response.data)  ;     
                     setDebts(debtsArray);   // Set debts  
                     setReceivables(recievearray); // Assuming this data is structured correctly  
                     setPastPayments(response.data.past_payments || []); // Assuming this data is structured correctly  
@@ -75,7 +76,7 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
 
             switch (activeTab) {  
                 case 'Debts':  
-                    return debts.length>0 ? (  
+                    return debts.length ? (  
                         debts.map(item => (  
                             <div key={item.id} className="balance-item" style={{ color: data.has_debt  ? 'red' : 'green' }}>  
                                 <p><strong style={{ color: '#5767aa' }}>{item.name} :</strong> ${item.amount}</p>  
