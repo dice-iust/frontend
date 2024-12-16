@@ -170,7 +170,45 @@
                         &:last-child {  
                                         margin-right: 0px;    
                                     }  
-            }}
+        }}
+
+            .category-label {  
+                background-color: #ea7d29; /* Yellow background for the clickable label */  
+                // padding: 10px;  
+                width: 50px;
+                height: 50px;
+                // margin-top: 20px;
+                text-align: center;  
+                border-radius: 4px;  
+                align-items: center;
+                // margin: 10px 0;  
+            }  
+            
+            .category-label img {  
+                display: inline-block;  
+                margin-right: 8px;  
+            }  
+            
+            .menu-item {  
+                display: flex;  
+                align-items: center;  
+            }  
+            
+            .menu-item img {  
+                width: 60px; /* Icon size */  
+                margin-left: 10px;  
+            }  
+            
+            .selected-category-image {  
+                // margin-top: 10px;  
+                padding: -10px;
+                display: flex;  
+                width: 100px;
+                object-fit: contain;  
+                object-fit: cover;  
+                
+                // justify-content: center;   
+            }  
         .error-message {  
             color: red;  
             min-height: 20px;  
