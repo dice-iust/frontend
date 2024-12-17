@@ -24,6 +24,8 @@ const Trips_MainPage = () => {
   const [showQA, setShowQA] = useState(false);
   const [showrequests, setShowrequests] = useState(false);
 
+  const name = useParams();
+
   const handlemain = () => {
     setshowmain(true);
     setShowplanner(false);
@@ -106,6 +108,7 @@ const Trips_MainPage = () => {
           }
         );
         setTripData(response.data);
+
         if (response.data.travels.travel_is.start_date) {
           setIsAdmin(true);
           setcode(response.data.code);
@@ -141,9 +144,35 @@ const Trips_MainPage = () => {
   }, [tourname]);
 
   const handleJoin = (e) => {
-    console.log(e.target);
-    setPasscode(e.target);
-    console.log(passcode);
+    const { value } = e.target;
+    setPasscode(value);
+  };
+  const handleJoinRequest = (e) => {
+    e.preventDefault();
+    postUserRequest();
+  };
+
+  const postUserRequest = async () => {
+    const requestObj = {
+      key: passcode,
+      name: name.tourname,
+    };
+    console.log(JSON.stringify(requestObj));
+
+    try {
+      const response = await axios.post(
+        "https://triptide.pythonanywhere.com/travels/adduser/",
+        JSON.stringify(requestObj),
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   return (
@@ -199,6 +228,9 @@ const Trips_MainPage = () => {
                       marginRight: "10px",
                       marginTop: "8px",
                     }}
+                    variant="contained"
+                    type="submit"
+                    onClick={handleJoinRequest}
                   >
                     Join <IoAddOutline />
                   </Button>
