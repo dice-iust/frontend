@@ -31,23 +31,26 @@ export const messageData = [
   {
     id: "1",
     profilePic: pic,
-    textMessage: "text message 1",
-    date: "12-01-2024",
+    textMessage: "hi",
+    username : "masume",
+    date: "21:14",
     isAdmin: false,
   },
   {
     id: "2",
     profilePic: pic,
-    textMessage: "text message 2",
-    date: "12-01-2024",
+    textMessage: "text message 1",
+    username : "dorsa",
+    date: "21:15",
     isAdmin: false,
   },
   {
     id: "3",
     profilePic: pic,
     textMessage:
-      "text message 3 text message 3 text message 3 text message 3 text message 3 text message 3",
-    date: "12-01-2024",
+      "text message 2",
+    username : "parmis",
+    date: "21:16",
     isAdmin: true,
   },
 ];
