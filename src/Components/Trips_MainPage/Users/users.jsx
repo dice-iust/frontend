@@ -70,7 +70,7 @@ const UsersPage = () => {
             <div className='members-list'>  
                 {tripData.travels.users.map((member) => (  
                     <div className='member-card' key={member.email}>  
-                        <img className='member-photo' src={member.profile_image || "https://via.placeholder.com/100"} alt={`${member.user_name}'s photo`} />  
+                        <img className='member-photo' src={member.phrofile_image || "https://via.placeholder.com/100"} alt={`${member.user_name}'s photo`} />  
                         <div className='member-info'>  
                             <h2>{member.user_name}</h2>  
                             <p>{member.bio || 'No bio available.'}</p>  
