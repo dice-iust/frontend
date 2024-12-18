@@ -5,8 +5,12 @@ $transition-duration: 0.3s;
 {
     margin-right: 2px;
     margin-left: 2px;
+    display: flex;  
+    flex-direction: column;  
+    min-height: 100vh;   
 }
 .main-page {  
+    flex:1;
     display: flex;  
 }  
 
