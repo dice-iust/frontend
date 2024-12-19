@@ -9,7 +9,6 @@ const RequestsPage = (props) => {
   const { code, travelState } = props;
   const { tourname } = useParams();
   const [allRequests, setAllRequests] = useState(null);
-  const [accept, setAccept] = useState(false);
 
   const getFormData = async () => {
     try {
@@ -36,7 +35,7 @@ const RequestsPage = (props) => {
 
   const handleConfirm = (username) => {
     const requestObj = {
-      is_accept: true,
+      is_accept: "True",
       travel_name: tourname,
       user_name: username,
     };
@@ -59,7 +58,7 @@ const RequestsPage = (props) => {
 
   const handleDelete = (username) => {
     const requestObj = {
-      is_accept: false,
+      is_accept: "False",
       travel_name: tourname,
       user_name: username,
     };
