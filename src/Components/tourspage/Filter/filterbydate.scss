@@ -257,17 +257,17 @@ $hover-bg-color: #f0f0f0;
       cursor: pointer;    
     }  
     .no-trips-orange2-transport {  
-      color: #ff6f20; // Vibrant orange for emphasis  
+      color: #ff6f20;  
       text-decoration: underline;  
-      font-weight: bold; // Makes the orange text bold  
+      font-weight: bold;  
       font-size: 1.1em;
-      margin-right: 1050px; // Matches the blue text size for continuity  
+      margin-right: 960px;
       
     } 
     
     .no-trips-orange:hover {  
       
-      text-decoration: none; /* Optional: removes underline on hover */
+      text-decoration: none;
       cursor: pointer;    
     }  
 
