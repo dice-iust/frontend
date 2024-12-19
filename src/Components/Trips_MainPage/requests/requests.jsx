@@ -9,7 +9,6 @@ const RequestsPage = (props) => {
   const { code, travelState } = props;
   const { tourname } = useParams();
   const [allRequests, setAllRequests] = useState(null);
-  const [accept, setAccept] = useState(false);
 
   const getFormData = async () => {
     try {
@@ -44,7 +43,7 @@ const RequestsPage = (props) => {
     try {
       const response = axios.post(
         "https://triptide.pythonanywhere.com/requests/",
-        requestObj,
+        JSON.stringify(requestObj),
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -67,7 +66,7 @@ const RequestsPage = (props) => {
     try {
       const response = axios.post(
         "https://triptide.pythonanywhere.com/requests/",
-        requestObj,
+        JSON.stringify(requestObj),
         {
           headers: {
             Authorization: localStorage.getItem("token"),
