@@ -1,8 +1,11 @@
 import React, { useState } from 'react';  
 import { FiInfo } from 'react-icons/fi';  
 import { FaLock, FaKey } from "react-icons/fa";  
-import axios from "axios";  
+import axios from "axios"; 
+import img from "../ForgotPassword/Assests/changepass.png" 
+import img2 from "../ForgotPassword/Assests/sent2.png"
 import "./ForgotPassword.scss";  
+import { MdEmail } from "react-icons/md";  
 
 const ForgotPassword = () => {  
     const [email, setEmail] = useState('');  
@@ -70,7 +73,7 @@ const ForgotPassword = () => {
             console.error(err);  
             const errorMessage = err.response && err.response.data && err.response.data.message   
                 ? err.response.data.message   
-                : 'There is no account registered with this email. Edit your email.';  
+                : 'No account found with this email. Please check.';  
             setError(errorMessage);  
         } finally {  
             setLoading(false);  
@@ -83,27 +86,21 @@ const ForgotPassword = () => {
     setErrorMessagePassword('');  
     setErrorMessageConfirm('');  
 
-    // Create an array to collect error messages  
     const errors = [];  
 
-    // Check for valid verification code format  
     if (verificationCode.length !== 6 || !/^\d+$/.test(verificationCode)) {  
         errors.push('Please enter a valid 6-digit verification code.');  
     }  
 
-    // Validate new password  
     if (!validatePassword(newPassword)) {  
         errors.push('Password must be at least 6 characters long and contain both letters and numbers.');  
     }  
 
-    // Confirm passwords match  
     if (newPassword !== confirmPassword) {  
         errors.push('Passwords do not match.');  
     }  
 
-    // If there are any errors, set them as needed and stop further execution  
     if (errors.length > 0) {  
-        // Set appropriate error messages based on checks  
         setErrorMessageVerification(errors.filter(error =>   
             error.includes('verification code')).join(' '));  
         setErrorMessagePassword(errors.filter(error =>   
@@ -156,27 +153,18 @@ const ForgotPassword = () => {
 
     return (  
         <div className="forgot">  
-            <div className="title-forgots">  
-                <span className="key trip-forgot">T</span>  
-                <span className="key trip-forgot">r</span>  
-                <span className="key trip-forgot">i</span>  
-                <span className="key trip-forgot">p</span>  
-                <span className="key tide-forgot">T</span>  
-                <span className="key tide-forgot">i</span>  
-                <span className="key tide-forgot">d</span>  
-                <span className="key tide-forgot">e</span>  
-            </div>  
-
-            <div className="box-forgot">  
+            <div className="wrapper-forgot">  
                 {!showFields ? (  
                     <>  
+                        {/* {errMsg && <p ref={errRef} style={{ color: 'red' }} aria-live="assertive">{errMsg}</p>} */}
+                        <div className="form-container-forgot">
                         <div className="title-forgot1">Forgot Password</div>  
                         <div className="title-forgot2">  
-                            Enter the email address you use on TripTide. We'll  
-                            <br /> send you a link to reset your password.  
+                            Enter the email address you use on TripTide. We'll send 
+                            <br />  you a link to reset your password.  
                         </div>  
                         <div className="container-forgot">  
-                            {error && <div className="error-message"><FiInfo className="moveaicon-forgot" /> {error}</div>}  
+                            {/* {error && <div className="error-message"><FiInfo className="moveaicon-forgot" /> {error}</div>}   */}
                             <label className="email-text">Email</label>  
                             <div className="input-box-forgot">  
                                 <input  
@@ -187,8 +175,12 @@ const ForgotPassword = () => {
                                     value={email}  
                                     onChange={handleChangeEmail}  
                                     className="input-forgot"  
-                                />  
+                                />              <MdEmail className='icon-forgot' />  
+                                
                             </div>  
+                            <span style={{ color:   'red', margin: '5px', fontWeight: 'bold', fontSize: '11px' }}>  
+                                {error}  
+                            </span>
                             <button type="button" className="button-forgot" onClick={handleResetPassword} disabled={loading}>  
                                 {loading ? 'Sending...' : 'Reset Password'}  
                             </button>  
@@ -196,9 +188,15 @@ const ForgotPassword = () => {
                         <div className="container-forgot2">  
                             <label className="back-text">Back to</label>  
                             <a href="/login" className="login-link">Login</a>  
-                        </div>  
+                        </div> </div>
+                         <div className="image-container-forgot">   
+                            <img  src={img}  alt="travel"  />  
+                        </div> 
                     </>  
-                ) : (  
+                ) : (                          
+                    <div className='reset-container'>
+                    <div className="form-container-forgot">
+
                     <form onSubmit={handleSubmitVerification}>  
                         <a href="" onClick={handleBackToEmail} className="back-link">&lt; Back</a>  
                         <div className="title-forgot1">Reset your Password</div>  
@@ -207,8 +205,8 @@ const ForgotPassword = () => {
                         {successMessage && <div className="success-message">{successMessage}</div>}  
 
                         <label className="forgot-text">VERIFICATION CODE</label>  
-                        <div className="input-box-forgot">  
-                            <FaKey className='icon-forgot' />  
+                        <div className="input-box-forgot1">  
+                              
                             <input  
                                 type="text"  
                                 placeholder="Enter 6-digit code"  
@@ -216,16 +214,16 @@ const ForgotPassword = () => {
                                 onChange={handleVerificationCodeChange}  
                                 className="input-forgot"  
                             />  
+                            <FaKey className='icon-forgot' />
                         </div>  
-                        {errorMessageVerification && (  
-                            <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                        <span style={{ color:   'red', margin: '5px', fontWeight: 'bold', fontSize: '11px' }}>  
                                 {errorMessageVerification}  
-                            </span>  
-                        )}  
+                            </span> 
+                         
 
                         <label className="forgot-text">NEW PASSWORD</label>  
-                        <div className="input-box-forgot">  
-                            <FaLock className='icon-forgot' />  
+                        <div className="input-box-forgot1">  
+                             
                             <input  
                                 type="password"  
                                 placeholder="New Password"  
@@ -234,24 +232,24 @@ const ForgotPassword = () => {
                                 className="input-forgot"  
                                 required  
                             />  
+                            <FaLock className='icon-forgot' /> 
                         </div>  
-                        {errorMessagePassword && (  
-                            <span style={{ color: 'red', margin: '5px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                        <span style={{ color:   'red', margin: '5px', fontWeight: 'bold', fontSize: '11px' }}>  
                                 {errorMessagePassword}  
-                            </span>  
-                        )}  
+                            </span>
 
                         <label className="forgot-text">CONFIRM PASSWORD</label>  
-                        <div className="input-box-forgot">  
-                            <FaLock className='icon-forgot' />  
+                        <div className="input-box-forgot1">  
                             <input  
                                 type="password"  
                                 placeholder="Confirm Password"  
                                 value={confirmPassword}  
                                 onChange={handleConfirmPasswordChange}  
                                 className="input-forgot"  
-                                required  
+                                // required  
                             />  
+                        <FaLock className='icon-forgot' />  
+
                         </div>  
                         {errorMessageConfirm && (  
                             <span style={{ color: 'red', margin: 'px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
@@ -263,11 +261,24 @@ const ForgotPassword = () => {
                         <button type="submit" className="submit-button" disabled={loading}>  
                             {loading ? 'Verifying...' : 'Confirm Reset'}  
                         </button>  
-                    </form>  
-                )}  
+                    </form> 
+                    
+                    </div>  
+                    <div className="image-container-forgot">   
+                    <img src={img2} alt="Verification Sent" />  
+                    </div>  
+                        </div>
+                     
+                    )}
+                
+                 
+                 
             </div>  
         </div>  
-    );  
+
+
+
+);  
 };  
 
 export default ForgotPassword;
