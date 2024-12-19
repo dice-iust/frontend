@@ -36,7 +36,7 @@ const RequestsPage = (props) => {
 
   const handleConfirm = (username) => {
     const requestObj = {
-      is_accept: "True",
+      is_accept: true,
       travel_name: tourname,
       user_name: username,
     };
@@ -44,7 +44,7 @@ const RequestsPage = (props) => {
     try {
       const response = axios.post(
         "https://triptide.pythonanywhere.com/requests/",
-        requestObj,
+        JSON.stringify(requestObj),
         {
           headers: {
             Authorization: localStorage.getItem("token"),
@@ -59,7 +59,7 @@ const RequestsPage = (props) => {
 
   const handleDelete = (username) => {
     const requestObj = {
-      is_accept: "False",
+      is_accept: false,
       travel_name: tourname,
       user_name: username,
     };
@@ -67,7 +67,7 @@ const RequestsPage = (props) => {
     try {
       const response = axios.post(
         "https://triptide.pythonanywhere.com/requests/",
-        requestObj,
+        JSON.stringify(requestObj),
         {
           headers: {
             Authorization: localStorage.getItem("token"),
