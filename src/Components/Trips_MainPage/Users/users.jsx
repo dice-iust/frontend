@@ -83,7 +83,7 @@ const UsersPage = () => {
           <div className="member-card" key={member.email}>
             <img
               className="member-photo"
-              src={member.profile_image || "https://via.placeholder.com/100"}
+              src={member.phrofile_image || "https://via.placeholder.com/100"}
               alt={`${member.user_name}'s photo`}
             />
             <div className="member-info">
