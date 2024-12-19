@@ -87,6 +87,7 @@ const Trips_MainPage = () => {
   const [error, setError] = useState(null);
 
   const [isPart, setIsPart] = useState(true);
+  const [isshow, setIsshow] = useState(false);
   const [isPrivate, SetIsPrivate] = useState("Private");
 
   useEffect(() => {
@@ -119,6 +120,7 @@ const Trips_MainPage = () => {
         if (err.response?.status === 403) {
           const is_part = err.response.data.is_part;
           setIsPart(is_part);
+          setIsshow(is_part)
           setError(
             `This trip is private. Enter the passcode and wait for your request to be accepted!`
           );
@@ -196,13 +198,21 @@ const Trips_MainPage = () => {
                 <IoMdPersonAdd size={25} className="moveiconadd" /> Requests
               </li>
             )}
-            <li className="menu-item">
-              <BsFillChatFill size={22} className="moveiconchat" /> Q&A
-            </li>
-            <li className="menu-item">
-              <GiCash size={25} /> Planner
-            </li>
+            {isshow && (  
+            <>  
+              <li className="menu-item">  
+                <BsFillChatFill size={22} className="moveiconchat" />  
+                Q&A  
+              </li>  
+              <li className="menu-item">  
+                <GiCash size={25} />  
+                Planner  
+              </li>  
+            </>  
+          )}  
           </ul>
+          {isshow && (  
+            <> 
           <div className="profile">
             {tripData && (
               <img
@@ -213,7 +223,10 @@ const Trips_MainPage = () => {
             )}
             {tripData && <span className="profile-name">{tripData.name}</span>}
           </div>
+           </>
+          )}
         </div>
+     
 
         {showrequests ? (
           <RequestPage
