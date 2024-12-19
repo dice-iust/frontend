@@ -5,9 +5,25 @@ $border-radius: 8px;
 $shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  
 $font-color: #333;  
 $hover-bg-color: #f0f0f0;   
+.firstdiv{
+  
+.date-range-picker { 
+  .header-container {  
+    display: flex;                   
+    align-items: center;              
+    justify-content: flex-start; 
+    width: 100%;   
+    margin-top: 7px; 
 
-.date-range-picker {  
-  // display: flex;  
+  }  
+
+  .h2class {  
+      flex-grow: 1;                    
+      text-align: center;           
+      margin-left: 50px;            
+      margin-right: 390px;              
+  }  
+  
   flex-direction: column;  
   align-items: center;  
   margin: 40px auto;  
@@ -15,7 +31,7 @@ $hover-bg-color: #f0f0f0;
   border-radius: $border-radius;  
   box-shadow: $shadow;  
   background-color: $date-picker-bg;  
-  transition: box-shadow 0.3s ease;  
+  transition: box-shadow 0.3s ease; 
   .date-range-picker2 { 
     display: flex; 
     flex-direction: column;  
@@ -40,7 +56,8 @@ $hover-bg-color: #f0f0f0;
 
   .date-picker-container {  
     display: flex;  
-    justify-content: space-between;  
+    justify-content: space-between;
+    
     width: 100%; 
     max-width: 600px;
     
@@ -49,6 +66,7 @@ $hover-bg-color: #f0f0f0;
     .date-picker {  
       flex: 1;
       margin: 0 10px; 
+
      
 
       label {  
@@ -58,16 +76,43 @@ $hover-bg-color: #f0f0f0;
         font-size: 16px;  
         
       }  
+      .react-datepicker {  
+        margin: 0;  
+        padding: 0; 
+      }  
 
       .react-datepicker-wrapper {
-          
+        margin : 0;
         width: 100%;  
       }  
 
       .react-datepicker__input-container {  
         width: 100%;  
         
+      }
+      .react-datepicker__triangle {  
+        display: none; 
       }  
+      
+      .react-datepicker__header {  
+        padding: 0.5rem;
+      }  
+    
+      // .react-datepicker__day--today {  
+      //   background-color: transparent;
+      //   background-color: #22487a;
+      //   color: white; // Optional customization  
+      // }  
+      
+    
+    // If necessary, adjust absolute positioning for the calendar  
+    .react-datepicker-popper {  
+        position: absolute; // Make sure it’s positioned relative to its parent  
+        z-index: 1000; // Maintain z-index over other UI elements  
+    }  
+      // .react-datepicker__day {  
+      //   padding: 0.5rem; // Adjust the day cell padding  
+      // }    
 
       input {  
         margin-top: 10px; 
@@ -91,6 +136,81 @@ $hover-bg-color: #f0f0f0;
     }  
   }  
 
+  .name-picker {  
+    flex: 1;
+    margin-left: 30px;
+    // margin: 0 10px; 
+   
+
+    label {  
+      margin-right: 10px;
+      font-weight: bold;  
+      color: $font-color;  
+      font-size: 16px;  
+      
+    }  
+
+    .react-datepicker-wrapper {
+        
+      width: 100%;  
+    }  
+
+    .react-datepicker__input-container {  
+      width: 80%;  
+      
+    }  
+
+    input {  
+      margin-top: 10px; 
+      width: 100%;  
+      padding: 10px;  
+      border: 1px solid #dcdcdc;  
+      border-radius: $border-radius;  
+      transition: border-color 0.3s ease, background-color 0.3s ease;  
+
+      &:focus {  
+        border-color: #ea7d29;  
+        outline: none;  
+        box-shadow: 0 0 8px #ea7d29;  
+        background-color: #fbcfab;  
+      }   
+
+      &:hover {  
+        background-color: $hover-bg-color;  
+      }  
+    }  
+
+    .select-transport {  
+      margin-top: 10px; 
+      width: 100%;  
+      padding: 10px;  
+      border: 1px solid #dcdcdc;  
+      border-radius: $border-radius;  
+      transition: border-color 0.3s ease, background-color 0.3s ease;  
+
+      &:focus {  
+        border-color: #ea7d29;  
+        outline: none;  
+        box-shadow: 0 0 8px #ea7d29;  
+        background-color: #fbcfab;
+        option{
+          
+            background-color: white;
+            color: #22487a;
+            
+      }   
+
+      &:hover {  
+        background-color: $hover-bg-color;
+        
+      }  
+
+      
+      }
+    }  
+    
+  }  
+
   .selected-dates {  
     margin-top: 30px;  
     margin-bottom: 20px; 
@@ -111,12 +231,43 @@ $hover-bg-color: #f0f0f0;
       color: #ff6f20; // Vibrant orange for emphasis  
       text-decoration: underline;  
       font-weight: bold; // Makes the orange text bold  
-      font-size: 1.1em; // Matches the blue text size for continuity  
+      font-size: 1.1em;
+      margin-right: 600px; // Matches the blue text size for continuity  
       
     } 
-    .no-trips-orange:hover {  
+    .no-trips-blue-name {  
+      color: #22487a; // Cleaner blue color  
+      font-weight: bold; // Makes it bolder  
+      font-size: 0.9em; // Slightly larger font for emphasis  
+      margin-right: 3px;
+      margin-left: 3px; // Space between blue and orange text  
+    }  
+    
+    .no-trips-orange-name {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em;
+      margin-right: 600px; // Matches the blue text size for continuity  
+      
+    } 
+    .no-trips-orange-name:hover {  
       
       text-decoration: none; /* Optional: removes underline on hover */
+      cursor: pointer;    
+    }  
+    .no-trips-orange2-transport {  
+      color: #ff6f20;  
+      text-decoration: underline;  
+      font-weight: bold;  
+      font-size: 1.1em;
+      margin-right: 960px;
+      
+    } 
+    
+    .no-trips-orange:hover {  
+      
+      text-decoration: none;
       cursor: pointer;    
     }  
 
@@ -126,9 +277,41 @@ $hover-bg-color: #f0f0f0;
       margin-right: 0px; // Vibrant orange for emphasis  
       text-decoration: underline;  
       font-weight: bold; // Makes the orange text bold  
-      font-size: 0.9em; // Matches the blue text size for continuity
+      font-size: 0.9em;
+       // Matches the blue text size for continuity
       
     }  
+    .no-trips-orange2-name {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em;
+      margin-right: 900px; // Matches the blue text size for continuity
+      
+    }  
+    .no-trips-orange3 {  
+      color: #ff6f20;
+      margin-left: 0px;
+      margin-right: 0px; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 0.9em;
+      margin-right: 815px;
+
+    }
+      .no-trips-orange2 {  
+        color: #ff6f20;
+        margin-left: 0px;
+        margin-right: 0px; // Vibrant orange for emphasis  
+        text-decoration: underline;  
+        font-weight: bold; // Makes the orange text bold  
+        font-size: 0.9em;
+         // Matches the blue text size for continuity
+        
+      }  
+       // Matches the blue text size for continuity
+      
+    
     .no-trips-blue2 {  
       color: #22487a; // Cleaner blue color  
       font-weight: bold; // Makes it bolder  
@@ -153,19 +336,20 @@ $hover-bg-color: #f0f0f0;
 
   .tour-list-filter {  
     display: flex;  
-    flex-direction: column; // Stack the trips vertically  
-    align-items: flex-start; // Align items to the start (left)  
-    width: 100%;
-    // Optional: Set width to full to avoid centering  
+    flex-wrap: nowrap;  
+    overflow-x: auto;   
+    gap: 15px;
+    max-width : 1250px;   
   }  
 
-  .tour-card-filter {  
+  .tour-card-filter { 
+    flex: 0 0 auto; 
     display: flex;  
     flex-direction: column;  
     background: white;  
     border-radius: 10px;  
     overflow: hidden;  
-    width: calc(32.7% - 10px); // Three cards per row with gap  
+    width: 300px; // Three cards per row with gap  
     height: 300px;  
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
@@ -182,28 +366,12 @@ $hover-bg-color: #f0f0f0;
 
       .tour-image-filter {  
         width: 100%;  
-        height: 100%;  
-        object-fit: cover;  
+        height: 168px;   
+        object-fit: cover;   
+        position: relative;  
       }  
 
-      .tour-admin-filter {  
-        position: absolute;  
-        top: 10px;  
-        left: 10px;  
-        display: flex;  
-        align-items: center;  
-        background-color: rgba(255, 255, 255, 0.7);  
-        padding: 2px;  
-        border-radius: 5px;  
-        z-index: 20;  
-
-        .admin-photo-filter {  
-          width: 30px;  
-          height: 30px;  
-          border-radius: 50%;  
-          margin-right: 5px;  
-        }  
-      }  
+      
     }  
 
     .tour-info-filter {  
@@ -287,12 +455,7 @@ $hover-bg-color: #f0f0f0;
     }
    
     
-    
-      
-        // .tour-list-container-filter {  
-        //   max-width: 2000px;  
-        //   margin-left: 10px;
-        //   margin-right: 10px;
+  
       
           .tour-list-filter {  
             display: flex;  
@@ -366,7 +529,7 @@ $hover-bg-color: #f0f0f0;
             background-color: rgba(255, 255, 255, 0.7);  
             padding: 2px;  
             border-radius: 5px;  
-            z-index: 20;  
+            // z-index: 20;  
           }  
       
           .admin-photo-filter {  
@@ -489,26 +652,10 @@ $hover-bg-color: #f0f0f0;
               }  
             }  
       
-            .tour-admin {  
-              display: flex;  
-              align-items: center;  
-              justify-content: flex-start;  
-      
-              .admin-photo {   
-                margin-left: 10px;  
-                margin-bottom: 2px;   
-                width: 25px;  
-                height: 25px;  
-                border-radius: 50%;  
-                margin-right: 5px;  
-              }  
-      
-              span {  
-                font-weight: bold;  
-              }  
-            }
+            
           }
         }
+      }
       // } 
       
       // Circular Animation Keyframes  
@@ -670,6 +817,13 @@ $hover-bg-color: #f0f0f0;
   margin-top: 2px;
   margin-left: -85px;
 }
+.error-message-name {  
+  color: red;  
+  font-size: 14px;  
+  margin-top: 5px;                 
+  display: flex;
+  margin-left: 2px;            
+}  
 
 
 .react-datepicker .react-datepicker__month-dropdown,
@@ -696,6 +850,8 @@ $hover-bg-color: #f0f0f0;
 .react-datepicker .react-datepicker__year-option:hover {
   background-color: #e2bca0;
 }
+
+
 
 
 
