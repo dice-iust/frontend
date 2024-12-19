@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiInfo } from 'react-icons/fi';  
 import { FaLock, FaKey } from "react-icons/fa";  
 import axios from "axios"; 
-import img from "../ForgotPassword/Assests/changepass.png" 
+import img from "../ForgotPassword/Assests/change.png" 
 import img2 from "../ForgotPassword/Assests/sent2.png"
 import "./ForgotPassword.scss";  
 import { MdEmail } from "react-icons/md";  
