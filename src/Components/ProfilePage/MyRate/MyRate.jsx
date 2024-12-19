@@ -89,7 +89,7 @@ const MyRate = () => {
  
   
     const normalizedRating_overall = Math.min(Math.max(rating, 0), 5);   
-    const normalizedRating_well_traveled = Math.min(Math.max(2.5, 0), 5);  
+    const normalizedRating_well_traveled = Math.min(Math.max(rating_well_travelled, 0), 5);  
     const normalizedRating_good_payed = Math.min(Math.max(rating_good_payed, 0), 5);  
 
     return (  
@@ -149,7 +149,7 @@ const MyRate = () => {
                         <div className="circle-in">  
                             {Array.from({ length: 5 }, (_, index) => {  
                                 const isFilled = index < Math.floor(normalizedRating_well_traveled);   
-                                const isHalfFilled = index === Math.floor(normalizedRating_well_traveled) && (normalizedRating_well_traveled % 1) > 0;   
+                                const isHalfFilled = index === Math.floor(normalizedRating_well_traveled) && (normalizedRating_well_traveled % 1) >= 0.5;   
                                 return (  
                                     <span  
                                         className={`star ${isFilled ? 'filled' : ''} ${isHalfFilled ? 'half-filled' : ''}`}  
@@ -206,29 +206,33 @@ const MyRate = () => {
                                             {/* <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>   */}
                                         </p>  
                                         <div className="star-rating">  
-                                        {[...Array(5)].map((_, index) => (  
-                                            <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.sleep_rate, 0), 5) ? 'checked' : ''}`}></span>  
-                                        ))}  
+                                        {[...Array(5)].map((_, index) => {  
+                                            const rating = Math.min(Math.max(tour.rates.sleep_rate, 0), 5);  
+                                            const filledStars = Math.floor(rating); // whole stars  
+                                            const halfStar = rating - filledStars >= 0.5; // check if there's a half star  
+
+                                            return (  
+                                                <span key={index} className={`fa fa-star ${index < filledStars ? 'checked' : (halfStar && index === filledStars ? 'half-checked' : '')}`}></span>  
+                                            );  
+                                        })}  
                                         </div>  
                                     </div>  
                                     <div className="tour-details2">  
                                         <p className="tour-route2" style={{marginTop:"9px",marginRight:"30px",fontSize:"16px",fontWeight:"bold",color:"#22487a"}}>  
                                             Good-Pay rate :    
-                                            {/* <span className="tour-text2">{tour.travel_is.start_place} {getTransportationIcon(tour.travel_is.transportation)} {tour.travel_is.destination}</span>   */}
-                                        </p>  
+                                             </p>  
                                         <div className="star-rating">  
-                                        {[...Array(5)].map((_, index) => (  
-                                            <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.money_rate, 0), 5) ? 'checked' : ''}`}></span>  
-                                        ))}  
+                                        {[...Array(5)].map((_, index) => {  
+                                            const rating = Math.min(Math.max(tour.rates.money_rate, 0), 5);  
+                                            const filledStars = Math.floor(rating); // whole stars  
+                                            const halfStar = rating - filledStars >= 0.5; // check if there's a half star  
+
+                                            return (  
+                                                <span key={index} className={`fa fa-star ${index < filledStars ? 'checked' : (halfStar && index === filledStars ? 'half-checked' : '')}`}></span>  
+                                            );  
+                                        })}   
                                         </div> 
-                                        {/* <p className="tour-dates2">  
-                                            <FaRegCalendar className='moveicon3' />  
-                                            <span>{formatDate(tour.travel_is.start_date)}</span>  
-                                        </p>  
-                                        <p className="tour-length2" style={{ textAlign: "left" }}>  
-                                            <FaUndoAlt className='moveicon3' />  
-                                            {formatDate(tour.travel_is.end_date)}  
-                                        </p>   */}
+                                        
                                     </div>   
                                 </div>  
                             </div>  

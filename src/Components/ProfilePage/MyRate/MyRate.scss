@@ -148,14 +148,14 @@
           background-image: url('../assets/hlf.png'); /* Adjust this path */  
           background-size: cover; /* Ensure image covers the area */  
           width: 50%; /* Show half */  
-          height: 100%; /* Match height of the star */  
+          height: 105%; /* Match height of the star */  
           position: absolute;  
           left: 0;  
-          margin-top: -3px;
-          margin-left: 15px;
+          margin-top:7px;
+          margin-left: 14px;
           top: 0; /* Align top to parent */  
           overflow: hidden;  
-          transform: rotate(-215deg);   
+          transform: rotate(-145deg);   
 
       }  
     }  
