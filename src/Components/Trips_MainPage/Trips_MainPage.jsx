@@ -109,7 +109,7 @@ const Trips_MainPage = () => {
           }
         );
         setTripData(response.data);
-
+        setIsshow(response.data.is_part)
         if (response.data.code) {
           setIsAdmin(true);
           setcode(response.data.code);
@@ -120,7 +120,7 @@ const Trips_MainPage = () => {
         if (err.response?.status === 403) {
           const is_part = err.response.data.is_part;
           setIsPart(is_part);
-          setIsshow(is_part)
+          setIsshow(is_part);
           setError(
             `This trip is private. Enter the passcode and wait for your request to be accepted!`
           );
