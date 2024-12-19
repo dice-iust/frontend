@@ -78,7 +78,7 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
                 case 'Debts':  
                     return debts.length ? (  
                         debts.map(item => (  
-                            <div key={item.id} className="balance-item" style={{ color: data.has_debt  ? 'red' : 'green' }}>  
+                            <div key={item.id} className="balance-item" style={{ color: data.has_debt  ? 'green' : 'red' }}>  
                                 <p><strong style={{ color: '#5767aa' }}>{item.name} :</strong> ${item.amount}</p>  
                                 <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
                             </div>  
