@@ -24,6 +24,7 @@ const MyRate = () => {
     const [Welltravelphoto,setWelltravelphoto]=useState(null);
     const [Overallphoto,setOverallphoto]=useState(null);
 
+
     useEffect(() => {  
         const fetchRating = async () => {  
             try {  
@@ -86,11 +87,19 @@ const MyRate = () => {
         fetchData_photo();  
     }, []);   
 
- 
-  
-    const normalizedRating_overall = Math.min(Math.max(rating, 0), 5);   
-    const normalizedRating_well_traveled = Math.min(Math.max(rating_well_travelled, 0), 5);  
-    const normalizedRating_good_payed = Math.min(Math.max(rating_good_payed, 0), 5);  
+    const roundRating = (rating) => {  
+        if (rating % 1 <= 0.5) {  
+            return Math.floor(rating); // Round down for x to x.5  
+        } else {  
+            return Math.ceil(rating); // Round up for x.6 to x+1  
+        }  
+    };
+    const roundedRating = roundRating(rating);
+    const roundedRating_well_traveled = roundRating(rating)
+    const roundedRating_good_payed = roundRating(rating)  
+    const normalizedRating_overall = Math.min(Math.max(roundedRating, 0), 5); // Ensure it's between 0 and   
+    const normalizedRating_well_traveled = Math.min(Math.max(roundedRating_well_traveled, 0), 5);  
+    const normalizedRating_good_payed = Math.min(Math.max(roundedRating_good_payed, 0), 5);  
 
     return (  
         <div className="rate">  
