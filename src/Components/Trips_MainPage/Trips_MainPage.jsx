@@ -157,7 +157,6 @@ const Trips_MainPage = () => {
       key: passcode,
       name: name.tourname,
     };
-    console.log(JSON.stringify(requestObj));
 
     try {
       const response = await axios.post(
@@ -217,7 +216,10 @@ const Trips_MainPage = () => {
         </div>
 
         {showrequests ? (
-          <RequestPage />
+          <RequestPage
+            code={tripData.code}
+            travelState={tripData.travels.travel_is.status}
+          />
         ) : (
           showmain && (
             <div className="trip-container">
