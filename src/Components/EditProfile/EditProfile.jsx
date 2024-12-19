@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowLeft, FaEye, FaEdit} from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash, FaEdit} from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import './EditProfile.css'; 
 import profile from "./assets/profile.jpg"
@@ -226,14 +226,14 @@ const validateEmail = (email) => {
             <div className="input-container" style={{ display: showField ? 'flex' : 'none' }}>
               <div  className="input-div">
                 <label  className="form-label">Password</label>
-                <div className='edit-pwd' onClick={togglePasswordVisibility2}><FaEye/></div>
+              <div className='edit-pwd' onClick={togglePasswordVisibility2}>{showPassword2? <FaEye /> : <FaEyeSlash/>}</div>
                 <input type={showPassword2 ? 'text' : 'password' } name="currentPassword" className="form-input" value={formData.currentPassword} onChange={handleChange} />
                   {isValidCurPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
               </div>
 
               <div  className="input-div">
                 <label  className="form-label">Confirm Password</label>
-                <div className='edit-pwd' onClick={togglePasswordVisibility}><FaEye/></div>
+                <div className='edit-pwd' onClick={togglePasswordVisibility}>{showPassword? <FaEye /> : <FaEyeSlash/>}</div>
                 <input type={showPassword ? 'text' : 'password' } name="password" className="form-input" value={formData.password} onChange={handleChange} />
                   {isValidPassword ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>invalid password</div> : null}
                   {errorMessageConfirm ? <div style={{color: "red",marginTop: "3px",marginLeft:"6px", fontSize:"11px"}}>{errorMessageConfirm}</div> : null} 
