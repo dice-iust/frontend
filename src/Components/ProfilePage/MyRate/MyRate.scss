@@ -349,14 +349,31 @@ hr.new1 {
       margin-top: 0px;  
       .star-rating {  
         .fa-star {  
-          color: #22487a; // Default star color  
-          font-size: 24px; // Adjust the size as needed  
-          margin-right: 5px; // Space between stars  
-          &.checked {  
-            color: rgb(234, 110, 12); // Color for filled stars  
-          }  
+            color: #22487a; // Default star color  
+            font-size: 24px; // Adjust the size as needed  
+            margin-right: 5px; // Space between stars  
+    
+            &.checked {  
+                color: rgb(234, 110, 12); // Color for filled stars  
+            }  
+            
+            &.half-checked {  
+                color: #22487a; // Color for half-filled stars  
+                position: relative; // Allow absolute positioning for overlap  
+            }  
+    
+            // Create a visual effect for half star  
+            &.half-checked:after {  
+                content: '\f089'; // Font Awesome half star icon (adjust if necessary)  
+                color: rgb(234, 110, 12); // Default star color for the left half  
+                position: absolute; // Position relative to the half star  
+                left: 0; // Adjust based on your layout  
+                width: 50%; // Only fill half the space  
+                overflow: hidden; // Hide the overflow to achieve the half visual queue  
+                font-size: inherit; // Match the size of the previous star  
+            }  
         }  
-      }  
+    } 
       .tour-route2 {  
         display: flex;  
         align-items: center;  
