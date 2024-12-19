@@ -92,13 +92,10 @@ const ForgotPassword = () => {
         errors.push('Please enter a valid 6-digit verification code.');  
     }  
 
-    // if (!validatePassword(newPassword)) {  
-    //     errors.push('Password must be at least 6 characters long and contain both letters and numbers.');  
-    // }  
-    const passwordError = validatePassword(newPassword);  
-    if (passwordError) {  
-        errors.push(passwordError);  
+    if (!validatePassword(newPassword)) {  
+        errors.push('Must contain letters,numbers and at least 6 symbols');  
     }  
+
     if (newPassword !== confirmPassword) {  
         errors.push('Passwords do not match.');  
     }  
@@ -107,7 +104,7 @@ const ForgotPassword = () => {
         setErrorMessageVerification(errors.filter(error =>   
             error.includes('verification code')).join(' '));  
         setErrorMessagePassword(errors.filter(error =>   
-            error.includes('Password must')).join(' '));  
+            error.includes('Must ')).join(' '));  
         setErrorMessageConfirm(errors.filter(error =>   
             error.includes('Passwords do not match')).join(' '));  
         return; // Stop further execution if there are errors  
@@ -134,7 +131,7 @@ const ForgotPassword = () => {
             const errorMessage = error.response && error.response.data && error.response.data.message   
                 ? error.response.data.message  
                 : 'Failed to reset password, please try again.';  
-                setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
+                setErrorMessageVerification('Incorrect verification code. ');  
                 // Display an alert if verification fails  
         } finally {  
             setLoading(false); // Reset loading state regardless of success or failure  
