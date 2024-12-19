@@ -6,6 +6,7 @@ $shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 $font-color: #333;  
 $hover-bg-color: #f0f0f0;   
 .firstdiv{
+  
 .date-range-picker { 
   .header-container {  
     display: flex;                   
@@ -337,7 +338,8 @@ $hover-bg-color: #f0f0f0;
     display: flex;  
     flex-wrap: nowrap;  
     overflow-x: auto;   
-    gap: 15px;   
+    gap: 15px;
+    max-width : 1250px;   
   }  
 
   .tour-card-filter { 
@@ -347,7 +349,7 @@ $hover-bg-color: #f0f0f0;
     background: white;  
     border-radius: 10px;  
     overflow: hidden;  
-    width: calc(25% - 10px); // Three cards per row with gap  
+    width: 300px; // Three cards per row with gap  
     height: 300px;  
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
