@@ -54,6 +54,7 @@ const RequestsPage = (props) => {
     } catch (error) {
       console.error("Error updating profile:", error);
     }
+    getFormData();
   };
 
   const handleDelete = (username) => {
@@ -77,6 +78,7 @@ const RequestsPage = (props) => {
     } catch (error) {
       console.error("Error updating profile:", error);
     }
+    getFormData();
   };
 
   const toggleShowCode = () => {
