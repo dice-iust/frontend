@@ -109,7 +109,7 @@ const Trips_MainPage = () => {
         );
         setTripData(response.data);
 
-        if (response.data.travels.travel_is.code) {
+        if (response.data.code) {
           setIsAdmin(true);
           setcode(response.data.code);
         }
