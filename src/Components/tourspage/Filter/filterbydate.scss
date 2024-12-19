@@ -297,9 +297,9 @@ $hover-bg-color: #f0f0f0;
 
   .tour-list-filter {  
     display: flex;  
-    flex-wrap: nowrap;  // Change this to nowrap  
-    overflow-x: auto; // Allow horizontal scrolling if the cards overflow  
-    gap: 15px;  // Maintain spacing between cards  
+    flex-wrap: nowrap;  
+    overflow-x: auto;   
+    gap: 15px;   
   }  
 
   .tour-card-filter { 
