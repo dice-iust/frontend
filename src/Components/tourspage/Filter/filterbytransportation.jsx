@@ -16,7 +16,8 @@ import { PiNotePencil } from "react-icons/pi";
 import { BiSolidCar } from "react-icons/bi";
 import { FiFilter } from "react-icons/fi";
 import FilterByDate from './filterbydate.jsx'; 
-import FilterByName from './filterbyname.jsx';  
+import FilterByName from './filterbyname.jsx';
+import { Link } from 'react-router-dom';   
 
 
 
@@ -227,7 +228,14 @@ const TransportPicker = () => {
     
               <div className="tour-list-filter">  
                 {resultData.map((item) => (  
-                  <div key={item.Id} className="tour-card-filter">  
+                   <Link   
+                   key={item.name}   
+                   to={{  
+                     pathname: `/TripsPage/${item.name}`,  
+                     state: { item}
+                   }}   
+                   className="tour-card-filter"  
+                 >   
                     <div className="tour-image-container-filter">  
                       <img  
                         src={item.image_url}  
@@ -269,7 +277,7 @@ const TransportPicker = () => {
                         </p>  
                       </div>  
                     </div>  
-                  </div>  
+                  </Link>  
                 ))}  
               </div>  
             </div> 

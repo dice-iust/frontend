@@ -354,6 +354,7 @@ $hover-bg-color: #f0f0f0;
     transition: transform 0.3s, box-shadow 0.3s;  
     position: relative;  
     border: 2px solid rgba(34, 72, 122, 0.5);  
+    text-decoration: none;
 
     &:hover {  
       box-shadow: 0 8px 30px rgba(34, 72, 122, 0.5);  
@@ -361,6 +362,7 @@ $hover-bg-color: #f0f0f0;
     }  
 
     .tour-image-container-filter {  
+      color: #060606;
       position: relative;  
       height: 168px; // Fixed height for images  
 
@@ -375,6 +377,7 @@ $hover-bg-color: #f0f0f0;
     }  
 
     .tour-info-filter {  
+      color: black;
       padding: 10px;  
       display: flex;  
       flex-direction: column;  
