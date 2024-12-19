@@ -81,8 +81,8 @@ const ForgotPassword = () => {
     };  
 
     const handleSubmitVerification = async (e) => {  
-        e.preventDefault();  
-        setErrorMessageVerification('');  
+    e.preventDefault();  
+    setErrorMessageVerification('');  
     setErrorMessagePassword('');  
     setErrorMessageConfirm('');  
 
@@ -92,10 +92,13 @@ const ForgotPassword = () => {
         errors.push('Please enter a valid 6-digit verification code.');  
     }  
 
-    if (!validatePassword(newPassword)) {  
-        errors.push('Password must be at least 6 characters long and contain both letters and numbers.');  
+    // if (!validatePassword(newPassword)) {  
+    //     errors.push('Password must be at least 6 characters long and contain both letters and numbers.');  
+    // }  
+    const passwordError = validatePassword(newPassword);  
+    if (passwordError) {  
+        errors.push(passwordError);  
     }  
-
     if (newPassword !== confirmPassword) {  
         errors.push('Passwords do not match.');  
     }  
@@ -124,7 +127,7 @@ const ForgotPassword = () => {
                     window.location.href = '/login'; // Redirect after success  
                 }, 2000); // Redirect after success  
             } else {  
-                setErrorMessageVerification('Invalid verification code. Please check your email and try again.');  
+                setErrorMessageVerification('Incorrect verification code. Please check your email and try again.');  
             }  
         } catch (error) {  
             console.error(error);  
@@ -201,7 +204,6 @@ const ForgotPassword = () => {
                         <a href="" onClick={handleBackToEmail} className="back-link">&lt; Back</a>  
                         <div className="title-forgot1">Reset your Password</div>  
                         <div className="title-reset-password">We've sent you a verification code. Check your inbox.</div>  
-                        <div className="changepass-image-container"></div>  
                         {successMessage && <div className="success-message">{successMessage}</div>}  
 
                         <label className="forgot-text">VERIFICATION CODE</label>  
@@ -230,7 +232,7 @@ const ForgotPassword = () => {
                                 value={newPassword}  
                                 onChange={handlePasswordChange}  
                                 className="input-forgot"  
-                                required  
+                                // required  
                             />  
                             <FaLock className='icon-forgot' /> 
                         </div>  
@@ -251,12 +253,9 @@ const ForgotPassword = () => {
                         <FaLock className='icon-forgot' />  
 
                         </div>  
-                        {errorMessageConfirm && (  
-                            <span style={{ color: 'red', margin: 'px 0 0', fontWeight: 'bold', fontSize: '10px' }}>  
+                        <span style={{ color:   'red', margin: '5px', fontWeight: 'bold', fontSize: '11px' }}>  
                                 {errorMessageConfirm}  
-                            </span>  
-                        )}  
-
+                            </span>
                         {error && <span className="error-message">{error}</span>}  
                         <button type="submit" className="submit-button" disabled={loading}>  
                             {loading ? 'Verifying...' : 'Confirm Reset'}  
