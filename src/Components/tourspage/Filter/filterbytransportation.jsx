@@ -16,7 +16,7 @@ import { PiNotePencil } from "react-icons/pi";
 import { BiSolidCar } from "react-icons/bi";
 import { FiFilter } from "react-icons/fi";
 import FilterByDate from './filterbydate.jsx'; 
-import FilterByName from './filterbydate.jsx';  
+import FilterByName from './filterbyname.jsx';  
 
 
 
@@ -137,7 +137,7 @@ const TransportPicker = () => {
         
       } else {  
         setIstrip(true);
-        setTransport(transportationdata);
+        setistransport(transportationdata);
         
       }  
     } catch (error) {  
@@ -218,7 +218,7 @@ const TransportPicker = () => {
                   ) : (  
                     <p>  
                     <span className="no-trips-blue">Your travel options with </span>  
-                    <span className="no-trips-orange2">{istransport} </span> 
+                    <span className="no-trips-orange2-transport">{istransport} </span> 
                     
                   </p>  
                   )  

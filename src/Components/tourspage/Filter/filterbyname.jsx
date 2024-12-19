@@ -137,7 +137,7 @@ const NamePicker = () => {
         
       } else {  
         setIstrip(true);
-        setName(namedata);
+        setisname(namedata);
         
       }  
     } catch (error) {  
@@ -208,15 +208,15 @@ const NamePicker = () => {
                 {istrip != null && (  
                   !istrip ? (  
                     <p>  
-                      <span className="no-trips-blue">No trips available with this name. </span>  
-                      <span className="no-trips-orange" onClick={handleCreateNewTrip}>  
+                      <span className="no-trips-blue-name">No trips available with this name. </span>  
+                      <span className="no-trips-orange-name" onClick={handleCreateNewTrip}>  
                         Create your own unique journey!  
                       </span>  
                     </p>  
                   ) : (  
                     <p>  
-                    <span className="no-trips-blue">Your travel options named </span>  
-                    <span className="no-trips-orange2">{isname} </span> 
+                    <span className="no-trips-blue-name">Your travel options named </span>  
+                    <span className="no-trips-orange2-name">{isname} </span> 
                     
                   </p>  
                   )  

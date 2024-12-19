@@ -200,7 +200,7 @@ const DateRangePicker = () => {
   }  
   
   return (
-    <div className='firstdiv'>
+    <div className="firstdiv">
       {showbydate ? (    
     <div className="date-range-picker">  
       

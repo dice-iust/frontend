@@ -5,7 +5,7 @@ $border-radius: 8px;
 $shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  
 $font-color: #333;  
 $hover-bg-color: #f0f0f0;   
-
+.firstdiv{
 .date-range-picker { 
   .header-container {  
     display: flex;                   
@@ -234,6 +234,36 @@ $hover-bg-color: #f0f0f0;
       margin-right: 600px; // Matches the blue text size for continuity  
       
     } 
+    .no-trips-blue-name {  
+      color: #22487a; // Cleaner blue color  
+      font-weight: bold; // Makes it bolder  
+      font-size: 0.9em; // Slightly larger font for emphasis  
+      margin-right: 3px;
+      margin-left: 3px; // Space between blue and orange text  
+    }  
+    
+    .no-trips-orange-name {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em;
+      margin-right: 600px; // Matches the blue text size for continuity  
+      
+    } 
+    .no-trips-orange-name:hover {  
+      
+      text-decoration: none; /* Optional: removes underline on hover */
+      cursor: pointer;    
+    }  
+    .no-trips-orange2-transport {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em;
+      margin-right: 1050px; // Matches the blue text size for continuity  
+      
+    } 
+    
     .no-trips-orange:hover {  
       
       text-decoration: none; /* Optional: removes underline on hover */
@@ -248,6 +278,14 @@ $hover-bg-color: #f0f0f0;
       font-weight: bold; // Makes the orange text bold  
       font-size: 0.9em;
        // Matches the blue text size for continuity
+      
+    }  
+    .no-trips-orange2-name {  
+      color: #ff6f20; // Vibrant orange for emphasis  
+      text-decoration: underline;  
+      font-weight: bold; // Makes the orange text bold  
+      font-size: 1.1em;
+      margin-right: 1000px; // Matches the blue text size for continuity
       
     }  
     .no-trips-orange3 {  
@@ -615,6 +653,7 @@ $hover-bg-color: #f0f0f0;
             
           }
         }
+      }
       // } 
       
       // Circular Animation Keyframes  
