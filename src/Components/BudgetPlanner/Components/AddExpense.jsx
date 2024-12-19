@@ -25,7 +25,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         amount: "",  
         date: null,  
         description: "",  
-        category: "",  
+        category: "", 
+        img:null, 
     });  
 
     const [participants,setparticipants]=useState([]);
@@ -52,7 +53,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         { name: "Transport", thumbnail: transport },  
         { name: "Other", thumbnail: other },  
     ];   
-    
+    const handleFileChange = (event) => {  
+        const file = event.target.files[0];  
+        if (file) {  
+            setUploadedImage(file);  
+            setFormValue({ ...formValue, img: file }); // Store the file object directly  
+        }  
+    };   
 
     useEffect(() => {  
         const fetchTripData = async () => {  
@@ -110,9 +117,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const handleAddExpense = async (e) => {  
         e.preventDefault();  
         setErrors({});  
-    
+        
         const newErrors = {};  
-    
+        // Error checks  
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
             newErrors.userName = "At least one user must be selected.";  
         }  
@@ -130,33 +137,51 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         if (!formValue.category) {  
             newErrors.category = "Category field cannot be empty.";  
         }  
-    
+        
+        // Return if there are errors  
         if (Object.keys(newErrors).length > 0) {  
             setErrors(newErrors);  
             return;  
         }  
-    
+        
         const formDataImage = new FormData();  
-    
-        formDataImage.append('travel_name', tourname); 
+        formDataImage.append('travel_name', tourname);   
         formDataImage.append('amount', Number(formValue.amount));  
         formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));   
         formDataImage.append('title', formValue.title);  
         formDataImage.append('category', formValue.category);  
         formDataImage.append('payer', formValue.userName);  
-        formDataImage.append('description', formValue.description);  
+        formDataImage.append('description', formValue.description);
+        if (formValue.img) {  
+            formDataImage.append('receipt_image', formValue.img);  
+        } 
     
-        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant =>participant.user_name);  
-        participants.forEach(participant => {  
-            formDataImage.append('participants[]', participant); 
-        }); 
-        console.log(formValue.category);
-        console.log(participants);
+        // Ensure participants are correctly set based on splitType  
+        let participants_front;  
+        if (splitType === "specificUser") {  
+            // Check if selectedUsers is not empty, otherwise handle the case  
+            if (selectedUsers.length === 0) {  
+                console.error("No users selected for specificUser splitType.");  
+                return; // or set an error state  
+            }  
+            participants_front = selectedUsers;  // Assuming selectedUsers is an array of user names  
+        } else {  
+            participants_front = data.map(participant => participant.user_name);  
+        }  
+    
+        // Log of participants for debugging  
+        console.log('Participants:', participants_front);  
+    
+        // Append participants to FormData  
+        if (participants_front && participants_front.length > 0) {  
+            formDataImage.append('participants', participants_front); // Use JSON if the server expects it  
+        }  
+    
+        // Log FormData for debugging  
+        console.log('Form Data being sent:', formDataImage);   
         for (const pair of formDataImage.entries()) {  
             console.log(`${pair[0]}: ${pair[1]}`);  
-        }     
-        console.log('Form Data being sent:', formDataImage); // Log for debug  
-    
+        }
         try {  
             const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
                 headers: {  
@@ -165,14 +190,15 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 },  
                 params: { travel_name: tourname }  
             });  
-            console.log('Response from API:', response.data);
-
-            setimgcategory(response.data.receipt_image );
+            console.log('Response from API:', response.data);  
+            
+            setimgcategory(response.data.receipt_image);  
             resetForm();  // Reset form after successful submission  
             handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
-            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              setError(error.response?.data.detail || 'An error occurred. Please try again.');  
+            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              
+            setError(error.response?.data.detail || 'An error occurred. Please try again.');  
         }  
     };
     const resetForm = () => {  
@@ -215,7 +241,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             <form onSubmit={handleAddExpense} className="form-planner">  
                 <div className="upload-image-section">  
                     <img  
-                        src={uploadedImage || addBill}  
+                        src={formValue.img ? URL.createObjectURL(formValue.img) : addBill} 
                         alt="Uploaded"  
                         className="smaller-image-planner"  
                     />  
@@ -226,8 +252,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         <input  
                             type="file"  
                             id="file-upload"  
-                            onChange={handleChange}  
+                            onChange={handleFileChange}  
                             style={{ display: 'none' }}  
+                            
                         />  
                     </div>  
 
