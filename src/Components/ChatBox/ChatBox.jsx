@@ -10,6 +10,14 @@ const ChatBox = ({tourname}) => {
   const [message, setMessage] = useState("");  
   const ably =new Ably.Realtime('w9hDjQ.bDJwDg:nV7gxEThhWT4clJqHv9K3syB3SQCDrkcgaoChiWmRQY');
   const channel =ably.channels.get(`travel_${tourname}`);
+  channel.publish('chat', { message: message, user_name: "dorsa" }, function (err) {
+    if (err) {
+        console.log('Unable to publish message:', err);
+    } else {
+        console.log('Message published successfully');
+        message.value = '';
+    }
+});
   const [error, setError] = useState(null);  
   const [loading, setLoading] = useState(true);  
   ably.connection.on('connected', () => {  
