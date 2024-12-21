@@ -124,11 +124,12 @@
   .star {  
     margin: 0 5px; /* Add side margin between stars */  
     font-family: "Font Awesome 5 Free";  
-    font-size: 30px; /* Adjust star size for better appearance */  
-    color: #fff; /* Default color for stars - adjust if necessary */  
+    font-size: 30px; /* Adjust star size */  
+    color: #fff; /* Default star color */  
     transition: transform 0.3s, color 0.3s;  
+    position: relative; /* Make parent relative for absolute children */  
 
-    // Position stars in a circular layout  
+    /* Position stars in a circular layout */  
     &:nth-child(1) { transform: translate(100%, -40%) rotate(0deg); }  
     &:nth-child(2) { transform: translate(30%, -120%) rotate(72deg); }  
     &:nth-child(3) { transform: translate(0%, -170%) rotate(144deg); }  
@@ -138,26 +139,34 @@
     &.filled {  
         color: rgb(234, 110, 12); /* Golden color for filled stars */  
     }  
-
+   
     &.half-filled {  
-      color: rgb(234, 110, 12); /* Golden color for filled stars */  
-      position: relative;
+        color: #fff;  
+
         &::after {  
-            content: '\f005'; /* Font Awesome solid star for filled star */  
-            position: absolute;  
-            left:0; 
-            width: 50%; /* Ensure the half star takes full height and width */  
-            overflow: hidden;
-        }  
+          content: ''; /* Need this for background image to work */  
+          background-image: url('../assets/hlf.png'); /* Adjust this path */  
+          background-size: cover; /* Ensure image covers the area */  
+          width: 50%; /* Show half */  
+          height: 105%; /* Match height of the star */  
+          position: absolute;  
+          left: 0;  
+          margin-top:7px;
+          margin-left: 14px;
+          top: 0; /* Align top to parent */  
+          overflow: hidden;  
+          transform: rotate(-145deg);   
+
+      }  
     }  
 
     &:before {  
-        content: '\f005'; /* Font Awesome solid star for the regular star */  
+        content: '\f005'; /* Font Awesome solid star */  
         font-weight: 900;   
-        line-height: 1; /* Make sure this allows for correct positioning */  
+        line-height: 1; /* For correct positioning */  
     }  
 
-    // Star hover effect  
+    /* Star hover effect */  
     &:hover {  
         color: rgb(234, 110, 12);   
         cursor: pointer;  
@@ -340,14 +349,31 @@ hr.new1 {
       margin-top: 0px;  
       .star-rating {  
         .fa-star {  
-          color: #22487a; // Default star color  
-          font-size: 24px; // Adjust the size as needed  
-          margin-right: 5px; // Space between stars  
-          &.checked {  
-            color: rgb(234, 110, 12); // Color for filled stars  
-          }  
+            color: #22487a; // Default star color  
+            font-size: 24px; // Adjust the size as needed  
+            margin-right: 5px; // Space between stars  
+    
+            &.checked {  
+                color: rgb(234, 110, 12); // Color for filled stars  
+            }  
+            
+            &.half-checked {  
+                color: #22487a; // Color for half-filled stars  
+                position: relative; // Allow absolute positioning for overlap  
+            }  
+    
+            // Create a visual effect for half star  
+            &.half-checked:after {  
+                content: '\f089'; // Font Awesome half star icon (adjust if necessary)  
+                color: rgb(234, 110, 12); // Default star color for the left half  
+                position: absolute; // Position relative to the half star  
+                left: 0; // Adjust based on your layout  
+                width: 50%; // Only fill half the space  
+                overflow: hidden; // Hide the overflow to achieve the half visual queue  
+                font-size: inherit; // Match the size of the previous star  
+            }  
         }  
-      }  
+    } 
       .tour-route2 {  
         display: flex;  
         align-items: center;  

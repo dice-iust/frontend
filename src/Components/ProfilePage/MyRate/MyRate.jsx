@@ -24,6 +24,7 @@ const MyRate = () => {
     const [Welltravelphoto,setWelltravelphoto]=useState(null);  
     const [Overallphoto,setOverallphoto]=useState(null);  
 
+
     useEffect(() => {  
         const fetchRating = async () => {  
             try {  
@@ -86,10 +87,27 @@ const MyRate = () => {
         fetchData_photo();  
     }, []);   
 
-    const normalizedRating_overall = Math.min(Math.max(rating, 0), 5);   
-    const normalizedRating_well_traveled = Math.min(Math.max(rating_well_travelled, 0), 5);  
-    // Continue from normalizedRating_good_payed  
-    const normalizedRating_good_payed = Math.min(Math.max(rating_good_payed, 0), 5);  
+    const roundRating = (x) => {  
+        if (Number.isInteger(x)) {  
+            return x; // Return unchanged if it is an integer  
+        }  
+    
+        // Calculate the integer part  
+        const intPart = Math.floor(x); // Get the integer part of x  
+    
+        // Determine whether to round to x + 0.5 or to x + 1  
+        if (x >= intPart + 0.5) {  
+            return intPart + 1; // Round up to x + 1  
+        } else {  
+            return intPart + 0.5; // Round down to x + 0.5  
+        }   
+    };
+    const roundedRating = roundRating(rating);
+    const roundedRating_well_traveled = roundRating(rating_well_travelled)
+    const roundedRating_good_payed = roundRating(rating_good_payed)  
+    const normalizedRating_overall = Math.min(Math.max(roundedRating, 0), 5); // Ensure it's between 0 and   
+    const normalizedRating_well_traveled = Math.min(Math.max(roundedRating_well_traveled, 0), 5);  
+    const normalizedRating_good_payed = Math.min(Math.max(roundedRating_good_payed, 0), 5);  
 
     return (  
         <div className="rate">  
@@ -100,7 +118,7 @@ const MyRate = () => {
                         <div className='circle-in'>  
                             {Array.from({ length: 5 }, (_, index) => {  
                                 const isFilled = index < Math.floor(normalizedRating_good_payed);   
-                                const isHalfFilled = index === Math.floor(normalizedRating_good_payed) && (normalizedRating_good_payed % 1) > 0;   
+                                const isHalfFilled = index === Math.floor(normalizedRating_good_payed) && (normalizedRating_good_payed % 1) >0;   
                                 return (  
                                     <span  
                                         className={`star ${isFilled ? 'filled' : ''} ${isHalfFilled ? 'half-filled' : ''}`}  
@@ -125,7 +143,7 @@ const MyRate = () => {
                         <div className="circle-in">  
                             {Array.from({ length: 5 }, (_, index) => {  
                                 const isFilled = index < Math.floor(normalizedRating_overall);   
-                                const isHalfFilled = index === Math.floor(normalizedRating_overall) && (normalizedRating_overall % 1) > 0;   
+                                const isHalfFilled = index === Math.floor(normalizedRating_overall) && (normalizedRating_overall % 1) >0;   
                                 return (  
                                     <span  
                                         className={`star ${isFilled ? 'filled' : ''} ${isHalfFilled ? 'half-filled' : ''}`}  
@@ -148,7 +166,7 @@ const MyRate = () => {
                         <div className="circle-in">  
                             {Array.from({ length: 5 }, (_, index) => {  
                                 const isFilled = index < Math.floor(normalizedRating_well_traveled);   
-                                const isHalfFilled = index === Math.floor(normalizedRating_well_traveled) && (normalizedRating_well_traveled % 1) > 0;   
+                                const isHalfFilled = index === Math.floor(normalizedRating_well_traveled) && (normalizedRating_well_traveled % 1)>= 0.5;   
                                 return (  
                                     <span  
                                         className={`star ${isFilled ? 'filled' : ''} ${isHalfFilled ? 'half-filled' : ''}`}  
@@ -200,20 +218,33 @@ const MyRate = () => {
                                             Well-Travel rate :    
                                         </p>  
                                         <div className="star-rating">  
-                                            {[...Array(5)].map((_, index) => (  
-                                                <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.sleep_rate, 0), 5) ? 'checked' : ''}`}></span>  
-                                            ))}  
+                                        {[...Array(5)].map((_, index) => {  
+                                            const rating = Math.min(Math.max(tour.rates.sleep_rate, 0), 5);  
+                                            const filledStars = Math.floor(rating); // whole stars  
+                                            const halfStar = rating - filledStars >= 0.5; // check if there's a half star  
+
+                                            return (  
+                                                <span key={index} className={`fa fa-star ${index < filledStars ? 'checked' : (halfStar && index === filledStars ? 'half-checked' : '')}`}></span>  
+                                            );  
+                                        })}  
                                         </div>  
                                     </div>  
                                     <div className="tour-details2">  
                                         <p className="tour-route2" style={{marginTop:"9px",marginRight:"30px",fontSize:"16px",fontWeight:"bold",color:"#22487a"}}>  
                                             Good-Pay rate :    
-                                        </p>  
+                                             </p>  
                                         <div className="star-rating">  
-                                            {[...Array(5)].map((_, index) => (  
-                                                <span key={index} className={`fa fa-star ${index < Math.min(Math.max(tour.rates.money_rate, 0), 5) ? 'checked' : ''}`}></span>  
-                                            ))}  
-                                        </div>  
+                                        {[...Array(5)].map((_, index) => {  
+                                            const rating = Math.min(Math.max(tour.rates.money_rate, 0), 5);  
+                                            const filledStars = Math.floor(rating); // whole stars  
+                                            const halfStar = rating - filledStars >= 0.5; // check if there's a half star  
+
+                                            return (  
+                                                <span key={index} className={`fa fa-star ${index < filledStars ? 'checked' : (halfStar && index === filledStars ? 'half-checked' : '')}`}></span>  
+                                            );  
+                                        })}   
+                                        </div> 
+                                        
                                     </div>   
                                 </div>  
                             </div>  
