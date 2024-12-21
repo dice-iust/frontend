@@ -17,8 +17,10 @@ import rent from "../assets/rent.jpg";
 import restaurant from "../assets/restaurant.jpg";  
 import shopping from "../assets/shopping.jpg";  
 import transport from "../assets/transport.jpg";  
-import other from "../assets/other.jpg";  
+import other from "../assets/other.jpg"; 
+import Trips_MainPage from "../../Trips_MainPage/Trips_MainPage.jsx";
 const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
+
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
@@ -29,7 +31,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         img:null, 
     });  
     const today = dayjs()
-
+    const [planner,setplanner]=useState(false);
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
@@ -201,7 +203,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             
             setimgcategory(response.data.receipt_image);  
             resetForm();  // Reset form after successful submission  
-            handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
+            //  handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
             console.error("Error adding new trip:", error.response ? error.response.data : error.message);              
@@ -214,7 +216,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         setErrors({});  
         setSplitType("equal");  
         setSelectedUsers([]);  
-        setCategoryImage(null);   
+        setCategoryImage(null);
+        setplanner(true);
+        <Trips_MainPage planner={planner}/>
+        setplanner(false);
     };  
 
     const handleSplitSelection = (type) => {  
