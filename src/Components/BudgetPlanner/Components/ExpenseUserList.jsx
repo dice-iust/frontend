@@ -23,9 +23,10 @@ const NewExpense = (props ) => {
   
   return (  
     <>     
-    <div className="expense-list-container"> {/* Use this container for the grid layout */}  
+    {/* Use this container for the grid layout */}  
 
-      <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
+      <div className="expense-list-container1">  
+      <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>
         <div className="expense-box profile-expense">  
         {cat && (  
             <img src={cat} alt="Rectangle Icon" className="small-rectangle-image" />  
@@ -53,7 +54,7 @@ const NewExpense = (props ) => {
       </div>  
 </div>
       {showDetails && (  
-        
+         <div className="expense-list-container1">
         <div className="details-box"> 
         {users && users.length > 0 && (  
           <div className="users-container">  
@@ -72,7 +73,7 @@ const NewExpense = (props ) => {
             </div>  
             <img src={factorImage} alt="Detail Illustration" className="rectangle-image" />   
           </div>
-        </div>  
+        </div>  </div>
       )}  
 
     </>  

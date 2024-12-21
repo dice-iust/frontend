@@ -5,29 +5,21 @@
   --textColor: #eee;  
   --font-family: OpenSans;  
 }  
-// .expense-list-container { 
-//   justify-content: space-between; 
-//   flex-direction: row;
-//   align-items: flex-start;
-//   position: relative;
-//   display: grid; // Use grid layout  
-//   grid-template-columns: repeat(2, 2fr); // Two equal columns  
-//   gap: 16px; // Space between cards  
-//   padding: 16px; // Space around the container  
-
-//   @media (max-width: 768px) {  
-//     grid-template-columns: 1fr; // Stack on smaller screens  
-//   }  
-//}  
-
-.newExpense-box {  
-  width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */
-  // grid-template-columns: repeat(2, 2fr); // Two equal columns  
-  
+.expense-list-container1{ 
   display: flex;  
-  // position: relative;
+  flex-wrap: wrap; /* Allow wrapping of the cards */  
+  // flex-direction: row;
+  justify-content: flex-start; /* Align items to the start, allows two cards in a row */  
+  width: 100%; /* Full width of the parent container */ 
+}  
+.newExpense-box {  
+  // width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */
+  // grid-template-columns: repeat(2, 2fr); // Two equal columns  
+  width: calc(40% - 0px);
+  display: flex;  
+  position: relative;
   flex-direction: column;  
-  // align-items: flex-start;  
+  align-items: flex-start;  
   justify-content: space-between;  
   box-shadow: rgba(34, 72, 122, 0.24) 0px 3px 8px;  
   border-radius: 12px;  
@@ -35,41 +27,42 @@
   margin-top: 16px;  
   margin-left: 30px;  
   background-color: #fff;  
+  margin-bottom: 10px;
 
-  .profile-expense {  
-    display: flex;  
-    justify-content: space-between;  
-    width: 100%;  
-    align-items: center;  
+  
+}  
+.profile-expense {  
+  display: flex;  
+  justify-content: space-between;  
+  width: 100%;  
+  align-items: center;  
 
-    .title-expense {  
-      font-weight: bold;  
-      color: var(--mainColor);  
-      font-size: 1.25rem;  
-      margin-bottom: 0;
-      flex-grow: 1; /* Allow title to take up remaining space */  
-      text-align: left; /* Ensure text is aligned to the left */  
-    }  
-
-    .amount {  
-      text-align: right;  
-      font-size: 1.5rem;  
-      color: var(--secondaryColor);  
-    }  
+  .title-expense {  
+    font-weight: bold;  
+    color: var(--mainColor);  
+    font-size: 1.25rem;  
+    margin-bottom: 0;
+    flex-grow: 1; /* Allow title to take up remaining space */  
+    text-align: left; /* Ensure text is aligned to the left */  
   }  
 
-  .paid-by {  
-    color: #22487a;  
-    margin-top: 8px;  
-    text-align: left;  
+  .amount {  
+    text-align: right;  
+    font-size: 1.5rem;  
+    color: var(--secondaryColor);  
   }  
 }  
 
+.paid-by {  
+  color: #22487a;  
+  margin-top: 8px;  
+  text-align: left;  
+}  
 .newExpense-box-showDetails {  
   margin-left: 30px;  
   display: flex;  
   flex-direction: column;  
-  width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */  
+  width: calc(40% - 10px);
   border: 1px solid var(--mainColor);  
   border-bottom: 0;  
   box-shadow: none;  
@@ -114,7 +107,7 @@
 }  
 
 .details-box {  
-  width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */  
+  width: calc(40% - 10px);
   margin-left: 30px;  
   display: flex;  
   flex-direction: column;  

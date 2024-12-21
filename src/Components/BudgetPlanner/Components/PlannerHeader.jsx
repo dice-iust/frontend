@@ -13,7 +13,7 @@ const BudgetPlanner2 = () => {
           <img src={headerImg} alt="header" className="header-image" />  
         
           
-          <div className="trip-title-planner">Summer Trip</div>  
+          <div className="trip-title-planner">Check Trip</div>  
           
           <div className="trip-planner-image-container">  
             <img src={tripImg} alt="trip"  />  

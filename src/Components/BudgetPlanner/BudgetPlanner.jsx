@@ -147,6 +147,7 @@ const BudgetPlanner = ({tourname}) => {
                     />  
                 )}  
 
+<div className=".expense-list-container1 ">
                 {showExpenseList && data.map((item) => (  
                     <ExpenseUserList  
                         payer={item.payer}  
@@ -163,6 +164,7 @@ const BudgetPlanner = ({tourname}) => {
                         tourname={tourname} 
                     />  
                 ))}  
+                </div>
 
                 {/* Render Balance List when toggled */}  
                 {showBalanceList && <BalanceList tourname={tourname}  balances={balances} setBalances={setBalances} />}  
