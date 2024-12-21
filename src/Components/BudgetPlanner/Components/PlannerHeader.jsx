@@ -12,12 +12,11 @@ const BudgetPlanner2 = () => {
         <div className="planner-image-container">  
           <img src={headerImg} alt="header" className="header-image" />  
         
-          <img src={BudgetPlanner} alt="planner" className="planner-image" />  
           
           <div className="trip-title-planner">Summer Trip</div>  
           
           <div className="trip-planner-image-container">  
-            <img src={tripImg} alt="trip" className="trip-planner-image" />  
+            <img src={tripImg} alt="trip"  />  
           </div>  
         </div> 
         
