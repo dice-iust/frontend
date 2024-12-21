@@ -50,11 +50,18 @@ const RequestsPage = (props) => {
             "Content-Type": "application/json",
           },
         }
+        
       );
+      setAllRequests((prevRequests) =>  
+        prevRequests.filter(  
+          (request) => request.user_request.user_name !== username  
+        )  
+      );  
     } catch (error) {
       console.error("Error updating profile:", error);
     }
     getFormData();
+    
   };
 
   const handleDelete = (username) => {
@@ -75,6 +82,11 @@ const RequestsPage = (props) => {
           },
         }
       );
+      setAllRequests((prevRequests) =>  
+        prevRequests.filter(  
+          (request) => request.user_request.user_name !== username  
+        )  
+      );  
     } catch (error) {
       console.error("Error updating profile:", error);
     }
