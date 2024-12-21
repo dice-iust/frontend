@@ -22,7 +22,7 @@ import Trips_MainPage from "../../Trips_MainPage/Trips_MainPage.jsx";
 import { useNavigate,useLocation } from 'react-router-dom';  
 const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
     const navigate = useNavigate(); 
-    const location = useLocation(); 
+ 
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
@@ -206,6 +206,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             
             setimgcategory(response.data.receipt_image);  
             resetForm();  // Reset form after successful submission  
+            navigate(`/TripsPage/${tourname}`, { state: {  showmain:false,showplanner:true} });
             //  handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
@@ -220,10 +221,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         setSplitType("equal");  
         setSelectedUsers([]);  
         setCategoryImage(null);
-        navigate(`/TripsPage/${tourname}`, { state: {  showmain:false,showplanner:true} });
-        setplanner(true);
-        <Trips_MainPage planner={planner}/>
-        setplanner(false);
+        
     };  
 
     const handleSplitSelection = (type) => {  

@@ -20,13 +20,19 @@ import { IoAddOutline } from "react-icons/io5";
 import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
 import QApage from "../ChatBox/ChatBox.jsx";
 import { FaRegHand } from "react-icons/fa6";
+ 
 
 const Trips_MainPage = () => {
-  const [showmain, setshowmain] = useState(true);
-  const [showplanner, setShowplanner] = useState(false);
+  const location = useLocation();
   const [showQA, setShowQA] = useState(false);
   const [showrequests, setShowrequests] = useState(false);
-
+  const [showmain, setshowmain] = useState(() => {  
+    if (location.state && location.state.showmain !== undefined) {  
+      return location.state.showmain;  
+    }  
+    return true; 
+  });    
+  const [showplanner, setShowplanner] = useState(location.state?.showplanner || false);    
   const name = useParams();
 
   const handlemain = () => {
@@ -57,7 +63,7 @@ const Trips_MainPage = () => {
     setShowrequests(true);
   };
 
-  const location = useLocation();
+  
   const user = {
     profilePicture:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToiRnzzyrDtkmRzlAvPPbh77E-Mvsk3brlxQ&s",

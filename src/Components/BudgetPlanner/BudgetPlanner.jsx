@@ -19,49 +19,6 @@ const BudgetPlanner = ({tourname}) => {
         setIsOpen(prevState => !prevState);  
     };  
 
-  //   const fetchExpenses = async () => {  
-  //     try {  
-  //         const response = await axios.get("https://pythonanywhere.com/planner/allpay/", {  
-  //             headers: {  
-  //                 'Content-Type': 'application/json',  
-  //                 'Authorization': localStorage.getItem("token"), // Set your token here  
-  //                 'travel_name': travelName // Send travel_name  
-  //             },  
-  //         });  
-
-  //         const expenses = response.data.pays.map(pay => ({  
-  //             title: pay.title,  
-  //             username: pay.created_by.username,  
-  //             description: pay.description,  
-  //             amount: pay.amount,  
-  //             date: new Date().toISOString(),   
-  //             id: Math.random() // or another unique ID logic  
-  //         }));  
-  //         setExpData(expenses);  
-  //     } catch (error) {  
-  //         console.error('Error fetching expenses:', error);  
-  //     }  
-  // };  
-
-  // // Function to post a new expense  
-  // const postExpense = async (newExpense) => {  
-  //     try {  
-  //         await axios.post("https://pythonanywhere.com/planner/addpay/", newExpense, {  
-  //             headers: {  
-  //                 'Content-Type': 'application/json',  
-  //                 'Authorization': localStorage.getItem("token"),  
-  //                 'travel_name': travelName, // Pass travel name again if needed  
-  //             },  
-  //         });  
-
-  //         // After posting, fetch updated expenses  
-  //         fetchExpenses(); // Retrieve the updated expense list  
-  //         setShowAddExpense(false); // Close add expense form  
-  //     } catch (error) {  
-  //         console.error('Error posting expense:', error);  
-  //     }  
-  // };  
- 
   const [loading, setLoading] = useState(true);  
   const [error, setError] = useState(null);   
   const [data, setData] = useState([]);  
