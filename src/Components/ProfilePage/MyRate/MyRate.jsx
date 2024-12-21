@@ -87,12 +87,20 @@ const MyRate = () => {
         fetchData_photo();  
     }, []);   
 
-    const roundRating = (rating) => {  
-        if (rating % 1 <= 0.5) {  
-            return Math.floor(rating); // Round down for x to x.5  
-        } else {  
-            return Math.ceil(rating); // Round up for x.6 to x+1  
+    const roundRating = (x) => {  
+        if (Number.isInteger(x)) {  
+            return x; // Return unchanged if it is an integer  
         }  
+    
+        // Calculate the integer part  
+        const intPart = Math.floor(x); // Get the integer part of x  
+    
+        // Determine whether to round to x + 0.5 or to x + 1  
+        if (x >= intPart + 0.5) {  
+            return intPart + 1; // Round up to x + 1  
+        } else {  
+            return intPart + 0.5; // Round down to x + 0.5  
+        }   
     };
     const roundedRating = roundRating(rating);
     const roundedRating_well_traveled = roundRating(rating_well_travelled)
