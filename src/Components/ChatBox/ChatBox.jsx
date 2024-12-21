@@ -12,6 +12,17 @@ const ChatBox = ({tourname}) => {
   const channel =ably.channels.get(`travel_${tourname}`);
   const [error, setError] = useState(null);  
   const [loading, setLoading] = useState(true);  
+  ably.connection.on('connected', () => {  
+    console.log('Successfully connected to Ably');  
+  });  
+
+  ably.connection.on('disconnected', () => {  
+      console.log('Disconnected from Ably');  
+  });  
+
+  ably.connection.on('failed', (error) => {  
+      console.log('Failed to connect to Ably:', error);  
+  });
   channel.subscribe('chat',(message)=>{
     console.log('Received: ',message.data);
   });
