@@ -147,7 +147,7 @@ const BudgetPlanner = ({tourname}) => {
                     />  
                 )}  
 
-<div className=".expense-list-container1 ">
+            <div className=".expense-list-container1 ">
                 {showExpenseList && data.map((item) => (  
                     <ExpenseUserList  
                         payer={item.payer}  

@@ -9,13 +9,13 @@
   display: flex;  
   flex-wrap: wrap; /* Allow wrapping of the cards */  
   // flex-direction: row;
-  justify-content: flex-start; /* Align items to the start, allows two cards in a row */  
+  justify-content: space-between; /* Align items to the start, allows two cards in a row */  
   width: 100%; /* Full width of the parent container */ 
 }  
 .newExpense-box {  
   // width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */
   // grid-template-columns: repeat(2, 2fr); // Two equal columns  
-  width: calc(40% - 0px);
+  width: 100%;
   display: flex;  
   position: relative;
   flex-direction: column;  
@@ -62,7 +62,7 @@
   margin-left: 30px;  
   display: flex;  
   flex-direction: column;  
-  width: calc(40% - 10px);
+  width:100%;
   border: 1px solid var(--mainColor);  
   border-bottom: 0;  
   box-shadow: none;  
@@ -107,7 +107,7 @@
 }  
 
 .details-box {  
-  width: calc(40% - 10px);
+  width: 100%;
   margin-left: 30px;  
   display: flex;  
   flex-direction: column;  
