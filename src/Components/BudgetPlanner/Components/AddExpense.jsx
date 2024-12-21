@@ -3,7 +3,7 @@ import "./AddExpense.scss";
 import axios from "../../../api/axios.js";  
 import addBill from "../assets/addbill.png";  
 import { MdAddPhotoAlternate, MdArrowDropDown } from "react-icons/md";  
-import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu } from "@mui/material";  
+import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu,FormHelperText  } from "@mui/material";  
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';  
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';  
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';  
@@ -122,14 +122,23 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         const newErrors = {};  
         // Error checks  
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
-            newErrors.userName = "At least one user must be selected.";  
+            newErrors.selectedUsers = "At least one user must be selected.";  
         }  
+        if (!formValue.userName) {  
+            newErrors.userName = "Please select who has paid.";  
+        }   
         if (!formValue.title) {  
             newErrors.title = "Title field cannot be empty.";  
         }  
-        if (!formValue.amount || isNaN(formValue.amount) || Number(formValue.amount) <= 0) {  
-            newErrors.amount = "Amount must be a positive number.";  
+        if (!formValue.amount )
+            {  
+            newErrors.amount = "Amount field cannot be empty.";  
         }  
+        if(isNaN(formValue.amount) || Number(formValue.amount) <= 0) 
+        {
+            newErrors.amount = "Amount must be a positive number."
+
+        }
         if (!formValue.date) {  
             newErrors.date = "Date field cannot be empty.";  
         }  
@@ -283,14 +292,15 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                         <input  
                                             type="checkbox"  
                                             checked={selectedUsers.includes(user.user_name)}  
-                                            onChange={() => handleUserSelection(user.user_name)}  
+                                            onChange={() => handleUserSelection(user.user_name)} 
+                                            
                                         />  
                                         {user.user_name}  
-                                    {errors.userName && <div className="error-message-planner ">{errors.category}</div>}    
                                     </label>
                                 </div>  
                             ))}  
                             </div>                          
+                            {errors.selectedUsers && <span style={{ color: 'red',fontSize: '12px', marginTop: '5px'}}className="error-message-planner">{errors.selectedUsers}</span>}  
 
                         </div>  
                     )}  
@@ -328,7 +338,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 label="Category"  
                                 value={formValue.userName}  
                                 onChange={handleChange}  
-                                error={!!errors.category} 
+                                error={!!errors.userName} 
                                 helperText={errors.userName}  
                             >  
                                 <MenuItem value="">  
@@ -339,7 +349,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                         {category.user_name}  
                                     </MenuItem>  
                                 ))}  
-                            </Select>  
+                            </Select>                         
+                            <FormHelperText className="error-message-planner">{errors.userName}</FormHelperText>  
                         </FormControl>     
                     </div>  
                     <div className="formitem">
@@ -351,7 +362,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             value={formValue.title}  
                             onChange={handleChange}  
                             error={!!errors.title}  
-                            helperText={errors.title}
+                            helperText={errors.title && <span className="error-message-planner">{errors.title}</span>}  
+
                             className="title-item"                       
                             // style={{ marginRight: '20px',padding:"10px", textAlign:"center"}}  
 
@@ -368,8 +380,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             variant="outlined"  
                             value={formValue.amount}  
                             onChange={handleChange}  
-                            error={!!errors.amount}  
-                            helperText={errors.amount}  
+                            error={!!errors.amount }  
+                            helperText={errors.amount &&  <span className="error-message-planner">{errors.amount}</span>}  
                             className="amount-item"                       
 
                         />  
@@ -383,10 +395,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 label="Date"  
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
-                                renderInput={(params) => (  
-                                    <TextField {...params} error={!!errors.date} helperText={errors.date}   />  
-                                                     
-                                )}  
+                                slotProps={{  
+                                    textField: {  
+                                        error: !!errors.date,  
+                                        className="error-message-planner"  ,
+                                        helperText: errors.date  
+                                    },  
+                                }}    
                             />  
                         </LocalizationProvider>  
                     </div> 
