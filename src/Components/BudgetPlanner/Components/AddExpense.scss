@@ -1,89 +1,293 @@
-
 :root {  
-  --mainColor: #22487a;  
-  --mainColorLight: #5767aa;  
-  --secondaryColor: #ea7d29;  
-  --textColor: #eee;  
-  --font-family: OpenSans;  
+    --mainColor: #22487a;  
+    --mainColorLight: #5767aa;  
+    --secondaryColor: #ea7d29;  
+    --textColor: #eee;  
+    --font-family: 'Open Sans', sans-serif;  
 }  
+
 .main-add-div {  
-    background-color: #ffffff; /* Keep the background white for clarity */  
+    background-color: #fff;  
     border-radius: 12px;  
     border: 1px solid #e0e0e0;  
     width: 99%;  
-    padding: 20px; /* Increased padding for better spacing */  
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */  
-    transition: box-shadow 0.3s ease; /* Transition for hover effect */   
-    margin-top: 15px;   
+    padding-left: 60px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+    transition: box-shadow 0.3s ease;  
+    margin-top: 15px;  
+    // margin-left: 20px;
 
     &:hover {  
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */  
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
     }  
 
-    form {  
+    .form-planner {  
         display: flex;  
-        flex-direction: column; /* Layout for vertical stacking */  
-        gap: 15px; /* Space between different form items */  
+        flex-direction: column;  
+        gap: 10px;  
 
-        /* Adding rows for specific items */  
-        .row {  
-            display: flex;   
-            flex-wrap: wrap;
-            justify-content: space-between; /* Space items out evenly */  
-            gap: 15px; /* Space between items in the row */  
-            width: 100%; /* Ensure full width for row items */  
-        }  
-        
-        input[type="text"], /* Apply styles to text inputs */  
-        input[type="number"],  
-        input[type="date"],   
-        textarea {  
-            width: 100%; /* Allow input fields to take full width within their container */  
-            padding: 10px; /* Padding for better touchability */  
-            border: 1px solid var(--mainColor); /* Light border */  
-            border-radius: 6px; /* Rounder corners */  
-            font-size: 16px; /* Improve readability */  
-            transition: border-color 0.3s ease; /* Transition for border color */  
+        h2 {  
+            color: var(--mainColor);  
+            margin-bottom: 10px;  
+            font-size: 24px;  
         }  
 
-        /* Resize inputs to take half the width in their row */  
-        .row .form-item {  
-            flex: 1; /* Allow items to expand and fill available space */  
-            min-width: 0; /* Prevent overflow on small screens */  
-        }  
+        .upload-image-section {  
+            display: flex;  
+            flex-direction: row;  
+            align-items: flex-start;  
+            justify-content: flex-start; 
 
-        /* Description box styles */  
-        textarea { 
-            height: 50px; /* Set a fixed height */  
-            resize: none; /* Disable resizing by the user */  
-        }  
+            flex-wrap: wrap;  
+            padding: 0;  
+            margin: 0;
+            .smaller-image-planner {  
+                object-fit: cover;  
+                margin-bottom: 10px;    
+                margin-right: 40px; 
+                width: 154px;  
+                height: 136px;  
+                border-radius: 10px;  
+                object-fit: cover;  
+                object-fit: contain;  
+            }  
 
-        input[type="text"]:focus,  
-        input[type="number"]:focus,  
-        input[type="date"]:focus,  
-        textarea:focus {  
-            border-color: #4a90e2; /* Change border color on focus */  
-            outline: none; /* Remove default outline */  
-        }  
-        .error-message {  
-            color: red; /* Customize the color of your error message */  
-            min-height: 20px; /* Reserve space to prevent layout shifts */  
-            margin-top: 5px; /* Add a little space above the error message */
-            font-size: 13px;  
-            font-family: var(--font-family);
-        }  
-        button {  
-            padding: 10px 20px; /* Add padding for buttons */  
-            background-color: var(--mainColor); /* Primary button color */  
-            color: white; /* Text color */  
-            border: none; /* Remove default button border */  
-            border-radius: 6px; /* Round corners for buttons */  
-            cursor: pointer; /* Pointer cursor for buttons */  
-            transition: background-color 0.3s ease; /* Transition for background color */  
+            .button-container-planner {  
+                position: relative;  
 
-            &:hover {  
-                background-color: var(--secondaryColor); /* Darker shade on hover */  
+                .file-upload-button-planner {  
+                    position: absolute;  
+                    bottom: -137px;  
+                    right: 10px;  
+                    padding: 10px 20px;  
+                    color: white;  
+                    background-color: var(--mainColor);  
+                    border: none;  
+                    border-radius: 5px;  
+                    cursor: pointer;  
+                    transition: background-color 0.3s;  
+
+                    &:hover {  
+                        background-color: var(--secondaryColor);  
+                    }  
+                }  
+
+                input[type='file'] {  
+                    display: none;  
+                }  
+            }  
+        }
+        .split-selection-row {  
+            display: flex;  
+            // gap: 5px;  
+            flex-direction: column;
+            margin-right: 20px;
+            margin-left: 80px;
+
+            .split-button {  
+                flex: 1;  
+                margin-top: 20px;  
+                padding: 10px;  
+                background-color: var(--mainColor);  
+                color: white;  
+                border: none;  
+                border-radius: 6px;  
+                cursor: pointer;  
+                transition: background-color 0.3s;  
+
+                &.active {  
+                    background-color: var(--secondaryColor);  
+                }  
+
+                &:hover {  
+                    background-color: var(--secondaryColor);  
+                }  
+            }  
+            .user-checkbox input[type="checkbox"]:checked + label::before {  
+            background: orange; /* Change to orange when checked */  
+            border-color: orange; /* Border color when checked */  
             }  
         }  
+        .category-item {  
+            margin-right: 20px; // Space between fields  
+            min-width: 10px;
+        }  
+        .user-selection {  
+            // margin-top: 10px;  
+
+            .user-checkboxes {  
+                display: flex;  
+                flex-wrap: wrap;  
+                gap: 10px;  
+                // color: #ea7d29;
+                // margin-left: 10px;
+                .user-checkbox {  
+                    flex: 0 0 calc(20% - 30px); // Adjust for spacing 
+                    // background-color: #ea7d29; 
+                    label {  
+                        display: flex;  
+                        align-items: center;  
+                    }  
+                }  
+            }  
+        }  
+
+        .row {  
+            display: flex;  
+            gap: 20px;  
+            flex-direction: row;  
+            // margin-top: -0px;
+            // min-width: 1150px;
+            width: 100%; /* Ensure full width */  
+            // flex-wrap: wrap; /* Allow items to wrap if necessary */  
+            .form-item {  
+                padding-right: 20px;  
+
+                max-width: 1500px;
+                flex: 1;  
+                margin-left: 10px;
+                // margin-top: -10px;
+                // min-width: 150px; 
+            }  
+          
+
+        input[type="text"],  
+        input[type="number"],  
+        input[type="date"],  
+        textarea,  
+        select {  
+            // width: 100%;  
+            // padding: 10px;  
+            // border: 1px solid var(--mainColor);  
+            border-radius: 6px;  
+            font-size: 16px;  
+            transition: border-color 0.3s ease;  
+
+            &:focus {  
+                border-color: #22487a;  
+                outline: none;  
+            }  
+        } 
+    
+        .paid-item{
+            width: 500px;
+        }
+        .title-item{
+            // min-width: 200px; /* Minimum width */  
+            width: 500px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -1px; /* Maintain the margin */  
+        }
+        .amount-item{
+            width: 350px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -35px; /* Maintain the margin */ 
+            margin-left: -10px;
+            // margin-right: -40px;
+            // margin-bottom: -50px;
+        }
+       
+        .discription-item{
+            width: 350px; /* Maximum width, adjust as needed */  
+            flex: 1;          /* Allow it to grow in flex container */  
+            height: 100px;    /* Set a specific height if necessary */  
+            margin-top: -35px; /* Maintain the margin */ 
+            margin-left: -10px;
+        }
+        .bill-date{
+            .MuiTextField-root {  
+                        flex: 1; 
+                        margin-top: -35px;
+                        // height: 250px;             
+                        width: 350px;      
+                        margin-left: -35px;  
+                        &:last-child {  
+                                        margin-right: 0px;    
+                                    }  
+        }}
+
+            .category-label {  
+                background-color: #ea7d29; /* Yellow background for the clickable label */  
+                // padding: 10px;  
+                width: 50px;
+                height: 58px;
+                // margin-top: 20px;
+                text-align: center;  
+                border-radius: 4px;  
+                align-items: center;
+                // margin: 10px 0;  
+            }  
+            
+            .category-label img {  
+                display: inline-block;  
+                margin-right: 8px;  
+            }  
+            
+            .menu-item {  
+                display: flex;  
+                align-items: center;  
+            }  
+            
+            .menu-item img {  
+                width: 70px; /* Icon size */  
+                margin-left: 10px;  
+            }  
+            
+            .selected-category-image {  
+                // margin-top: 10px;  
+                padding: -10px;
+                display: flex;  
+                width: 50px;
+                height: 60px;
+                // justify-content: center;   
+            }  
+        .error-message {  
+            color: red;  
+            min-height: 20px;  
+            margin-top: 5px;  
+            font-size: 13px;  
+            font-family: var(--font-family);  
+        }  
+
+       
     }  
+    button {  
+        padding: 10px 20px;  
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 6px;  
+        cursor: pointer;  
+        transition: background-color 0.3s;  
+        // margin-top: -50px;
+        // width: 50px;
+        &:hover {  
+            background-color: var(--secondaryColor);  
+        }  
+    }  
+    .btn {  
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding: 10px 20px;  
+        margin-left: 300px;
+        background-color: var(--mainColor);  
+        color: white;  
+        border: none;  
+        border-radius: 6px;  
+        cursor: pointer;  
+        transition: background-color 0.3s;  
+        margin-top: -50px;
+        width: 500px;
+        &:hover {  
+            background-color: var(--secondaryColor);  
+        }  
+    }  
+}
 }

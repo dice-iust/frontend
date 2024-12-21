@@ -384,7 +384,7 @@ const AddNewTrip = () => {
                 <DatePicker
                   value={tripData.endDate}
                   minDate={tripData.startDate ? tripData.startDate : dayjs()}
-                  label="End date"
+                  label="End Date"
                   slotProps={{
                     textField: {
                       error: !!errors.endDate,

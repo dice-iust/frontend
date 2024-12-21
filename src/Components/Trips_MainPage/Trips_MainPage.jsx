@@ -17,6 +17,8 @@ import Footer from "../tourspage/footer.jsx";
 import RequestPage from "./requests/requests.jsx";
 import Userspage from "./Users/users.jsx";
 import { IoAddOutline } from "react-icons/io5";
+import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
+import QApage from "../ChatBox/ChatBox.jsx";
 
 const Trips_MainPage = () => {
   const [showmain, setshowmain] = useState(true);
@@ -200,14 +202,8 @@ const Trips_MainPage = () => {
             )}
             {isshow && (  
             <>  
-              <li className="menu-item">  
-                <BsFillChatFill size={22} className="moveiconchat" />  
-                Q&A  
-              </li>  
-              <li className="menu-item">  
-                <GiCash size={25} />  
-                Planner  
-              </li>  
+              <li className={`menu-item  ${showQA ? 'active' : ''}`} onClick={handleQA}><BsFillChatFill size={22} className='moveiconchat' /> Q&A</li>
+              <li className={`menu-item  ${showplanner ? 'active' : ''}`} onClick={handleplanner}><GiCash size={25} /> Planner</li>
             </>  
           )}  
           </ul>
@@ -228,12 +224,19 @@ const Trips_MainPage = () => {
         </div>
      
 
-        {showrequests ? (
-          <RequestPage
-            code={tripData.code}
-            travelState={tripData.travels.travel_is.status}
-          />
-        ) : (
+        {showrequests ? (  
+            <RequestPage />  
+        ) 
+        :
+        showplanner? (
+            <PlannerPage tourname={tourname} />
+        )
+        :
+        showQA? (
+            <QApage tourname={tourname} />
+        )
+        :
+         (  
           showmain && (
             <div className="trip-container">
               {isPart ? null : (

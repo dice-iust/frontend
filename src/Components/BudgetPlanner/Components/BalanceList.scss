@@ -3,60 +3,120 @@
     --mainColorLight: #5767aa;  
     --secondaryColor: #ea7d29;  
     --textColor: #eee;  
-    --font-family: OpenSans;  
+    --font-family: 'OpenSans', sans-serif;  
 }  
 
-.balance-list {  
-    width: 95%;
-    margin-left: 30px;
-    margin-top: 20px;  
+.w3-container-b {  
+    display: flex;  
+    padding: 16px;  
+    font-family: 'Arial', sans-serif;  
+    background-color: #f9f9f9;  
+    border-radius: 8px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}  
+
+.sidebar-b {  
+    width: 250px;  
+    background-color: #ddd;  
+    padding: 20px;  
+    border-radius: 8px;  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);  
+}  
+
+.content-b {  
+    flex: 1;  
+    padding: 20px;  
+}  
+
+.tablink-b {  
+    display: block; 
+    font-weight: bold; 
+    cursor: pointer;  
+    text-align: left;  
+    padding: 12px 10px; /* Padding for vertical spacing */  
+    background-color: #ffffff; /* White background for tabs */  
+    color: #333; /* Dark text color for better readability */  
+    border-radius: 8px;  
+    margin: 8px 0; /* Space between tabs */  
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;  
+    position: relative;  
+    border: 2px solid transparent; /* To keep the space even */  
+}  
+
+.tablink-b {  
+    border-bottom: 2px solid transparent; /* Keep space bottom border consistent for all tabs */  
+}  
+
+.tablink-b:not(:last-child) {  
+    border-bottom: 2px solid transparent; /* Use transparent border for spacing */  
+}  
+
+.tablink-b:hover {  
+    background-color: #22487a; /* Background color on hover */  
+    color: #fff; /* Text color on hover */  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth on hover */  
+}  
+
+.tablink-b.active {  
+    background-color: #ea7d29; /* Orange background for active tab */  
+    color: #fff; /* White text color for active tab */  
+    border-radius: 8px; /* Rounded corners for active tab */  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly more prominent shadow */  
+    border: 2px solid transparent; /* Temporarily remove borders to keep the look consistent */  
+}  
+
+.w3-border-red-b {  
+    border-left: 4px solid rgb(234, 110, 12);  
+    background-color: rgba(255, 255, 255, 0.1);  
+}  
+
+.balance-list-b {  
     padding: 20px;  
     border: 1px solid #ddd;  
     border-radius: 12px;  
-    background-color: #ffffff;  
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Add subtle shadow for depth  
-    font-family: var(--font-family); // Use the defined font  
-    
-    h2 {  
-        color: var(--mainColor); //Heading color  
-        margin-bottom: 15px; //Space below heading  
-        font-weight: bold; // Make heading bold  
-    }  
+    background-color: #22487a;  
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+}  
 
-    .balance-item {  
-        font-size: 20px;
-        display: flex;  
-        justify-content: space-between;  
-        align-items: center;  
-        padding: 15px;  
-        margin: 10px 0;  
-        border: 1px solid #ececec;  
-        border-radius: 8px;  
-        background-color: #f7f7f7; // Lighter background for each item  
-        transition: background-color 0.3s; // Smooth transition effect  
+.balance-list-b h2 {  
+    color: var(--mainColor);  
+    margin-bottom: 15px;  
+    font-weight: bold;  
+}  
 
-        &:hover { // Add hover effect for balance items  
-            background-color: #f0f0f0; // Light gray on hover  
-        }  
-    }  
+.balance-item {  
+    font-size: 20px;  
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;  
+    padding: 15px;  
+    margin: 10px 0;  
+    border: 1px solid #ececec;  
+    border-radius: 8px;  
+    background-color: #f7f7f7;  
+    transition: background-color 0.3s;  
+}  
 
-    button {  
-        padding: 8px 12px;  
-        font-size: 14px;  
-        font-weight: bold; // Make button text bold  
-        background-color: var(--mainColor);  
-        color: white;  
-        border: none;  
-        border-radius: 4px;  
-        cursor: pointer;  
-        transition: background-color 0.3s; // Smooth transition for button hover  
+.balance-item:hover {  
+    background-color: #f0f0f0;  
+}  
 
-        &:hover {  
-            background-color: var(--secondaryColor); // Darker on hover  
-        }  
-    }  
+.balance-item button {  
+    padding: 8px 12px;  
+    font-size: 14px;  
+    font-weight: bold;  
+    background-color: var(--mainColor);  
+    color: white;  
+    border: none;  
+    border-radius: 4px;  
+    cursor: pointer;  
+    transition: background-color 0.3s;  
+}  
 
-    p {  
-        margin: 0; // Reset margin for p  
-    }  
+.balance-item button:hover {  
+    background-color: var(--secondaryColor);  
+}  
+
+.balance-item p {  
+    margin: 0;  
 }
