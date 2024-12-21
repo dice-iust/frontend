@@ -232,7 +232,7 @@ const Trips_MainPage = () => {
      
 
         {showrequests ? (  
-            <RequestPage />  
+            <RequestPage code={iscode} travelState={tripData.travels.travel_is.status}/>  
         ) 
         :
         showplanner? (
