@@ -28,6 +28,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         category: "", 
         img:null, 
     });  
+    const today = dayjs()
 
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
@@ -131,12 +132,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         }  
         if (!formValue.date) {  
             newErrors.date = "Date field cannot be empty.";  
-        } else if (formValue.date.isAfter(dayjs())) {  
-            newErrors.date = "Date cannot be in the future.";  
         }  
-        if (!formValue.category) {  
-            newErrors.category = "Category field cannot be empty.";  
-        }  
+         
         
         // Return if there are errors  
         if (Object.keys(newErrors).length > 0) {  
@@ -237,7 +234,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     return (  
         <div className="main-add-div">  
             {loading && <div>Loading...</div>}  
-            {error && <div className="error-message">{error}</div>}  
+            {error && <div className="error-message-planner ">{error}</div>}  
             <form onSubmit={handleAddExpense} className="form-planner">  
                 <div className="upload-image-section">  
                     <img  
@@ -289,10 +286,12 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                             onChange={() => handleUserSelection(user.user_name)}  
                                         />  
                                         {user.user_name}  
-                                    </label>  
+                                    {errors.userName && <div className="error-message-planner ">{errors.category}</div>}    
+                                    </label>
                                 </div>  
                             ))}  
-                            </div>
+                            </div>                          
+
                         </div>  
                     )}  
                 </div>  
@@ -341,7 +340,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                     </MenuItem>  
                                 ))}  
                             </Select>  
-                            {errors.category && <div className="error-message">{errors.category}</div>}  
                         </FormControl>     
                     </div>  
                     <div className="formitem">
@@ -350,7 +348,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             name="title"  
                             label="Title"  
                             variant="outlined"  
-                            required  
                             value={formValue.title}  
                             onChange={handleChange}  
                             error={!!errors.title}  
@@ -369,7 +366,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             name="amount"  
                             label="Amount"  
                             variant="outlined"  
-                            required  
                             value={formValue.amount}  
                             onChange={handleChange}  
                             error={!!errors.amount}  
@@ -381,8 +377,9 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                     <div className="bill-date">  
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
                             <DatePicker 
+                              
+                                maxDate={today }
                                 className="date-item" 
-                                required  
                                 label="Date"  
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
@@ -399,7 +396,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         name="description"  
                         label="Description"  
                         variant="outlined"  
-                        required  
                         value={formValue.description}  
                         onChange={handleChange}  
                         className="discription-item"                       
