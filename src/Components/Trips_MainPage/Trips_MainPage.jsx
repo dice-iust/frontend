@@ -202,7 +202,7 @@ const Trips_MainPage = () => {
             )}
             {isshow && (  
             <>  
-              <li className={`menu-item  ${showQA ? 'active' : ''}`} onClick={handleQA}><BsFillChatFill size={22} className='moveiconchat' /> Q&A</li>
+              <li className={`menu-item  ${showQA ? 'active' : ''}`} onClick={handleQA}><BsFillChatFill size={22} className='moveiconchat' /> Chat</li>
               <li className={`menu-item  ${showplanner ? 'active' : ''}`} onClick={handleplanner}><GiCash size={25} /> Planner</li>
             </>  
           )}  
