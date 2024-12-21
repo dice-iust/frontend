@@ -22,23 +22,16 @@ const NewExpense = (props ) => {
   }; 
   
   return (  
-    <> 
+    <>     
+    <div className="expense-list-container"> {/* Use this container for the grid layout */}  
+
       <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
         <div className="expense-box profile-expense">  
         {cat && (  
             <img src={cat} alt="Rectangle Icon" className="small-rectangle-image" />  
           )}  
           <span className="title-expense">{title}</span> {/* Title on the left side */}  
-          {users && users.length > 0 && (  
-          <div className="users-container">  
-            {users.map((user) => (  
-              <div key={user.id} className="user-box">  
-                <img src={user.profilePicture} alt={user.user_name} className="user-image" /> {/* Circular image */}  
-                <span>{user.user_name}</span>  
-              </div>  
-            ))}  
-          </div>  
-          )} 
+           
           <div className="amount-container">  
             <span className="amount">{price} $</span> {/* Amount on the right side */}  
             {showDetails ? (  
@@ -58,14 +51,27 @@ const NewExpense = (props ) => {
           </span>   
         </div>  
       </div>  
-
+</div>
       {showDetails && (  
-        <div className="details-box">  
-          <div className="expense-box details-row">  
-            <span><strong>Description:</strong> {description}</span> {/* Make "Description:" bold, but not its value */}             
-            <span><strong>Date: </strong>{date}</span>  
+        
+        <div className="details-box"> 
+        {users && users.length > 0 && (  
+          <div className="users-container">  
+            {users.map((user) => (  
+              <div key={user.id} className="user-box">  
+                <img src={user.profilePicture} alt={user.user_name} className="user-image" /> {/* Circular image */}  
+                <span className="user-name">{user.user_name}</span>  
+              </div>  
+            ))}  
           </div>  
-          <img src={factorImage} alt="Detail Illustration" className="rectangle-image" /> {/* Rectangle image */}  
+          )} 
+          <div className="expense-box details-row">  
+            <div className=" details-text">  
+              <span><strong>Description:</strong> {description}</span>             
+              <span><strong>Date: </strong>{date}</span>  
+            </div>  
+            <img src={factorImage} alt="Detail Illustration" className="rectangle-image" />   
+          </div>
         </div>  
       )}  
 
