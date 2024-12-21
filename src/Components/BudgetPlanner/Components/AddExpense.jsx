@@ -151,6 +151,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         formDataImage.append('description', formValue.description);
         if (formValue.img) {  
             formDataImage.append('receipt_image', formValue.img);  
+            console.log('image: ',formValue.img);
         } 
     
         // Ensure participants are correctly set based on splitType  

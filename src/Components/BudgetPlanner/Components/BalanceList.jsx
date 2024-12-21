@@ -4,9 +4,7 @@ import axios from 'axios';  // Don't forget to import axios if you haven't done 
 import './BalanceList.scss';  
 
 const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) => {  
-    const handleMarkAsPaid = (id) => {  
-        setBalances((prev) => prev.filter(item => item.id !== id));  
-    };  
+
 
     const TourList = () => {   
         const [activeTab, setActiveTab] = useState("Debts");   
@@ -70,6 +68,29 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
             fetchTripData();   
         }, [tourname]);
 
+        const markaspaid = async (name,token) => {  
+            try {  
+                const response = await axios.post(`https://triptide.pythonanywhere.com/planner/travels/mark-as-paid/`,{
+                    user_name:name
+                }, {  
+                    headers: {  
+                        Authorization: token,  
+                    },     
+                });  
+     
+                console.log(response.data)  ;     
+                setLoading(false);  
+                setError("");   
+            } catch (err) {  
+                console.error(err);  
+                setLoading(false);  
+                setError(err.response?.data?.detail || 'An error occurred while fetching trip data.');  
+                 
+            }    
+        };  
+        const handleMarkAsPaid = (e) => {  
+            markaspaid(e,localStorage.getItem("token"));
+        };  
         const renderContent = () => {  
             if (loading) return <p>Loading...</p>;  
             if (error) return <p style={{ color: 'red' }}>{error}</p>;  
@@ -80,7 +101,7 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
                         debts.map(item => (  
                             <div key={item.id} className="balance-item" style={{ color: data.has_debt  ? 'green' : 'red' }}>  
                                 <p><strong style={{ color: '#5767aa' }}>{item.name} :</strong> ${item.amount}</p>  
-                                <button onClick={() => handleMarkAsPaid(item.id)}>Mark as Paid</button>  
+                                <button onClick={() => handleMarkAsPaid(item.name)}>Mark as Paid</button>  
                             </div>  
                         ))  
                     ) : (  
