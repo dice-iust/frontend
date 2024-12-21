@@ -24,8 +24,8 @@ const NewExpense = (props ) => {
   return (  
     <React.Fragment>  
       {/* Use this container for the grid layout */}  
-  
-      <div className="expense-list-container1">  
+      <div className="expense-list-container1">
+
         <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
           <div className="expense-box profile-expense">  
             {cat && (  
@@ -42,20 +42,20 @@ const NewExpense = (props ) => {
               )}  
             </div>  
           </div>  
-  
           {/* Updated Paid By section to include circular image */}  
+
           <div className="expense-box">  
             <span className="paid-by">  
               <strong>Paid by:</strong>   
               <img src={payer.profilePicture} alt={payer.user_name} className="user-image" /> {/* Circular image */}  
               {payer.user_name}  
             </span>   
-          </div>  
-        </div>  
-      </div>  
+          </div>   
+         </div>
+        </div>
   
-      {showDetails && (  
-        <div className="expense-list-container1">  
+      {showDetails && ( 
+        <div className="expense-list-container1" >
           <div className="details-box">   
             {users && users.length > 0 && (  
               <div className="users-container">  
@@ -74,8 +74,8 @@ const NewExpense = (props ) => {
               </div>  
               <img src={factorImage} alt="Detail Illustration" className="rectangle-image" />   
             </div>  
+            </div>
           </div>  
-        </div>  
       )}  
     </React.Fragment>  
   );}

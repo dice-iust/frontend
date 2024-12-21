@@ -13,9 +13,9 @@
   width: 100%; /* Full width of the parent container */ 
 }  
 .newExpense-box {  
-  // width: calc(50% - 20px); /* Width adjusted for two cards per row with gap */
+  width: calc(70% - 20px); /* Width adjusted for two cards per row with gap */
   // grid-template-columns: repeat(2, 2fr); // Two equal columns  
-  width: 100%;
+  // width: 100%;
   display: flex;  
   position: relative;
   flex-direction: column;  
@@ -25,7 +25,7 @@
   border-radius: 12px;  
   padding: 16px;  
   margin-top: 16px;  
-  margin-left: 30px;  
+  margin-left: 250px;  
   background-color: #fff;  
   margin-bottom: 10px;
 
@@ -61,8 +61,9 @@
 .newExpense-box-showDetails {  
   margin-left: 30px;  
   display: flex;  
-  flex-direction: column;  
-  width:100%;
+  flex-direction: column;
+  margin-left: 250px;  
+  width: calc(70% - 20px); /* Width adjusted for two cards per row with a 20px gap */
   border: 1px solid var(--mainColor);  
   border-bottom: 0;  
   box-shadow: none;  
@@ -107,8 +108,8 @@
 }  
 
 .details-box {  
-  width: 100%;
-  margin-left: 30px;  
+  width: calc(70% - 20px); /* Ensures details box takes the same width */
+  margin-left: 250px;  
   display: flex;  
   flex-direction: column;  
   border: 1px solid var(--mainColor);  
@@ -169,7 +170,8 @@
   width: 100px; /* Adjust as needed */  
   height: auto; 
   // top: 70%; 
-  margin-left: 100px; /* Space between text and image */  
+  margin-right: -100px;
+  margin-left: 2000px; /* Space between text and image */  
 }  
 
 .users-container {  
