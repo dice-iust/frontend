@@ -165,7 +165,7 @@ const Trips_MainPage = () => {
         )
         :
         showQA? (
-            <QApage />
+            <QApage tourname={tourname} />
         )
         :
          (  

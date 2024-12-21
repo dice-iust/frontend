@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { TextField, Button } from "@mui/material";  
 import "./ChatBox.scss";  
 import MessageBox from "./Components/MessageBox";  
-import { messageData } from "../../../src/api/jsondata/planner";  
+import { messageData } from "../../../src/api/jsondata/planner"; 
+import Ably from 'ably' ;
 
-const ChatBox = () => {  
+const ChatBox = ({tourname}) => {  
   const [message, setMessage] = useState("");  
-
+  const ably =new Ably.Realtime('w9hDjQ.bDJwDg:nV7gxEThhWT4clJqHv9K3syB3SQCDrkcgaoChiWmRQY');
+  const channel =ably.channels.get(`travel_${tourname}`);
+  channel.subscribe('chat',(message)=>{
+    console.log('Received: ',message.data);
+  });
   const handleChange = (e) => {  
     const { value } = e.target;  
     setMessage(value);  
