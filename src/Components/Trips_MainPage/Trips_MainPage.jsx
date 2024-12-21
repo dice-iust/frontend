@@ -20,6 +20,8 @@ import { IoAddOutline } from "react-icons/io5";
 import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
 import QApage from "../ChatBox/ChatBox.jsx";
 import { FaRegHand } from "react-icons/fa6";
+import { GiConfirmed } from "react-icons/gi";
+import { VscError } from "react-icons/vsc";
  
 
 const Trips_MainPage = () => {
@@ -98,6 +100,8 @@ const Trips_MainPage = () => {
   const [isPart, setIsPart] = useState(true);
   const [isshow, setIsshow] = useState(false);
   const [isPrivate, SetIsPrivate] = useState("Private");
+  const [iscorrect, SetIscorrect] = useState("");
+  const [iswrong, SetIswrong] = useState("");
 
   useEffect(() => {
     // let isMounted = true; // We keep track of mounted component
@@ -180,8 +184,24 @@ const Trips_MainPage = () => {
           },
         }
       );
+      if (response.status === 201) {  
+        SetIscorrect("Request sent successfully!");  
+        setPasscode(""); 
+        setTimeout(() => {
+          SetIscorrect("");
+        }, 3000);  
+      }  
+      if (response.status==403)
+      {
+        SetIswrong("Wrong Passcode")
+      }
+
     } catch (error) {
       console.error("Error updating profile:", error);
+      SetIswrong("Wrong Passcode")
+      setTimeout(() => {
+        SetIswrong("");
+      }, 3000);
     }
   };
 
@@ -280,6 +300,34 @@ const Trips_MainPage = () => {
                       />
                     </>
                   )}
+                   {iscorrect && (  
+                    <div style={{  
+                      border: "1px solid #4caf50",  
+                      backgroundColor: "#e8f5e9",  
+                      color: "#2e7d32",  
+                      padding: "16px",  
+                      borderRadius: "5px",  
+                      margin: "20px 0",  
+                      fontFamily: "Arial, sans-serif",  
+                      width: "300px"  
+                    }}>  
+                        <p style={{ margin: 0, fontWeight: "bold" }}><GiConfirmed /> {iscorrect}</p>  
+                    </div>  
+                  )} 
+                  {iswrong && (  
+                    <div style={{  
+                      border: "1px solid #f44336",
+                      backgroundColor: "#ffebee",   
+                      color: "#f44336", 
+                      padding: "16px",  
+                      borderRadius: "5px", 
+                      margin: "20px 0", 
+                      fontFamily: "Arial, sans-serif", 
+                      width: "200px"  
+                    }}>  
+                        <p style={{ margin: 0, fontWeight: "bold" }}><VscError /> {iswrong}</p>  
+                    </div>  
+                  )}   
                 </>
               )}
 
