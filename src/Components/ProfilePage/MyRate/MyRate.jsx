@@ -95,8 +95,8 @@ const MyRate = () => {
         }  
     };
     const roundedRating = roundRating(rating);
-    const roundedRating_well_traveled = roundRating(rating)
-    const roundedRating_good_payed = roundRating(rating)  
+    const roundedRating_well_traveled = roundRating(rating_well_travelled)
+    const roundedRating_good_payed = roundRating(rating_good_payed)  
     const normalizedRating_overall = Math.min(Math.max(roundedRating, 0), 5); // Ensure it's between 0 and   
     const normalizedRating_well_traveled = Math.min(Math.max(roundedRating_well_traveled, 0), 5);  
     const normalizedRating_good_payed = Math.min(Math.max(roundedRating_good_payed, 0), 5);  
@@ -135,7 +135,7 @@ const MyRate = () => {
                         <div className="circle-in">  
                             {Array.from({ length: 5 }, (_, index) => {  
                                 const isFilled = index < Math.floor(normalizedRating_overall);   
-                                const isHalfFilled = index === Math.floor(normalizedRating_overall) && (normalizedRating_overall % 1) >= 0.5;   
+                                const isHalfFilled = index === Math.floor(normalizedRating_overall) && (normalizedRating_overall % 1) >0;   
                                 return (  
                                     <span  
                                         className={`star ${isFilled ? 'filled' : ''} ${isHalfFilled ? 'half-filled' : ''}`}  
