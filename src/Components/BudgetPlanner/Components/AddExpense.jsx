@@ -300,7 +300,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 </div>  
                             ))}  
                             </div>                          
-                            {errors.selectedUsers && <span style={{ color: 'red',fontSize: '12px', marginTop: '5px'}}className="error-message-planner">{errors.selectedUsers}</span>}  
+                            {errors.selectedUsers && <span style={{ color:' #D32F2F',fontSize: '12px', marginTop: '5px'}}className="error-message-planner">{errors.selectedUsers}</span>}  
 
                         </div>  
                     )}  
@@ -334,13 +334,12 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             </InputLabel>  
                             <Select  
                                 name="userName"  
-                                labelId="category-label"  
-                                label="Category"  
+                                labelId="username-label"  
+                                label="username"  
                                 value={formValue.userName}  
                                 onChange={handleChange}  
                                 error={!!errors.userName} 
-                                helperText={errors.userName}  
-                            >  
+                                >  
                                 <MenuItem value="">  
                                     <em>Select Who has payed</em>  
                                 </MenuItem>  
@@ -396,10 +395,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
                                 slotProps={{  
-                                    textField: {  
+                                    textField: { 
                                         error: !!errors.date,  
-                                        className="error-message-planner"  ,
-                                        helperText: errors.date  
+                                        helperText: errors.date,  
+                                        className: errors.date ? "error-message-planner" : "", // Apply class if there's an error  
                                     },  
                                 }}    
                             />  
