@@ -3,7 +3,7 @@ import "./AddExpense.scss";
 import axios from "../../../api/axios.js";  
 import addBill from "../assets/addbill.png";  
 import { MdAddPhotoAlternate, MdArrowDropDown } from "react-icons/md";  
-import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu } from "@mui/material";  
+import { TextField, Select, MenuItem, FormControl, InputLabel, Button,Menu,FormHelperText  } from "@mui/material";  
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';  
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';  
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';  
@@ -17,17 +17,24 @@ import rent from "../assets/rent.jpg";
 import restaurant from "../assets/restaurant.jpg";  
 import shopping from "../assets/shopping.jpg";  
 import transport from "../assets/transport.jpg";  
-import other from "../assets/other.jpg";  
+import other from "../assets/other.jpg"; 
+import Trips_MainPage from "../../Trips_MainPage/Trips_MainPage.jsx";
+import { useNavigate,useLocation } from 'react-router-dom';  
 const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
+    const navigate = useNavigate(); 
+    const location = useLocation(); 
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
         amount: "",  
         date: null,  
         description: "",  
-        category: "",  
+        category: "", 
+        img:null, 
     });  
+    const today = dayjs()
 
+    const [planner,setplanner]=useState(false);
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
     const [errors, setErrors] = useState({});  
@@ -52,7 +59,13 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         { name: "Transport", thumbnail: transport },  
         { name: "Other", thumbnail: other },  
     ];   
-    
+    const handleFileChange = (event) => {  
+        const file = event.target.files[0];  
+        if (file) {  
+            setUploadedImage(file);  
+            setFormValue({ ...formValue, img: file }); // Store the file object directly  
+        }  
+    };   
 
     useEffect(() => {  
         const fetchTripData = async () => {  
@@ -110,53 +123,77 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     const handleAddExpense = async (e) => {  
         e.preventDefault();  
         setErrors({});  
-    
+        
         const newErrors = {};  
-    
+        // Error checks  
         if (splitType === "specificUser" && selectedUsers.length === 0) {  
-            newErrors.userName = "At least one user must be selected.";  
+            newErrors.selectedUsers = "At least one user must be selected.";  
         }  
+        if (!formValue.userName) {  
+            newErrors.userName = "Please select who has paid.";  
+        }   
         if (!formValue.title) {  
             newErrors.title = "Title field cannot be empty.";  
         }  
-        if (!formValue.amount || isNaN(formValue.amount) || Number(formValue.amount) <= 0) {  
-            newErrors.amount = "Amount must be a positive number.";  
+        if (!formValue.amount )
+            {  
+            newErrors.amount = "Amount field cannot be empty.";  
         }  
+        if(isNaN(formValue.amount) || Number(formValue.amount) <= 0) 
+        {
+            newErrors.amount = "Amount must be a positive number."
+
+        }
         if (!formValue.date) {  
             newErrors.date = "Date field cannot be empty.";  
-        } else if (formValue.date.isAfter(dayjs())) {  
-            newErrors.date = "Date cannot be in the future.";  
         }  
-        if (!formValue.category) {  
-            newErrors.category = "Category field cannot be empty.";  
-        }  
-    
+         
+        
+        // Return if there are errors  
         if (Object.keys(newErrors).length > 0) {  
             setErrors(newErrors);  
             return;  
         }  
-    
+        
         const formDataImage = new FormData();  
-    
-        formDataImage.append('travel_name', tourname); 
+        formDataImage.append('travel_name', tourname);   
         formDataImage.append('amount', Number(formValue.amount));  
         formDataImage.append('created_at', formValue.date.format("YYYY-MM-DD"));   
         formDataImage.append('title', formValue.title);  
         formDataImage.append('category', formValue.category);  
         formDataImage.append('payer', formValue.userName);  
-        formDataImage.append('description', formValue.description);  
+        formDataImage.append('description', formValue.description);
+        if (formValue.img) {  
+            formDataImage.append('receipt_image', formValue.img);  
+            console.log('image: ',formValue.img);
+        } 
     
-        const participants = splitType === "specificUser" ? selectedUsers : data.map(participant =>participant.user_name);  
-        participants.forEach(participant => {  
-            formDataImage.append('participants[]', participant); 
-        }); 
-        console.log(formValue.category);
-        console.log(participants);
+        // Ensure participants are correctly set based on splitType  
+        let participants_front;  
+        if (splitType === "specificUser") {  
+            // Check if selectedUsers is not empty, otherwise handle the case  
+            if (selectedUsers.length === 0) {  
+                console.error("No users selected for specificUser splitType.");  
+                return; // or set an error state  
+            }  
+            participants_front = selectedUsers;  // Assuming selectedUsers is an array of user names  
+        } else {  
+            participants_front = data.map(participant => participant.user_name);  
+        }  
+    
+        // Log of participants for debugging  
+        console.log('Participants:', participants_front);  
+    
+        // Append participants to FormData  
+        if (participants_front && participants_front.length > 0) {  
+            formDataImage.append('participants', participants_front); // Use JSON if the server expects it  
+        }  
+    
+        // Log FormData for debugging  
+        console.log('Form Data being sent:', formDataImage);   
         for (const pair of formDataImage.entries()) {  
             console.log(`${pair[0]}: ${pair[1]}`);  
-        }     
-        console.log('Form Data being sent:', formDataImage); // Log for debug  
-    
+        }
         try {  
             const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
                 headers: {  
@@ -165,14 +202,15 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 },  
                 params: { travel_name: tourname }  
             });  
-            console.log('Response from API:', response.data);
-
-            setimgcategory(response.data.receipt_image );
+            console.log('Response from API:', response.data);  
+            
+            setimgcategory(response.data.receipt_image);  
             resetForm();  // Reset form after successful submission  
-            handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
+            //  handleExpenseListToggle();  // Toggle the expense list to refresh data or show feedback  
             
         } catch (error) {  
-            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              setError(error.response?.data.detail || 'An error occurred. Please try again.');  
+            console.error("Error adding new trip:", error.response ? error.response.data : error.message);              
+            setError(error.response?.data.detail || 'An error occurred. Please try again.');  
         }  
     };
     const resetForm = () => {  
@@ -181,7 +219,11 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         setErrors({});  
         setSplitType("equal");  
         setSelectedUsers([]);  
-        setCategoryImage(null);   
+        setCategoryImage(null);
+        navigate(`/TripsPage/${tourname}`, { state: {  showmain:false,showplanner:true} });
+        setplanner(true);
+        <Trips_MainPage planner={planner}/>
+        setplanner(false);
     };  
 
     const handleSplitSelection = (type) => {  
@@ -211,11 +253,11 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
     return (  
         <div className="main-add-div">  
             {loading && <div>Loading...</div>}  
-            {error && <div className="error-message">{error}</div>}  
+            {error && <div className="error-message-planner ">{error}</div>}  
             <form onSubmit={handleAddExpense} className="form-planner">  
                 <div className="upload-image-section">  
                     <img  
-                        src={uploadedImage || addBill}  
+                        src={formValue.img ? URL.createObjectURL(formValue.img) : addBill} 
                         alt="Uploaded"  
                         className="smaller-image-planner"  
                     />  
@@ -226,8 +268,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         <input  
                             type="file"  
                             id="file-upload"  
-                            onChange={handleChange}  
+                            onChange={handleFileChange}  
                             style={{ display: 'none' }}  
+                            
+                            
                         />  
                     </div>  
 
@@ -258,13 +302,16 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                         <input  
                                             type="checkbox"  
                                             checked={selectedUsers.includes(user.user_name)}  
-                                            onChange={() => handleUserSelection(user.user_name)}  
+                                            onChange={() => handleUserSelection(user.user_name)} 
+                                            
                                         />  
                                         {user.user_name}  
-                                    </label>  
+                                    </label>
                                 </div>  
                             ))}  
-                            </div>
+                            </div>                          
+                            {errors.selectedUsers && <span style={{ color:' #D32F2F',fontSize: '12px', marginTop: '5px'}}className="error-message-planner">{errors.selectedUsers}</span>}  
+
                         </div>  
                     )}  
                 </div>  
@@ -297,13 +344,12 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             </InputLabel>  
                             <Select  
                                 name="userName"  
-                                labelId="category-label"  
-                                label="Category"  
+                                labelId="username-label"  
+                                label="username"  
                                 value={formValue.userName}  
                                 onChange={handleChange}  
-                                error={!!errors.category} 
-                                helperText={errors.userName}  
-                            >  
+                                error={!!errors.userName} 
+                                >  
                                 <MenuItem value="">  
                                     <em>Select Who has payed</em>  
                                 </MenuItem>  
@@ -312,8 +358,8 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                                         {category.user_name}  
                                     </MenuItem>  
                                 ))}  
-                            </Select>  
-                            {errors.category && <div className="error-message">{errors.category}</div>}  
+                            </Select>                         
+                            <FormHelperText className="error-message-planner">{errors.userName}</FormHelperText>  
                         </FormControl>     
                     </div>  
                     <div className="formitem">
@@ -322,11 +368,11 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             name="title"  
                             label="Title"  
                             variant="outlined"  
-                            required  
                             value={formValue.title}  
                             onChange={handleChange}  
                             error={!!errors.title}  
-                            helperText={errors.title}
+                            helperText={errors.title && <span className="error-message-planner">{errors.title}</span>}  
+
                             className="title-item"                       
                             // style={{ marginRight: '20px',padding:"10px", textAlign:"center"}}  
 
@@ -341,11 +387,10 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                             name="amount"  
                             label="Amount"  
                             variant="outlined"  
-                            required  
                             value={formValue.amount}  
                             onChange={handleChange}  
-                            error={!!errors.amount}  
-                            helperText={errors.amount}  
+                            error={!!errors.amount }  
+                            helperText={errors.amount &&  <span className="error-message-planner">{errors.amount}</span>}  
                             className="amount-item"                       
 
                         />  
@@ -353,15 +398,19 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                     <div className="bill-date">  
                         <LocalizationProvider dateAdapter={AdapterDayjs}>  
                             <DatePicker 
+                              
+                                maxDate={today }
                                 className="date-item" 
-                                required  
                                 label="Date"  
                                 value={formValue.date}  
                                 onChange={(newValue) => handleChange({ target: { name: 'date', value: newValue } })}  
-                                renderInput={(params) => (  
-                                    <TextField {...params} error={!!errors.date} helperText={errors.date}   />  
-                                                     
-                                )}  
+                                slotProps={{  
+                                    textField: { 
+                                        error: !!errors.date,  
+                                        helperText: errors.date,  
+                                        className: errors.date ? "error-message-planner" : "", // Apply class if there's an error  
+                                    },  
+                                }}    
                             />  
                         </LocalizationProvider>  
                     </div> 
@@ -371,7 +420,6 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                         name="description"  
                         label="Description"  
                         variant="outlined"  
-                        required  
                         value={formValue.description}  
                         onChange={handleChange}  
                         className="discription-item"                       

@@ -22,55 +22,62 @@ const NewExpense = (props ) => {
   }; 
   
   return (  
-    <> 
-      <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
-        <div className="expense-box profile-expense">  
-        {cat && (  
-            <img src={cat} alt="Rectangle Icon" className="small-rectangle-image" />  
-          )}  
-          <span className="title-expense">{title}</span> {/* Title on the left side */}  
-          {users && users.length > 0 && (  
-          <div className="users-container">  
-            {users.map((user) => (  
-              <div key={user.id} className="user-box">  
-                <img src={user.profilePicture} alt={user.user_name} className="user-image" /> {/* Circular image */}  
-                <span>{user.user_name}</span>  
-              </div>  
-            ))}  
-          </div>  
-          )} 
-          <div className="amount-container">  
-            <span className="amount">{price} $</span> {/* Amount on the right side */}  
-            {showDetails ? (  
-              <MdKeyboardArrowUp className="arrowIcon" onClick={handleShowDetails} />  
-            ) : (  
-              <MdKeyboardArrowDown className="arrowIcon" onClick={handleShowDetails} />  
+    <React.Fragment>  
+      {/* Use this container for the grid layout */}  
+  
+      <div className="expense-list-container1">  
+        <div className={showDetails ? "newExpense-box-showDetails" : "newExpense-box"}>  
+          <div className="expense-box profile-expense">  
+            {cat && (  
+              <img src={cat} alt="Rectangle Icon" className="small-rectangle-image" />  
             )}  
+            <span className="title-expense">{title}</span> {/* Title on the left side */}  
+             
+            <div className="amount-container">  
+              <span className="amount">{price} $</span> {/* Amount on the right side */}  
+              {showDetails ? (  
+                <MdKeyboardArrowUp className="arrowIcon" onClick={handleShowDetails} />  
+              ) : (  
+                <MdKeyboardArrowDown className="arrowIcon" onClick={handleShowDetails} />  
+              )}  
+            </div>  
           </div>  
-        </div>  
-
-        {/* Updated Paid By section to include circular image */}  
-        <div className="expense-box">  
-          <span className="paid-by">  
-            <strong>Paid by:</strong>   
-            <img src={payer.profilePicture} alt={payer.user_name} className="user-image" /> {/* Circular image */}  
-            {payer.user_name}  
-          </span>   
+  
+          {/* Updated Paid By section to include circular image */}  
+          <div className="expense-box">  
+            <span className="paid-by">  
+              <strong>Paid by:</strong>   
+              <img src={payer.profilePicture} alt={payer.user_name} className="user-image" /> {/* Circular image */}  
+              {payer.user_name}  
+            </span>   
+          </div>  
         </div>  
       </div>  
-
+  
       {showDetails && (  
-        <div className="details-box">  
-          <div className="expense-box details-row">  
-            <span><strong>Description:</strong> {description}</span> {/* Make "Description:" bold, but not its value */}             
-            <span><strong>Date: </strong>{date}</span>  
+        <div className="expense-list-container1">  
+          <div className="details-box">   
+            {users && users.length > 0 && (  
+              <div className="users-container">  
+                {users.map((user) => (  
+                  <div key={user.id} className="user-box">  
+                    <img src={user.profilePicture} alt={user.user_name} className="user-image" /> {/* Circular image */}  
+                    <span className="user-name">{user.user_name}</span>  
+                  </div>  
+                ))}  
+              </div>  
+            )}   
+            <div className="expense-box details-row">  
+              <div className="details-text">  
+                <span><strong>Description:</strong> {description}</span>             
+                <span><strong>Date: </strong>{date}</span>  
+              </div>  
+              <img src={factorImage} alt="Detail Illustration" className="rectangle-image" />   
+            </div>  
           </div>  
-          <img src={factorImage} alt="Detail Illustration" className="rectangle-image" /> {/* Rectangle image */}  
         </div>  
       )}  
-
-    </>  
-  );  
-};  
+    </React.Fragment>  
+  );}
 
 export default NewExpense;

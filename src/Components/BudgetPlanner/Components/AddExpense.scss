@@ -17,7 +17,7 @@
     padding-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
     transition: box-shadow 0.3s ease;  
-    margin-top: 15px;  
+    margin-top: 20px;  
     // margin-left: 20px;
 
     &:hover {  
@@ -246,15 +246,15 @@
                 height: 60px;
                 // justify-content: center;   
             }  
-        .error-message {  
-            color: red;  
-            min-height: 20px;  
-            margin-top: 5px;  
-            font-size: 13px;  
-            font-family: var(--font-family);  
-        }  
+       
 
        
+    }   .error-message-planner {  
+        color: #D32F2F;  
+        min-height: 50px;  
+        margin-top: 5px;  
+        font-size: 12px;  
+          
     }  
     button {  
         padding: 10px 20px;  
