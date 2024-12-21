@@ -61,5 +61,41 @@ $border-radius: 8px;
                 }  
             }  
         }  
+
+        .member-card-admin {  
+            display: flex;  
+            align-items: center;  
+            // background-color: $card-color;  
+            border-radius: $border-radius;  
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+            padding: 10px;  
+            width: calc(50% - 10px); // 50% width for two cards per row minus the gap  
+            transition: background-color 0.3s;  
+            background-color: $hover-color;
+
+            &:hover {  
+                background-color: $card-color;  
+            }  
+
+            .member-photo {  
+                width: 50px; // Icon size  
+                height: 50px;  
+                border-radius: 50%;  
+                margin-right: 15px;  
+            }  
+
+            .member-info {  
+                h2 {  
+                    margin: 0;  
+                    font-size: 1.2em;  
+                    color: #22487a;  
+                }  
+
+                p {  
+                    margin: 0;  
+                    color: #555;  // A softer color for the description  
+                }  
+            }  
+        }  
     }  
 }

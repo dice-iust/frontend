@@ -92,6 +92,17 @@ const UsersPage = () => {
             </div>
           </div>
         ))}
+          <div className="member-card-admin" key={tripData.travels.travel_is}>
+            <img
+              className="member-photo"
+              src={tripData.travels.travel_is.admin.phrofile_image || "https://via.placeholder.com/100"}
+              alt={`${tripData.travels.travel_is.admin.user_name}'s photo`}
+            />
+            <div className="member-info">
+              <h2>{tripData.travels.travel_is.admin.user_name}</h2>
+              <p>{ "Hey! I'm using TripTide."}</p>
+            </div>
+          </div>
       </div>
     </div>
   );
