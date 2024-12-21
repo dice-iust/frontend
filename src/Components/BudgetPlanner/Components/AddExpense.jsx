@@ -19,8 +19,10 @@ import shopping from "../assets/shopping.jpg";
 import transport from "../assets/transport.jpg";  
 import other from "../assets/other.jpg"; 
 import Trips_MainPage from "../../Trips_MainPage/Trips_MainPage.jsx";
+import { useNavigate,useLocation } from 'react-router-dom';  
 const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, tourname }) => {  
-
+    const navigate = useNavigate(); 
+    const location = useLocation(); 
     const [formValue, setFormValue] = useState({  
         userName: "",  
         title: "",  
@@ -31,6 +33,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         img:null, 
     });  
     const today = dayjs()
+
     const [planner,setplanner]=useState(false);
     const [participants,setparticipants]=useState([]);
     const [uploadedImage, setUploadedImage] = useState(null);  
@@ -217,6 +220,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
         setSplitType("equal");  
         setSelectedUsers([]);  
         setCategoryImage(null);
+        navigate(`/TripsPage/${tourname}`, { state: {  showmain:false,showplanner:true} });
         setplanner(true);
         <Trips_MainPage planner={planner}/>
         setplanner(false);

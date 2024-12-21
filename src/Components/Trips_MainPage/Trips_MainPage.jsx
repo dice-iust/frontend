@@ -16,13 +16,8 @@ import Footer from '../tourspage/footer.jsx';
 import RequestPage from "./requests/requests.jsx";
 import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
 
-const Trips_MainPage = ({planner}) => {
+const Trips_MainPage = () => {
     const [showmain, setshowmain] = useState(true);
-    if(planner)
-    {
-        setshowmain(false);
-        setShowplanner(true);
-    }
     const [showplanner, setShowplanner] = useState(false);
     const [showQA, setShowQA] = useState(false);   
     const [showrequests, setShowrequests] = useState(false);         
