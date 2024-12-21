@@ -276,4 +276,34 @@ $transition-duration: 0.3s;
     margin-bottom: 0px;
 }
 
+.circle-icon {  
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%;  
+    background-color: rgb(234, 110, 12); 
+    color: #22487a;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    overflow: hidden;  
+    position: relative;  
+}  
+
+.hand-icon {  
+    font-size: 50px; 
+    color: #22487a;
+    //background-color: #22487a;
+    transform: rotateY(180deg);
+    animation: rotate 2s infinite; 
+}  
+
+@keyframes moveRight {  
+    0% {  
+        transform: rotate(0deg);  
+    }  
+    100% {  
+        transform: rotate(360deg); /* Complete rotation */  
+    }  
+}
+
 

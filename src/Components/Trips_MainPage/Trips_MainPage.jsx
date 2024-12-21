@@ -19,6 +19,7 @@ import Userspage from "./Users/users.jsx";
 import { IoAddOutline } from "react-icons/io5";
 import PlannerPage from "../BudgetPlanner/BudgetPlanner.jsx";
 import QApage from "../ChatBox/ChatBox.jsx";
+import { FaRegHand } from "react-icons/fa6";
 
 const Trips_MainPage = () => {
   const [showmain, setshowmain] = useState(true);
@@ -241,6 +242,12 @@ const Trips_MainPage = () => {
             <div className="trip-container">
               {isPart ? null : (
                 <>
+                  {/* <div class="circle-icon">  
+                    <div class="hand-icon">  
+                        <FaRegHand />  
+                    </div>  
+                </div>   */}
+                  <br/>
                   <Button
                     sx={{
                       marginRight: "10px",
