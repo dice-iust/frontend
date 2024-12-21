@@ -272,7 +272,18 @@ const Trips_MainPage = () => {
 
               {error && tripData === null ? (
                 <>
-                  <p style={{ color: "red" }}>{error}</p>
+                  <div style={{  
+                    border: "1px solid #f44336",
+                    backgroundColor: "#ffebee",   
+                    color: "#f44336", 
+                    padding: "16px",  
+                    borderRadius: "5px", 
+                    margin: "20px 0", 
+                    fontFamily: "Arial, sans-serif", 
+                    width : "700px"
+                  }}>  
+                    <p style={{ margin: 0, fontWeight: "bold" }}>{error}</p>  
+                  </div>  
                 </>
               ) : tripData ? ( // Check if tripData is available to render
                 <>
