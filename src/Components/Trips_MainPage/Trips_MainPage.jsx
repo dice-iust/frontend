@@ -242,9 +242,13 @@ const Trips_MainPage = () => {
               {isPart ? null : (
                 <>
                   <Button
-                    style={{
+                    sx={{
                       marginRight: "10px",
                       marginTop: "8px",
+                      backgroundColor : "#22487a",
+                      "&:hover": {  
+                        backgroundColor: "rgb(234, 110, 12)", 
+                        },  
                     }}
                     variant="contained"
                     type="submit"
