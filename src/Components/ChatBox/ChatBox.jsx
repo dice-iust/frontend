@@ -42,7 +42,7 @@ const ChatBox = ({tourname}) => {
                 return;  
             }  
             try {  
-                const response = await axios.post(`https://triptide.pythonanywhere.com/publish_message/`,{
+                const response = await axios.post(`https://triptide.liara.run/publish_message/`,{
                   message,travel_name: tourname
                 }, {  
                     headers: {  

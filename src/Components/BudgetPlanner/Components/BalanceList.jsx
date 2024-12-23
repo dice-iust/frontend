@@ -30,7 +30,7 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
                 }  
         
                 try {  
-                    const response = await axios.get(`https://triptide.pythonanywhere.com/planner/travels/debts/`, {  
+                    const response = await axios.get(`https://triptide.liara.run/planner/travels/debts/`, {  
                         headers: {  
                             Authorization: localStorage.getItem("token"),  
                         },   
@@ -70,7 +70,7 @@ const BalanceList = ({ balances, setBalances, balance_debt, debt, tourname }) =>
 
         const markaspaid = async (name,token) => {  
             try {  
-                const response = await axios.post(`https://triptide.pythonanywhere.com/planner/travels/mark-as-paid/`,{
+                const response = await axios.post(`https://triptide.liara.run/planner/travels/mark-as-paid/`,{
                     user_name:name
                 }, {  
                     headers: {  

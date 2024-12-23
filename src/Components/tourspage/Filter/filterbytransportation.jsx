@@ -124,7 +124,7 @@ const TransportPicker = () => {
 
   const fetchTravelData = async (transportationdata) => {  
     try {  
-      const response = await axios.get(`https://triptide.pythonanywhere.com//travels/filter/`, {  
+      const response = await axios.get(`https://triptide.liara.run//travels/filter/`, {  
         params: {  
           transportation : transportationdata
         },  

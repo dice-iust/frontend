@@ -38,7 +38,7 @@ const EmailVerification = () => {
 
   const getFormData = async () => {  
     try {  
-      const response = await axios.get("https://triptide.pythonanywhere.com/send/", {  
+      const response = await axios.get("https://triptide.liara.run/send/", {  
         headers: { Authorization: localStorage.getItem("token") },  
       });  
       setEmail(response.data.email);  
@@ -90,7 +90,7 @@ const EmailVerification = () => {
 
     console.log("Verification Code:", code); 
     try {  
-      const response = await axios.post("https://triptide.pythonanywhere.com/send/",   
+      const response = await axios.post("https://triptide.liara.run/send/",   
         {   
             verification_code: code   
         },   

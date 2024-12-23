@@ -113,7 +113,7 @@ const Trips_MainPage = () => {
       }
       try {
         const response = await axios.get(
-          `https://triptide.pythonanywhere.com/travels/single/`,
+          `https://triptide.liara.run/travels/single/`,
           {
             headers: {
               Authorization: localStorage.getItem("token"),
@@ -175,7 +175,7 @@ const Trips_MainPage = () => {
 
     try {
       const response = await axios.post(
-        "https://triptide.pythonanywhere.com/travels/adduser/",
+        "https://triptide.liara.run/travels/adduser/",
         JSON.stringify(requestObj),
         {
           headers: {

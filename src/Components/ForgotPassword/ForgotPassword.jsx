@@ -65,7 +65,7 @@ const ForgotPassword = () => {
         }  
 
         try {  
-            const response = await axios.post('https://triptide.pythonanywhere.com/password-reset-request/', { email });  
+            const response = await axios.post('https://triptide.liara.run/password-reset-request/', { email });  
             setShowFields(true);  
             setSavedEmail(email);  
             setError('');  
@@ -112,7 +112,7 @@ const ForgotPassword = () => {
 
         setLoading(true);  
         try {  
-            const verifyResponse = await axios.post('https://triptide.pythonanywhere.com/password-reset-verify/', {  
+            const verifyResponse = await axios.post('https://triptide.liara.run/password-reset-verify/', {  
                 email: savedEmail,  
                 reset_code: verificationCode,  
                 new_password: newPassword  

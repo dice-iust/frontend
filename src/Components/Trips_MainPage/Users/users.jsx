@@ -19,7 +19,7 @@ const UsersPage = () => {
       }
       try {
         const response = await axios.get(
-          `https://triptide.pythonanywhere.com/travels/single/`,
+          `https://triptide.liara.run/travels/single/`,
           {
             headers: {
               Authorization: localStorage.getItem("token"),

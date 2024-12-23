@@ -29,7 +29,7 @@ const Profile = () => {
 
   const getFormData = async () => {  
     try {  
-      const response = await axios.get("https://triptide.pythonanywhere.com/profile/", {  
+      const response = await axios.get("https://triptide.liara.run/profile/", {  
         headers: { Authorization: localStorage.getItem("token") },  
       });  
       setData(response.data);  

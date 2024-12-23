@@ -54,7 +54,7 @@ const EditProfile = () => {
 
   const getFormData = async () => {  
     try {  
-      const response = await axios.get("https://triptide.pythonanywhere.com/editprofile/update_2/", {  
+      const response = await axios.get("https://triptide.liara.run/editprofile/update_2/", {  
         headers: { Authorization: localStorage.getItem("token") },  
       });  
       setFormData({  
@@ -110,7 +110,7 @@ const EditProfile = () => {
     }  
 
     try {  
-      const response = await axios.put("https://triptide.pythonanywhere.com/editprofile/update_2/", formDataImage, {  
+      const response = await axios.put("https://triptide.liara.run/editprofile/update_2/", formDataImage, {  
         headers: {  
           Authorization: localStorage.getItem("token"),  
           'Content-Type': 'multipart/form-data',

@@ -13,7 +13,7 @@ const RequestsPage = (props) => {
   const getFormData = async () => {
     try {
       const response = await axios.get(
-        "https://triptide.pythonanywhere.com/requests/",
+        "https://triptide.liara.run/requests/",
         {
           headers: { Authorization: localStorage.getItem("token") },
         }
@@ -42,7 +42,7 @@ const RequestsPage = (props) => {
 
     try {
       const response = axios.post(
-        "https://triptide.pythonanywhere.com/requests/",
+        "https://triptide.liara.run/requests/",
         JSON.stringify(requestObj),
         {
           headers: {
@@ -73,7 +73,7 @@ const RequestsPage = (props) => {
 
     try {
       const response = axios.post(
-        "https://triptide.pythonanywhere.com/requests/",
+        "https://triptide.liara.run/requests/",
         JSON.stringify(requestObj),
         {
           headers: {

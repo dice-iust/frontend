@@ -153,7 +153,7 @@ const AddNewTrip = () => {
 
     try {
       const response = await axios.post(
-        "https://triptide.pythonanywhere.com/travels/add/",
+        "https://triptide.liara.run/travels/add/",
         formDataImage,
         {
           headers: {

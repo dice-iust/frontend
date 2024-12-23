@@ -75,7 +75,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
                 return;  
             }  
             try {  
-                const response = await axios.get(`https://triptide.pythonanywhere.com/planner/travels/expenses/`, {  
+                const response = await axios.get(`https://triptide.liara.run/planner/travels/expenses/`, {  
                     headers: {  
                         Authorization: localStorage.getItem("token"),  
                     },   
@@ -195,7 +195,7 @@ const AddExpense = ({ setExpData, setShowAddExpense, handleExpenseListToggle, to
             console.log(`${pair[0]}: ${pair[1]}`);  
         }
         try {  
-            const response = await axios.post("https://triptide.pythonanywhere.com/planner/travels/expenses/", formDataImage, {  
+            const response = await axios.post("https://triptide.liara.run/planner/travels/expenses/", formDataImage, {  
                 headers: {  
                     Authorization: localStorage.getItem("token"),  
                     'Content-Type': 'multipart/form-data',  

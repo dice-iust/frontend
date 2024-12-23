@@ -124,7 +124,7 @@ const NamePicker = () => {
 
   const fetchTravelData = async (namedata) => {  
     try {  
-      const response = await axios.get(`https://triptide.pythonanywhere.com//travels/filter/`, {  
+      const response = await axios.get(`https://triptide.liara.run//travels/filter/`, {  
         params: {  
           name : namedata
         },  

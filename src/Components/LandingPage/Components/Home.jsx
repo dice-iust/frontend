@@ -34,7 +34,7 @@ const Home = () => {
   useEffect(() => {  
     const fetchData = async () => {  
       try {  
-        const response = await axios.get("https://TripTide.pythonanywhere.com/home/"); // Replace with your actual endpoint  
+        const response = await axios.get("https://triptide.liara.run/home/"); // Replace with your actual endpoint  
         setData(response.data);  
         } catch (err) {  
         setError(err);   

@@ -30,7 +30,7 @@ const BudgetPlanner = ({tourname}) => {
                 return;  
             }  
             try {  
-                const response = await axios.get(`https://triptide.pythonanywhere.com/planner/allpay/`, {  
+                const response = await axios.get(`https://triptide.liara.run/planner/allpay/`, {  
                     headers: {  
                         Authorization: localStorage.getItem("token"),  
                     },   
